@@ -1,13 +1,11 @@
 import "react-native-gesture-handler";
-import {
-  StyleSheet,
-  useWindowDimensions,
-} from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
 import { useRef, useState } from "react";
-import {NavigationContainer} from "@react-navigation/native";
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {Home} from "./Pages/Home";
-import {TestScreen} from "./Pages/Test";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Home } from "./Pages/Home";
+import { TestScreen } from "./Pages/Test";
+import { SettingsPage } from "./Pages/SettingsPage";
 
 export default function App() {
   const [darkmode, setDarkmode] = useState(false);
@@ -29,18 +27,19 @@ export default function App() {
   }
 
   return (
-      <>
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                  name="Home"
-                  component={Home}
-                  options={{title: 'Welcome'}}
-              />
-              <Stack.Screen name="Profile" component={TestScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
-      </>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ title: "Welcome" }}
+          />
+          <Stack.Screen name="SettingsPage" component={SettingsPage} />
+          <Stack.Screen name="Profile" component={TestScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
