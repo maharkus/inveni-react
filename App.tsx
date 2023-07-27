@@ -7,6 +7,7 @@ import { SettingsPage } from "./Pages/SettingsPage";
 import { Home } from "./Pages/Home";
 import { Test } from "./Pages/Test";
 import { initTheme } from "./styles/theme";
+import { Navigation } from "./Pages/Navigation";
 
 export default function App() {
   const [darkmode, setDarkmode] = useState(false);
@@ -40,8 +41,9 @@ export default function App() {
             component={Home}
             options={{ title: "Welcome" }}
           />
-          <Stack.Screen name="SettingsPage" component={SettingsPage} />
           <Stack.Screen name="Profile" component={Test} />
+          <Stack.Screen name="Navigation" component={Navigation} />
+          <Stack.Screen name="SettingsPage" component={SettingsPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

@@ -1,20 +1,15 @@
-import {
-  Button,
-  Pressable,
-  StatusBar,
-  StyleSheet,
-  Switch,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { Pressable, useWindowDimensions, View } from "react-native";
 import { useCallback, useMemo, useRef, useState } from "react";
-import { styles } from "../styles";
+import { styles } from "../styles/styles";
 import BottomSheet, {
+  BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetModalProvider,
+  BottomSheetScrollView,
+  BottomSheetView,
 } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Text, Button } from "react-native-ui-lib";
 
 export const Home = ({ navigation }) => {
   const [darkmode, setDarkmode] = useState(false);
@@ -25,79 +20,49 @@ export const Home = ({ navigation }) => {
 
   const bottomSheetModalRef = useRef(null);
 
-  function handlePresentModal() {
-    bottomSheetModalRef.current?.present();
-    setTimeout(() => {
-      setIsOpen(true);
-    }, 100);
-  }
-  // ref
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  // variables
+
+  // hooks
+  const sheetRef = useRef<BottomSheet>(null);
 
   // variables
-  const snapPoints = useMemo(() => ["25%", "50%"], []);
+  const snapPoints = useMemo(() => ["25%", "50%", "90%"], []);
 
   // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log("handleSheetChanges", index);
+  const handleSheetChange = useCallback((index) => {
+    console.log("handleSheetChange", index);
   }, []);
-
+  const handleSnapPress = useCallback((index) => {
+    sheetRef.current?.snapToIndex(index);
+  }, []);
+  const handleClosePress = useCallback(() => {
+    sheetRef.current?.close();
+  }, []);
   return (
-    <>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <BottomSheetModalProvider>
-          <View
-            style={[
-              styles.container,
-              { backgroundColor: isOpen ? "gray" : "white" },
-            ]}
-          >
-            <Button title="Present Modal" onPress={handlePresentModal} />
-            <StatusBar />
-            <BottomSheetModal
-              ref={bottomSheetModalRef}
-              index={1}
-              snapPoints={snapPoints}
-              backgroundStyle={{ borderRadius: 50 }}
-              onDismiss={() => setIsOpen(false)}
-            >
-              <View style={styles.contentContainer}>
-                <Text style={[styles.title, { marginBottom: 20 }]}>
-                  Dark mode
-                </Text>
-                <View style={styles.row}>
-                  <Text style={styles.subtitle}>Dark mode</Text>
-                  <Switch
-                    value={darkmode}
-                    onChange={() => setDarkmode(!darkmode)}
-                  />
-                </View>
-                <View style={styles.row}>
-                  <Text style={styles.subtitle}>Use device settings</Text>
-                  <Switch value={device} onChange={() => setDevice(!device)} />
-                </View>
-                <Text style={styles.description}>
-                  Set Dark mode to use the Light or Dark selection located in
-                  your device Display and Brightness settings.
-                </Text>
-                <View
-                  style={{
-                    width: width,
-                    borderBottomWidth: StyleSheet.hairlineWidth,
-                    borderBottomColor: "gray",
-                    marginVertical: 30,
-                  }}
-                />
-                <Text style={[styles.title, { width: "100%" }]}>Theme</Text>
-              </View>
-            </BottomSheetModal>
-          </View>
-        </BottomSheetModalProvider>
-        <Button
-          title="Go to Jane's profile"
-          onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-        />
-      </GestureHandlerRootView>
-    </>
+    <GestureHandlerRootView style={styles.container}>
+      <Button label="Snap To 90%" onPress={() => handleSnapPress(2)} />
+      <Button label="Snap To 50%" onPress={() => handleSnapPress(1)} />
+      <Button label="Snap To 25%" onPress={() => handleSnapPress(0)} />
+      <Button label="Close" onPress={() => handleClosePress()} />
+      <BottomSheet
+        ref={sheetRef}
+        snapPoints={snapPoints}
+        onChange={handleSheetChange}
+        style={styles.container}
+      >
+        <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
+          <Text>Text</Text>
+          <Button
+            text70
+            white
+            background-orange30
+            label="Navigation"
+            onPress={() =>
+              navigation.navigate("Navigation", { name: "Navigation" })
+            }
+          />
+        </BottomSheetScrollView>
+      </BottomSheet>
+    </GestureHandlerRootView>
   );
 };
