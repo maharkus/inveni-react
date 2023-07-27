@@ -1,5 +1,5 @@
 import {View, TextField, Text, Button} from 'react-native-ui-lib';
-import {styles} from "../styles";
+import {styles} from "../styles/styles";
 
 
 export const Test = ({navigation, route}) => {
