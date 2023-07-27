@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {Home} from "./Pages/Home";
-import {TestScreen} from "./Pages/Test";
+import {Test} from "./Pages/Test";
 
 export default function App() {
   const [darkmode, setDarkmode] = useState(false);
@@ -37,46 +37,9 @@ export default function App() {
                   component={Home}
                   options={{title: 'Welcome'}}
               />
-              <Stack.Screen name="Profile" component={TestScreen} />
+              <Stack.Screen name="Profile" component={Test} />
             </Stack.Navigator>
           </NavigationContainer>
       </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "gray",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  contentContainer: {
-    flex: 1,
-    alignItems: "center",
-    paddingHorizontal: 15,
-  },
-  row: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginVertical: 10,
-  },
-  title: {
-    fontWeight: "900",
-    letterSpacing: 0.5,
-    fontSize: 16,
-  },
-  subtitle: {
-    color: "#101318",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  description: {
-    color: "#56636F",
-    fontSize: 13,
-    fontWeight: "normal",
-    width: "100%",
-  },
-});
