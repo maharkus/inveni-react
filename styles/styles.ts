@@ -6,7 +6,7 @@ export const inveniBasics = {};
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#E0E3FF",
     alignItems: "center",
     justifyContent: "center",
   },

@@ -28,9 +28,7 @@ export default function App() {
     }, 100);
   }
 
-  useEffect(() => {
-    initTheme();
-  });
+  initTheme();
 
   return (
     <>
