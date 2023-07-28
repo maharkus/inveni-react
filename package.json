@@ -13,6 +13,7 @@
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
     "@types/react": "~18.2.14",
+    "@types/tinycolor2": "^1.4.3",
     "expo": "^49.0.5",
     "expo-status-bar": "~1.6.0",
     "metro-core": "^0.77.0",

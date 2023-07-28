@@ -21,6 +21,20 @@ export const styles = StyleSheet.create({
   headerContent: {
     marginTop: 0,
   },
+  grid: {
+    flex: 1,
+    width: 300,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start'
+  },
+  room: {
+    width: "50%",
+    borderStyle: "solid",
+    borderWidth: 1,
+    flexDirection: "column",
+    display: "flex"
+  },
   Modal: {
     backgroundColor: "#005252",
     marginTop: 0,

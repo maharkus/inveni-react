@@ -20,11 +20,11 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{ title: "Welcome" }}
+            options={{ headerShown: false }}
           />
-          <Stack.Screen name="Profile" component={Test} />
-          <Stack.Screen name="Navigation" component={Navigation} />
-          <Stack.Screen name="SettingsPage" component={SettingsPage} />
+          <Stack.Screen name="Profile" component={Test} options={{ headerShown: false }}  />
+          <Stack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }}  />
+          <Stack.Screen name="SettingsPage" component={SettingsPage} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
