@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { Typography, Colors } from "react-native-ui-lib";
 
 export const inveniBasics = {};
 

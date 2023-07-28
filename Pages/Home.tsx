@@ -1,15 +1,10 @@
-import { Animated } from "react-native";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { styles } from "../styles/styles";
 import BottomSheet, {
-  BottomSheetBackdrop,
-  BottomSheetModal,
-  BottomSheetModalProvider,
   BottomSheetScrollView,
-  BottomSheetView,
 } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import {Text, Button, Colors} from "react-native-ui-lib";
+import {Text, Button} from "react-native-ui-lib";
 import {useAnimatedStyle} from "react-native-reanimated";
 import CustomBackdrop from "../components/CustomBackdrop";
 
@@ -38,11 +33,6 @@ export const Home = ({ navigation }) => {
     setSheetStatus(index);
     console.log(sheetStatus)
   }, [sheetStatus]);
-
-  const BackDropStyle = useAnimatedStyle(() => {
-    return {
-    }
-  }, [])
 
   return (
       <>

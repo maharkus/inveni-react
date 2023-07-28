@@ -5,7 +5,6 @@ import Animated, {
     interpolate, interpolateColor,
     useAnimatedStyle,
 } from "react-native-reanimated";
-import {Button} from "react-native-ui-lib";
 
 const CustomBackdrop = ({ animatedIndex, style }: BottomSheetBackdropProps) => {
     // animated variables
