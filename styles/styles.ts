@@ -50,29 +50,15 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,
-    overflow: "hidden"
+    borderStyle: "solid",
+    borderWidth: 1,
+    overflow: "hidden",
   },
-  row: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginVertical: 10,
-  },
-  title: {
-    fontWeight: "900",
-    letterSpacing: 0.5,
-    fontSize: 16,
-  },
-  subtitle: {
-    color: "#101318",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  description: {
-    color: "#56636F",
-    fontSize: 13,
-    fontWeight: "normal",
-    width: "100%",
-  },
+  customHandle: {
+    backgroundColor: "#2B2D34",
+    width: 65,
+    height: 1,
+    marginTop: 20,
+    marginBottom: 10
+  }
 });

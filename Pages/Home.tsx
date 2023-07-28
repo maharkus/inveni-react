@@ -13,6 +13,7 @@ import Animated, {
   useSharedValue, withTiming
 } from "react-native-reanimated";
 import CustomBackdrop from "../components/CustomBackdrop";
+import CustomHandle from "../components/CustomHandle";
 
 
 export const Home = ({ navigation }) => {
@@ -80,6 +81,7 @@ export const Home = ({ navigation }) => {
                 style={[styles.modalContainer]}
                 enablePanDownToClose={true}
                 backdropComponent={CustomBackdrop}
+                handleComponent={CustomHandle}
             >
               <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
                 {!categorySelected &&
