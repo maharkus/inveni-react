@@ -4,8 +4,8 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import {Text, Button} from "react-native-ui-lib";
-import {useAnimatedStyle} from "react-native-reanimated";
+import {Text, Button, View} from "react-native-ui-lib";
+import Animated, {useAnimatedStyle} from "react-native-reanimated";
 import CustomBackdrop from "../components/CustomBackdrop";
 
 
@@ -22,27 +22,30 @@ export const Home = ({ navigation }) => {
   // callbacks
   const handleSheetChange = useCallback((index) => {
     setSheetStatus(index);
-    console.log(sheetStatus)
-  }, [sheetStatus]);
+    console.log(index)
+  }, []);
   const handleSnapPress = useCallback((index) => {
     sheetRef.current?.snapToIndex(index);
-    console.log(sheetStatus)
-  }, [sheetStatus]);
+  }, []);
   const handleClosePress = useCallback((index) => {
     sheetRef.current?.close();
     setSheetStatus(index);
-    console.log(sheetStatus)
-  }, [sheetStatus]);
+  }, []);
+
+  const backdropstyle = useAnimatedStyle(() => {
+    return {
+      backgroundColor: sheetStatus == -1? "#ffffff" : "#E0E3FF",
+    }
+  })
 
   return (
       <>
         <GestureHandlerRootView style={styles.container}>
-
-
-            <Button marginT-10 label="Snap To 90%" onPress={() => handleSnapPress(1)} />
+          <Animated.View style={[{flex:1,
+          width: "100%"},backdropstyle]}>
+            <Button label="Snap To 90%"  onPress={() => handleSnapPress(1)}></Button>
             <Button marginT-10 label="Snap To 80%" onPress={() => handleSnapPress(0)} />
-            <Button marginT-10 label="Close" onPress={() => handleClosePress(10)} />
-
+            <Button marginT-10 label="Close" onPress={() => handleClosePress(-1)} />
           <BottomSheet
               ref={sheetRef}
               snapPoints={snapPoints}
@@ -94,6 +97,7 @@ export const Home = ({ navigation }) => {
               ))}
             </BottomSheetScrollView>
           </BottomSheet>
+          </Animated.View>
         </GestureHandlerRootView>
       </>
   );
