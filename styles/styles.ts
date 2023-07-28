@@ -45,6 +45,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 15,
   },
+  modalContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50,
+    overflow: "hidden"
+  },
   row: {
     width: "100%",
     flexDirection: "row",

@@ -77,7 +77,7 @@ export const Home = ({ navigation }) => {
                 ref={sheetRef}
                 snapPoints={snapPoints}
                 onChange={handleSheetChange}
-                style={styles.container}
+                style={[styles.modalContainer]}
                 enablePanDownToClose={true}
                 backdropComponent={CustomBackdrop}
             >
