@@ -61,7 +61,7 @@ export const initTheme = () => {
   ThemeManager.setComponentTheme("Button", (props, context) => {
     return {
       color: Colors.dark,
-      borderRadius: "50%",
+      borderRadius: 9999,
       backgroundColor: Colors.orange,
       margin: 20,
     };
