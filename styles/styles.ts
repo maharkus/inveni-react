@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { Colors } from "react-native-ui-lib";
 
 export const styles = StyleSheet.create({
   container: {
@@ -63,6 +62,14 @@ export const styles = StyleSheet.create({
   
   //Julz Stylings
   buttonPrimary: {
-    backgroundColor: Colors.yellow,
+    backgroundColor: "#ff0000",
+    color: "white",
+    borderBlockColor: "black",
+    borderWidth: 1,
+    borderRadius: 9999,
+    padding: 20,
+    margin: 10,
+    fontFamily: "Work Sans",
+    fontWight: "400"
   }
 });

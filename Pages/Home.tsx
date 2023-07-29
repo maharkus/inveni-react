@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { styles } from "../styles/styles";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Text, Button, View, SortableGridList } from "react-native-ui-lib";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -16,6 +15,8 @@ import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import SVGMap from "../components/SVGMap";
+import { Button, Text } from 'react-native-paper';
+import { View } from "react-native";
 
 
 export const Home = ({ navigation }) => {
@@ -111,8 +112,9 @@ export const Home = ({ navigation }) => {
               <SVGMap></SVGMap>
           </ReactNativeZoomableView>
             <View style={{padding: 20}}>
-            <Button label="Snap To 90%" onPress={() => handleSnapPress(1)}></Button>
-            <Button marginT-10 label="Close" onPress={() => handleClosePress(-1)} />
+            <Button onPress={() => handleSnapPress(1)}>Snap To 90%</Button>
+            <Button onPress={() => handleSnapPress(0)}>Snap To 80%</Button>
+            <Button onPress={() => handleClosePress(-1)}>Close</Button>
             </View>
             <BottomSheet
                 ref={sheetRef}
@@ -128,46 +130,33 @@ export const Home = ({ navigation }) => {
                 {!categorySelected &&
                     <>
                       <Button
-                          marginT-10
-                          text70
-                          white
-                          background-orange30
-                          label="Seminarräume"
                           onPress={() => {
                             setCategorySelected(true);
                             setCategoryItems(["Raum1", "Raum2", "Raum3", "Raum4", "Raum5", "Raum6"])
                             console.log(categoryItems);
                           }
                           }
-                      />
+                      >Seminarräume</Button>
                       <Button
-                          marginT-10
-                          text70
-                          white
-                          background-orange30
-                          label="Navigation starten"
                           onPress={() =>
                               navigation.navigate("Navigation", { name: "Navigation" })
                           }
-                      />
+                      >Navigation starten</Button>
                     </>
                 }
                 {categorySelected &&
                     <Button
-                        text70
-                        white
-                        background-orange30
-                        label="Oh shit go bacc"
                         onPress={() =>
                             setCategorySelected(false)
                         }
-                    />}
+                    >Oh shit go bacc</Button>}
                 {categorySelected &&
                     <View style={styles.grid}>
                       {categoryItems.map((item: any, index: number) => (
                           <View key={index} style={styles.room}>
-                            <Text h uwu>{item}</Text>
-                          </View>  ))}
+                            <Text>{item}</Text>
+                          </View>
+                          ))}
                     </View>
                 }
               </BottomSheetScrollView>
