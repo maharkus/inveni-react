@@ -11,15 +11,16 @@ import CustomBackdrop from "../components/CustomBackdrop";
 import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
-import SVGMap from "../components/SVGMap";
+import Campus from "../components/Campus";
 import { Button, IconButton, Text } from 'react-native-paper';
 import { View } from "react-native";
+import {RoomSelection} from "../components/RoomSelection";
 
 
 export const Home = ({ navigation }) => {
   const [categorySelected, setCategorySelected] = useState(false);
   const [categoryItems, setCategoryItems] = useState([""]);
-  const [sheetStatus, setSheetStatus] = useState(0);
+  const [sheetStatus, setSheetStatus] = useState(-1);
 
   const sheetRef = useRef<BottomSheet>(null);
   const backdropRef = useRef<Animated.View>(null);
@@ -30,7 +31,9 @@ export const Home = ({ navigation }) => {
   // callbacks
   const handleSheetChange = useCallback((index) => {
     setSheetStatus(index);
-    console.log(index)
+    if(index == -1) {
+
+    }
   }, []);
   const handleSnapPress = useCallback((index) => {
     sheetRef.current?.snapToIndex(index);
@@ -55,7 +58,7 @@ export const Home = ({ navigation }) => {
   // Smoother Animation of background to White
   useEffect(() => {
     animatedValue.value = withTiming(sheetStatus == -1 ? 1 : 0, {
-      duration: 400, // Animation duration in milliseconds
+      duration: 100, // Animation duration in milliseconds
     });
   }, [sheetStatus]);
 
@@ -80,6 +83,13 @@ export const Home = ({ navigation }) => {
   const startNode = 0;
   const shortestDistances = dijkstra.dijkstra(startNode);
 
+  const handleBuilding = (id) => {
+    handleSnapPress(1);
+    setCategorySelected(true);
+    setCategoryItems(["Raum" + id, "Raum" + id, "Raum" + id, "Raum" + id, "Raum" + id] )
+  }
+
+
   return (
       <>
         <GestureHandlerRootView style={styles.container}>
@@ -97,7 +107,7 @@ export const Home = ({ navigation }) => {
                   position: "relative",
                 }}
             >
-              <SVGMap></SVGMap>
+              <Campus onBuilding={(id) => handleBuilding(id)}></Campus>
             </ReactNativeZoomableView>
             <View style={{padding: 20}}>
               <Button onPress={() => handleSnapPress(1)}>Suche</Button>
@@ -119,7 +129,6 @@ export const Home = ({ navigation }) => {
                           onPress={() => {
                             setCategorySelected(true);
                             setCategoryItems(["Raum1", "Raum2", "Raum3", "Raum4", "Raum5", "Raum6"])
-                            console.log(categoryItems);
                           }
                           }
                       >Seminarräume</Button>
@@ -134,13 +143,7 @@ export const Home = ({ navigation }) => {
                     <>
                       <IconButton icon="camera" onPress={() => handleClosePress(-1)} style={[styles.buttonBasics, styles.buttonPrimary]} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
-                      <View style={styles.roomGrid}>
-                        {categoryItems.map((item: any, index: number) => (
-                            <View key={index} style={styles.room}>
-                              <Text>{item}</Text>
-                            </View>
-                        ))}
-                      </View>
+                      <RoomSelection items={categoryItems}></RoomSelection>
                     </>
                 }
               </BottomSheetScrollView>

@@ -5,12 +5,17 @@ export const customColors = {
   light: "#FFFFFF",
   orange: "#F98452",
   yellow: "#F9CB48",
-  yellowPressed: "#F9CB48",
   purple: "#C28CFC",
   uwu: "#8FC9FF",
   green: "#A4EB5D",
-  grey: "#EDEDED",
   softPurple: "#E0E3FF",
+  grey: "#EDEDED",
+  orangePressed: "#c56037",
+  yellowPressed: "#ccab37",
+  purplePressed: "#8f5dc6",
+  uwuPressed: "#558bbe",
+  greenPressed: "#79bb37",
+  softPurplePressed: "#8f94bf",
 }
 
 export const styles = StyleSheet.create({
@@ -64,8 +69,6 @@ export const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 20,
     margin: 10,
-    fontWeight: "400",
-    fontFamily: "Work Sans",
   },
   buttonPrimary: {
     backgroundColor: customColors.orange,
@@ -95,7 +98,6 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontWeight: "700",
   },
   //Room Grids
   roomGrid: {
