@@ -12,9 +12,10 @@ import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import Campus from "../components/Campus";
-import { Button, IconButton } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import { View } from "react-native";
-import { DefaultButton } from "../components/DefaultButton";
+import { ButtonText } from "../components/ButtonText";
+import { ButtonIcon } from "../components/ButtonIcon";
 import {ButtonBuilding} from "../components/ButtonBuilding";
 import {RoomSelection} from "../components/RoomSelection";
 
@@ -143,8 +144,8 @@ export const Home = ({ navigation }) => {
                 }
                 {categorySelected &&
                     <>
-                      <DefaultButton color={customColors.orange} action={() => handleClosePress(-1)}>Back</DefaultButton>
-                      <IconButton size={50} icon="close" onPress={() => handleClosePress(-1)} style={[styles.buttonUwU, styles.buttonIcon]} />
+                      <ButtonText color={customColors.purple} action={() => handleClosePress(-1)}>Back</ButtonText>
+                      <ButtonIcon color={customColors.uwu} imageSource={"magnifier"} action={() => handleClosePress(-1)} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
                       <RoomSelection items={categoryItems}></RoomSelection>
                     </>
