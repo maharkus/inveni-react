@@ -99,9 +99,9 @@ export const Home = ({ navigation }) => {
           <Animated.View ref={backdropRef} style={[{flex:1,
             width: "100%"},animatedStyle]}>
             <ReactNativeZoomableView
-              maxZoom={2}
+              maxZoom={1.3}
               minZoom={1}
-              zoomStep={0.5}
+              zoomStep={0}
               initialZoom={1}
               panBoundaryPadding={120}
               style={{
