@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Svg, {Circle, Mask, Path} from 'react-native-svg';
-import {Button} from "react-native-paper";
-import {Pressable, View, Text} from "react-native";
-import { customColors, styles } from "../styles/styles";
+import {View} from "react-native";
+import { customColors } from "../styles/styles";
 import {ButtonBuilding} from "./ButtonBuilding";
 
 interface Props {

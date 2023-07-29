@@ -12,7 +12,7 @@ import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import Campus from "../components/Campus";
-import { Button, IconButton, Text } from 'react-native-paper';
+import { Button, IconButton } from 'react-native-paper';
 import { View } from "react-native";
 import {RoomSelection} from "../components/RoomSelection";
 
