@@ -8,8 +8,13 @@ export default function SVGMap() {
     return (
         <View style={{position: "relative"}}>
             <View style={{flex: 1, zIndex:4}}>
-                <Pressable style={[styles.buttonBuilding, {backgroundColor: customColors.green, left: 528, top: 169, position: "absolute"}]}>
-                    <Text>L1</Text>
+                <Pressable
+                    style={({ pressed }) => [{ backgroundColor: pressed ? customColors.green : 'white', left: 528, top: 169, position: "absolute" }, styles.buttonBuilding]}>
+                    {({ pressed }) => (
+                        <Text style={[{ color: pressed ? 'white' : 'black' }, styles.defaultText]}>
+                            L1
+                        </Text>
+                    )}
                 </Pressable>
                 <Pressable style={[styles.buttonBuilding, {backgroundColor: customColors.yellow, left: 379, top: 283, position: "absolute"}]}>
                     <Text>L2</Text>
