@@ -14,6 +14,7 @@ import Animated, {
 } from "react-native-reanimated";
 import CustomBackdrop from "../components/CustomBackdrop";
 import CustomHandle from "../components/CustomHandle";
+import {Dijkstra} from "../Roomfinding/Dijkstra";
 
 
 export const Home = ({ navigation }) => {
@@ -31,6 +32,10 @@ export const Home = ({ navigation }) => {
   const handleSheetChange = useCallback((index) => {
     setSheetStatus(index);
     console.log(index)
+
+    for (const [node, data] of shortestDistances) {
+      console.log(`Node ${node}: Distance: ${data.distance}, Visited Nodes: ${data.visitedNodes}`);
+    }
   }, []);
   const handleSnapPress = useCallback((index) => {
     sheetRef.current?.snapToIndex(index);
@@ -65,6 +70,26 @@ export const Home = ({ navigation }) => {
     });
   }, [sheetStatus]);
 
+// Example usage:
+  const dijkstra = new Dijkstra();
+
+  dijkstra.addEdge(0, 1, 4);
+  dijkstra.addEdge(0, 7, 8);
+  dijkstra.addEdge(1, 2, 8);
+  dijkstra.addEdge(1, 7, 11);
+  dijkstra.addEdge(2, 3, 7);
+  dijkstra.addEdge(2, 8, 2);
+  dijkstra.addEdge(2, 5, 4);
+  dijkstra.addEdge(3, 4, 9);
+  dijkstra.addEdge(3, 5, 14);
+  dijkstra.addEdge(4, 5, 10);
+  dijkstra.addEdge(5, 6, 2);
+  dijkstra.addEdge(6, 7, 1);
+  dijkstra.addEdge(6, 8, 6);
+  dijkstra.addEdge(7, 8, 7);
+
+  const startNode = 0;
+  const shortestDistances = dijkstra.dijkstra(startNode);
 
   return (
       <>
@@ -123,11 +148,11 @@ export const Home = ({ navigation }) => {
                     />}
                 {categorySelected &&
                     <View style={styles.grid}>
-                  {categoryItems.map((item: any, index: number) => (
-                      <View key={index} style={styles.room}>
-                        <Text text50>{item}</Text>
-                      </View>  ))}
-                </View>
+                      {categoryItems.map((item: any, index: number) => (
+                          <View key={index} style={styles.room}>
+                            <Text text50>{item}</Text>
+                          </View>  ))}
+                    </View>
                 }
               </BottomSheetScrollView>
             </BottomSheet>
