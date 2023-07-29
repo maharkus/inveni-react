@@ -12,11 +12,10 @@ import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import Campus from "../components/Campus";
-import { Button } from 'react-native-paper';
-import { View } from "react-native";
 import { ButtonText } from "../components/ButtonText";
 import { ButtonIcon } from "../components/ButtonIcon";
-import {ButtonBuilding} from "../components/ButtonBuilding";
+import { Button } from 'react-native-paper';
+import {Image, View} from "react-native";
 import {RoomSelection} from "../components/RoomSelection";
 
 
@@ -98,16 +97,19 @@ export const Home = ({ navigation }) => {
         <GestureHandlerRootView style={styles.container}>
           <Animated.View ref={backdropRef} style={[{flex:1,
             width: "100%"},animatedStyle]}>
+            <View style={{padding: 20, paddingTop: 80}}>
+              <Image source={require('../assets/Logo.png')} style={{width: 131, height: 47}}/>
+            </View>
             <ReactNativeZoomableView
-                maxZoom={1.3}
+                maxZoom={1}
                 minZoom={1}
                 zoomStep={0}
                 initialZoom={1}
-                panBoundaryPadding={120}
+                panBoundaryPadding={100}
                 visualTouchFeedbackEnabled={false}
                 style={{
-                  height: "50%",
                   position: "relative",
+                  height: 600,
                 }}
             >
               <Campus onBuilding={(id) => handleBuilding(id)}></Campus>
@@ -145,7 +147,7 @@ export const Home = ({ navigation }) => {
                 {categorySelected &&
                     <>
                       <ButtonText color={customColors.purple} action={() => handleClosePress(-1)}>Back</ButtonText>
-                      <ButtonIcon color={customColors.uwu} imageSource={"magnifier"} action={() => handleClosePress(-1)} />
+                      <ButtonIcon color={customColors.uwu} imageSource={"Map"} action={() => handleClosePress(-1)} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
                       <RoomSelection items={categoryItems}></RoomSelection>
                     </>

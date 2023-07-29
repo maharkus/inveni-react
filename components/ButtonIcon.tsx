@@ -39,13 +39,11 @@ export const ButtonIcon = ({color, action, imageSource} : Props) => {
             break;
         }
     }
-    
+
     return (
         <Pressable 
             style={ ({ pressed }) => [styles.buttonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
-            {({ pressed }) => (
-                <Image source={{uri: ("assets/icons/" + imageSource + ".png")}} height={32} width={32}/>
-            )}
+            <Image source={require('../assets/Map.png')} height={32} width={32}/>
         </Pressable>
     );
 };
