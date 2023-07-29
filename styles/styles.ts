@@ -69,7 +69,7 @@ export const styles = StyleSheet.create({
   buttonPrimary: {
     backgroundColor: customColors.orange,
   },
-  buttonUwW: {
+  buttonUwU: {
     backgroundColor: customColors.uwu,
   },
   buttonSuccess: {
@@ -79,6 +79,13 @@ export const styles = StyleSheet.create({
     color: customColors.dark,
     fontFamily: "Work Sans",
     fontSize: 18,
+  },
+  buttonIcon: {
+    borderRadius: 9999,
+    borderWidth: 1,
+    borderColor: customColors.dark,
+    color: customColors.dark,
+    padding: 0,
   },
   //Map
   buttonBuilding: {
