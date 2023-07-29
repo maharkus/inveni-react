@@ -86,23 +86,21 @@ export const Home = ({ navigation }) => {
           <Animated.View ref={backdropRef} style={[{flex:1,
             width: "100%"},animatedStyle]}>
             <ReactNativeZoomableView
-              maxZoom={1.3}
-              minZoom={1}
-              zoomStep={0}
-              initialZoom={1}
-              panBoundaryPadding={120}
-              visualTouchFeedbackEnabled={false}
-              style={{
-                height: "50%",
-                position: "relative",
-              }}
-          >
+                maxZoom={1.3}
+                minZoom={1}
+                zoomStep={0}
+                initialZoom={1}
+                panBoundaryPadding={120}
+                visualTouchFeedbackEnabled={false}
+                style={{
+                  height: "50%",
+                  position: "relative",
+                }}
+            >
               <SVGMap></SVGMap>
-          </ReactNativeZoomableView>
+            </ReactNativeZoomableView>
             <View style={{padding: 20}}>
-            <Button onPress={() => handleSnapPress(1)}>Snap To 90%</Button>
-            <Button onPress={() => handleSnapPress(0)}>Snap To 80%</Button>
-            <Button onPress={() => handleClosePress(-1)}>Close</Button>
+              <Button onPress={() => handleSnapPress(1)}>Suche</Button>
             </View>
             <BottomSheet
                 ref={sheetRef}
@@ -133,15 +131,21 @@ export const Home = ({ navigation }) => {
                     </>
                 }
                 {categorySelected &&
-                    <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>}
-                {categorySelected &&
-                    <View style={styles.roomGrid}>
-                      {categoryItems.map((item: any, index: number) => (
-                          <View key={index} style={styles.room}>
-                            <Text>{item}</Text>
-                          </View>
-                          ))}
-                    </View>
+                    <>
+                      <Button onPress={() => handleClosePress(-1)}>
+                        <Text style={styles.buttonPrimary}>
+                          Close
+                        </Text>
+                      </Button>
+                      <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
+                      <View style={styles.roomGrid}>
+                        {categoryItems.map((item: any, index: number) => (
+                            <View key={index} style={styles.room}>
+                              <Text>{item}</Text>
+                            </View>
+                        ))}
+                      </View>
+                    </>
                 }
               </BottomSheetScrollView>
             </BottomSheet>
