@@ -13,7 +13,7 @@ import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import Campus from "../components/Campus";
 import { Button, IconButton } from 'react-native-paper';
-import { View } from "react-native";
+import {Image, View} from "react-native";
 import { DefaultButton } from "../components/DefaultButton";
 import {ButtonBuilding} from "../components/ButtonBuilding";
 import {RoomSelection} from "../components/RoomSelection";
@@ -97,16 +97,19 @@ export const Home = ({ navigation }) => {
         <GestureHandlerRootView style={styles.container}>
           <Animated.View ref={backdropRef} style={[{flex:1,
             width: "100%"},animatedStyle]}>
+            <View style={{padding: 20, paddingTop: 80}}>
+              <Image source={require('../assets/Logo.png')} style={{width: 131, height: 47}}/>
+            </View>
             <ReactNativeZoomableView
-                maxZoom={1.3}
+                maxZoom={1}
                 minZoom={1}
                 zoomStep={0}
                 initialZoom={1}
-                panBoundaryPadding={120}
+                panBoundaryPadding={100}
                 visualTouchFeedbackEnabled={false}
                 style={{
-                  height: "50%",
                   position: "relative",
+                  height: 600,
                 }}
             >
               <Campus onBuilding={(id) => handleBuilding(id)}></Campus>
