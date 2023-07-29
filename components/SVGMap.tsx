@@ -1,13 +1,16 @@
 import * as React from 'react';
 import Svg, {Circle, Mask, Path, Rect} from 'react-native-svg';
-import {Button} from "react-native-ui-lib";
+import {Button} from "react-native-paper";
+import {View} from "react-native";
 
 export default function SVGMap(props) {
     return (
         <>
-            <Button label={"L1"}/>
-            <Button label={"L2"}/>
-            <Button styles={"left: 594, top: 302, positions: 'absolute'"} label={"L3"}/>
+            <View style={{flex: 1, position: "absolute"}}>
+                <Button>L1</Button>
+                <Button>L2</Button>
+                <Button style={{left: 50, top: 30}}>L3</Button>
+            </View>
             <Svg width="737" height="730" viewBox="0 0 737 730" fill="none">
                 <Path d="M406.041 302.594L447.56 261.087L447.56 294.676L407.202 336.031L406.975 336.264L407.096 336.566L407.973 338.759L356.381 390.184L354.744 390.358L304.56 340.173L304.56 307.087L353.781 356.29L353.899 356.408L354.065 356.431L356.046 356.708L356.292 356.743L356.468 356.567L407.343 305.854L407.603 305.595L407.434 305.269L406.041 302.594Z" fill="#EDEDED" stroke="#2B2D34"/>
                 <Path d="M416.817 332.884C415.267 334.434 412.745 334.43 411.183 332.869C409.622 331.307 409.618 328.785 411.168 327.235C412.718 325.685 415.241 325.689 416.802 327.25C418.364 328.811 418.367 331.334 416.817 332.884Z" fill="#C28CFC" stroke="#2B2D34"/>

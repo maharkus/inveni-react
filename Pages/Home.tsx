@@ -104,6 +104,7 @@ export const Home = ({ navigation }) => {
               zoomStep={0}
               initialZoom={1}
               panBoundaryPadding={120}
+              visualTouchFeedbackEnabled={false}
               style={{
                 height: "50%",
                 position: "relative",
