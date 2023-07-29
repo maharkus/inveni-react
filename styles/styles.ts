@@ -5,6 +5,7 @@ export const customColors = {
   light: "#FFFFFF",
   orange: "#F98452",
   yellow: "#F9CB48",
+  yellowPressed: "#F9CB48",
   purple: "#C28CFC",
   uwu: "#8FC9FF",
   green: "#A4EB5D",
@@ -95,7 +96,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     fontWeight: "700",
-    fontFamily: "Work Sans",
   },
   //Room Grids
   roomGrid: {

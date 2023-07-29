@@ -3,31 +3,17 @@ import Svg, {Circle, Mask, Path} from 'react-native-svg';
 import {Button} from "react-native-paper";
 import {Pressable, View, Text} from "react-native";
 import { customColors, styles } from "../styles/styles";
+import {ButtonBuilding} from "./ButtonBuilding";
 
 export default function SVGMap() {
     return (
         <View style={{position: "relative"}}>
             <View style={{flex: 1, zIndex:4}}>
-                <Pressable
-                    style={({ pressed }) => [{ backgroundColor: pressed ? customColors.green : 'white', left: 528, top: 169, position: "absolute" }, styles.buttonBuilding]}>
-                    {({ pressed }) => (
-                        <Text style={[{ color: pressed ? 'white' : 'black' }, styles.defaultText]}>
-                            L1
-                        </Text>
-                    )}
-                </Pressable>
-                <Pressable style={[styles.buttonBuilding, {backgroundColor: customColors.yellow, left: 379, top: 283, position: "absolute"}]}>
-                    <Text>L2</Text>
-                </Pressable>
-                <Pressable style={[styles.buttonBuilding, {backgroundColor: customColors.uwu, left: 389, top: 477, position: "absolute"}]}>
-                    <Text>L3</Text>
-                </Pressable>
-                <Pressable style={[styles.buttonBuilding, {backgroundColor: customColors.purple, left: 594, top: 302, position: "absolute"}]}>
-                    <Text>L4</Text>
-                </Pressable>
-                <Pressable style={[styles.buttonBuilding, {backgroundColor: customColors.softPurple, left: 135, top: 396, position: "absolute"}]}>
-                    <Text>IQL</Text>
-                </Pressable>
+                <ButtonBuilding color={customColors.green} coords={[528, 169]}>L1</ButtonBuilding>
+                <ButtonBuilding color={customColors.yellow} coords={[379, 283]}>L2</ButtonBuilding>
+                <ButtonBuilding color={customColors.uwu} coords={[389, 477]}>L3</ButtonBuilding>
+                <ButtonBuilding color={customColors.purple} coords={[594, 302]}>L4</ButtonBuilding>
+                <ButtonBuilding color={customColors.softPurple} coords={[135, 396]}>IQL</ButtonBuilding>
             </View>
             <Svg width="737" height="730" viewBox="0 0 737 730" fill="none">
                 <Path d="M407.343 305.854L407.603 305.595L407.434 305.269L406.041 302.594L447.56 261.087L447.56 294.676L407.202 336.031L406.975 336.264L407.096 336.566L407.973 338.759L356.381 390.184L354.744 390.358L304.56 340.173L304.56 307.087L353.781 356.29L353.899 356.408L354.065 356.431L356.046 356.708L356.292 356.743L356.468 356.567L407.343 305.854Z" fill="#EDEDED" stroke="#2B2D34"/>
