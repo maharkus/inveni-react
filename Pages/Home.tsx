@@ -104,20 +104,20 @@ export const Home = ({ navigation }) => {
               initialZoom={1}
               panBoundaryPadding={120}
               style={{
-                padding: 10,
-                flex: 1,
-                height: "100%",
-                position: "absolute"
+                height: "50%",
+                position: "relative",
               }}
           >
               <SVGMap></SVGMap>
           </ReactNativeZoomableView>
+            <View style={{padding: 20}}>
             <Button label="Snap To 90%" onPress={() => handleSnapPress(1)}></Button>
-            <Button marginT-10 label="Snap To 80%" onPress={() => handleSnapPress(0)} />
             <Button marginT-10 label="Close" onPress={() => handleClosePress(-1)} />
+            </View>
             <BottomSheet
                 ref={sheetRef}
                 snapPoints={snapPoints}
+                index={-1}
                 onChange={handleSheetChange}
                 style={[styles.modalContainer]}
                 enablePanDownToClose={true}

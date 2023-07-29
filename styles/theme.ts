@@ -1,7 +1,7 @@
 import { Colors, ThemeManager, Typography } from "react-native-ui-lib";
 
 export const initTheme = () => {
-  
+
 
   Colors.loadColors({
     dark: "#2B2D34",
@@ -17,7 +17,6 @@ export const initTheme = () => {
   Typography.loadTypographies({
     h: {
       fontSize: 24,
-      fontWeight: "700",
       fontFamily: "accelerator",
     },
     p: {
@@ -63,6 +62,8 @@ export const initTheme = () => {
       color: Colors.dark,
       borderRadius: 9999,
       backgroundColor: Colors.orange,
+      fontSize: 24,
+      fontFamily: "accelerator",
       margin: 20,
     };
   });
