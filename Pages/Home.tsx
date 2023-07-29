@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { styles } from "../styles/styles";
+import { customColors, styles } from "../styles/styles";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Animated, {
@@ -144,11 +144,7 @@ export const Home = ({ navigation }) => {
                     </>
                 }
                 {categorySelected &&
-                    <Button
-                        onPress={() =>
-                            setCategorySelected(false)
-                        }
-                    >Oh shit go bacc</Button>}
+                    <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>}
                 {categorySelected &&
                     <View style={styles.grid}>
                       {categoryItems.map((item: any, index: number) => (

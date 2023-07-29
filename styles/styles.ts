@@ -1,5 +1,16 @@
 import { StyleSheet } from "react-native";
 
+export const customColors = {
+  dark: "#2B2D34",
+  light: "#FFFFFF",
+  orange: "#F98452",
+  yellow: "#F9CB48",
+  purple: "#C28CFC",
+  uwu: "#8FC9FF",
+  grey: "#EDEDED",
+  softPurple: "#E0E3FF",
+}
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -62,14 +73,14 @@ export const styles = StyleSheet.create({
   
   //Julz Stylings
   buttonPrimary: {
-    backgroundColor: "#ff0000",
-    color: "white",
-    borderBlockColor: "black",
+    backgroundColor: customColors.orange,
+    color: customColors.yellow,
+    borderColor: "black",
     borderWidth: 1,
     borderRadius: 9999,
-    padding: 20,
+    padding: 10,
     margin: 10,
+    fontWeight: "400",
     fontFamily: "Work Sans",
-    fontWight: "400"
   }
 });
