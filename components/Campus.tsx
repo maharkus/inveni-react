@@ -12,11 +12,11 @@ export default function Campus({onBuilding} : Props) {
     return (
         <View style={{position: "relative"}}>
             <View style={{flex: 1, zIndex:4}}>
-                <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.green} coords={[528, 169]}>L1</ButtonBuilding>
-                <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.yellow} coords={[379, 283]}>L2</ButtonBuilding>
-                <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} coords={[389, 477]}>L3</ButtonBuilding>
-                <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.purple} coords={[594, 302]}>L4</ButtonBuilding>
-                <ButtonBuilding id={5} onBuilding={(id) => onBuilding(id)} color={customColors.softPurple} coords={[135, 396]}>IQL</ButtonBuilding>
+                <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.green} coords={[510, 230]}>L1</ButtonBuilding>
+                <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.yellow} coords={[360, 340]}>L2</ButtonBuilding>
+                <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} coords={[390, 555]}>L3</ButtonBuilding>
+                <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.purple} coords={[570, 360]}>L4</ButtonBuilding>
+                <ButtonBuilding id={5} onBuilding={(id) => onBuilding(id)} color={customColors.softPurple} coords={[110, 460]}>IQL</ButtonBuilding>
             </View>
             <Svg width="737" height="730" viewBox="0 0 737 730" fill="none">
                 <Path d="M407.343 305.854L407.603 305.595L407.434 305.269L406.041 302.594L447.56 261.087L447.56 294.676L407.202 336.031L406.975 336.264L407.096 336.566L407.973 338.759L356.381 390.184L354.744 390.358L304.56 340.173L304.56 307.087L353.781 356.29L353.899 356.408L354.065 356.431L356.046 356.708L356.292 356.743L356.468 356.567L407.343 305.854Z" fill="#EDEDED" stroke="#2B2D34"/>
