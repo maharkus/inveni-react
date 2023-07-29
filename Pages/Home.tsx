@@ -3,9 +3,6 @@ import { customColors, styles } from "../styles/styles";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Animated, {
-  Extrapolate,
-  interpolate,
-  interpolateColor,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -34,10 +31,6 @@ export const Home = ({ navigation }) => {
   const handleSheetChange = useCallback((index) => {
     setSheetStatus(index);
     console.log(index)
-
-    for (const [node, data] of shortestDistances) {
-      console.log(`Node ${node}: Distance: ${data.distance}, Visited Nodes: ${data.visitedNodes}`);
-    }
   }, []);
   const handleSnapPress = useCallback((index) => {
     sheetRef.current?.snapToIndex(index);
@@ -46,12 +39,6 @@ export const Home = ({ navigation }) => {
     sheetRef.current?.close();
     setSheetStatus(index);
   }, []);
-
-  const backdropstyle = useAnimatedStyle(() => {
-    return {
-      backgroundColor: sheetStatus == -1 ? "#ffffff" : "#E0E3FF",
-    };
-  });
 
   // Define the shared animated value using useSharedValue
   const animatedValue = useSharedValue(0);
@@ -148,7 +135,7 @@ export const Home = ({ navigation }) => {
                 {categorySelected &&
                     <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>}
                 {categorySelected &&
-                    <View style={styles.grid}>
+                    <View style={styles.roomGrid}>
                       {categoryItems.map((item: any, index: number) => (
                           <View key={index} style={styles.room}>
                             <Text>{item}</Text>

@@ -7,6 +7,7 @@ export const customColors = {
   yellow: "#F9CB48",
   purple: "#C28CFC",
   uwu: "#8FC9FF",
+  green: "#A4EB5D",
   grey: "#EDEDED",
   softPurple: "#E0E3FF",
 }
@@ -18,37 +19,8 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
   },
-  containerContent: { flex: 1, marginTop: 40 },
-  containerHeader: {
-    flex: 1,
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 40,
-    backgroundColor: "#F1F1F1",
-  },
-  headerContent: {
-    marginTop: 0,
-  },
-  grid: {
-    flex: 1,
-    width: 300,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-  },
-  room: {
-    width: "50%",
-    borderStyle: "solid",
-    borderWidth: 1,
-    flexDirection: "column",
-    display: "flex",
-  },
-  Modal: {
-    backgroundColor: "#005252",
-    marginTop: 0,
-  },
 
+  //Modal
   contentContainer: {
     flex: 1,
     alignItems: "center",
@@ -70,8 +42,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
   },
-  
-  //Julz Stylings
+  //Reusable Components
   buttonPrimary: {
     backgroundColor: customColors.orange,
     color: customColors.yellow,
@@ -82,5 +53,36 @@ export const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "400",
     fontFamily: "Work Sans",
-  }
+  },
+  //Map
+  buttonBuilding: {
+    backgroundColor: customColors.orange,
+    color: customColors.yellow,
+    borderColor: "black",
+    borderWidth: 1,
+    borderRadius: 9999,
+    padding: 0,
+    margin: 0,
+    width: 50,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "400",
+    fontFamily: "Work Sans",
+  },
+  //Room Grids
+  roomGrid: {
+    flex: 1,
+    width: 300,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+  },
+  room: {
+    width: "50%",
+    borderStyle: "solid",
+    borderWidth: 1,
+    flexDirection: "column",
+    display: "flex",
+  },
 });
