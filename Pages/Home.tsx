@@ -132,7 +132,7 @@ export const Home = ({ navigation }) => {
                 }
                 {categorySelected &&
                     <>
-                      <Button onPress={() => handleClosePress(-1)}>
+                      <Button onPress={() => handleClosePress(-1)} style={styles.buttonPrimary}>
                         <Text style={styles.buttonPrimaryText}>
                           Close
                         </Text>
