@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "react-native-ui-lib";
 
 export const styles = StyleSheet.create({
   container: {
@@ -59,4 +60,9 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
   },
+  
+  //Julz Stylings
+  buttonPrimary: {
+    backgroundColor: Colors.yellow,
+  }
 });
