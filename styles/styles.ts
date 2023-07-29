@@ -1,7 +1,5 @@
 import { StyleSheet } from "react-native";
 
-export const inveniBasics = {};
-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,16 +22,16 @@ export const styles = StyleSheet.create({
   grid: {
     flex: 1,
     width: 300,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start'
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
   },
   room: {
     width: "50%",
     borderStyle: "solid",
     borderWidth: 1,
     flexDirection: "column",
-    display: "flex"
+    display: "flex",
   },
   Modal: {
     backgroundColor: "#005252",
@@ -59,6 +57,6 @@ export const styles = StyleSheet.create({
     width: 65,
     height: 1,
     marginTop: 20,
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
 });

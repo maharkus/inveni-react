@@ -6,12 +6,22 @@ import { Home } from "./Pages/Home";
 import { Test } from "./Pages/Test";
 import { initTheme } from "./styles/theme";
 import { Navigation } from "./Pages/Navigation";
+import * as Font from 'expo-font';
+import { useEffect } from "react";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
 
-
-  initTheme();
+  useEffect(() => {
+    initTheme(); 
+    async function loadFonts() {
+      await Font.loadAsync({
+        "WorkSans": require("./assets/fonts/WorkSans.ttf"),
+        "accelerator": require("./assets/fonts/accelerator.ttf"),
+      });
+    }
+    loadFonts(); [];
+  });
 
   return (
     <>
@@ -22,9 +32,21 @@ export default function App() {
             component={Home}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Profile" component={Test} options={{ headerShown: false }}  />
-          <Stack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }}  />
-          <Stack.Screen name="SettingsPage" component={SettingsPage} options={{ headerShown: false }} />
+          <Stack.Screen
+            name="Profile"
+            component={Test}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Navigation"
+            component={Navigation}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SettingsPage"
+            component={SettingsPage}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
