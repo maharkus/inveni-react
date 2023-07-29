@@ -1,19 +1,22 @@
 import * as React from 'react';
 import Svg, {Circle, Mask, Path} from 'react-native-svg';
-import {Button} from "react-native-paper";
-import {Pressable, View, Text} from "react-native";
-import { customColors, styles } from "../styles/styles";
+import {View} from "react-native";
+import { customColors } from "../styles/styles";
 import {ButtonBuilding} from "./ButtonBuilding";
 
-export default function SVGMap() {
+interface Props {
+    onBuilding: (number) => void;
+}
+
+export default function Campus({onBuilding} : Props) {
     return (
         <View style={{position: "relative"}}>
             <View style={{flex: 1, zIndex:4}}>
-                <ButtonBuilding color={customColors.green} coords={[528, 169]}>L1</ButtonBuilding>
-                <ButtonBuilding color={customColors.yellow} coords={[379, 283]}>L2</ButtonBuilding>
-                <ButtonBuilding color={customColors.uwu} coords={[389, 477]}>L3</ButtonBuilding>
-                <ButtonBuilding color={customColors.purple} coords={[594, 302]}>L4</ButtonBuilding>
-                <ButtonBuilding color={customColors.softPurple} coords={[135, 396]}>IQL</ButtonBuilding>
+                <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.green} coords={[528, 169]}>L1</ButtonBuilding>
+                <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.yellow} coords={[379, 283]}>L2</ButtonBuilding>
+                <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} coords={[389, 477]}>L3</ButtonBuilding>
+                <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.purple} coords={[594, 302]}>L4</ButtonBuilding>
+                <ButtonBuilding id={5} onBuilding={(id) => onBuilding(id)} color={customColors.softPurple} coords={[135, 396]}>IQL</ButtonBuilding>
             </View>
             <Svg width="737" height="730" viewBox="0 0 737 730" fill="none">
                 <Path d="M407.343 305.854L407.603 305.595L407.434 305.269L406.041 302.594L447.56 261.087L447.56 294.676L407.202 336.031L406.975 336.264L407.096 336.566L407.973 338.759L356.381 390.184L354.744 390.358L304.56 340.173L304.56 307.087L353.781 356.29L353.899 356.408L354.065 356.431L356.046 356.708L356.292 356.743L356.468 356.567L407.343 305.854Z" fill="#EDEDED" stroke="#2B2D34"/>
@@ -43,7 +46,6 @@ export default function SVGMap() {
                 <Circle cx="511.924" cy="236.744" r="4" transform="rotate(45 511.924 236.744)" fill="#C28CFC" stroke="#2B2D34"/>
                 <Path d="M583.275 181.347L520.342 118.415C519.561 117.634 518.295 117.634 517.514 118.415L472.966 162.962C472.185 163.743 472.185 165.01 472.966 165.791L503.372 196.196C503.958 196.782 504.907 196.782 505.493 196.196C506.079 195.611 507.029 195.611 507.615 196.196L529.358 217.94C530.041 218.623 530.041 219.731 529.358 220.415C528.675 221.098 528.675 222.206 529.358 222.89L535.545 229.077C536.326 229.858 537.593 229.858 538.374 229.077L583.275 184.176C584.056 183.395 584.056 182.128 583.275 181.347Z" fill="white" stroke="#2B2D34"/>
                 <Path d="M415.428 541.5V574M489.928 477.001V510.001M412.428 402.001V433.501M572.428 441.501V477.001M613.928 360.001V394.501M561.428 309.5V343.001M354.928 357.001V389.501M407.928 304.5V338.501M537.428 229.5V263M528.928 222.5V257M506.928 196V229.5M504.428 196V229.5" stroke="black"/>
-
             </Svg>
         </View>
 
