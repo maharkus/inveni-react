@@ -59,13 +59,11 @@ export const styles = StyleSheet.create({
     borderColor: customColors.dark,
     borderWidth: 1,
     borderRadius: 9999,
-    paddingTop: 10,
-    paddingRight: 20,
-    paddingBottom: 10,
-    paddingLeft: 20,
+    paddingTop: 20,
+    paddingRight: 35,
+    paddingBottom: 20,
+    paddingLeft: 35,
     margin: 10,
-    fontWeight: "400",
-    fontFamily: "Work Sans",
   },
   buttonPrimary: {
     backgroundColor: customColors.orange,
@@ -79,7 +77,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: customColors.dark,
     fontFamily: "Work Sans",
-    fontSize: 18,
+    fontSize: 20,
   },
   buttonIcon: {
     borderRadius: 9999,

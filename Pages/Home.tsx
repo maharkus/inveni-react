@@ -14,6 +14,8 @@ import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view
 import SVGMap from "../components/SVGMap";
 import { Button, IconButton, Text } from 'react-native-paper';
 import { View } from "react-native";
+import { DefaultButton } from "../components/DefaultButton";
+import {ButtonBuilding} from "../components/ButtonBuilding";
 
 
 export const Home = ({ navigation }) => {
@@ -86,7 +88,7 @@ export const Home = ({ navigation }) => {
           <Animated.View ref={backdropRef} style={[{flex:1,
             width: "100%"},animatedStyle]}>
             <ReactNativeZoomableView
-                maxZoom={1}
+                maxZoom={1.3}
                 minZoom={1}
                 zoomStep={0}
                 initialZoom={1}
@@ -132,8 +134,9 @@ export const Home = ({ navigation }) => {
                 }
                 {categorySelected &&
                     <>
+                      <DefaultButton color={customColors.orange} action={() => handleClosePress(-1)}>Back</DefaultButton>
                       <IconButton size={50} icon="close" onPress={() => handleClosePress(-1)} style={[styles.buttonUwU, styles.buttonIcon]} />
-                      <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
+                      
                       <View style={styles.roomGrid}>
                         {categoryItems.map((item: any, index: number) => (
                             <View key={index} style={styles.room}>
