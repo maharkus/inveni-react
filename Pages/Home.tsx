@@ -2,20 +2,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { customColors, styles } from "../styles/styles";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from "react-native-reanimated";
 import CustomBackdrop from "../components/CustomBackdrop";
 import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import Campus from "../components/Campus";
-import { ButtonText } from "../components/ButtonText";
-import { ButtonIcon } from "../components/ButtonIcon";
-import { Button } from 'react-native-paper';
+import { Button, IconButton } from 'react-native-paper';
 import {Image, View} from "react-native";
+import { ButtonText } from "../components/ButtonText";
 import {RoomSelection} from "../components/RoomSelection";
 
 
@@ -25,7 +19,6 @@ export const Home = ({ navigation }) => {
   const [sheetStatus, setSheetStatus] = useState(-1);
 
   const sheetRef = useRef<BottomSheet>(null);
-  const backdropRef = useRef<Animated.View>(null);
 
   // variables
   const snapPoints = useMemo(() => ["80%", "90%"], []);
@@ -44,25 +37,6 @@ export const Home = ({ navigation }) => {
     sheetRef.current?.close();
     setSheetStatus(index);
   }, []);
-
-  // Define the shared animated value using useSharedValue
-  const animatedValue = useSharedValue(0);
-
-  // Define the animated style based on the shared animated value
-  const animatedStyle = useAnimatedStyle(() => {
-    const backgroundColor = `rgba(255, 255, 255, ${animatedValue.value})`; // Interpolate alpha value to get a color change
-
-    return {
-      backgroundColor,
-    };
-  });
-
-  // Smoother Animation of background to White
-  useEffect(() => {
-    animatedValue.value = withTiming(sheetStatus == -1 ? 1 : 0, {
-      duration: 100, // Animation duration in milliseconds
-    });
-  }, [sheetStatus]);
 
 // Example usage:
   const dijkstra = new Dijkstra();
@@ -95,8 +69,8 @@ export const Home = ({ navigation }) => {
   return (
       <>
         <GestureHandlerRootView style={styles.container}>
-          <Animated.View ref={backdropRef} style={[{flex:1,
-            width: "100%"},animatedStyle]}>
+          <View style={[{flex:1,
+            width: "100%", backgroundColor: "white"}]}>
             <View style={{padding: 20, paddingTop: 80}}>
               <Image source={require('../assets/Logo.png')} style={{width: 131, height: 47}}/>
             </View>
@@ -146,15 +120,15 @@ export const Home = ({ navigation }) => {
                 }
                 {categorySelected &&
                     <>
-                      <ButtonText color={customColors.purple} action={() => handleClosePress(-1)}>Back</ButtonText>
-                      <ButtonIcon color={customColors.uwu} imageSource={"Map"} action={() => handleClosePress(-1)} />
+                      <ButtonText color={customColors.orange} action={() => handleClosePress(-1)}>Back</ButtonText>
+                      <IconButton size={50} icon="close" onPress={() => handleClosePress(-1)} style={[styles.buttonUwU, styles.buttonIcon]} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
                       <RoomSelection items={categoryItems}></RoomSelection>
                     </>
                 }
               </BottomSheetScrollView>
             </BottomSheet>
-          </Animated.View>
+          </View>
         </GestureHandlerRootView>
       </>
   );
