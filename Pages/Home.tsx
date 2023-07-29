@@ -133,7 +133,9 @@ export const Home = ({ navigation }) => {
                     </>
                 }
                 {categorySelected &&
-                    <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>}
+                    <Button style={styles.buttonPrimary} onPress={() => setCategorySelected(false)}>
+                      <Text style={styles.buttonPrimaryText}>Oh shit go bacc</Text>
+                    </Button>}
                 {categorySelected &&
                     <View style={styles.roomGrid}>
                       {categoryItems.map((item: any, index: number) => (

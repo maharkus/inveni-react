@@ -42,17 +42,43 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
   },
+
   //Reusable Components
-  buttonPrimary: {
-    backgroundColor: customColors.orange,
-    color: customColors.yellow,
-    borderColor: "black",
+  defaultText: {
+    fontFamily: "Work Sans",
+    fontSize: 16,
+    color: customColors.dark,
+  },
+  defaultHeader: {
+    fontFamily: "accelerator",
+    fontSize: 24,
+    color: customColors.dark,
+  },
+  buttonBasics: {
+    borderColor: customColors.dark,
     borderWidth: 1,
     borderRadius: 9999,
-    padding: 10,
+    paddingTop: 10,
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingLeft: 20,
     margin: 10,
     fontWeight: "400",
     fontFamily: "Work Sans",
+  },
+  buttonPrimary: {
+    backgroundColor: customColors.orange,
+  },
+  buttonUwW: {
+    backgroundColor: customColors.uwu,
+  },
+  buttonSuccess: {
+    backgroundColor: customColors.green,
+  },
+  buttonPrimaryText: {
+    color: customColors.dark,
+    fontFamily: "Work Sans",
+    fontSize: 18,
   },
   //Map
   buttonBuilding: {
