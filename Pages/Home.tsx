@@ -12,7 +12,7 @@ import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import SVGMap from "../components/SVGMap";
-import { Button, Text } from 'react-native-paper';
+import { Button, IconButton, Text } from 'react-native-paper';
 import { View } from "react-native";
 
 
@@ -132,11 +132,7 @@ export const Home = ({ navigation }) => {
                 }
                 {categorySelected &&
                     <>
-                      <Button onPress={() => handleClosePress(-1)} style={styles.buttonPrimary}>
-                        <Text style={styles.buttonPrimaryText}>
-                          Close
-                        </Text>
-                      </Button>
+                      <IconButton icon="camera" onPress={() => handleClosePress(-1)} style={[styles.buttonBasics, styles.buttonPrimary]} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
                       <View style={styles.roomGrid}>
                         {categoryItems.map((item: any, index: number) => (
