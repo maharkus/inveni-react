@@ -75,7 +75,7 @@ export const styles = StyleSheet.create({
   buttonSuccess: {
     backgroundColor: customColors.green,
   },
-  buttonPrimaryText: {
+  buttonText: {
     color: customColors.dark,
     fontFamily: "Work Sans",
     fontSize: 18,
