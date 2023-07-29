@@ -141,7 +141,7 @@ export const Home = ({ navigation }) => {
                 }
                 {categorySelected &&
                     <>
-                      <IconButton icon="camera" onPress={() => handleClosePress(-1)} style={[styles.buttonBasics, styles.buttonPrimary]} />
+                      <IconButton size={50} icon="close" onPress={() => handleClosePress(-1)} style={[styles.buttonUwU, styles.buttonIcon]} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
                       <RoomSelection items={categoryItems}></RoomSelection>
                     </>
