@@ -1,16 +1,15 @@
-import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { styles } from "../styles/styles";
-import BottomSheet, {
-  BottomSheetScrollView,
-} from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import {Text, Button, View} from "react-native-ui-lib";
+import { Text, Button, View, SortableGridList } from "react-native-ui-lib";
 import Animated, {
   Extrapolate,
   interpolate,
   interpolateColor,
   useAnimatedStyle,
-  useSharedValue, withTiming
+  useSharedValue,
+  withTiming,
 } from "react-native-reanimated";
 import CustomBackdrop from "../components/CustomBackdrop";
 import CustomHandle from "../components/CustomHandle";
@@ -49,9 +48,9 @@ export const Home = ({ navigation }) => {
 
   const backdropstyle = useAnimatedStyle(() => {
     return {
-      backgroundColor: sheetStatus == -1? "#ffffff" : "#E0E3FF",
-    }
-  })
+      backgroundColor: sheetStatus == -1 ? "#ffffff" : "#E0E3FF",
+    };
+  });
 
   // Define the shared animated value using useSharedValue
   const animatedValue = useSharedValue(0);
@@ -67,7 +66,7 @@ export const Home = ({ navigation }) => {
 
   // Smoother Animation of background to White
   useEffect(() => {
-    animatedValue.value = withTiming(sheetStatus == -1? 1 : 0, {
+    animatedValue.value = withTiming(sheetStatus == -1 ? 1 : 0, {
       duration: 400, // Animation duration in milliseconds
     });
   }, [sheetStatus]);
@@ -167,7 +166,7 @@ export const Home = ({ navigation }) => {
                     <View style={styles.grid}>
                       {categoryItems.map((item: any, index: number) => (
                           <View key={index} style={styles.room}>
-                            <Text text50>{item}</Text>
+                            <Text h uwu>{item}</Text>
                           </View>  ))}
                     </View>
                 }

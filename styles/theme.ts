@@ -1,39 +1,69 @@
 import { Colors, ThemeManager, Typography } from "react-native-ui-lib";
 
 export const initTheme = () => {
+  
+
   Colors.loadColors({
     dark: "#2B2D34",
     light: "#FFFFFF",
     orange: "#F98452",
     yellow: "#F9CB48",
     purple: "#C28CFC",
-    UwU: "#8FC9FF",
+    uwu: "#8FC9FF",
     grey: "#EDEDED",
     softPurple: "#E0E3FF",
   });
 
   Typography.loadTypographies({
     h: {
-      fontSize: 32,
+      fontSize: 24,
+      fontWeight: "700",
+      fontFamily: "accelerator",
     },
     p: {
       fontSize: 18,
       fontWeight: "400",
-      lineHeight: 1,
+      fontFamily: "WorkSans",
     },
     tag: {
       fontSize: 10,
       fontWeight: "600",
-      lineHeight: 1,
     },
   });
 
+  //Text Theme
   ThemeManager.setComponentTheme("Text", (props) => {
     return {
+      //font attributes
+      //default:
       p: true,
-      dark: true,
+
+      //Overrides (like tailwind)
       h: props.h,
+      tag: props.tag,
+
+      //color attributes
+      //default:
+      dark: true,
+
+      //Overrides (like tailwind)
+      light: props.light,
       orange: props.orange,
+      yellow: props.yellow,
+      purple: props.purple,
+      uwu: props.uwu,
+      grey: props.grey,
+      softPurple: props.softPurple,
     };
   });
-};
+
+  //Button Theme
+  ThemeManager.setComponentTheme("Button", (props, context) => {
+    return {
+      color: Colors.dark,
+      borderRadius: "50%",
+      backgroundColor: Colors.orange,
+      margin: 20,
+    };
+  });
+}
