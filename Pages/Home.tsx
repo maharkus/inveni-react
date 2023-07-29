@@ -15,6 +15,8 @@ import Animated, {
 import CustomBackdrop from "../components/CustomBackdrop";
 import CustomHandle from "../components/CustomHandle";
 import {Dijkstra} from "../Roomfinding/Dijkstra";
+import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
+import SVGMap from "../components/SVGMap";
 
 
 export const Home = ({ navigation }) => {
@@ -95,7 +97,22 @@ export const Home = ({ navigation }) => {
       <>
         <GestureHandlerRootView style={styles.container}>
           <Animated.View ref={backdropRef} style={[{flex:1,
-            width: "100%", alignItems: "center", justifyContent: "center"},animatedStyle]}>
+            width: "100%"},animatedStyle]}>
+            <ReactNativeZoomableView
+              maxZoom={2}
+              minZoom={1}
+              zoomStep={0.5}
+              initialZoom={1}
+              panBoundaryPadding={120}
+              style={{
+                padding: 10,
+                flex: 1,
+                height: "100%",
+                position: "absolute"
+              }}
+          >
+              <SVGMap></SVGMap>
+          </ReactNativeZoomableView>
             <Button label="Snap To 90%" onPress={() => handleSnapPress(1)}></Button>
             <Button marginT-10 label="Snap To 80%" onPress={() => handleSnapPress(0)} />
             <Button marginT-10 label="Close" onPress={() => handleClosePress(-1)} />
