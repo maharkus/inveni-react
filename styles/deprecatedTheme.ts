@@ -1,8 +1,8 @@
+/*
 import { Colors, ThemeManager, Typography } from "react-native-ui-lib";
 
 export const initTheme = () => {
   
-
   Colors.loadColors({
     dark: "#2B2D34",
     light: "#FFFFFF",
@@ -17,13 +17,12 @@ export const initTheme = () => {
   Typography.loadTypographies({
     h: {
       fontSize: 24,
-      fontWeight: "700",
       fontFamily: "accelerator",
     },
     p: {
       fontSize: 18,
       fontWeight: "400",
-      fontFamily: "WorkSans",
+      fontFamily: "Work Sans",
     },
     tag: {
       fontSize: 10,
@@ -67,3 +66,4 @@ export const initTheme = () => {
     };
   });
 }
+*/

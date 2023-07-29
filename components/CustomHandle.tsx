@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
-import { StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import { BottomSheetHandleProps } from "@gorhom/bottom-sheet";
-import {View} from "react-native-ui-lib";
 import {styles} from "../styles/styles";
 
 

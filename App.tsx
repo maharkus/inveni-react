@@ -3,8 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SettingsPage } from "./Pages/SettingsPage";
 import { Home } from "./Pages/Home";
-import { Test } from "./Pages/Test";
-import { initTheme } from "./styles/theme";
 import { Navigation } from "./Pages/Navigation";
 import * as Font from 'expo-font';
 import { useEffect } from "react";
@@ -13,10 +11,10 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   useEffect(() => {
-    initTheme(); 
+    //initTheme(); 
     async function loadFonts() {
       await Font.loadAsync({
-        "WorkSans": require("./assets/fonts/WorkSans.ttf"),
+        "Work Sans": require("./assets/fonts/WorkSans.ttf"),
         "accelerator": require("./assets/fonts/accelerator.ttf"),
       });
     }
@@ -30,11 +28,6 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Profile"
-            component={Test}
             options={{ headerShown: false }}
           />
           <Stack.Screen
