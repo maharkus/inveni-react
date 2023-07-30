@@ -84,6 +84,7 @@ export const Home = ({ navigation }) => {
                 style={{
                   position: "relative",
                   height: 600,
+                  width: 800,
                 }}
             >
               <Campus onBuilding={(id) => handleBuilding(id)}></Campus>
