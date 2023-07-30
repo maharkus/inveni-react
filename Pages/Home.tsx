@@ -1,17 +1,15 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { customColors, styles } from "../styles/styles";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CustomBackdrop from "../components/CustomBackdrop";
 import CustomHandle from "../components/CustomHandle";
-import {Dijkstra} from "../Roomfinding/Dijkstra";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import Campus from "../components/Campus";
 import { Button, IconButton } from 'react-native-paper';
 import {Image, View} from "react-native";
 import { ButtonText } from "../components/ButtonText";
 import {RoomSelection} from "../components/RoomSelection";
-import {getPathstoRooms, Roomfinder} from "../Roomfinding/Roomfinder";
 import data from "../Roomfinding/data.json";
 
 

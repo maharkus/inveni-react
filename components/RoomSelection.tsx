@@ -1,6 +1,5 @@
 import {customColors, styles} from "../styles/styles";
 import {View} from "react-native";
-import {Text} from "react-native-paper";
 import {ButtonText} from "./ButtonText";
 import {getPathstoRooms} from "../Roomfinding/Roomfinder";
 
