@@ -55,16 +55,14 @@ export const Home = ({ navigation }) => {
               <Image source={require('../assets/Logo.png')} style={{width: 131, height: 47}}/>
             </View>
             <ReactNativeZoomableView
-                maxZoom={1}
-                minZoom={1}
+                maxZoom={1.7}
+                minZoom={1.7}
                 zoomStep={0}
-                initialZoom={1}
+                initialZoom={1.7}
                 panBoundaryPadding={100}
                 visualTouchFeedbackEnabled={false}
+                contentHeight={400}
                 style={{
-                  position: "relative",
-                  height: 600,
-                  width: 800,
                 }}
             >
               <Campus onBuilding={(id) => handleBuilding(id)}></Campus>
