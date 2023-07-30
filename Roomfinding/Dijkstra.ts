@@ -29,7 +29,7 @@ export class Dijkstra {
         this.graph.get(source)?.set(destination, weight);
     }
 
-    dijkstra(startNode: number): Map<number, { distance: number; visitedNodes: number[] }> {
+    dijkstra(startNode: number, endNote: number): number[] {
         const distances = new Map<number, { distance: number; visitedNodes: number[] }>();
         const priorityQueue = new PriorityQueue<number>();
 
@@ -57,6 +57,7 @@ export class Dijkstra {
             }
         }
 
-        return distances;
+
+        return distances.get(endNote).visitedNodes;
     }
 }

@@ -11,9 +11,12 @@ import { Button, IconButton } from 'react-native-paper';
 import {Image, View} from "react-native";
 import { ButtonText } from "../components/ButtonText";
 import {RoomSelection} from "../components/RoomSelection";
+import {getPathstoRooms, Roomfinder} from "../Roomfinding/Roomfinder";
+import data from "../Roomfinding/data.json";
 
 
 export const Home = ({ navigation }) => {
+  const [category, setCategory] = useState(0);
   const [categorySelected, setCategorySelected] = useState(false);
   const [categoryItems, setCategoryItems] = useState([""]);
   const [sheetStatus, setSheetStatus] = useState(-1);
@@ -38,31 +41,10 @@ export const Home = ({ navigation }) => {
     setSheetStatus(index);
   }, []);
 
-// Example usage:
-  const dijkstra = new Dijkstra();
-
-  dijkstra.addEdge(0, 1, 4);
-  dijkstra.addEdge(0, 7, 8);
-  dijkstra.addEdge(1, 2, 8);
-  dijkstra.addEdge(1, 7, 11);
-  dijkstra.addEdge(2, 3, 7);
-  dijkstra.addEdge(2, 8, 2);
-  dijkstra.addEdge(2, 5, 4);
-  dijkstra.addEdge(3, 4, 9);
-  dijkstra.addEdge(3, 5, 14);
-  dijkstra.addEdge(4, 5, 10);
-  dijkstra.addEdge(5, 6, 2);
-  dijkstra.addEdge(6, 7, 1);
-  dijkstra.addEdge(6, 8, 6);
-  dijkstra.addEdge(7, 8, 7);
-
-  const startNode = 0;
-  const shortestDistances = dijkstra.dijkstra(startNode);
-
   const handleBuilding = (id) => {
     handleSnapPress(1);
     setCategorySelected(true);
-    setCategoryItems(["Raum" + id, "Raum" + id, "Raum" + id, "Raum" + id, "Raum" + id] )
+    setCategoryItems(data.buildings[id].rooms)
   }
 
 
@@ -108,7 +90,8 @@ export const Home = ({ navigation }) => {
                       <Button
                           onPress={() => {
                             setCategorySelected(true);
-                            setCategoryItems(["Raum1", "Raum2", "Raum3", "Raum4", "Raum5", "Raum6"])
+                            setCategory(0)
+                            setCategoryItems(["L1 1", "L1 2", "L1 3", "L1 4", "L1 5", "L1 6"])
                           }
                           }
                       >Seminarräume</Button>
@@ -124,7 +107,7 @@ export const Home = ({ navigation }) => {
                       <ButtonText color={customColors.orange} action={() => handleClosePress(-1)}>Back</ButtonText>
                       <IconButton size={50} icon="close" onPress={() => handleClosePress(-1)} style={[styles.buttonUwU, styles.buttonIcon]} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
-                      <RoomSelection items={categoryItems}></RoomSelection>
+                      <RoomSelection category={category} items={categoryItems}></RoomSelection>
                     </>
                 }
               </BottomSheetScrollView>
