@@ -10,7 +10,7 @@ export const customColors = {
   green: "#A4EB5D",
   softPurple: "#E0E3FF",
   grey: "#EDEDED",
-  orangePressed: "#c56037",
+  orangePressed: "#f57040",
   yellowPressed: "#ccab37",
   purplePressed: "#8f5dc6",
   uwuPressed: "#558bbe",
