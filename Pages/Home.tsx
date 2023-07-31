@@ -56,6 +56,7 @@ export const Home = ({ navigation }) => {
                         selectRoom={(room) => handleRoomSelection(room)}
                         selectBuilding={(building) => handleBuilding(building)}
                         category={category}
+                        room={room}
                         onClear={clearResults}/>
             </GestureHandlerRootView>
         </>

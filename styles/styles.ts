@@ -50,6 +50,9 @@ export const styles = StyleSheet.create({
   },
 
   //Reusable Components
+  accelerator: {
+    fontFamily: "Accelerator"
+  },
   defaultText: {
     fontFamily: "Work Sans",
     fontSize: 16,
