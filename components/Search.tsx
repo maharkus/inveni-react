@@ -38,13 +38,12 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
     }, []);
 
     const handleClosePress = useCallback(() => {
-        room == -1 && onClear();
         sheetRef.current?.close();
     }, [room, onClear]);
 
     const onRoom = (room) => {
-        handleClosePress();
         selectRoom(room);
+        handleClosePress();
     }
 
     // variables
