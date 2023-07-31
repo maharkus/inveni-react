@@ -1,10 +1,12 @@
 import {Image, View} from "react-native";
+import ButtonIcon from "./ButtonIcon";
+import {customColors, styles} from "../styles/styles";
 
 export const TopBar = () => {
     return (
-
-        <View style={{padding: 20, paddingTop: 80}}>
-            <Image source={require('../assets/Logo.png')} style={{width: 131, height: 47}}/>
+        <View style={styles.topBarContainer}>
+            <Image source={require('../assets/Logo.png')} style={{width: 130, height: 47}}/>   
+            <ButtonIcon size={30} color={customColors.yellow} imageSource={require("../assets/icons/settings.png")} buttonPadding={15} action={""} />
         </View>
     );
 };

@@ -2,7 +2,7 @@ import { Pressable, Image } from "react-native";
 import { customColors, styles } from "../styles/styles";
 import * as React from "react";
 
-export default function ButtonIcon({color, imageSource, action }) {
+export default function ButtonIcon({color, imageSource, action, size, buttonPadding }) {
     let colorPressed: string;
     switch(color) {
         case customColors.orange: {
@@ -36,8 +36,8 @@ export default function ButtonIcon({color, imageSource, action }) {
     }
     return (
         <Pressable
-            style={ ({ pressed }) => [styles.iconButtonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
-            <Image style={{width: 32, height: 32}} source={imageSource}/>
+            style={ ({ pressed }) => [styles.iconButtonBasics, {backgroundColor: !pressed ? color : colorPressed, padding: buttonPadding}] } onPress={action}>
+            <Image style={{width: size, height: size}} source={imageSource}/>
         </Pressable>
     );
 };

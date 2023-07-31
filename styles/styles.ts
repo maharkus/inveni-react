@@ -74,7 +74,6 @@ export const styles = StyleSheet.create({
     borderColor: customColors.dark,
     borderWidth: 1,
     borderRadius: 9999,
-    padding: 20,
     margin: 10,
   },
   textIconButtonBasics: {
@@ -135,4 +134,18 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     display: "flex",
   },
+  //TopBar
+  topBarContainer: {
+    width: "100%",
+    paddingTop: 65,
+    paddingLeft: 25,
+    paddingRight: 25,
+    paddingBottom: 25,
+    margin: 0,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    backgroundColor: "rgba(0, 0, 0, 0)",
+  }
 });

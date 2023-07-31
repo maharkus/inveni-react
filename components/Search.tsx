@@ -2,11 +2,12 @@ import BottomSheet, {BottomSheetScrollView} from "@gorhom/bottom-sheet";
 import {customColors, styles} from "../styles/styles";
 import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
-import {Button, IconButton} from "react-native-paper";
+import {Button} from "react-native-paper";
 import {ButtonText} from "./ButtonText";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import data from "../Roomfinding/data.json";
+import ButtonIcon from "./ButtonIcon";
 
 interface Props {
     status: number,
@@ -72,7 +73,7 @@ export const Search = ({status, category, selectRoom, selectBuilding, onClear, s
                     :
                         <>
                             <ButtonText color={customColors.orange} action={handleClosePress}>Back</ButtonText>
-                            <IconButton size={50} icon="close" onPress={handleClosePress} style={[styles.buttonUwU, styles.buttonIcon]} />
+                            <ButtonIcon size={25} buttonPadding={25} color={customColors.uwu} imageSource={require("../assets/icons/close.png")} action={handleClosePress} />
                             <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => onClear}>Oh shit go bacc</Button>
                             <RoomSelection category={category} items={data.buildings[category].rooms} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
                         </>
