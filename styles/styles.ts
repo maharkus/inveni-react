@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#E0E3FF",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   //Modal
@@ -91,6 +91,7 @@ export const styles = StyleSheet.create({
     color: customColors.dark,
     padding: 0,
   },
+
   //Map
   buttonBuilding: {
     backgroundColor: customColors.orange,
@@ -105,6 +106,7 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    fontSize: 16,
   },
   //Room Grids
   roomGrid: {

@@ -14,17 +14,17 @@ import data from "../Roomfinding/data.json";
 
 
 export const Home = ({ navigation }) => {
-  const [category, setCategory] = useState(0);
+  const [category, setCategory] = useState(-1);
   const [categorySelected, setCategorySelected] = useState(false);
   const [categoryItems, setCategoryItems] = useState([""]);
+  const [room, setRoom] = useState(-1);
   const [sheetStatus, setSheetStatus] = useState(-1);
-
   const sheetRef = useRef<BottomSheet>(null);
 
   // variables
   const snapPoints = useMemo(() => ["80%", "90%"], []);
 
-  // callbacks
+  // Modal Interactivity
   const handleSheetChange = useCallback((index) => {
     setSheetStatus(index);
     if(index == -1) {
@@ -39,12 +39,33 @@ export const Home = ({ navigation }) => {
     setSheetStatus(index);
   }, []);
 
-  const handleBuilding = (id) => {
+  //Init Search
+  const initSearch = () => {
     handleSnapPress(1);
-    setCategorySelected(true);
-    setCategoryItems(data.buildings[id].rooms)
+    clearResults();
   }
 
+  //Building Selection
+  const handleBuilding = (building) => {
+    handleSnapPress(1);
+    setCategorySelected(true);
+    setCategory(building)
+    setCategoryItems(data.buildings[building].rooms)
+  }
+
+  //Room Selection
+  const handleRoomSelection = (room: number) => {
+    setRoom(room);
+    console.log("here")
+    handleClosePress(-1);
+  }
+
+  const clearResults = () => {
+    setCategorySelected(false)
+    setCategory(-1)
+    setCategoryItems([""])
+    setRoom(-1)
+  }
 
   return (
       <>
@@ -54,21 +75,9 @@ export const Home = ({ navigation }) => {
             <View style={{padding: 20, paddingTop: 80}}>
               <Image source={require('../assets/Logo.png')} style={{width: 131, height: 47}}/>
             </View>
-            <ReactNativeZoomableView
-                maxZoom={1.7}
-                minZoom={1.7}
-                zoomStep={0}
-                initialZoom={1.7}
-                panBoundaryPadding={100}
-                visualTouchFeedbackEnabled={false}
-                contentHeight={400}
-                style={{
-                }}
-            >
-              <Campus onBuilding={(id) => handleBuilding(id)}></Campus>
-            </ReactNativeZoomableView>
+              <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
             <View style={{padding: 20}}>
-              <Button onPress={() => handleSnapPress(1)}>Suche</Button>
+              <Button onPress={() => initSearch()}>Suche</Button>
             </View>
             <BottomSheet
                 ref={sheetRef}
@@ -91,11 +100,6 @@ export const Home = ({ navigation }) => {
                           }
                           }
                       >Seminarräume</Button>
-                      <Button
-                          onPress={() =>
-                              navigation.navigate("Navigation", { name: "Navigation" })
-                          }
-                      >Navigation starten</Button>
                     </>
                 }
                 {categorySelected &&
@@ -103,7 +107,7 @@ export const Home = ({ navigation }) => {
                       <ButtonText color={customColors.orange} action={() => handleClosePress(-1)}>Back</ButtonText>
                       <IconButton size={50} icon="close" onPress={() => handleClosePress(-1)} style={[styles.buttonUwU, styles.buttonIcon]} />
                       <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => setCategorySelected(false)}>Oh shit go bacc</Button>
-                      <RoomSelection category={category} items={categoryItems}></RoomSelection>
+                      <RoomSelection category={category} items={categoryItems} onRoomSelection={(room) => handleRoomSelection(room)}></RoomSelection>
                     </>
                 }
               </BottomSheetScrollView>
