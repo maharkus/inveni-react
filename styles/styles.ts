@@ -77,6 +77,11 @@ export const styles = StyleSheet.create({
     padding: 20,
     margin: 10,
   },
+  textIconButtonBasics: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+  },
   buttonPrimary: {
     backgroundColor: customColors.orange,
   },

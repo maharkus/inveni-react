@@ -6,6 +6,7 @@ import {ButtonText} from "./ButtonText";
 import {Button} from "react-native-paper";
 import {useEffect} from "react";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
+import ButtonTextAndIcon from './ButtonTextAndIcon';
 
 interface Props {
     onBuilding: (number) => void;
@@ -57,9 +58,9 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
                 </View>
             </ReactNativeZoomableView>
             {destination[1] != -1 &&
-                <ButtonText color={customColors.orange} action={() => navigation.navigate("Navigation", { name: "Navigation", destination: destination })}>
+                <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} action={() => navigation.navigate("Navigation", { name: "Navigation", destination: destination })}>
                     Navigation starten
-                </ButtonText>
+                </ButtonTextAndIcon>
             }
         </>
     );
