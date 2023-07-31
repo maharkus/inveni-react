@@ -7,7 +7,7 @@ interface Props {
     imageSource: string,
     action: () => void,
 }
-export const ButtonIcon = ({color, action, imageSource} : Props) => {
+export const ButtonIcon = ({color, imageSource, action } : Props) => {
     let colorPressed: string;
     switch(color) {
         case customColors.orange: {
@@ -39,11 +39,10 @@ export const ButtonIcon = ({color, action, imageSource} : Props) => {
             break;
         }
     }
-
     return (
         <Pressable 
             style={ ({ pressed }) => [styles.buttonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
-            <Image source={require('../assets/Map.png')} height={32} width={32}/>
+            <Image source={require(`../assets/${imageSource}.png`)} style={{width: 20, height: 20}}/>
         </Pressable>
     );
 };
