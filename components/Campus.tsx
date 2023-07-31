@@ -58,7 +58,7 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
                 </View>
             </ReactNativeZoomableView>
             {destination[1] != -1 &&
-                <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} action={() => navigation.navigate("Navigation", { name: "Navigation", destination: destination })}>
+                <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => navigation.navigate("Navigation", { name: "Navigation", destination: destination })}>
                     Navigation starten
                 </ButtonTextAndIcon>
             }

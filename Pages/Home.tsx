@@ -41,7 +41,7 @@ export const Home = ({ navigation }) => {
   return (
       <>
         <GestureHandlerRootView style={styles.container}>
-            <TopBar/>
+            <TopBar navigation={navigation}/>
             <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
             <View style={{padding: 32}}>
               <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}></ButtonIcon>
