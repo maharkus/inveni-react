@@ -72,9 +72,7 @@ export const Search = ({status, category, selectRoom, selectBuilding, onClear, s
                         </>
                     :
                         <>
-                            <ButtonText color={customColors.orange} action={handleClosePress}>Back</ButtonText>
                             <ButtonIcon size={25} buttonPadding={25} color={customColors.uwu} imageSource={require("../assets/icons/close.png")} action={handleClosePress} />
-                            <Button style={styles.buttonPrimary} textColor={customColors.dark} onPress={() => onClear}>Oh shit go bacc</Button>
                             <RoomSelection category={category} items={data.buildings[category].rooms} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
                         </>
                     }

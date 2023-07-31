@@ -43,9 +43,11 @@ export const Home = ({ navigation }) => {
         <GestureHandlerRootView style={styles.container}>
             <TopBar/>
             <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
-            <View style={{padding: 32}}>
+            {category == -1 &&
+                <View style={{padding: 32}}>
               <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}></ButtonIcon>
             </View>
+            }
             <Search status={sheetStatus}
                     statusChange={(index) => setSheetStatus(index)}
                     selectRoom={(room) => handleRoomSelection(room)}
