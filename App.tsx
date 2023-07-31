@@ -6,12 +6,13 @@ import { Home } from "./Pages/Home";
 import { Navigation } from "./Pages/Navigation";
 import * as Font from 'expo-font';
 import { useEffect } from "react";
+import {View} from "react-native";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   useEffect(() => {
-    //initTheme(); 
+    //initTheme();
     async function loadFonts() {
       await Font.loadAsync({
         "Work Sans": require("./assets/fonts/WorkSans.ttf"),
@@ -22,26 +23,24 @@ export default function App() {
   });
 
   return (
-    <>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Navigation"
-            component={Navigation}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="SettingsPage"
-            component={SettingsPage}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+                name="Home"
+                component={Home}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Navigation"
+                component={Navigation}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="SettingsPage"
+                component={SettingsPage}
+                options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
   );
 }

@@ -21,7 +21,7 @@ export const customColors = {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E0E3FF",
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
   },

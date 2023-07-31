@@ -21,6 +21,11 @@ export const Home = ({ navigation }) => {
     clearResults();
   }
 
+  const clearResults = () => {
+    setCategory(-1)
+    setRoom(-1)
+  }
+
   //Building Selection
   const handleBuilding = (building) => {
     setSheetStatus(1)
@@ -33,16 +38,9 @@ export const Home = ({ navigation }) => {
     setSheetStatus(-1)
   }
 
-  const clearResults = () => {
-    setCategory(-1)
-    setRoom(-1)
-  }
-
   return (
       <>
         <GestureHandlerRootView style={styles.container}>
-          <View style={[{flex:1,
-            width: "100%", backgroundColor: "white"}]}>
             <TopBar/>
             <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
             <View style={{padding: 20}}>
@@ -54,7 +52,6 @@ export const Home = ({ navigation }) => {
                     selectBuilding={(building) => handleBuilding(building)}
                     category={category}
                     onClear={clearResults}/>
-          </View>
         </GestureHandlerRootView>
       </>
   );
