@@ -107,7 +107,7 @@ export const styles = StyleSheet.create({
   buttonBuilding: {
     backgroundColor: customColors.orange,
     color: customColors.yellow,
-    borderColor: "black",
+    borderColor: customColors.dark,
     borderWidth: 1,
     borderRadius: 9999,
     margin: 0,
@@ -117,7 +117,12 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: 16,
+  },
+  buttonBuildingText: {
+    fontSize: 12,
+    fontWeight: "700",
+    fontFamily: "Work Sans",
+    color: customColors.dark,
   },
   //Room Grids
   roomGrid: {
