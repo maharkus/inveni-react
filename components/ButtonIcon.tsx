@@ -2,12 +2,7 @@ import { Pressable, Image } from "react-native";
 import { customColors, styles } from "../styles/styles";
 import * as React from "react";
 
-interface Props {
-    color: string,
-    imageSource: string,
-    action: () => void,
-}
-export const ButtonIcon = ({color, imageSource, action } : Props) => {
+export default function ButtonIcon({color, imageSource, action }) {
     let colorPressed: string;
     switch(color) {
         case customColors.orange: {
@@ -41,8 +36,8 @@ export const ButtonIcon = ({color, imageSource, action } : Props) => {
     }
     return (
         <Pressable
-            style={ ({ pressed }) => [styles.buttonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
-            <Image source={require('../assets/maps/map.png')} height={32} width={32}/>
+            style={ ({ pressed }) => [styles.iconButtonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
+            <Image style={{width: 32, height: 32}} source={imageSource}/>
         </Pressable>
     );
 };

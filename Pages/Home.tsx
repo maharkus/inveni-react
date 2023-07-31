@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { styles } from "../styles/styles";
+import { customColors, styles } from "../styles/styles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Campus from "../components/Campus";
 import { Button } from 'react-native-paper';
 import {Image, View} from "react-native";
 import {Search} from "../components/Search";
 import {TopBar} from "../components/TopBar";
+import ButtonIcon from "../components/ButtonIcon";
 
 
 export const Home = ({ navigation }) => {
@@ -43,8 +44,8 @@ export const Home = ({ navigation }) => {
         <GestureHandlerRootView style={styles.container}>
             <TopBar/>
             <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
-            <View style={{padding: 20}}>
-              <Button onPress={() => initSearch()}>Suche</Button>
+            <View style={{padding: 32}}>
+              <ButtonIcon color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}></ButtonIcon>
             </View>
             <Search status={sheetStatus}
                     statusChange={(index) => setSheetStatus(index)}

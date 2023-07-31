@@ -70,6 +70,13 @@ export const styles = StyleSheet.create({
     paddingLeft: 35,
     margin: 10,
   },
+  iconButtonBasics: {
+    borderColor: customColors.dark,
+    borderWidth: 1,
+    borderRadius: 9999,
+    padding: 20,
+    margin: 10,
+  },
   buttonPrimary: {
     backgroundColor: customColors.orange,
   },
