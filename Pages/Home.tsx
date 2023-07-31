@@ -41,7 +41,7 @@ export const Home = ({ navigation }) => {
   return (
       <>
         <GestureHandlerRootView style={styles.container}>
-            <TopBar/>
+            <TopBar navigation={navigation}/>
             <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
             {category == -1 &&
                 <View style={{padding: 32}}>
