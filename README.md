@@ -1,5 +1,3 @@
-## Known issues
-
 Vor Starten:
 
 ```

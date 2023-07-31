@@ -10,7 +10,7 @@ export const customColors = {
   green: "#A4EB5D",
   softPurple: "#E0E3FF",
   grey: "#EDEDED",
-  orangePressed: "#c56037",
+  orangePressed: "#f57040",
   yellowPressed: "#ccab37",
   purplePressed: "#8f5dc6",
   uwuPressed: "#558bbe",
@@ -21,9 +21,9 @@ export const customColors = {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E0E3FF",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
+    backgroundColor: "#FFFFFF",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   //Modal
@@ -91,6 +91,7 @@ export const styles = StyleSheet.create({
     color: customColors.dark,
     padding: 0,
   },
+
   //Map
   buttonBuilding: {
     backgroundColor: customColors.orange,
@@ -99,12 +100,13 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 9999,
     margin: 0,
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
     padding: 0,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    fontSize: 16,
   },
   //Room Grids
   roomGrid: {
