@@ -5,42 +5,50 @@ import { SettingsPage } from "./Pages/SettingsPage";
 import { Home } from "./Pages/Home";
 import { Navigation } from "./Pages/Navigation";
 import * as Font from 'expo-font';
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import {View} from "react-native";
 
 export default function App() {
-  const Stack = createNativeStackNavigator();
+    const Stack = createNativeStackNavigator();
+    const [isFontLoaded, setIsFontLoaded] = useState(false);
 
-  useEffect(() => {
-    //initTheme();
-    async function loadFonts() {
-      await Font.loadAsync({
-        "Work Sans": require("./assets/fonts/WorkSans.ttf"),
-        "accelerator": require("./assets/fonts/accelerator.ttf"),
-      });
+    useEffect(() => {
+        const loadFont = async () => {
+            await Font.loadAsync({
+                'Accelerator': require('./assets/fonts/accelerator.ttf'),
+                'Work Sans': require('./assets/fonts/WorkSans.ttf'),
+            });
+
+            setIsFontLoaded(true);
+        };
+
+        loadFont().then(r => console.log("Fonts loaded"));
+    }, []);
+
+    if (!isFontLoaded) {
+        // You can show a loading screen or fallback text here while the font is being loaded
+        return null;
     }
-    loadFonts(); [];
-  });
 
-  return (
+    return (
         <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-                name="Home"
-                component={Home}
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="Navigation"
-                component={Navigation}
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="SettingsPage"
-                component={SettingsPage}
-                options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Home"
+                    component={Home}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="Navigation"
+                    component={Navigation}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="SettingsPage"
+                    component={SettingsPage}
+                    options={{ headerShown: false }}
+                />
+            </Stack.Navigator>
         </NavigationContainer>
-  );
+    );
 }

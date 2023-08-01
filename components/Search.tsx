@@ -12,13 +12,14 @@ import ButtonIcon from "./ButtonIcon";
 interface Props {
     status: number,
     category: number,
+    room: number,
     selectRoom: (room) => void,
     selectBuilding: (building) => void,
     onClear: () => void,
     statusChange: (index) => void
 }
 
-export const Search = ({status, category, selectRoom, selectBuilding, onClear, statusChange} : Props) => {
+export const Search = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange} : Props) => {
     const sheetRef = useRef<BottomSheet>(null);
 
     // Modal Interactivity
@@ -28,8 +29,9 @@ export const Search = ({status, category, selectRoom, selectBuilding, onClear, s
 
     // Modal Interactivity
     const handleSheetChange = useCallback((index) => {
+        index == -1 && room == -1 && onClear();
         statusChange(index);
-    }, [statusChange]);
+    }, [statusChange, room, onClear]);
 
     const handleSnapPress = useCallback((index) => {
         sheetRef.current?.snapToIndex(index);
@@ -37,11 +39,11 @@ export const Search = ({status, category, selectRoom, selectBuilding, onClear, s
 
     const handleClosePress = useCallback(() => {
         sheetRef.current?.close();
-    }, []);
+    }, [room, onClear]);
 
     const onRoom = (room) => {
-        handleClosePress();
         selectRoom(room);
+        handleClosePress();
     }
 
     // variables
