@@ -45,7 +45,7 @@ export const ButtonBuilding = ({id, color, children, coords, onBuilding} : Props
     return (
         <Pressable onPress={() => onBuilding(id)}
             style={({ pressed }) => [styles.buttonBuilding, {backgroundColor: !pressed ? color : colorPressed, left: coords[0], top: coords[1], position: "absolute" }]}>
-                <Text style={styles.buttonBuildingText}>
+                <Text style={[styles.buttonText, styles.buttonBuildingText]}>
                     {children}
                 </Text>
         </Pressable>

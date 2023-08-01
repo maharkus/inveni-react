@@ -121,8 +121,6 @@ export const styles = StyleSheet.create({
   buttonBuildingText: {
     fontSize: 12,
     fontWeight: "700",
-    fontFamily: "Work Sans",
-    color: customColors.dark,
   },
   //Room Grids
   roomGrid: {
