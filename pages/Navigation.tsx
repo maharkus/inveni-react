@@ -1,6 +1,6 @@
 import {Text, View} from "react-native";
 import { styles } from "../styles/styles";
-import {getPathstoRooms} from "../Roomfinding/Roomfinder";
+import {getPathstoRooms} from "../roomfinding/Roomfinder";
 
 export const Navigation = ({ navigation, route }) => {
   return (

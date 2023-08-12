@@ -6,7 +6,7 @@ import {Button} from "react-native-paper";
 import {ButtonText} from "./ButtonText";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import data from "../Roomfinding/data.json";
+import data from "../roomfinding/data.json";
 import ButtonIcon from "./ButtonIcon";
 
 interface Props {

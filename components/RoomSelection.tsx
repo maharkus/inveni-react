@@ -1,7 +1,7 @@
 import {customColors, styles} from "../styles/styles";
 import {View} from "react-native";
 import {ButtonText} from "./ButtonText";
-import {getPathstoRooms} from "../Roomfinding/Roomfinder";
+import {getPathstoRooms} from "../roomfinding/Roomfinder";
 import {Button} from "react-native-paper";
 
 interface Props {

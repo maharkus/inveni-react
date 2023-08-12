@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Image} from "react-native";
-import { customColors } from "../styles/styles";
+import {customColors, styles} from "../styles/styles";
 import {ButtonBuilding} from "./ButtonBuilding";
 import {ButtonText} from "./ButtonText";
 import {Button} from "react-native-paper";
@@ -23,7 +23,9 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
         require('../assets/maps/map4.png')
     ]
     return (
-        <>
+        <View
+            style={styles.campusWrap
+            }>
             <ReactNativeZoomableView
                 maxZoom={1.7}
                 minZoom={1.7}
@@ -32,17 +34,15 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
                 panBoundaryPadding={100}
                 visualTouchFeedbackEnabled={false}
                 contentHeight={400}
-                style={{
-                }}
             >
                 <View style={{position: "relative", justifyContent: "center", display:'flex', alignItems: "center", padding: 30, flex: 1}}>
 
                     <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 600, height: 450, flex: 1}}>
-                        <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.green} coords={[420, 65]}>L1</ButtonBuilding>
-                        <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.yellow} coords={[290, 170]}>L2</ButtonBuilding>
-                        <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} coords={[340, 310]}>L3</ButtonBuilding>
-                        <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.purple} coords={[485, 178]}>L4</ButtonBuilding>
-                        <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.softPurple} coords={[140, 250]}>IQL</ButtonBuilding>
+                        <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination[1] == -1} coords={[420, 65]}>L1</ButtonBuilding>
+                        <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination[1] == -1} coords={[290, 170]}>L2</ButtonBuilding>
+                        <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination[1] == -1} coords={[340, 310]}>L3</ButtonBuilding>
+                        <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination[1] == -1} coords={[485, 178]}>L4</ButtonBuilding>
+                        <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination[1] == -1} coords={[140, 250]}>IQL</ButtonBuilding>
                     </View>
                     {destination[1] == -1 ?
                         <>
@@ -62,6 +62,6 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
                     Navigation starten
                 </ButtonTextAndIcon>
             }
-        </>
+        </View>
     );
 }
