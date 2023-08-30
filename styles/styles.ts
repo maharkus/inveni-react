@@ -19,8 +19,18 @@ export const customColors = {
 }
 
 export const styles = StyleSheet.create({
+  homeContainer: {
+    flex: 1,
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#FFFFFF",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   container: {
     flex: 1,
+    height: "100%",
+    width: "100%",
     backgroundColor: "#FFFFFF",
     alignItems: "center",
     justifyContent: "center",
@@ -108,6 +118,12 @@ export const styles = StyleSheet.create({
   },
 
   //Map
+  campusWrap: {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    zIndex: -1
+  },
   buttonBuilding: {
     backgroundColor: customColors.orange,
     color: customColors.yellow,
@@ -124,9 +140,6 @@ export const styles = StyleSheet.create({
   },
   buttonBuildingText: {
     fontSize: 12,
-    fontWeight: "700",
-    fontFamily: "Work Sans",
-    color: customColors.dark,
   },
   //Room Grids
   roomGrid: {
@@ -159,5 +172,10 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     zIndex : 2
+  },
+  //Bottom Nav
+  bottomNav: {
+    position: "absolute",
+    bottom: 32,
   }
 });

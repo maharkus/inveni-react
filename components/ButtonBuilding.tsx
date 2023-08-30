@@ -7,9 +7,10 @@ interface Props {
     color: string,
     children: string,
     coords: [number, number],
-    onBuilding: (id) => void;
+    onBuilding: (id) => void,
+    selected: boolean
 }
-export const ButtonBuilding = ({id, color, children, coords, onBuilding} : Props) => {
+export const ButtonBuilding = ({id, color, children, coords, onBuilding, selected} : Props) => {
     let colorPressed: string;
     switch(color) {
         case customColors.orange: {
@@ -44,8 +45,8 @@ export const ButtonBuilding = ({id, color, children, coords, onBuilding} : Props
 
     return (
         <Pressable onPress={() => onBuilding(id)}
-            style={({ pressed }) => [styles.buttonBuilding, {backgroundColor: !pressed ? color : colorPressed, left: coords[0], top: coords[1], position: "absolute" }]}>
-                <Text style={styles.buttonBuildingText}>
+            style={({ pressed }) => [styles.buttonBuilding, {backgroundColor: !selected? customColors.softPurple : !pressed ? color : colorPressed, left: coords[0], top: coords[1], position: "absolute" }]}>
+                <Text style={[styles.buttonText, styles.buttonBuildingText]}>
                     {children}
                 </Text>
         </Pressable>

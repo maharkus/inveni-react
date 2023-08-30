@@ -5,7 +5,7 @@ import CustomHandle from "./CustomHandle";
 import {Button} from "react-native-paper";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef,} from "react";
-import data from "../Roomfinding/data.json";
+import data from "../roomfinding/data.json";
 import ButtonIcon from "./ButtonIcon";
 
 interface Props {

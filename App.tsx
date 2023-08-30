@@ -1,9 +1,9 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SettingsPage } from "./Pages/SettingsPage";
-import { Home } from "./Pages/Home";
-import { Navigation } from "./Pages/Navigation";
+import { SettingsPage } from "./pages/SettingsPage";
+import { Home } from "./pages/Home";
+import { Navigation } from "./pages/Navigation";
 import * as Font from 'expo-font';
 import {useEffect, useState} from "react";
 import {View} from "react-native";
@@ -22,7 +22,7 @@ export default function App() {
             setIsFontLoaded(true);
         };
 
-        loadFont().then(r => console.log("Fonts loaded"));
+        loadFont().then(r => "");
     }, []);
 
     if (!isFontLoaded) {
