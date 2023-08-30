@@ -44,7 +44,7 @@ export const Home = ({ navigation }) => {
                 <TopBar navigation={navigation}/>
                 <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
 
-                <View style={{paddingBottom: 32}}>
+                <View style={{paddingBottom: 32, position: "absolute", bottom: 0}}>
                     {category == -1 ?
                         <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}></ButtonIcon>
                         :

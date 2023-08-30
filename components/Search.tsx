@@ -3,9 +3,8 @@ import {customColors, styles} from "../styles/styles";
 import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
 import {Button} from "react-native-paper";
-import {ButtonText} from "./ButtonText";
 import {RoomSelection} from "./RoomSelection";
-import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {useCallback, useEffect, useMemo, useRef,} from "react";
 import data from "../Roomfinding/data.json";
 import ButtonIcon from "./ButtonIcon";
 
@@ -39,7 +38,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
 
     const handleClosePress = useCallback(() => {
         sheetRef.current?.close();
-    }, [room, onClear]);
+    }, []);
 
     const onRoom = (room) => {
         selectRoom(room);
@@ -47,7 +46,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
     }
 
     // variables
-    const snapPoints = useMemo(() => ["80%", "90%"], []);
+    const snapPoints = useMemo(() => ["80%", "81%"], []);
 
     return (
         <>

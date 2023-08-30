@@ -2,9 +2,6 @@ import * as React from 'react';
 import {View, Image} from "react-native";
 import { customColors } from "../styles/styles";
 import {ButtonBuilding} from "./ButtonBuilding";
-import {ButtonText} from "./ButtonText";
-import {Button} from "react-native-paper";
-import {useEffect} from "react";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import ButtonTextAndIcon from './ButtonTextAndIcon';
 
@@ -35,7 +32,7 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
                 style={{
                 }}
             >
-                <View style={{position: "relative", justifyContent: "center", display:'flex', alignItems: "center", padding: 30, flex: 1}}>
+                <View style={{zIndex: -1, position: "relative", justifyContent: "center", display:'flex', alignItems: "center", padding: 30, flex: 1}}>
 
                     <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 600, height: 450, flex: 1}}>
                         <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.green} coords={[420, 65]}>L1</ButtonBuilding>
@@ -58,9 +55,11 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
                 </View>
             </ReactNativeZoomableView>
             {destination[1] != -1 &&
+                <View style={{bottom: 100}}>
                 <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => navigation.navigate("Navigation", { name: "Navigation", destination: destination })}>
                     Navigation starten
                 </ButtonTextAndIcon>
+                </View>
             }
         </>
     );

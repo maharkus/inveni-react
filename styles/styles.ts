@@ -40,6 +40,7 @@ export const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     overflow: "hidden",
+    zIndex: 5
   },
   customHandle: {
     backgroundColor: "#2B2D34",
@@ -155,5 +156,8 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     backgroundColor: "rgba(0, 0, 0, 0)",
+    position: "absolute",
+    top: 0,
+    zIndex : 2
   }
 });

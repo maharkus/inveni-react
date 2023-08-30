@@ -1,22 +1,20 @@
-import {customColors, styles} from "../styles/styles";
+import {styles} from "../styles/styles";
 import {View} from "react-native";
-import {ButtonText} from "./ButtonText";
-import {getPathstoRooms} from "../Roomfinding/Roomfinder";
 import {Button} from "react-native-paper";
 
 interface Props {
-    items: string[],
+    items: (string|number)[][],
     category: number,
     onRoomSelection: (i) => void
 }
-export const RoomSelection = ({items, category, onRoomSelection} : Props) => {
+export const RoomSelection = ({items, onRoomSelection} : Props) => {
     return (
         <View style={styles.roomGrid}>
             {items.map((item: any, index: number) => (
                 <Button key={index} onPress={
-                    () => onRoomSelection (index)
+                    () => onRoomSelection (item[1])
                 }>
-                    {item}
+                    {item[0]}
                 </Button>
             ))}
         </View>
