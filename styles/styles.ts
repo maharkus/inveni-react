@@ -141,6 +141,10 @@ export const styles = StyleSheet.create({
   buttonBuildingText: {
     fontSize: 12,
   },
+  canvas: {
+    height: 1500,
+    width: 1500
+  },
   //Room Grids
   roomGrid: {
     flex: 1,
