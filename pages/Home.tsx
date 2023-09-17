@@ -6,6 +6,8 @@ import {View} from "react-native";
 import {Search} from "../components/Search";
 import {TopBar} from "../components/TopBar";
 import ButtonIcon from "../components/ButtonIcon";
+import {NavPath} from "../components/NavigationPath";
+import * as React from "react";
 
 
 export const Home = ({ navigation }) => {
@@ -45,7 +47,7 @@ export const Home = ({ navigation }) => {
                 <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
 
                 <View style={styles.bottomNav}>
-                    {category == -1 ?
+                    {room == -1 ?
                         <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}></ButtonIcon>
                         :
                         <ButtonIcon size={20} buttonPadding={15} color={customColors.orange} imageSource={require("../assets/icons/close.png")} action={() => clearResults()}></ButtonIcon>
