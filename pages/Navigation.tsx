@@ -16,25 +16,21 @@ export const Navigation = ({ route, navigation }) => {
     return (
         <>
             <View style={styles.campusWrap}>
-                <Text>Your quickest path to</Text>
-                <Text style={{marginTop: 10, fontFamily: "Accelerator"}}>
-                    {getPathstoRooms(route.params.destination)}
-                </Text>
-
                 <ReactNativeZoomableView
-                    maxZoom={10}
-                    minZoom={1}
+                    maxZoom={2}
+                    minZoom={.4}
                     zoomStep={0.1}
                     initialZoom={1}
                     visualTouchFeedbackEnabled={false}
-                    contentHeight={1500}
                     contentWidth={1500}
+                    contentHeight={1650}
+                    style={{backgroundColor: "#ffffff", width: "100%", height: "100%"}}
                 >
-                    <L1 width={1500} height={1500} style={{position: "absolute"}}/>
+                    <L1 width={1500} height={1650} style={{position: "absolute"}}/>
                     <NavPath points={getPathstoRooms(route.params.destination)}/>
                 </ReactNativeZoomableView>
-                <View style={{display: "flex", flexDirection: "row"}}>
-                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24} action={() =>  navigation.navigate('Home', { name: "Home" })}>
+                <View style={{position: "absolute", bottom: 0, display: "flex", flexDirection: "row"}}>
+                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24} action={() =>  navigation.navigate("Home", { name: "Home" })}>
                         Zurück
                     </ButtonTextAndIcon>
                     <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => navigation.navigate("Navigation", { name: "Navigation" })}>

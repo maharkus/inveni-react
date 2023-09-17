@@ -122,6 +122,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     height: "100%",
     width: "100%",
+    backgroundColor: '#ffffff',
     zIndex: -1
   },
   buttonBuilding: {
@@ -142,8 +143,8 @@ export const styles = StyleSheet.create({
     fontSize: 12,
   },
   canvas: {
-    height: 1500,
-    width: 1500
+    width: 1500,
+    height: 1650
   },
   //Room Grids
   roomGrid: {
