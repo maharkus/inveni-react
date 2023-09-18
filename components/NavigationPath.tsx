@@ -8,53 +8,67 @@ interface Props  {
 }
 export class NavPath extends Component<Props> {
 
+
+
     handleCanvas = (canvas) => {
-        const ctx = canvas.getContext('2d');
-        canvas.height = 1500;
-        canvas.width = 1500;
-        ctx.fillStyle = '#A4EB5D';
-        const coordinates =
-            data.buildings[0].points
-        ;
+        if(canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.height = 1500;
+            canvas.width = 1500;
+            ctx.fillStyle = '#A4EB5D';
+            const coordinates =
+                data.buildings[0].etage[0].points
+            ;
 
 
-        // Funktion zum Zeichnen von Linien
-        const drawLines = (coordinates) => {
-            ctx.beginPath();
-            ctx.moveTo(coordinates[0][0], coordinates[0][1]);
+            let points = this.props.points;
+            // Funktion zum Zeichnen von Linien
+            const drawLines = (coordinates) => {
 
-            for (let i = 0; i < this.props.points.length; i++) {
-                ctx.lineTo(coordinates[this.props.points[i]][0], coordinates[this.props.points[i]][1]);
-                console.log(coordinates[this.props.points[i]][0] + " " + coordinates[this.props.points[i]][1])
-            }
-            console.log(this.props.points)
 
-            ctx.strokeStyle = 'black'; // Farbe der Linie
-            ctx.lineWidth = 15; // Breite der Linie
-            ctx.lineJoin = 'round';
-            ctx.stroke();
-            ctx.closePath();
+                ctx.beginPath();
+                ctx.moveTo(coordinates[0][0], coordinates[0][1]);
 
-            ctx.beginPath();
-            ctx.moveTo(coordinates[0][0], coordinates[0][1]);
-            for (let i = 0; i < this.props.points.length; i++) {
-                ctx.lineTo(coordinates[this.props.points[i]][0], coordinates[this.props.points[i]][1]);
-                console.log(coordinates[this.props.points[i]][0] + " " + coordinates[this.props.points[i]][1])
-            }
-            console.log(this.props.points)
+                for (let i = 0; i < points.length; i++) {
+                    ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
+                    console.log(coordinates[points[i]][0] + " " + coordinates[points[i]][1])
+                }
 
-            ctx.strokeStyle = '#A4EB5D'; // Farbe der Linie
-            ctx.lineWidth = 11; // Breite der Linie
-            ctx.lineJoin = 'round';
-            ctx.stroke();
-            ctx.closePath();
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 15;
+                ctx.lineJoin = 'round';
+                ctx.stroke();
+                ctx.closePath();
 
-            canvas_arrow(ctx, coordinates[this.props.points[this.props.points.length-2]][0], coordinates[this.props.points[this.props.points.length-2]][1], coordinates[this.props.points[this.props.points.length-1]][0],coordinates[this.props.points[this.props.points.length-1]][1], 20)
-        };
+                ctx.beginPath();
+                ctx.moveTo(coordinates[0][0], coordinates[0][1]);
+                for (let i = 0; i < points.length; i++) {
+                    ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
+                    console.log(coordinates[points[i]][0] + " " + coordinates[points[i]][1])
+                }
 
-        // Aufruf der Funktion mit den Koordinaten
-        drawLines(coordinates);
-    }
+                ctx.strokeStyle = '#A4EB5D';
+                ctx.lineWidth = 11;
+                ctx.lineJoin = 'round';
+                ctx.stroke();
+                ctx.closePath();
+
+                canvas_arrow(ctx, coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1], coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1], 20)
+
+                ctx.beginPath();
+                ctx.moveTo(coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1]);
+                ctx.lineTo(coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1]);
+                ctx.strokeStyle = '#A4EB5D';
+                ctx.lineWidth = 11;
+                ctx.stroke();
+                ctx.closePath();
+            };
+
+            drawLines(coordinates);
+            drawStart(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
+            drawEnd(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
+            console.log(coordinates[points[0]][0])
+    }}
     render() {
         return (
             <Canvas style={styles.canvas} ref={this.handleCanvas}/>
@@ -62,12 +76,12 @@ export class NavPath extends Component<Props> {
     }
 }
 function canvas_arrow(context, fromx, fromy, tox, toy, r){
-    var x_center = tox;
-    var y_center = toy;
+    let x_center = tox;
+    let y_center = toy;
 
-    var angle;
-    var x;
-    var y;
+    let angle;
+    let x;
+    let y;
 
     context.beginPath();
 
@@ -97,8 +111,32 @@ function canvas_arrow(context, fromx, fromy, tox, toy, r){
     context.strokeStyle = '#000000';
     context.lineWidth = 4; // Breite der Linie
     context.lineJoin = 'round';
-    context.stroke();
     context.closePath();
+    context.stroke();
 
     context.fill();
+}
+
+const drawStart = (context, x, y) => {
+    context.beginPath();
+    context.arc(x, y, 16, 0, 2 * Math.PI);
+    context.fillStyle = '#C28CFC';
+    context.strokeStyle = 'black'; // Farbe der Linie
+    context.lineWidth = 4; // Breite der Linie
+    context.lineJoin = 'round';
+    context.stroke();
+    context.fill();
+    context.closePath();
+}
+
+const drawEnd = (context, x, y) => {
+    context.beginPath();
+    context.arc(x, y, 16, 0, 2 * Math.PI);
+    context.fillStyle = '#C28CFC';
+    context.strokeStyle = 'black'; // Farbe der Linie
+    context.lineWidth = 4; // Breite der Linie
+    context.lineJoin = 'round';
+    context.stroke();
+    context.fill();
+    context.closePath();
 }
