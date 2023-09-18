@@ -83,6 +83,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingLeft: 35,
     margin: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   },
   iconButtonBasics: {
     borderColor: customColors.dark,
@@ -108,6 +111,14 @@ export const styles = StyleSheet.create({
     color: customColors.dark,
     fontFamily: "Work Sans",
     fontSize: 20,
+    textAlign: "center"
+  },
+  buttonTextOnly: {
+    color: customColors.dark,
+    fontFamily: "Work Sans",
+    fontSize: 20,
+    fontWeight: "700",
+    opacity: .3
   },
   buttonIcon: {
     borderRadius: 9999,
@@ -140,7 +151,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonBuildingText: {
-    fontSize: 12,
+    fontSize: 8,
+    fontWeight: "700"
   },
   canvas: {
     width: 1500,

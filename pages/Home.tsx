@@ -8,6 +8,7 @@ import {TopBar} from "../components/TopBar";
 import ButtonIcon from "../components/ButtonIcon";
 import {NavPath} from "../components/NavigationPath";
 import * as React from "react";
+import {ButtonTextOnly} from "../components/ButtonTextOnly";
 
 
 export const Home = ({ navigation }) => {
@@ -50,7 +51,7 @@ export const Home = ({ navigation }) => {
                     {room == -1 ?
                         <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}></ButtonIcon>
                         :
-                        <ButtonIcon size={20} buttonPadding={15} color={customColors.orange} imageSource={require("../assets/icons/close.png")} action={() => clearResults()}></ButtonIcon>
+                        <ButtonTextOnly action={() => clearResults()}>Back to Search</ButtonTextOnly>
                     }
                 </View>
                 <Search status={sheetStatus}
