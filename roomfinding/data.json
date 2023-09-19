@@ -3,11 +3,12 @@
       {
         "name": "L1",
         "rooms": [
-          ["Campus Office", 5, 1136, 812], 
-          ["Mensa", 2, 590, 955], 
-          ["WC Damen", 3, 982, 692], 
-          ["WC Herren", 3, 1026, 733], 
-          ["WC Barrierefrei", 3, 1026, 802]],
+          ["Campus Office", 5, 1136, 812, "#111"], 
+          ["Mensa", 2, 590, 955, "#AAA"], 
+          ["WC Damen", 3, 982, 692, "#BBB"], 
+          ["WC Herren", 3, 1026, 733, "#CCC"], 
+          ["WC Barrierefrei", 3, 1026, 802, "#DDD"]
+      ],
         "paths": [
           [0, 1, 4],
           [1, 2, 8],

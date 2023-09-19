@@ -7,6 +7,8 @@ import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef,} from "react";
 import data from "../roomfinding/data.json";
 import ButtonIcon from "./ButtonIcon";
+import { Text } from "react-native";
+import { RoomGrid } from "./RoomGrid";
 
 interface Props {
     status: number,
@@ -64,12 +66,16 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                 <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
                     {category == -1 ?
                         <>
+                            <Text style={styles.defaultHeader}>Kategorien</Text>
                             <Button
-                                onPress={() => {
-                                    selectBuilding(0)
-                                }
+                                onPress={ () => {
+                                        selectBuilding(0)
+                                    }
                                 }
                             >Seminarräume</Button>
+                            
+                            <Text style={styles.defaultHeader}>Alle Raume</Text>
+                            <RoomGrid/>
                         </>
                     :
                         <>

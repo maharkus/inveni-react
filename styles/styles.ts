@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     alignItems: "center",
-    paddingHorizontal: 15,
+    paddingHorizontal: 25,
   },
   modalContainer: {
     flex: 1,
@@ -70,8 +70,8 @@ export const styles = StyleSheet.create({
     color: customColors.dark,
   },
   defaultHeader: {
-    fontFamily: "accelerator",
-    fontSize: 24,
+    fontFamily: "Accelerator",
+    fontSize: 20,
     color: customColors.dark,
   },
   buttonBasics: {
@@ -160,6 +160,27 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     flexDirection: "column",
     display: "flex",
+  },
+  //Julz RoomGrid
+  roomBox: {
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderRadius: 20,
+    display: "flex",
+    justifyContent: "space-between",
+    width: "50%",     
+    overflow: "hidden",      
+  },
+  roomBoxContent: {
+    minHeight: 60,
+    display: "flex",
+    justifyContent: "center",
+    padding: 10,
+  },
+  roomBoxBottom: {
+    height: 10,
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
   },
   //TopBar
   topBarContainer: {
