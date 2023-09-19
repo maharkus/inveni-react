@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native";
 
 
 export const RoomGrid = () => {
-    const rooms = data.buildings[0].rooms; 
+    const rooms = data.buildings[0].etage[0].rooms; 
 
     return (
         <FlatList
