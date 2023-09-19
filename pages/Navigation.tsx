@@ -30,7 +30,7 @@ export const Navigation = ({ route, navigation }) => {
                     <NavPath points={getPathstoRooms(route.params.destination)}/>
                 </ReactNativeZoomableView>
                 <View style={{position: "absolute", bottom: 0, display: "flex", flexDirection: "row"}}>
-                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24} action={() =>  navigation.navigate("Home", { name: "Home" })}>
+                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24} action={() =>  navigation.navigate("Home")}>
                         Zurück
                     </ButtonTextAndIcon>
                     <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => navigation.navigate("Navigation", { name: "Navigation" })}>
