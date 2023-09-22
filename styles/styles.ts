@@ -72,6 +72,8 @@ export const styles = StyleSheet.create({
   defaultHeader: {
     fontFamily: "Accelerator",
     fontSize: 20,
+    marginTop: 30,
+    marginBottom: 15,
     color: customColors.dark,
   },
   buttonBasics: {
