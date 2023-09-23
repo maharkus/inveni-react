@@ -1,6 +1,6 @@
 import {styles} from "../styles/styles";
-import {View} from "react-native";
-import {Button} from "react-native-paper";
+import {Pressable, View, Text} from "react-native";
+import { StyleSheet } from "react-native";
 
 interface Props {
     items: (string|number)[][],
@@ -11,11 +11,16 @@ export const RoomSelection = ({items, onRoomSelection} : Props) => {
     return (
         <View style={styles.roomGrid}>
             {items.map((item: any, index: number) => (
-                <Button key={index} onPress={
+                <Pressable style={styles.room} key={index} onPress={
                     () => onRoomSelection (item[2])
                 }>
-                    {item[0]}
-                </Button>
+                    <View style={styles.roomTextView}>
+                        <Text style={styles.roomTextPrim}>{item[0]}</Text>
+                        <Text style={styles.roomTextSec}>{item[1]}</Text>
+                    </View>
+                    <View style={[styles.roomBottomBar, {backgroundColor: (item[5])}]}>
+                    </View>
+                </Pressable>
             ))}
         </View>
     );

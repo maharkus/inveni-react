@@ -169,11 +169,40 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   room: {
-    width: "50%",
+    width: "46%",
+    backgroundColor: customColors.light,
     borderStyle: "solid",
     borderWidth: 1,
-    flexDirection: "column",
+    borderColor: customColors.dark,
+    borderRadius: 25,
+    height: 90,
+    margin: "2%",
     display: "flex",
+    justifyContent: "space-between",
+    overflow: "hidden",
+  },
+  roomTextView: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: customColors.dark,
+    padding: 15,
+  },
+  roomTextPrim: {
+    fontWeight: "700",
+    textAlign: "center",
+    fontSize: 12,
+  },
+  roomTextSec: {
+    fontSize: 14,
+    textAlign: "center",
+  },
+  roomBottomBar: {
+    height: 15,
+    width: "100%",
+    backgroundColor: "#000",
+    borderTopWidth: 1,
+    borderTopColor: customColors.dark,
   },
   //Julz RoomGrid
   roomBox: {
