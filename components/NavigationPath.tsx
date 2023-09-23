@@ -5,7 +5,8 @@ import data from "../roomfinding/data.json";
 import {getPathstoRooms} from "../roomfinding/Roomfinder";
 
 interface Props  {
-    destination: number[]
+    destination: number[],
+    currentFloor: number
 }
 export class NavPath extends Component<Props> {
 
@@ -18,7 +19,7 @@ export class NavPath extends Component<Props> {
             canvas.width = 1500;
             ctx.fillStyle = '#A4EB5D';
             const coordinates =
-                data.buildings[this.props.destination[0]].etage[0].points
+                data.buildings[this.props.destination[0]].etage[this.props.currentFloor].points
             ;
             console.log(this.props.destination)
 

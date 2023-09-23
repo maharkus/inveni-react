@@ -9,15 +9,15 @@ import L1 from "../assets/buildings/L1.svg";
 import {NavPath} from "../components/NavigationPath";
 import {useState} from "react";
 
-export const Navigation = ({ route, navigation }) => {
+export const Navigation = ({route, navigation}) => {
     const images = [
         require('../assets/buildings/L1.png'),
     ]
-    const [floor, setFloor] = useState(0);
+    const [currentFloor, setCurrentFloor] = useState(0);
 
     const handleNextStep = () => {
-        if(floor < data.buildings[route.params.destination[0]].etage.length) {
-        setFloor(floor + 1);
+        if (currentFloor < data.buildings[route.params.destination[0]].etage.length) {
+            setCurrentFloor(currentFloor + 1);
         }
     }
     //room: string = data.buildings[route.params.destination[0].rooms[route.params.destination[1]]];
@@ -34,14 +34,26 @@ export const Navigation = ({ route, navigation }) => {
                     contentHeight={1650}
                     style={{backgroundColor: "#ffffff", width: "100%", height: "100%"}}
                 >
-                    <L1 width={1500} height={1650} style={{position: "absolute"}}/>
-                    <NavPath destination={route.params.destination}/>
+                    {route.params.destination[0] == 0 &&
+                        <L1 width={1500} height={1650} style={{position: "absolute"}}/>
+                    }
+                    {route.params.destination[1] == 0 &&
+                        <>
+                            <L1 width={1500} height={1650} style={{position: "absolute"}}/>
+                            <Text>{currentFloor}</Text>
+                        </>
+                    }
+                    <NavPath destination={route.params.destination} currentFloor={currentFloor}/>
                 </ReactNativeZoomableView>
                 <View style={{position: "absolute", bottom: 0, display: "flex", flexDirection: "row"}}>
-                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24} action={() =>  navigation.navigate("Home")}>
+                    <ButtonTextAndIcon isLeft={true} color={customColors.orange}
+                                       imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
+                                       action={() => navigation.navigate("Home")}>
                         Zurück
                     </ButtonTextAndIcon>
-                    <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => handleNextStep()}>
+                    <ButtonTextAndIcon color={customColors.orange}
+                                       imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
+                                       action={() => handleNextStep()}>
                         Weiter
                     </ButtonTextAndIcon>
                 </View>
