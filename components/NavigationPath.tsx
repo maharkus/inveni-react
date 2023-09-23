@@ -2,26 +2,27 @@ import React, { Component } from 'react';
 import Canvas from 'react-native-canvas';
 import {styles} from "../styles/styles";
 import data from "../roomfinding/data.json";
+import {getPathstoRooms} from "../roomfinding/Roomfinder";
 
 interface Props  {
-    points: number[]
+    destination: number[]
 }
 export class NavPath extends Component<Props> {
 
 
-
     handleCanvas = (canvas) => {
+        let points: number[] = getPathstoRooms(this.props.destination);
         if(canvas) {
             const ctx = canvas.getContext('2d');
             canvas.height = 1500;
             canvas.width = 1500;
             ctx.fillStyle = '#A4EB5D';
             const coordinates =
-                data.buildings[0].etage[0].points
+                data.buildings[this.props.destination[0]].etage[0].points
             ;
+            console.log(this.props.destination)
 
 
-            let points = this.props.points;
             // Funktion zum Zeichnen von Linien
             const drawLines = (coordinates) => {
 
@@ -31,7 +32,6 @@ export class NavPath extends Component<Props> {
 
                 for (let i = 0; i < points.length; i++) {
                     ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
-                    console.log(coordinates[points[i]][0] + " " + coordinates[points[i]][1])
                 }
 
                 ctx.strokeStyle = 'black';
