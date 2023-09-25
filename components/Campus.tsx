@@ -44,11 +44,15 @@ export default function Campus({onBuilding, destination, navigation} : Props) {
                     {destination.room == -1 ?
                         <>
                             <Image source={require('../assets/maps/map.png')}
+                                   resizeMethod={"resize"}
+                                   progressiveRenderingEnabled={true}
                                    style={{width: 600, height: 450}}/>
                         </>
                         :
                         <>
                             <Image source={images[destination.category]}
+                                   resizeMethod={"resize"}
+                                   progressiveRenderingEnabled={true}
                                    style={{width: 600, height: 450}}/>
                         </>
                     }
