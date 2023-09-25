@@ -37,14 +37,13 @@ export const Navigation = ({ route, navigation }) => {
             <View style={styles.campusWrap}>
                 <ReactNativeZoomableView
                     maxZoom={3}
-                    minZoom={.2}
+                    minZoom={.3}
                     zoomStep={0.1}
-                    initialZoom={1}
+                    initialZoom={.402}
                     visualTouchFeedbackEnabled={false}
                     contentWidth={1500}
                     contentHeight={1650}
                 >
-                    <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
                     {destination.category == 0 &&
                         <Image source={require('../assets/buildings/L1.jpg')}
                                resizeMethod={"resize"}
@@ -67,6 +66,8 @@ export const Navigation = ({ route, navigation }) => {
                             }
                         </>
                     }
+                    <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
+
                 </ReactNativeZoomableView>
                 <View style={styles.bottomNav}>
                     <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", bottom: 0, display: "flex", flexDirection: "row"}}>

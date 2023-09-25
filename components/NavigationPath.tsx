@@ -13,18 +13,15 @@ export const NavPath = ({building, points, currentFloor}: Props) => {
     const canvas = useRef(null);
 
     useEffect(() => {
-        console.log("heer")
         const coordinates =
             data.buildings[building].etage[currentFloor].points
         ;
 
-        console.log(canvas)
         const ctx = canvas.current.getContext('2d');
-        console.log(ctx)
-        console.log(canvas)
         canvas.current.height = 1500;
         canvas.current.width = 1500;
         ctx.fillStyle = '#A4EB5D';
+        console.log(canvas.current.width)
 
 
         // Funktion zum Zeichnen von Linien
@@ -48,7 +45,6 @@ export const NavPath = ({building, points, currentFloor}: Props) => {
             ctx.moveTo(coordinates[0][0], coordinates[0][1]);
             for (let i = 0; i < points.length; i++) {
                 ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
-                console.log(coordinates[points[i]][0] + " " + coordinates[points[i]][1])
             }
 
             ctx.strokeStyle = '#A4EB5D';
@@ -71,7 +67,6 @@ export const NavPath = ({building, points, currentFloor}: Props) => {
         drawLines(coordinates);
         drawStart(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
         drawEnd(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
-        console.log(coordinates[points[0]][0])
 
     }, [currentFloor]);
 
