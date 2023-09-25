@@ -41,11 +41,13 @@ export const Home = ({ navigation }) => {
         setSheetStatus(-1)
     }
 
+    const destination = {category: category, room: room}
+
     return (
         <>
             <GestureHandlerRootView style={styles.homeContainer}>
                 <TopBar navigation={navigation}/>
-                <Campus destination={[category, room]} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
+                <Campus destination={destination} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
 
                 <View style={styles.bottomNav}>
                     {room == -1 ?

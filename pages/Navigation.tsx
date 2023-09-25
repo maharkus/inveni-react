@@ -6,13 +6,23 @@ import * as React from "react";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 import L1 from "../assets/buildings/L1.svg";
+import L2E00 from "../assets/buildings/L2E00.svg";
+import L2E10 from "../assets/buildings/L2E10.svg";
 import {NavPath} from "../components/NavigationPath";
+import {useState} from "react";
 
 export const Navigation = ({ route, navigation }) => {
+    const [Floor, setFloor] = useState(0);
     const images = [
-        require('../assets/buildings/L1.png'),
+        require('../assets/buildings/L1.png')
     ]
-    //room: string = data.buildings[route.params.destination[0].rooms[route.params.destination[1]]];
+    const destination = route.params.destination;
+
+
+    const onNextStep = () => {
+        setFloor(Floor + 1);
+    }
+
     return (
         <>
             <View style={styles.campusWrap}>
@@ -26,14 +36,21 @@ export const Navigation = ({ route, navigation }) => {
                     contentHeight={1650}
                     style={{backgroundColor: "#ffffff", width: "100%", height: "100%"}}
                 >
-                    <L1 width={1500} height={1650} style={{position: "absolute"}}/>
-                    <NavPath points={getPathstoRooms(route.params.destination)}/>
+                    {
+                        destination.category == 0 &&
+                        <L1 width={1500} height={1650} style={{position: "absolute"}}/>
+                    }
+                    {
+                        destination.category == 1 &&
+                        <L2E00 width={1500} height={1650} style={{position: "absolute"}}/>
+                    }
+                    <NavPath floor={Floor} building={destination.category} points={getPathstoRooms(destination)}/>
                 </ReactNativeZoomableView>
                 <View style={{position: "absolute", bottom: 0, display: "flex", flexDirection: "row"}}>
                     <ButtonTextAndIcon isLeft={true} color={customColors.orange} imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24} action={() =>  navigation.navigate("Home")}>
                         Zurück
                     </ButtonTextAndIcon>
-                    <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => navigation.navigate("Navigation", { name: "Navigation" })}>
+                    <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => onNextStep()}>
                         Weiter
                     </ButtonTextAndIcon>
                 </View>

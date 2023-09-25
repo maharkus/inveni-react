@@ -12,7 +12,7 @@ export const RoomSelection = ({items, onRoomSelection} : Props) => {
         <View style={styles.roomGrid}>
             {items.map((item: any, index: number) => (
                 <Button key={index} onPress={
-                    () => onRoomSelection (item[1])
+                    () => onRoomSelection (item[2])
                 }>
                     {item[0]}
                 </Button>
