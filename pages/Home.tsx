@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { customColors, styles } from "../styles/styles";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import {useState} from "react";
+import {customColors, styles} from "../styles/styles";
+import {GestureHandlerRootView} from "react-native-gesture-handler";
 import Campus from "../components/Campus";
 import {View} from "react-native";
 import {Search} from "../components/Search";
@@ -9,13 +9,13 @@ import ButtonIcon from "../components/ButtonIcon";
 import {NavPath} from "../components/NavigationPath";
 import * as React from "react";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
+import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 
 
-export const Home = ({ navigation }) => {
+export const Home = ({navigation}) => {
     const [category, setCategory] = useState(-1);
     const [room, setRoom] = useState(-1);
     const [sheetStatus, setSheetStatus] = useState(-1);
-
 
 
     //Init Search
@@ -47,11 +47,25 @@ export const Home = ({ navigation }) => {
         <>
             <GestureHandlerRootView style={styles.homeContainer}>
                 <TopBar navigation={navigation}/>
-                <Campus destination={destination} onBuilding={(building) => handleBuilding(building)} navigation={navigation}></Campus>
+                <Campus destination={destination} onBuilding={(building) => handleBuilding(building)}
+                        navigation={navigation}></Campus>
 
                 <View style={styles.bottomNav}>
+
+                    {destination.room != -1 &&
+                        <ButtonTextAndIcon color={customColors.orange}
+                                           imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
+                                           action={() => navigation.navigate("Navigation", {
+                                               name: "Navigation",
+                                               destination: destination
+                                           })}>
+                            Navigation starten
+                        </ButtonTextAndIcon>
+                    }
                     {room == -1 ?
-                        <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()} customStyles={0}></ButtonIcon>
+                        <ButtonIcon size={30} buttonPadding={25} color={customColors.orange}
+                                    imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}
+                                    customStyles={0}></ButtonIcon>
                         :
                         <ButtonTextOnly action={() => clearResults()}>Back to Search</ButtonTextOnly>
                     }

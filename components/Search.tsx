@@ -62,7 +62,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                 backdropComponent={CustomBackdrop}
                 handleComponent={CustomHandle}
             >
-                <View style={{flex: 1}}>  
+                <View style={{flex: 1}}>
                     <ScrollView contentContainerStyle={styles.contentContainer} showsVerticalScrollIndicator={false} >
                         {category == -1 ?
                             <>
@@ -73,13 +73,13 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                                         }
                                     }
                                 >Seminarräume</Button>
-                                
+
                                 <Text style={styles.defaultHeader}>Alle Raeume</Text>
                                 {/*<RoomGrid/>*/}
                             </>
                         :
                             <>
-                                <RoomSelection category={category} items={data.buildings[category].etage[0].rooms} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
+                                <RoomSelection category={category} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
                             </>
                         }
                     </ScrollView>

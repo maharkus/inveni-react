@@ -37,14 +37,13 @@ export const Navigation = ({ route, navigation }) => {
             <View style={styles.campusWrap}>
                 <ReactNativeZoomableView
                     maxZoom={3}
-                    minZoom={.2}
+                    minZoom={.3}
                     zoomStep={0.1}
-                    initialZoom={1}
+                    initialZoom={.402}
                     visualTouchFeedbackEnabled={false}
                     contentWidth={1500}
                     contentHeight={1650}
                 >
-                    <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
                     {destination.category == 0 &&
                         <Image source={require('../assets/buildings/L1.jpg')}
                                resizeMethod={"resize"}
@@ -54,13 +53,21 @@ export const Navigation = ({ route, navigation }) => {
                     {destination.category == 1 &&
                         <>
                         {currentFloor == 0 &&
-                            <L2E00 width={1500} height={1650}/>
+                            <Image source={require('../assets/buildings/L2E00.jpg')}
+                                   resizeMethod={"resize"}
+                                   progressiveRenderingEnabled={true}
+                                   style={{width: 1500, height: 1650}}/>
                         }
                             {currentFloor == 1 &&
-                                <L2E10 width={1500} height={1650}/>
+                                <Image source={require('../assets/buildings/L2E10.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
                             }
                         </>
                     }
+                    <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
+
                 </ReactNativeZoomableView>
                 <View style={styles.bottomNav}>
                     <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", bottom: 0, display: "flex", flexDirection: "row"}}>

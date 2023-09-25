@@ -1,13 +1,20 @@
 import {styles} from "../styles/styles";
 import {Pressable, View, Text} from "react-native";
 import { StyleSheet } from "react-native";
+import data from "../roomfinding/data.json";
 
 interface Props {
-    items: (string|number)[][],
     category: number,
     onRoomSelection: (i) => void
 }
-export const RoomSelection = ({items, onRoomSelection} : Props) => {
+export const RoomSelection = ({category, onRoomSelection} : Props) => {
+
+    const items: any[] = [];
+    for(let i = 0; i < data.buildings[category].etage.length; i++) {
+        for(let j = 0; j < data.buildings[category].etage[i].rooms.length; j++) {
+            items.push(data.buildings[category].etage[i].rooms[j]);
+        }
+    }
     return (
         <View style={styles.roomGrid}>
             {items.map((item: any, index: number) => (
