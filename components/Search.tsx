@@ -7,7 +7,7 @@ import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef,} from "react";
 import data from "../roomfinding/data.json";
 import ButtonIcon from "./ButtonIcon";
-import { Text } from "react-native";
+import { Text, ScrollView, View } from "react-native";
 import { RoomGrid } from "./RoomGrid";
 
 interface Props {
@@ -52,7 +52,6 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
 
     return (
         <>
-
             <BottomSheet
                 ref={sheetRef}
                 snapPoints={snapPoints}
@@ -63,27 +62,31 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                 backdropComponent={CustomBackdrop}
                 handleComponent={CustomHandle}
             >
-                <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
-                    {category == -1 ?
-                        <>
-                            <Text style={styles.defaultHeader}>Kategorien</Text>
-                            <Button
-                                onPress={ () => {
-                                        selectBuilding(0)
+                <View style={{flex: 1}}>  
+                    <ScrollView contentContainerStyle={styles.contentContainer} showsVerticalScrollIndicator={false} >
+                        {category == -1 ?
+                            <>
+                                <Text style={styles.defaultHeader}>Kategorien</Text>
+                                <Button
+                                    onPress={ () => {
+                                            selectBuilding(0)
+                                        }
                                     }
-                                }
-                            >Seminarräume</Button>
-                            
-                            <Text style={styles.defaultHeader}>Alle Raeume</Text>
-                            {/*<RoomGrid/>*/}
-                        </>
-                    :
-                        <>
-                            <ButtonIcon size={25} buttonPadding={25} color={customColors.uwu} imageSource={require("../assets/icons/close.png")} action={handleClosePress} />
-                            <RoomSelection category={category} items={data.buildings[category].etage[0].rooms} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
-                        </>
-                    }
-                </BottomSheetScrollView>
+                                >Seminarräume</Button>
+                                
+                                <Text style={styles.defaultHeader}>Alle Raeume</Text>
+                                {/*<RoomGrid/>*/}
+                            </>
+                        :
+                            <>
+                                <RoomSelection category={category} items={data.buildings[category].etage[0].rooms} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
+                            </>
+                        }
+                    </ScrollView>
+                    <View style={{flex: 1, alignItems: "center"}}>
+                        <ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={handleClosePress} customStyles={styles.closeButton} />
+                    </View>
+                </View>
             </BottomSheet>
         </>
     );

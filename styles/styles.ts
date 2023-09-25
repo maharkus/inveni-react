@@ -16,6 +16,7 @@ export const customColors = {
   uwuPressed: "#558bbe",
   greenPressed: "#79bb37",
   softPurplePressed: "#8f94bf",
+  greyPressed: "#C3C3C3",
 }
 
 export const styles = StyleSheet.create({
@@ -38,9 +39,10 @@ export const styles = StyleSheet.create({
 
   //Modal
   contentContainer: {
-    flex: 1,
+    flexGrow:1,
     alignItems: "center",
     paddingHorizontal: 25,
+    paddingBottom: 50
   },
   modalContainer: {
     flex: 1,
@@ -130,6 +132,12 @@ export const styles = StyleSheet.create({
     padding: 0,
   },
 
+  closeButton: {
+    position: "absolute",
+    zIndex: 999,
+    bottom: 50,
+  },
+
   //Map
   campusWrap: {
     position: "absolute",
@@ -189,18 +197,23 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     color: customColors.dark,
     padding: 15,
+    height: 75,
   },
   roomTextPrim: {
     fontWeight: "700",
     textAlign: "center",
     fontSize: 12,
+    fontFamily: "Work Sans Bold",
   },
   roomTextSec: {
-    fontSize: 14,
+    marginTop: 4,
+    fontSize: 12,
     textAlign: "center",
+    fontFamily: "Work Sans",
   },
   roomBottomBar: {
-    height: 15,
+    minHeight: 15,
+    maxHeight: 15,
     width: "100%",
     backgroundColor: "#000",
     borderTopWidth: 1,
@@ -217,13 +230,14 @@ export const styles = StyleSheet.create({
     overflow: "hidden",
   },
   roomBoxContent: {
-    minHeight: 60,
+    height: 60,
     display: "flex",
     justifyContent: "center",
     padding: 10,
   },
   roomBoxBottom: {
-    height: 10,
+    minHeight: 10,
+    maxHeight: 10,
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
   },

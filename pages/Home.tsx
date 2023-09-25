@@ -51,7 +51,7 @@ export const Home = ({ navigation }) => {
 
                 <View style={styles.bottomNav}>
                     {room == -1 ?
-                        <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}></ButtonIcon>
+                        <ButtonIcon size={30} buttonPadding={25} color={customColors.orange} imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()} customStyles={0}></ButtonIcon>
                         :
                         <ButtonTextOnly action={() => clearResults()}>Back to Search</ButtonTextOnly>
                     }
