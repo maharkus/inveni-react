@@ -54,10 +54,16 @@ export const Navigation = ({ route, navigation }) => {
                     {destination.category == 1 &&
                         <>
                         {currentFloor == 0 &&
-                            <L2E00 width={1500} height={1650}/>
+                            <Image source={require('../assets/buildings/L2E00.jpg')}
+                                   resizeMethod={"resize"}
+                                   progressiveRenderingEnabled={true}
+                                   style={{width: 1500, height: 1650}}/>
                         }
                             {currentFloor == 1 &&
-                                <L2E10 width={1500} height={1650}/>
+                                <Image source={require('../assets/buildings/L2E10.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
                             }
                         </>
                     }

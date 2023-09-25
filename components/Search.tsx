@@ -73,14 +73,14 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                                     }
                                 }
                             >Seminarräume</Button>
-                            
+
                             <Text style={styles.defaultHeader}>Alle Raeume</Text>
                             {/*<RoomGrid/>*/}
                         </>
                     :
                         <>
                             <ButtonIcon size={25} buttonPadding={25} color={customColors.uwu} imageSource={require("../assets/icons/close.png")} action={handleClosePress} />
-                            <RoomSelection category={category} items={data.buildings[category].etage[0].rooms} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
+                            <RoomSelection category={category} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
                         </>
                     }
                 </BottomSheetScrollView>
