@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useEffect, useRef, useState} from 'react';
 import Canvas from 'react-native-canvas';
 import {styles} from "../styles/styles";
 import data from "../roomfinding/data.json";
@@ -9,73 +9,78 @@ interface Props  {
     points: number[],
     currentFloor: number
 }
-export class NavPath extends Component<Props> {
+export const NavPath = ({building, points, currentFloor}: Props) => {
+    const canvas = useRef(null);
+
+    useEffect(() => {
+        console.log("heer")
+        const coordinates =
+            data.buildings[building].etage[currentFloor].points
+        ;
+
+        console.log(canvas)
+        const ctx = canvas.current.getContext('2d');
+        console.log(ctx)
+        console.log(canvas)
+        canvas.current.height = 1500;
+        canvas.current.width = 1500;
+        ctx.fillStyle = '#A4EB5D';
 
 
-    handleCanvas = (canvas) => {
-        let points: number[] = this.props.points;
-        if(canvas) {
-            const ctx = canvas.getContext('2d');
-            canvas.height = 1500;
-            canvas.width = 1500;
-            ctx.fillStyle = '#A4EB5D';
-            const coordinates =
-                data.buildings[this.props.building].etage[this.props.currentFloor].points
-            ;
-            console.log(this.props.destination)
+        // Funktion zum Zeichnen von Linien
+        const drawLines = (coordinates) => {
 
 
-            // Funktion zum Zeichnen von Linien
-            const drawLines = (coordinates) => {
+            ctx.beginPath();
+            ctx.moveTo(coordinates[0][0], coordinates[0][1]);
+
+            for (let i = 0; i < points.length; i++) {
+                ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
+            }
+
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 15;
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.moveTo(coordinates[0][0], coordinates[0][1]);
+            for (let i = 0; i < points.length; i++) {
+                ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
+                console.log(coordinates[points[i]][0] + " " + coordinates[points[i]][1])
+            }
+
+            ctx.strokeStyle = '#A4EB5D';
+            ctx.lineWidth = 11;
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+            ctx.closePath();
+
+            canvas_arrow(ctx, coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1], coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1], 20)
+
+            ctx.beginPath();
+            ctx.moveTo(coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1]);
+            ctx.lineTo(coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1]);
+            ctx.strokeStyle = '#A4EB5D';
+            ctx.lineWidth = 11;
+            ctx.stroke();
+            ctx.closePath();
+        };
+
+        drawLines(coordinates);
+        drawStart(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
+        drawEnd(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
+        console.log(coordinates[points[0]][0])
+
+    }, [currentFloor]);
 
 
-                ctx.beginPath();
-                ctx.moveTo(coordinates[0][0], coordinates[0][1]);
 
-                for (let i = 0; i < points.length; i++) {
-                    ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
-                }
-
-                ctx.strokeStyle = 'black';
-                ctx.lineWidth = 15;
-                ctx.lineJoin = 'round';
-                ctx.stroke();
-                ctx.closePath();
-
-                ctx.beginPath();
-                ctx.moveTo(coordinates[0][0], coordinates[0][1]);
-                for (let i = 0; i < points.length; i++) {
-                    ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
-                    console.log(coordinates[points[i]][0] + " " + coordinates[points[i]][1])
-                }
-
-                ctx.strokeStyle = '#A4EB5D';
-                ctx.lineWidth = 11;
-                ctx.lineJoin = 'round';
-                ctx.stroke();
-                ctx.closePath();
-
-                canvas_arrow(ctx, coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1], coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1], 20)
-
-                ctx.beginPath();
-                ctx.moveTo(coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1]);
-                ctx.lineTo(coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1]);
-                ctx.strokeStyle = '#A4EB5D';
-                ctx.lineWidth = 11;
-                ctx.stroke();
-                ctx.closePath();
-            };
-
-            drawLines(coordinates);
-            drawStart(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
-            drawEnd(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
-            console.log(coordinates[points[0]][0])
-    }}
-    render() {
         return (
-            <Canvas style={styles.canvas} ref={this.handleCanvas}/>
+            <Canvas style={styles.canvas}
+                    ref={canvas}/>
         )
-    }
 }
 function canvas_arrow(context, fromx, fromy, tox, toy, r){
     let x_center = tox;

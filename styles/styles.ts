@@ -158,7 +158,9 @@ export const styles = StyleSheet.create({
   },
   canvas: {
     width: 1500,
-    height: 1650
+    height: 1650,
+    position: "absolute",
+    zIndex: 2,
   },
   //Room Grids
   roomGrid: {
@@ -211,8 +213,8 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     display: "flex",
     justifyContent: "space-between",
-    width: "50%",     
-    overflow: "hidden",      
+    width: "50%",
+    overflow: "hidden",
   },
   roomBoxContent: {
     minHeight: 60,

@@ -14,15 +14,21 @@ import ButtonIcon from "../components/ButtonIcon";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
 
 export const Navigation = ({ route, navigation }) => {
-    const [Floor, setFloor] = useState(0);
     const images = [
-        require('../assets/buildings/L1.png')
+        require('../assets/buildings/L1.jpg')
     ]
     const [currentFloor, setCurrentFloor] = useState(0);
+    const destination = route.params.destination;
+
 
     const handleNextStep = () => {
-        if (currentFloor < data.buildings[route.params.destination.category].etage.length) {
+        if (currentFloor < data.buildings[destination.category].etage.length) {
             setCurrentFloor(currentFloor + 1);
+        }
+    }
+    const handlePrevStep = () => {
+        if (currentFloor > 0) {
+            setCurrentFloor(currentFloor - 1);
         }
     }
     //room: string = data.buildings[route.params.destination[0].rooms[route.params.destination[1]]];
@@ -30,35 +36,37 @@ export const Navigation = ({ route, navigation }) => {
         <>
             <View style={styles.campusWrap}>
                 <ReactNativeZoomableView
-                    maxZoom={2}
-                    minZoom={.4}
+                    maxZoom={3}
+                    minZoom={.2}
                     zoomStep={0.1}
                     initialZoom={1}
                     visualTouchFeedbackEnabled={false}
                     contentWidth={1500}
                     contentHeight={1650}
-                    style={{backgroundColor: "#ffffff", width: "100%", height: "100%"}}
                 >
-                    {route.params.destination.category == 0 &&
-                        <L1 width={1500} height={1650} style={{position: "absolute"}}/>
+                    <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
+                    {destination.category == 0 &&
+                        <Image source={require('../assets/buildings/L1.jpg')}
+                               resizeMode="cover"
+                               resizeMethod={"resize"}
+                               style={{width: 1500, height: 1650}}/>
                     }
-                    {route.params.destination.category == 1 &&
+                    {destination.category == 1 &&
                         <>
                         {currentFloor == 0 &&
-                            <L2E00 width={1500} height={1650} style={{position: "absolute"}}/>
+                            <L2E00 width={1500} height={1650}/>
                         }
                             {currentFloor == 1 &&
-                                <L2E10 width={1500} height={1650} style={{position: "absolute"}}/>
+                                <L2E10 width={1500} height={1650}/>
                             }
                         </>
                     }
-                    <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
                 </ReactNativeZoomableView>
                 <View style={styles.bottomNav}>
                     <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", bottom: 0, display: "flex", flexDirection: "row"}}>
                         <ButtonTextAndIcon isLeft={true} color={customColors.orange}
                                            imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
-                                           action={() => console.log("back")}>
+                                           action={() => handlePrevStep()}>
                             Back
                         </ButtonTextAndIcon>
                         <ButtonTextAndIcon color={customColors.orange}
