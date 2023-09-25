@@ -10,19 +10,22 @@ import L2E00 from "../assets/buildings/L2E00.svg";
 import L2E10 from "../assets/buildings/L2E10.svg";
 import {NavPath} from "../components/NavigationPath";
 import {useState} from "react";
+import ButtonIcon from "../components/ButtonIcon";
+import {ButtonTextOnly} from "../components/ButtonTextOnly";
 
 export const Navigation = ({ route, navigation }) => {
     const [Floor, setFloor] = useState(0);
     const images = [
         require('../assets/buildings/L1.png')
     ]
-    const destination = route.params.destination;
+    const [currentFloor, setCurrentFloor] = useState(0);
 
-
-    const onNextStep = () => {
-        setFloor(Floor + 1);
+    const handleNextStep = () => {
+        if (currentFloor < data.buildings[route.params.destination.category].etage.length) {
+            setCurrentFloor(currentFloor + 1);
+        }
     }
-
+    //room: string = data.buildings[route.params.destination[0].rooms[route.params.destination[1]]];
     return (
         <>
             <View style={styles.campusWrap}>
@@ -36,23 +39,35 @@ export const Navigation = ({ route, navigation }) => {
                     contentHeight={1650}
                     style={{backgroundColor: "#ffffff", width: "100%", height: "100%"}}
                 >
-                    {
-                        destination.category == 0 &&
+                    {route.params.destination.category == 0 &&
                         <L1 width={1500} height={1650} style={{position: "absolute"}}/>
                     }
-                    {
-                        destination.category == 1 &&
-                        <L2E00 width={1500} height={1650} style={{position: "absolute"}}/>
+                    {route.params.destination.category == 1 &&
+                        <>
+                        {currentFloor == 0 &&
+                            <L2E00 width={1500} height={1650} style={{position: "absolute"}}/>
+                        }
+                            {currentFloor == 1 &&
+                                <L2E10 width={1500} height={1650} style={{position: "absolute"}}/>
+                            }
+                        </>
                     }
-                    <NavPath floor={Floor} building={destination.category} points={getPathstoRooms(destination)}/>
+                    <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
                 </ReactNativeZoomableView>
-                <View style={{position: "absolute", bottom: 0, display: "flex", flexDirection: "row"}}>
-                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24} action={() =>  navigation.navigate("Home")}>
-                        Zurück
-                    </ButtonTextAndIcon>
-                    <ButtonTextAndIcon color={customColors.orange} imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24} action={() => onNextStep()}>
-                        Weiter
-                    </ButtonTextAndIcon>
+                <View style={styles.bottomNav}>
+                    <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", bottom: 0, display: "flex", flexDirection: "row"}}>
+                        <ButtonTextAndIcon isLeft={true} color={customColors.orange}
+                                           imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
+                                           action={() => console.log("back")}>
+                            Back
+                        </ButtonTextAndIcon>
+                        <ButtonTextAndIcon color={customColors.orange}
+                                           imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
+                                           action={() => handleNextStep()}>
+                            Next
+                        </ButtonTextAndIcon>
+                    </View>
+                        <ButtonTextOnly action={() => navigation.navigate("Home")}>Back to Search</ButtonTextOnly>
                 </View>
             </View>
         </>

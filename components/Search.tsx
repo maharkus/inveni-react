@@ -74,8 +74,8 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                                 }
                             >Seminarräume</Button>
                             
-                            <Text style={styles.defaultHeader}>Alle Raume</Text>
-                            <RoomGrid/>
+                            <Text style={styles.defaultHeader}>Alle Raeume</Text>
+                            {/*<RoomGrid/>*/}
                         </>
                     :
                         <>
