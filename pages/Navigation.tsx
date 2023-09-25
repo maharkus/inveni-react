@@ -47,9 +47,9 @@ export const Navigation = ({ route, navigation }) => {
                     <NavPath  building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
                     {destination.category == 0 &&
                         <Image source={require('../assets/buildings/L1.jpg')}
-                               resizeMode="cover"
                                resizeMethod={"resize"}
-                               style={{width: 1500, height: 1650}}/>
+                               progressiveRenderingEnabled={true}
+                               style={{width: 1500, height: 1650, flex: 1}}/>
                     }
                     {destination.category == 1 &&
                         <>
