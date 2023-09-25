@@ -203,7 +203,6 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: "center",
     fontSize: 12,
-    fontFamily: "Work Sans Bold",
   },
   roomTextSec: {
     marginTop: 4,
