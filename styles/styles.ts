@@ -216,6 +216,10 @@ export const styles = StyleSheet.create({
   //Bottom Nav
   bottomNav: {
     position: "absolute",
+    left: 0,
+    right: 0,
+    justifyContent: "center",
+    alignItems: 'center',
     bottom: 32,
   }
 });

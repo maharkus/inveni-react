@@ -10,6 +10,8 @@ import L2E00 from "../assets/buildings/L2E00.svg";
 import L2E10 from "../assets/buildings/L2E10.svg";
 import {NavPath} from "../components/NavigationPath";
 import {useState} from "react";
+import ButtonIcon from "../components/ButtonIcon";
+import {ButtonTextOnly} from "../components/ButtonTextOnly";
 
 export const Navigation = ({route, navigation}) => {
     const images = [
@@ -51,17 +53,20 @@ export const Navigation = ({route, navigation}) => {
                     }
                     <NavPath destination={route.params.destination} currentFloor={currentFloor}/>
                 </ReactNativeZoomableView>
-                <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", position: "absolute", bottom: 0, display: "flex", flexDirection: "row"}}>
-                    <ButtonTextAndIcon isLeft={true} color={customColors.orange}
-                                       imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
-                                       action={() => navigation.navigate("Home")}>
-                        Back
-                    </ButtonTextAndIcon>
-                    <ButtonTextAndIcon color={customColors.orange}
-                                       imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
-                                       action={() => handleNextStep()}>
-                        Next
-                    </ButtonTextAndIcon>
+                <View style={styles.bottomNav}>
+                    <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", bottom: 0, display: "flex", flexDirection: "row"}}>
+                        <ButtonTextAndIcon isLeft={true} color={customColors.orange}
+                                           imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
+                                           action={() => console.log("back")}>
+                            Back
+                        </ButtonTextAndIcon>
+                        <ButtonTextAndIcon color={customColors.orange}
+                                           imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
+                                           action={() => handleNextStep()}>
+                            Next
+                        </ButtonTextAndIcon>
+                    </View>
+                        <ButtonTextOnly action={() => navigation.navigate("Home")}>Back to Search</ButtonTextOnly>
                 </View>
             </View>
         </>
