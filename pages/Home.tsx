@@ -53,7 +53,7 @@ export const Home = ({navigation}) => {
                 <View style={styles.bottomNav}>
 
                     {destination.room != -1 &&
-                        <ButtonTextAndIcon color={customColors.orange}
+                        <ButtonTextAndIcon color={customColors.orange} state={false}
                                            imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
                                            action={() => navigation.navigate("Navigation", {
                                                name: "Navigation",

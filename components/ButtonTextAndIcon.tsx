@@ -2,7 +2,7 @@ import { Pressable, Image, Text } from "react-native";
 import { customColors, styles } from "../styles/styles";
 import * as React from "react";
 
-export default function ButtonTextAndIcon({ color, imageSource, action, children, w, h, isLeft = false }) {
+export default function ButtonTextAndIcon({ color, imageSource, action, children, w, h, state, isLeft = false }) {
     let colorPressed: string;
     switch(color) {
         case customColors.orange: {
@@ -35,7 +35,7 @@ export default function ButtonTextAndIcon({ color, imageSource, action, children
         }
     }
     return (
-        <Pressable
+        <Pressable  disabled={state}
             style={ ({ pressed }) => [styles.buttonBasics, styles.textIconButtonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
             {isLeft ?
                 <Image style={{width: w, height: h}} source={imageSource}/> : ""

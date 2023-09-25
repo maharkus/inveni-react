@@ -258,7 +258,38 @@ export const styles = StyleSheet.create({
   },
   //Top Bar Navigation
   navigationTopBar: {
-
+    position: "absolute",
+    width: "100%",
+    top: 70,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  navigationTopBarContent: {
+    backgroundColor: customColors.grey,
+    paddingHorizontal: 25,
+    paddingVertical: 15,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: customColors.dark,
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  navTBC: {
+    height: 25,
+    width: 25,
+    borderRadius: 999,
+    marginRight: 5,
+    borderWidth: 1,
+    borderColor: customColors.dark
+  },
+  navTBCirclePurple: {
+    backgroundColor: customColors.purple
+  },
+  navTBCircleOrange: {
+    backgroundColor: customColors.orange
   },
   //Bottom Nav
   bottomNav: {

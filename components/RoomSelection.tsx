@@ -25,8 +25,7 @@ export const RoomSelection = ({category, onRoomSelection} : Props) => {
                         <Text style={styles.roomTextPrim}>{item[0]}</Text>
                         <Text style={styles.roomTextSec}>{item[1]}</Text>
                     </View>
-                    <View style={[styles.roomBottomBar, {backgroundColor: (item[5])}]}>
-                    </View>
+                    <View style={[styles.roomBottomBar, {backgroundColor: (item[5])}]} />
                 </Pressable>
             ))}
         </View>
