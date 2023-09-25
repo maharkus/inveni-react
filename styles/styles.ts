@@ -119,8 +119,7 @@ export const styles = StyleSheet.create({
   },
   buttonTextOnly: {
     color: customColors.dark,
-    fontFamily: "Work Sans",
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "700",
     opacity: .3
   },
@@ -257,13 +256,16 @@ export const styles = StyleSheet.create({
     top: 0,
     zIndex : 2
   },
+  //Top Bar Navigation
+  navigationTopBar: {
+
+  },
   //Bottom Nav
   bottomNav: {
     position: "absolute",
     left: 0,
     right: 0,
-    justifyContent: "center",
     alignItems: 'center',
-    bottom: 32,
+    bottom: 50,
   }
 });
