@@ -9,9 +9,9 @@
           "rooms": [
             ["Campus Office", "Campus Office", 5, 1136, 812, "#A4EB5D", 0],
             ["Mensa", "Mensa", 2, 590, 955, "#A4EB5D", 0],
-            ["WC", "Damen", 3, 982, 692, "#E0E3FF", 0],
-            ["WC", "Herren", 3, 1026, 733, "#E0E3FF", 0],
-            ["WC", "Barrierefrei", 3, 1026, 802, "#E0E3FF", 0]
+            ["Sanitär", "WC Damen", 3, 982, 692, "#E0E3FF", 0],
+            ["Sanitär", "WC Herren", 3, 1026, 733, "#E0E3FF", 0],
+            ["Sanitär", "WC Barrierefrei", 3, 1026, 802, "#E0E3FF", 0]
           ],
           "paths": [
             [0, 1, 4],
@@ -49,9 +49,9 @@
             ["L2 E00-230", "Schieffer Seminarraum", 8, 964, 1413, "#F9CB48", 0],
             ["L2 E00-210", "Ideal Seminarraum", 8, 964, 1190, "#F9CB48", 0],
             ["L2 E00-190", "Ferber Software SR", 8, 964, 968, "#F9CB48", 0],
-            ["WC", "Barrierefrei", 8, 804, 1448, "#E0E3FF", 0],
-            ["WC", "Frauen", 8, 964, 884, "#E0E3FF", 0],
-            ["WC", "Herren", 8, 964, 834, "#E0E3FF", 0]
+            ["Sanitär", "WC Barrierefrei", 8, 804, 1448, "#E0E3FF", 0],
+            ["Sanitär", "WC Frauen", 8, 964, 884, "#E0E3FF", 0],
+            ["Sanitär", "WC Herren", 8, 964, 834, "#E0E3FF", 0]
           ],
           "paths": [
             [0, 1, 3],
@@ -89,8 +89,8 @@
             ["L2 E01-080", "Seminarraum", 5, 596, 1302, "#F9CB48", 1],
             ["L2 E01-100", "Seminarraum", 5, 596, 1345, "#F9CB48", 1],
             ["L2 E01-410", "Bibliothek", 2, 907, 505, "#A4EB5D", 1],
-            ["WC", "Herren", 3, 958, 840, "#E0E3FF", 1],
-            ["WC", "Frauen", 3, 958, 882, "#E0E3FF", 1]
+            ["Sanitär", "WC Herren", 3, 958, 840, "#E0E3FF", 1],
+            ["Sanitär", "WC Frauen", 3, 958, 882, "#E0E3FF", 1]
           ],
           "paths": [
             [0, 1, 2],
@@ -127,9 +127,9 @@
             ["L3.1 E00-120", "PKW Diagnostik", 6, 1126, 1293, "#C28CFC", 0],
             ["L3.1 E00-170", "MAC Pool", 6, 660, 1223, "#8FC9FF", 0],
             ["L3.1 E00-190", "MAC Pool", 6, 791, 1223, "#8FC9FF", 0],
-            ["WC", "Herren", 6, 940, 1223, "#E0E3FF", 0],
-            ["WC", "Frauen", 6, 970, 1223, "#E0E3FF", 0],
-            ["WC", "Barrierefrei", 6, 1031, 1223, "#E0E3FF", 0],
+            ["Sanitär", "WC Herren", 6, 940, 1223, "#E0E3FF", 0],
+            ["Sanitär", "WC Frauen", 6, 970, 1223, "#E0E3FF", 0],
+            ["Sanitär", "WC Barrierefrei", 6, 1031, 1223, "#E0E3FF", 0],
             ["L3.2 E00-110", "Bildverarbeitung", 8, 1080, 833, "#C28CFC", 0],
             ["L3.2 E00-130", "Fügetechnik", 9, 1112, 771, "#C28CFC", 0],
             ["L3.2 E00-190", "3D Koordinaten Messraum", 9, 1112, 547, "#C28CFC", 0],
@@ -173,8 +173,8 @@
           "name": "E01",
           "stairs": 5,
           "rooms": [
-            ["WC", "Herren", 2, 446, 1229, "#E0E3FF", 1],
-            ["WC", "Frauen", 2, 431, 1229, "#E0E3FF", 1],
+            ["Sanitär", "WC Herren", 2, 446, 1229, "#E0E3FF", 1],
+            ["Sanitär", "WC Frauen", 2, 431, 1229, "#E0E3FF", 1],
             ["L3.1 E01-170", "Eltern Kind", 2, 574, 1229, "#A4EB5D", 1],
             ["L3.1 E01-020", "Design Thinking Atelier", 2, 252, 1318, "#C28CFC", 1],
             ["L3.1 E01-040", "Zeichen Atelier", 2, 422, 1318, "#C28CFC", 1],
@@ -191,9 +191,9 @@
             ["L3.3 E01-190", "Projektwerkstatt", 3, 283, 510, "#C28CFC", 1],
             ["L3.3 E01-200", "Lean Management", 3, 370, 380, "#C28CFC", 1],
             ["L3.3 E01-210", "Autonome Systeme", 3, 283, 469, "#C28CFC", 1],
-            ["WC", "Herren", 4, 945, 1250, "#E0E3FF", 1],
-            ["WC", "Frauen", 4, 973, 1250, "#E0E3FF", 1],
-            ["WC", "Barrierefrei", 1035, 1250, 4, "#E0E3FF", 1]
+            ["Sanitär", "WC Herren", 4, 945, 1250, "#E0E3FF", 1],
+            ["Sanitär", "WC Frauen", 4, 973, 1250, "#E0E3FF", 1],
+            ["Sanitär", "WC Barrierefrei", 1035, 1250, 4, "#E0E3FF", 1]
           ],
           "paths": [
             [0, 1, 5],
@@ -223,11 +223,11 @@
         }, {
           "name": "E02",
           "rooms": [
-            ["WC", "Herren", 2, 467, 1248, "#E0E3FF", 2],
-            ["WC", "Frauen", 2, 439, 1248, "#E0E3FF", 2],
-            ["WC", "Herren", 4, 943, 1248, "#E0E3FF", 2],
-            ["WC", "Frauen", 4, 971, 1248, "#E0E3FF", 2],
-            ["WC", "Barrierefrei", 4, 1033, 1248, "#E0E3FF", 2],
+            ["Sanitär", "WC Herren", 2, 467, 1248, "#E0E3FF", 2],
+            ["Sanitär", "WC Frauen", 2, 439, 1248, "#E0E3FF", 2],
+            ["Sanitär", "WC Herren", 4, 943, 1248, "#E0E3FF", 2],
+            ["Sanitär", "WC Frauen", 4, 971, 1248, "#E0E3FF", 2],
+            ["Sanitär", "WC Barrierefrei", 4, 1033, 1248, "#E0E3FF", 2],
             ["L3.1 E02-020", "Showroom", 2, 258, 1313, "#A4EB5D", 2],
             ["L3.1 E02-040", "Materialiensammlung", 2, 412, 1313, "#A4EB5D", 2],
             ["L3.1 E02-160", "PC Pool mit Laptopplätzen", 4, 999, 1313, "#8FC9FF", 2],
@@ -283,8 +283,8 @@
           "name": "E00",
           "stairs": 2,
           "rooms": [
-            ["WC", "Herren", 3, 543, 1186, "#E0E3FF", 0],
-            ["WC", "Frauen", 3, 412, 1186, "#E0E3FF", 0],
+            ["Sanitär", "WC Herren", 3, 543, 1186, "#E0E3FF", 0],
+            ["Sanitär", "WC Frauen", 3, 412, 1186, "#E0E3FF", 0],
             ["L4.1 E00-020", "Seminarraum", 5, 183, 1265, "#F9CB48", 0],
             ["L4.1 E00-040", "Seminarraum", 5, 218, 1324, "#F9CB48", 0],
             ["L4.1 E00-060", "Seminarraum", 3, 398, 1324, "#F9CB48", 0],
@@ -324,8 +324,8 @@
         }, {
           "name": "E01",
           "rooms": [
-            ["WC", "Herren", 3, 544, 1186, "#E0E3FF", 1],
-            ["WC", "Frauen", 3, 409, 1186, "#E0E3FF", 1],
+            ["Sanitär", "WC Herren", 3, 544, 1186, "#E0E3FF", 1],
+            ["Sanitär", "WC Frauen", 3, 409, 1186, "#E0E3FF", 1],
             ["L4.1 E01-020", "Animations- und CAD Studio Render", 5, 176, 1257, "#8FC9FF", 1],
             ["L4.1 E01-040", "Animations- und CAD Studio Projektraum", 5, 218, 1257, "#8FC9FF", 1],
             ["L4.1 E01-060", "Animations CAD Studio Cybersecurity", 3, 344, 1257, "#8FC9FF", 1],
@@ -362,8 +362,8 @@
         }, {
           "name": "E02",
           "rooms": [
-            ["WC", "Herren", 3, 544, 1196, "#E0E3FF", 2],
-            ["WC", "Damen", 3, 409, 1196, "#E0E3FF", 2],
+            ["Sanitär", "WC Herren", 3, 544, 1196, "#E0E3FF", 2],
+            ["Sanitär", "WC Damen", 3, 409, 1196, "#E0E3FF", 2],
             ["L4.1 E02-120", "MAC Pool", 3, 666,666, "#8FC9FF", 2]
           ],
           "paths": [
@@ -391,9 +391,26 @@
       "name": "IQL",
       "etage": [
         {
-          "name": "E00",
+          "name": "E0",
           "rooms": [
-            ["IQL", "Example Room", 1, 0, 0, "#123456", 0]
+            ["Sanitär", "WC Frauen", 4, 987, 661, "#E0E3FF", 0],
+            ["Sanitär", "WC Herren", 4, 987, 632, "#E0E3FF", 0],
+            ["Sanitär", "WC Barrierefrei", 2, 909, 714, "#E0E3FF", 0],
+            ["IQL E0 4.010", "Hörsaal LP8", 2, 514, 714, "#F98452", 0],
+            ["IQL E0 4.040", "Seminarraum", 1, 402, 714, "#F9CB48", 0],
+            ["IQL E0 4.060", "Open Space 2", 6, 987, 386, "#A4EB5D", 0],
+            ["IQL E0 4.070", "Start Up 01", 8, 408, 279, "#A4EB5D", 0],
+            ["IQL E0 4.080", "Start Up 02", 8, 516, 279, "#A4EB5D", 0],
+            ["IQL E0 4.090", "Technisches Labor", 8, 625, 279, "#C28CFC", 0],
+            ["IQL E0 4.150", "Werkstatt", 8, 305, 414, "#C28CFC", 0],
+            ["IQL E0 4.160", "Werkstatt", 8, 958, 414, "#C28CFC", 0],
+            ["IQL E0 4.170", "Werkstatt", 8, 870, 414, "#C28CFC", 0],
+            ["IQL E0 5.020", "Veranstaltungsfläche", 7, 1275, 386, "#A4EB5D", 0],
+            ["IQL E0 5.080", "Büro Fachschaft", 7, 1304, 431, "#A4EB5D", 0],
+            ["IQL E0 5.090", "Büro Fachschaft", 7, 1304, 549, "#A4EB5D", 0],
+            ["IQL E0 5.100", "Büro StuPa", 7, 1304, 587, "#A4EB5D", 0],
+            ["IQL E0 5.110", "Büro AstA", 7, 1304, 648, "#A4EB5D", 0],
+            ["IQL E0 5.120", "Büro AstA", 7, 1304, 688, "#A4EB5D", 0]
           ],
           "paths": [
             [0, 1, 4],
@@ -402,7 +419,8 @@
             [2, 4, 13],
             [4, 5, 12],
             [4, 6, 16],
-            [3, 7, 18]
+            [3, 7, 18],
+            [6, 8, 28]
           ],
           "points": [
             [401, 840],
@@ -411,8 +429,9 @@
             [1275, 765],
             [1019, 534],
             [847, 534],
-            [1019, 208],
-            [1275, 421]
+            [1019, 386],
+            [1275, 421],
+            [305, 386]
           ]
         }
       ]
