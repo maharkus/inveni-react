@@ -2,19 +2,28 @@ import React, {useEffect, useRef} from 'react';
 import Canvas from 'react-native-canvas';
 import {styles} from "../styles/styles";
 import data from "../roomfinding/data.json";
+import {getPathstoRooms} from "../roomfinding/Roomfinder";
 
 interface Props  {
-    building: number
-    points: number[],
+    destination: {category: number, etage: number, room: number},
     currentFloor: number
 }
-export const NavPath = ({building, points, currentFloor}: Props) => {
+export const NavPath = ({destination, currentFloor}: Props) => {
     const canvas = useRef(null);
 
     useEffect(() => {
-        const coordinates =
-            data.buildings[building].etage[currentFloor].points
-        ;
+        const coordinates= data.buildings[destination.category].etage[currentFloor].points;
+        let endNode:any = 0;
+        if(currentFloor == destination.etage) {
+            endNode = data.buildings[destination.category].etage[destination.etage].rooms[destination.room][2]
+        }
+        else {
+            endNode = data.buildings[destination.category].etage[currentFloor].stairs;
+        }
+
+
+        console.log(endNode)
+        const points = getPathstoRooms(destination.category, currentFloor, endNode);
 
         const ctx = canvas.current.getContext('2d');
         canvas.current.height = 1500;

@@ -9,9 +9,6 @@ interface Props {
 
 export default function RoomBar ({ destination} : Props) {
     const buildingname = data.buildings[destination.category].name;
-    console.log("here")
-    console.log(destination.room);
-    console.log(data.buildings[destination.category].etage[destination.etage].rooms);
     const room = data.buildings[destination.category].etage[destination.etage].rooms[destination.room][1];
     return (
         <View style={styles.navigationTopBar}>

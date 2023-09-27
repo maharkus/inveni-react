@@ -8,15 +8,19 @@ interface Props {
 }
 export const RoomSelection = ({category, onRoomSelection} : Props) => {
 
-    const items: any[] = [];
+    const items0 = []
+    const items1 = []
+    const items2 = []
+    const items: any[] = [items0,items1,items2];
+
     for(let i = 0; i < data.buildings[category].etage.length; i++) {
         for(let j = 0; j < data.buildings[category].etage[i].rooms.length; j++) {
-            items.push(data.buildings[category].etage[i].rooms[j]);
+            items[i].push(data.buildings[category].etage[i].rooms[j]);
         }
     }
     return (
         <View style={styles.roomGrid}>
-            {items.map((item: any, index: number) => (
+            {items[1].map((item: any, index: number) => (
                 <Pressable style={styles.room} key={index} onPress={
                     () => onRoomSelection (item[6], index)
                 }>

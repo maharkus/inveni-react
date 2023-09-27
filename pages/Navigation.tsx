@@ -66,7 +66,7 @@ export const Navigation = ({ route, navigation }) => {
                             }
                         </>
                     }
-                    <NavPath building={destination.category} points={getPathstoRooms(destination)} currentFloor={currentFloor}/>
+                    <NavPath destination={destination} currentFloor={currentFloor}/>
 
                 </ReactNativeZoomableView>
                 <View style={styles.bottomNav}>
