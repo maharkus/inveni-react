@@ -36,7 +36,7 @@ export default function ButtonTextAndIcon({ color, imageSource, action, children
     }
     return (
         <Pressable  disabled={state}
-            style={ ({ pressed }) => [styles.buttonBasics, styles.textIconButtonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
+            style={ ({ pressed }) => [styles.buttonBasics, styles.textIconButtonBasics, {backgroundColor: !pressed ? color : colorPressed, marginHorizontal: 10, marginVertical: 20}] } onPress={action}>
             {isLeft ?
                 <Image style={{width: w, height: h}} source={imageSource}/> : ""
             }
