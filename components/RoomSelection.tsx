@@ -1,11 +1,10 @@
 import {styles} from "../styles/styles";
 import {Pressable, View, Text} from "react-native";
-import { StyleSheet } from "react-native";
 import data from "../roomfinding/data.json";
 
 interface Props {
     category: number,
-    onRoomSelection: (i) => void
+    onRoomSelection: (etage, id) => void
 }
 export const RoomSelection = ({category, onRoomSelection} : Props) => {
 
@@ -19,7 +18,7 @@ export const RoomSelection = ({category, onRoomSelection} : Props) => {
         <View style={styles.roomGrid}>
             {items.map((item: any, index: number) => (
                 <Pressable style={styles.room} key={index} onPress={
-                    () => onRoomSelection (item[2])
+                    () => onRoomSelection (item[6], index)
                 }>
                     <View style={styles.roomTextView}>
                         <Text style={styles.roomTextPrim}>{item[0]}</Text>

@@ -6,7 +6,6 @@ import {View} from "react-native";
 import {Search} from "../components/Search";
 import {TopBar} from "../components/TopBar";
 import ButtonIcon from "../components/ButtonIcon";
-import {NavPath} from "../components/NavigationPath";
 import * as React from "react";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
@@ -15,6 +14,7 @@ import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 export const Home = ({navigation}) => {
     const [category, setCategory] = useState(-1);
     const [room, setRoom] = useState(-1);
+    const [etage, setEtage] = useState(-1);
     const [sheetStatus, setSheetStatus] = useState(-1);
 
 
@@ -36,12 +36,13 @@ export const Home = ({navigation}) => {
     }
 
     //Room Selection
-    const handleRoomSelection = (room: number) => {
+    const handleRoomSelection = (etage:number, room: number) => {
+        setEtage(etage);
         setRoom(room);
         setSheetStatus(-1)
     }
 
-    const destination = {category: category, room: room}
+    const destination = {category: category, etage: etage, room: room}
 
     return (
         <>
@@ -72,7 +73,7 @@ export const Home = ({navigation}) => {
                 </View>
                 <Search status={sheetStatus}
                         statusChange={(index) => setSheetStatus(index)}
-                        selectRoom={(room) => handleRoomSelection(room)}
+                        selectRoom={(etage, room) => handleRoomSelection(etage, room)}
                         selectBuilding={(building) => handleBuilding(building)}
                         category={category}
                         room={room}

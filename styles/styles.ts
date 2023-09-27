@@ -283,7 +283,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    backgroundColor: customColors.light,
+    backgroundColor: customColors.uwu,
     position: "absolute",
     top: 0,
     zIndex : 2,

@@ -5,12 +5,8 @@ import data from "../roomfinding/data.json";
 import * as React from "react";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
-import L1 from "../assets/buildings/L1.svg";
-import L2E00 from "../assets/buildings/L2E00.svg";
-import L2E10 from "../assets/buildings/L2E10.svg";
 import {NavPath} from "../components/NavigationPath";
 import {useState} from "react";
-import ButtonIcon from "../components/ButtonIcon";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
 
@@ -19,7 +15,7 @@ export const Navigation = ({ route, navigation }) => {
         require('../assets/buildings/L1.jpg')
     ]
     const [currentFloor, setCurrentFloor] = useState(0);
-    const destination = route.params.destination;
+    const destination: {category: number, etage:number, room: number} = route.params.destination;
 
 
     const handleNextStep = () => {
@@ -32,13 +28,12 @@ export const Navigation = ({ route, navigation }) => {
             setCurrentFloor(currentFloor - 1);
         }
     }
-    //room: string = data.buildings[route.params.destination[0].rooms[route.params.destination[1]]];
+
     return (
         <>
-            <RoomBar destination={{
-                category: this,
-                room: this
-            }} />
+            <RoomBar destination={
+                destination
+            } />
             <View style={styles.campusWrap}>
                 <ReactNativeZoomableView
                     maxZoom={3}
@@ -110,7 +105,7 @@ export const Navigation = ({ route, navigation }) => {
                         }
                     </>
                     <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", bottom: 0, display: "flex", flexDirection: "row"}}>
-                        
+
                     </View>
                     <ButtonTextOnly action={() => navigation.navigate("Home")}>Back to Search</ButtonTextOnly>
                 </View>

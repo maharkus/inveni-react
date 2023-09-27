@@ -4,10 +4,10 @@ import ButtonIcon from "../components/ButtonIcon";
 import {ButtonText} from "../components/ButtonText";
 import {TopBar} from "../components/TopBar";
 
-export const SettingsPage = ({ navigation, route }) => {
+export const SettingsPage = ({ navigation}) => {
   return (
     <>
-      <TopBar navigation={navigation}/>
+      <TopBar navigation={navigation} fullLogo={true}/>
 
       <ScrollView contentContainerStyle={[styles.contentContainer, {paddingBottom: 200}]}>
 
@@ -28,8 +28,8 @@ export const SettingsPage = ({ navigation, route }) => {
 
       <View style={{flex: 1, alignItems: "center"}}>
         <ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={() => navigation.goBack()} customStyles={styles.closeButton} />
-      </View> 
-      
+      </View>
+
     </>
   );
 };

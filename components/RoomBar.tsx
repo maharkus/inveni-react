@@ -1,42 +1,27 @@
 import { View, Text } from "react-native";
 import { styles } from "../styles/styles";
 import * as React from "react";
+import data from "../roomfinding/data.json";
 
 interface Props {
-    destination: {category: number, room: number},
+    destination: {category: number, etage:number, room: number},
 }
 
 export default function RoomBar ({ destination} : Props) {
+    const buildingname = data.buildings[destination.category].name;
+    console.log("here")
+    console.log(destination.room);
+    console.log(data.buildings[destination.category].etage[destination.etage].rooms);
+    const room = data.buildings[destination.category].etage[destination.etage].rooms[destination.room][1];
     return (
         <View style={styles.navigationTopBar}>
             <View style={styles.navigationTopBarContent}>
                 <View style={[styles.navTBC, styles.navTBCirclePurple]}></View>
-                {/*<View style={{marginRight: 10}}>
-                    {
-                        destination.category == 0 &&
-                        <Text>L1</Text>
-                    }
-                    {
-                        destination.category == 1 &&
-                        <Text>L2</Text>
-                    }
-                    {
-                        destination.category == 2 &&
-                        <Text>L3</Text>
-                    }
-                    {
-                        destination.category == 3 &&
-                        <Text>L4</Text>
-                    }
-                    {
-                        destination.category == 4 &&
-                        <Text>IQL</Text>
-                    }
-                </View>*/}
-                <Text style={{marginRight: 10}}>Gebäude</Text>
 
-                <View style={[styles.navTBC,styles.navTBCircleOrange]}></View> 
-                <Text>Raumname</Text>
+                <Text style={{marginRight: 10}}>{buildingname}</Text>
+
+                <View style={[styles.navTBC,styles.navTBCircleOrange]}></View>
+                <Text>{room}</Text>
             </View>
         </View>
     )

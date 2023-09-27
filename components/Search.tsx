@@ -5,16 +5,14 @@ import CustomHandle from "./CustomHandle";
 import {Button} from "react-native-paper";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef,} from "react";
-import data from "../roomfinding/data.json";
 import ButtonIcon from "./ButtonIcon";
 import { Text, ScrollView, View } from "react-native";
-import { RoomGrid } from "./RoomGrid";
 
 interface Props {
     status: number,
     category: number,
     room: number,
-    selectRoom: (room) => void,
+    selectRoom: (etage, room) => void,
     selectBuilding: (building) => void,
     onClear: () => void,
     statusChange: (index) => void
@@ -42,8 +40,8 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
         sheetRef.current?.close();
     }, []);
 
-    const onRoom = (room) => {
-        selectRoom(room);
+    const onRoom = (etage, room) => {
+        selectRoom(etage, room);
         handleClosePress();
     }
 
@@ -79,7 +77,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                             </>
                         :
                             <>
-                                <RoomSelection category={category} onRoomSelection={(room) => onRoom(room)}></RoomSelection>
+                                <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
                             </>
                         }
                     </ScrollView>

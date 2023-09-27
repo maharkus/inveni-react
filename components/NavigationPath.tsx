@@ -1,8 +1,7 @@
-import React, {Component, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Canvas from 'react-native-canvas';
 import {styles} from "../styles/styles";
 import data from "../roomfinding/data.json";
-import {getPathstoRooms} from "../roomfinding/Roomfinder";
 
 interface Props  {
     building: number
@@ -21,7 +20,6 @@ export const NavPath = ({building, points, currentFloor}: Props) => {
         canvas.current.height = 1500;
         canvas.current.width = 1500;
         ctx.fillStyle = '#A4EB5D';
-        console.log(canvas.current.width)
 
 
         // Funktion zum Zeichnen von Linien

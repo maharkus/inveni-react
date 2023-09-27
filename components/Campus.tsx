@@ -6,11 +6,11 @@ import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view
 
 interface Props {
     onBuilding: (number) => void;
-    destination: {category: number, room: number},
+    destination: {category: number, etage:number, room: number},
     navigation: any
 }
 
-export default function Campus ({onBuilding, destination, navigation} : Props) {
+export default function Campus ({onBuilding, destination} : Props) {
     const images = [
         require('../assets/maps/map0.png'),
         require('../assets/maps/map1.png'),
