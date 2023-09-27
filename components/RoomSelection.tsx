@@ -20,7 +20,29 @@ export const RoomSelection = ({category, onRoomSelection} : Props) => {
     }
     return (
         <View style={styles.roomGrid}>
+            {items[0].map((item: any, index: number) => (
+                <Pressable style={styles.room} key={index} onPress={
+                    () => onRoomSelection (item[6], index)
+                }>
+                    <View style={styles.roomTextView}>
+                        <Text style={styles.roomTextPrim}>{item[0]}</Text>
+                        <Text style={styles.roomTextSec}>{item[1]}</Text>
+                    </View>
+                    <View style={[styles.roomBottomBar, {backgroundColor: (item[5])}]} />
+                </Pressable>
+            ))}
             {items[1].map((item: any, index: number) => (
+                <Pressable style={styles.room} key={index} onPress={
+                    () => onRoomSelection (item[6], index)
+                }>
+                    <View style={styles.roomTextView}>
+                        <Text style={styles.roomTextPrim}>{item[0]}</Text>
+                        <Text style={styles.roomTextSec}>{item[1]}</Text>
+                    </View>
+                    <View style={[styles.roomBottomBar, {backgroundColor: (item[5])}]} />
+                </Pressable>
+            ))}
+            {items[2].map((item: any, index: number) => (
                 <Pressable style={styles.room} key={index} onPress={
                     () => onRoomSelection (item[6], index)
                 }>

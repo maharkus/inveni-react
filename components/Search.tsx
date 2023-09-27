@@ -6,7 +6,8 @@ import {Button} from "react-native-paper";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef,} from "react";
 import ButtonIcon from "./ButtonIcon";
-import { Text, ScrollView, View } from "react-native";
+import {ScrollView, Text, View} from "react-native";
+import Scrollview from "react-native-gesture-handler"
 
 interface Props {
     status: number,
@@ -60,8 +61,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                 backdropComponent={CustomBackdrop}
                 handleComponent={CustomHandle}
             >
-                <View style={{flex: 1}}>
-                    <ScrollView contentContainerStyle={styles.contentContainer} showsVerticalScrollIndicator={false} >
+                <BottomSheetScrollView style={{flex: 1}}>
                         {category == -1 ?
                             <>
                                 <Text style={styles.defaultHeader}>Kategorien</Text>
@@ -80,10 +80,9 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                                 <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
                             </>
                         }
-                    </ScrollView>
-                    <View style={{flex: 1, alignItems: "center"}}>
-                        <ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={handleClosePress} customStyles={styles.closeButton} />
-                    </View>
+                </BottomSheetScrollView>
+                <View style={{flex: 1, alignItems: "center", position: "absolute", left: 0, right: 0, bottom: 15}}>
+                    <ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={handleClosePress} customStyles={styles.closeButton} />
                 </View>
             </BottomSheet>
         </>
