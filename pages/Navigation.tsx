@@ -19,8 +19,11 @@ export const Navigation = ({ route, navigation }) => {
 
 
     const handleNextStep = () => {
-        if (currentFloor < data.buildings[destination.category].etage.length) {
+        if (currentFloor < destination.etage) {
             setCurrentFloor(currentFloor + 1);
+        }
+        else {
+            navigation.navigate("Home")
         }
     }
     const handlePrevStep = () => {
