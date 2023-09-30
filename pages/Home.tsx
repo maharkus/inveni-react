@@ -60,7 +60,7 @@ export const Home = ({navigation}) => {
                                                name: "Navigation",
                                                destination: destination
                                            })}>
-                            Navigation starten
+                            Start Navigation
                         </ButtonTextAndIcon>
                     }
                     {room == -1 ?

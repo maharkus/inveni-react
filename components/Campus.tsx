@@ -30,16 +30,16 @@ export default function Campus ({onBuilding, destination} : Props) {
                 contentHeight={400}
             >
                 <View style={{zIndex: -1, position: "relative", justifyContent: "center", display:'flex', alignItems: "center", padding: 30, flex: 1}}>
-
-                    <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 600, height: 450, flex: 1}}>
-                        <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[410, 95]}>L1</ButtonBuilding>
-                        <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[290, 185]}>L2</ButtonBuilding>
-                        <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[335, 335]}>L3</ButtonBuilding>
-                        <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[480, 200]}>L4</ButtonBuilding>
-                        <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[140, 250]}>IQL</ButtonBuilding>
-                    </View>
                     {destination.room == -1 ?
                         <>
+
+                            <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 600, height: 450, flex: 1}}>
+                                <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[410, 95]}>L1</ButtonBuilding>
+                                <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[290, 185]}>L2</ButtonBuilding>
+                                <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[335, 335]}>L3</ButtonBuilding>
+                                <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[480, 200]}>L4</ButtonBuilding>
+                                <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[140, 250]}>IQL</ButtonBuilding>
+                            </View>
                             <Image source={require('../assets/maps/map.png')}
                                    resizeMethod={"resize"}
                                    progressiveRenderingEnabled={true}
