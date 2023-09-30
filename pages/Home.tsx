@@ -9,6 +9,7 @@ import ButtonIcon from "../components/ButtonIcon";
 import * as React from "react";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
+import {LinearGradient} from "expo-linear-gradient";
 
 
 export const Home = ({navigation}) => {
@@ -48,6 +49,10 @@ export const Home = ({navigation}) => {
         <>
             <GestureHandlerRootView style={styles.homeContainer}>
                 <TopBar navigation={navigation}/>
+                <LinearGradient style={styles.topBarGrad}
+                                colors={['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0)']}
+                                locations={[0.3, .7]}
+                />
                 <Campus destination={destination} onBuilding={(building) => handleBuilding(building)}
                         navigation={navigation}></Campus>
 
