@@ -69,6 +69,59 @@ export const Navigation = ({ route, navigation }) => {
                             }
                         </>
                     }
+                    {destination.category == 2 &&
+                        <>
+                            {currentFloor == 0 &&
+                                <Image source={require('../assets/buildings/L3E00.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
+                            }
+                            {currentFloor == 1 &&
+                                <Image source={require('../assets/buildings/L3E01.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
+                            }
+                            {currentFloor == 2 &&
+                                <Image source={require('../assets/buildings/L3E02.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
+                            }
+                        </>
+                    }
+                    {destination.category == 3 &&
+                        <>
+                            {currentFloor == 0 &&
+                                <Image source={require('../assets/buildings/L4E00.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
+                            }
+                            {currentFloor == 1 &&
+                                <Image source={require('../assets/buildings/L4E01.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
+                            }
+                            {currentFloor == 2 &&
+                                <Image source={require('../assets/buildings/L4E02.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
+                            }
+                        </>
+                    }
+                    {destination.category == 4 &&
+                        <>
+                                <Image source={require('../assets/buildings/IQL.jpg')}
+                                       resizeMethod={"resize"}
+                                       progressiveRenderingEnabled={true}
+                                       style={{width: 1500, height: 1650}}/>
+                            </>
+
+                    }
                     <NavPath destination={destination} currentFloor={currentFloor}/>
 
                 </ReactNativeZoomableView>
