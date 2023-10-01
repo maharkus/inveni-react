@@ -15,7 +15,7 @@ export const SettingsPage = ({ navigation}) => {
                 <Image source={require('../assets/settingsHeader.png')}
                        resizeMethod={"resize"}
                        progressiveRenderingEnabled={true}
-                       style={{width: 230, height: 250}}/>
+                       style={{width: 260, height: 290}}/>
 
                 <View style={[styles.settingsBox, {backgroundColor: customColors.purple, marginBottom: 40, marginTop: -80}]}>
                     <Text style={[styles.defaultHeader, {textAlign: "center"}]}>Ueber inveni</Text>
