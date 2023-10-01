@@ -92,7 +92,7 @@ export const styles = StyleSheet.create({
   },
   iconButtonBasics: {
     borderColor: customColors.dark,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderRadius: 9999,
     margin: 10,
   },
@@ -257,7 +257,7 @@ export const styles = StyleSheet.create({
   },
   topBarGrad: {
     height: 200,
-    width: "140%",
+    width: "100%",
     position: "absolute",
     top: 0,
     left: 0,

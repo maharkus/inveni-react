@@ -107,9 +107,6 @@ export const Navigation = ({ route, navigation }) => {
                             </>
                         }
                     </>
-                    <View style={{left: 0, right: 0, width: "100%", justifyContent:"center", bottom: 0, display: "flex", flexDirection: "row"}}>
-
-                    </View>
                     <ButtonTextOnly action={() => navigation.navigate("Home")}>Back to Search</ButtonTextOnly>
                 </View>
             </View>
