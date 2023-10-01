@@ -6,6 +6,7 @@ import { Home } from "./pages/Home";
 import { Navigation } from "./pages/Navigation";
 import * as Font from 'expo-font';
 import {useEffect, useState} from "react";
+import {View} from "react-native";
 
 export default function App() {
     const Stack = createNativeStackNavigator();

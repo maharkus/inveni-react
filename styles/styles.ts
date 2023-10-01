@@ -42,7 +42,8 @@ export const styles = StyleSheet.create({
     flexGrow:1,
     alignItems: "center",
     paddingHorizontal: 25,
-    paddingBottom: 50
+    paddingBottom: 50,
+    backgroundColor: "#ffffff"
   },
   modalContainer: {
     flex: 1,
@@ -251,7 +252,6 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row",
     backgroundColor: "rgba(0, 0, 0, 0)",
-    position: "absolute",
     top: 0,
     zIndex : 2
   },
