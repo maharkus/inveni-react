@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {customColors, styles} from "../styles/styles";
 import {GestureHandlerRootView} from "react-native-gesture-handler";
 import Campus from "../components/Campus";
@@ -10,24 +10,27 @@ import * as React from "react";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 import {LinearGradient} from "expo-linear-gradient";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../states/store";
 
 
-export const Home = ({navigation}) => {
+export const Home = ({route, navigation}) => {
     const [category, setCategory] = useState(-1);
     const [room, setRoom] = useState(-1);
     const [etage, setEtage] = useState(-1);
     const [sheetStatus, setSheetStatus] = useState(-1);
-
+    const value = useSelector((state: RootState) => state.counter.value);
 
     //Init Search
     const initSearch = () => {
-        setSheetStatus(1)
         clearResults();
+        setSheetStatus(1)
     }
 
     const clearResults = () => {
         setCategory(-1)
         setRoom(-1)
+        setSheetStatus(-1)
     }
 
     //Building Selection
@@ -44,6 +47,7 @@ export const Home = ({navigation}) => {
     }
 
     const destination = {category: category, etage: etage, room: room}
+
 
     return (
         <>
@@ -82,7 +86,9 @@ export const Home = ({navigation}) => {
                         selectBuilding={(building) => handleBuilding(building)}
                         category={category}
                         room={room}
-                        onClear={clearResults}/>
+                        onClear={clearResults}
+                        isNavigationFinished={value}
+                />
             </GestureHandlerRootView>
         </>
     );
