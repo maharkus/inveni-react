@@ -324,4 +324,11 @@ export const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 25,
   },
+  //Success Screen
+  gifWrap: {
+    borderRadius: 20,
+    borderWidth: 1.4,
+    overflow: "hidden",
+    marginTop: 150
+  }
 });
