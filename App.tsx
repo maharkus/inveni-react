@@ -6,11 +6,13 @@ import { Home } from "./pages/Home";
 import { Navigation } from "./pages/Navigation";
 import * as Font from 'expo-font';
 import {useEffect, useState} from "react";
-import {View} from "react-native";
+import store from "./states/store";
+import {Provider} from "react-redux";
 
 export default function App() {
     const Stack = createNativeStackNavigator();
     const [isFontLoaded, setIsFontLoaded] = useState(false);
+
 
     useEffect(() => {
         const loadFont = async () => {
@@ -31,12 +33,13 @@ export default function App() {
     }
 
     return (
+        <Provider store={store}>
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
                     name="Home"
                     component={Home}
-                    options={{ headerShown: false }}
+                    options={{ headerShown: false}}
                 />
                 <Stack.Screen
                     name="Navigation"
@@ -50,5 +53,6 @@ export default function App() {
                 />
             </Stack.Navigator>
         </NavigationContainer>
+        </Provider>
     );
 }

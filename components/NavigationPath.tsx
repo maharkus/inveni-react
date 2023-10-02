@@ -22,7 +22,6 @@ export const NavPath = ({destination, currentFloor}: Props) => {
         }
 
 
-        console.log(endNode)
         const points = getPathstoRooms(destination.category, currentFloor, endNode);
 
         const ctx = canvas.current.getContext('2d');

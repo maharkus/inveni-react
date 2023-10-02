@@ -9,6 +9,9 @@ import {NavPath} from "../components/NavigationPath";
 import {useState} from "react";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../states/store";
+import {toggleValue} from "../states/slice";
 
 export const Navigation = ({ route, navigation }) => {
     const images = [
@@ -17,12 +20,15 @@ export const Navigation = ({ route, navigation }) => {
     const [currentFloor, setCurrentFloor] = useState(0);
     const destination: {category: number, etage:number, room: number} = route.params.destination;
 
+    const dispatch = useDispatch();
+
 
     const handleNextStep = () => {
         if (currentFloor < destination.etage) {
             setCurrentFloor(currentFloor + 1);
         }
         else {
+            dispatch(toggleValue());
             navigation.navigate("Home")
         }
     }

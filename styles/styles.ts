@@ -274,13 +274,22 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  navigationTopBarContent: {
+  navigationTopBarContentBackground: {
     backgroundColor: customColors.grey,
     paddingHorizontal: 25,
     paddingVertical: 15,
     borderRadius: 999,
     borderWidth: 1,
     borderColor: customColors.dark,
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  navigationTopBarContent: {
+    paddingHorizontal: 25,
+    paddingVertical: 15,
+    borderRadius: 999,
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
@@ -308,6 +317,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: 50,
   },
+  
   //Settings
   settingsBox: {
     width: "90%",
@@ -333,4 +343,12 @@ export const styles = StyleSheet.create({
     borderRadius: 999,
     width: 300,
   },
+
+  //Success Screen
+  gifWrap: {
+    borderRadius: 20,
+    borderWidth: 1.4,
+    overflow: "hidden",
+    marginTop: 150
+  }
 });
