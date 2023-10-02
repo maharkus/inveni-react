@@ -43,6 +43,12 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
         statusChange(-1);
     }, [statusChange]);
 
+    // To keep swipe down working
+    const handleSheetChange = useCallback((index) => {
+        index == -1 && room == -1 && onClear();
+        statusChange(index);
+    }, [statusChange, room, onClear]);
+
     const onFinish = () => {
         onClear()
         dispatch(toggleValue());
@@ -73,6 +79,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                 enablePanDownToClose={true}
                 backdropComponent={CustomBackdrop}
                 handleComponent={CustomHandle}
+                onChange={handleSheetChange}
             >
                 {!isNavigationFinished ?
                     <>
