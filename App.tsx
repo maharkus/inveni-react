@@ -17,8 +17,9 @@ export default function App() {
     useEffect(() => {
         const loadFont = async () => {
             await Font.loadAsync({
-                'Accelerator': require('./assets/fonts/accelerator.ttf'),
+                'TTTravels': require('./assets/fonts/accelerator.ttf'),
                 'Work Sans': require('./assets/fonts/WorkSans.ttf'),
+                'Work Sans Bold': require('./assets/fonts/WorkSansBold.ttf'),
             });
 
             setIsFontLoaded(true);

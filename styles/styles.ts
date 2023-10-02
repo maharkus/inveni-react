@@ -122,7 +122,7 @@ export const styles = StyleSheet.create({
   buttonTextOnly: {
     color: customColors.dark,
     fontSize: 18,
-    fontWeight: "700",
+    fontFamily: "Work Sans Bold",
     opacity: .3
   },
   buttonIcon: {
@@ -317,7 +317,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: 50,
   },
-  
+
   //Settings
   settingsBox: {
     width: "90%",
