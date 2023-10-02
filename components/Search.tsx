@@ -6,13 +6,14 @@ import {Button} from "react-native-paper";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState,} from "react";
 import ButtonIcon from "./ButtonIcon";
-import {ScrollView, Text, View} from "react-native";
+import {Image, ScrollView, Text, View} from "react-native";
 import Scrollview from "react-native-gesture-handler"
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../states/store";
 import {toggleValue} from "../states/slice";
 import {ButtonText} from "./ButtonText";
 import RoomBar from "./RoomBar";
+import * as React from "react";
 
 interface Props {
     status: number,
@@ -28,8 +29,9 @@ interface Props {
 export const Search = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished} : Props) => {
     const sheetRef = useRef<BottomSheet>(null);
     const [etage, setEtage] = useState(0);
-
     const dispatch = useDispatch();
+
+    const finishedTexts = ["Done.", "K, cool.", "Esketit!", "Let's go!", "Awesome!", "Neat!", "Got it.", "I came."]
 
     // Modal Interactivity
     useEffect(() => {
@@ -99,12 +101,18 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                         </View>
                     </>
                     :
-                    <BottomSheetView style={{flex: 1}}>
+                    <BottomSheetView style={[styles.contentContainer, {flex: 1}]}>
+                        <Text style={styles.defaultHeader}>You got it!</Text>
                         <RoomBar destination={{category, etage, room}}></RoomBar>
-                    <Text>Hi</Text>
-                    <ButtonText color={customColors.green} action={onFinish}>
-                        Fertig
-                    </ButtonText>
+                        <Image source={require('../assets/settingsHeader.png')}
+                                        resizeMethod={"resize"}
+                                        progressiveRenderingEnabled={true}
+                                        style={{width: 260, height: 290, marginTop: 100}}/>
+                        <Text style={styles.defaultText}>You have reached your destination.</Text>
+                        <Text style={styles.defaultHeader}>Enjoy!</Text>
+                        <ButtonText color={customColors.green} action={onFinish}>
+                            {finishedTexts[Math.floor(Math.random()*finishedTexts.length)]}
+                        </ButtonText>
                     </BottomSheetView>
                     }
             </BottomSheet>

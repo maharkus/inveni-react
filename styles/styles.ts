@@ -272,13 +272,22 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  navigationTopBarContent: {
+  navigationTopBarContentBackground: {
     backgroundColor: customColors.grey,
     paddingHorizontal: 25,
     paddingVertical: 15,
     borderRadius: 999,
     borderWidth: 1,
     borderColor: customColors.dark,
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  navigationTopBarContent: {
+    paddingHorizontal: 25,
+    paddingVertical: 15,
+    borderRadius: 999,
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
