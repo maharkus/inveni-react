@@ -1,10 +1,10 @@
 import BottomSheet, {BottomSheetScrollView, BottomSheetView} from "@gorhom/bottom-sheet";
 import {customColors, styles} from "../styles/styles";
+import {Button} from "react-native-paper";
 import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
-import {Button} from "react-native-paper";
 import {RoomSelection} from "./RoomSelection";
-import {useCallback, useEffect, useMemo, useRef, useState,} from "react";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import ButtonIcon from "./ButtonIcon";
 import {Image, ScrollView, Text, View} from "react-native";
 import Scrollview from "react-native-gesture-handler"
@@ -14,6 +14,7 @@ import {toggleValue} from "../states/slice";
 import {ButtonText} from "./ButtonText";
 import RoomBar from "./RoomBar";
 import * as React from "react";
+import { SearchResults } from "./SearchResults";
 
 interface Props {
     status: number,
@@ -86,16 +87,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                         <BottomSheetScrollView style={{flex: 1}}>
                             {category == -1 ?
                                 <>
-                                    <Text style={styles.defaultHeader}>Kategorien</Text>
-                                    <Button
-                                        onPress={ () => {
-                                            selectBuilding(0)
-                                        }
-                                        }
-                                    >Seminarräume</Button>
-
-                                    <Text style={styles.defaultHeader}>All Rooms</Text>
-                                    {/*<RoomGrid/>*/}
+                                    <SearchResults />
                                 </>
                                 :
                                 <>

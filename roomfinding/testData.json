@@ -1,0 +1,19 @@
+[
+    {
+      "id": 1,
+      "name": "Room 1"
+    },
+    {
+      "id": "E02 203",
+      "name": "Seminarraum",
+      "gebauede": "L2",
+      "etage": 2,
+      "x": 100,
+      "y": 69,
+      "color": "#ffffff"
+    },
+    {
+      "id": 3,
+      "name": "Room 3"
+    }
+]

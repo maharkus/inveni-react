@@ -16,10 +16,10 @@ export default function RoomBar ({destination, hasBackground} : Props) {
             <View style={hasBackground ? styles.navigationTopBarContentBackground : styles.navigationTopBarContent}>
                 <View style={[styles.navTBC, styles.navTBCirclePurple]}></View>
 
-                <Text style={{marginRight: 10}}>{buildingname}</Text>
+                <Text style={[styles.defaultText, {marginRight: 10}]}>{buildingname}</Text>
 
                 <View style={[styles.navTBC,styles.navTBCircleOrange]}></View>
-                <Text>{room}</Text>
+                <Text style={styles.defaultText}>{room}</Text>
             </View>
         </View>
     )
