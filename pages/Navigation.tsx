@@ -11,7 +11,7 @@ import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../states/store";
-import {toggleValue} from "../states/counterSlice";
+import {toggleValue} from "../states/slice";
 
 export const Navigation = ({ route, navigation }) => {
     const images = [

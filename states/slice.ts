@@ -1,16 +1,16 @@
-// counterSlice.ts
+// slice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface CounterState {
+interface State {
     value: boolean;
 }
 
-const initialState: CounterState = {
+const initialState: State = {
     value: false, // Initial value is false
 };
 
-const counterSlice = createSlice({
-    name: 'counter',
+const slice = createSlice({
+    name: 'slice',
     initialState,
     reducers: {
         toggleValue: (state) => {
@@ -19,5 +19,5 @@ const counterSlice = createSlice({
     },
 });
 
-export const { toggleValue } = counterSlice.actions;
-export default counterSlice.reducer;
+export const { toggleValue } = slice.actions;
+export default slice.reducer;

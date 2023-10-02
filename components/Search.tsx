@@ -10,7 +10,7 @@ import {ScrollView, Text, View} from "react-native";
 import Scrollview from "react-native-gesture-handler"
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../states/store";
-import {toggleValue} from "../states/counterSlice";
+import {toggleValue} from "../states/slice";
 import {ButtonText} from "./ButtonText";
 import RoomBar from "./RoomBar";
 
