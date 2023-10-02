@@ -1,5 +1,5 @@
 import { Pressable, Text } from "react-native";
-import { customColors, styles } from "../styles/styles";
+import { styles } from "../styles/styles";
 import * as React from "react";
 
 interface Props {

@@ -21,13 +21,13 @@ export const SettingsPage = ({ navigation}) => {
                 <View style={[styles.settingsBox, {backgroundColor: customColors.purple, marginBottom: 40, marginTop: -80, paddingTop: 20}]}>
                     <View style={{display: "flex", flexDirection: "row", gap: 15, justifyContent: "center"}}>
                         <Text style={[styles.defaultHeader, {marginTop: 25}]}>
-                            Ueber
+                            About
                         </Text>
                         <Logo width={110}></Logo>
                     </View>
-                    <Text style={{marginTop: 10}}>inveni hilft Dir bei der Navigation auf dem Campus. Wähle einen Raum und die App übernimmt den Rest.</Text>
-                    <Text style={{marginTop: 10}}>Die App wurde als Projektarbeit von Julz und Markus entwickelt, zwei Studenten in Computervisualistik und Design an der Hochschule Hamm-Lippstadt.</Text>
-                    <Text style={{marginTop: 10, marginBottom: 20}}>Du hast Fragen oder Anregungen zur App? Schreib uns!</Text>
+                    <Text style={[styles.defaultText, {marginTop: 10}]}>inveni hilft Dir bei der Navigation auf dem Campus. Wähle einen Raum und die App übernimmt den Rest.</Text>
+                    <Text style={[styles.defaultText, {marginTop: 10}]}>Die App wurde als Projektarbeit von Julz und Markus entwickelt, zwei Studenten in Computervisualistik und Design an der Hochschule Hamm-Lippstadt.</Text>
+                    <Text style={[styles.defaultText, {marginTop: 10, marginBottom: 25}]}>Du hast Fragen oder Anregungen zur App? Schreib uns!</Text>
                     <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Kontaktiere uns</ButtonText>
                 </View>
 

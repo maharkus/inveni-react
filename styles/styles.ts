@@ -43,7 +43,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 25,
     paddingBottom: 50,
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
+    width: "100%",
   },
   modalContainer: {
     flex: 1,
@@ -53,7 +54,8 @@ export const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     overflow: "hidden",
-    zIndex: 5
+    zIndex: 5,
+    width: "100%",
   },
   customHandle: {
     backgroundColor: "#2B2D34",
@@ -312,7 +314,23 @@ export const styles = StyleSheet.create({
     borderRadius: 40,
     borderWidth: 1,
     borderColor: customColors.dark,
-    paddingVertical: 15,
+    paddingVertical: 25,
     paddingHorizontal: 25,
+    fontFamily: "Work Sans",
+  },
+
+  //SearchBar
+  searchBarWrapper: {
+    width: "100%",
+  },
+  searchBarInput: {
+    height: 70,
+    fontSize: 16,
+    fontFamily: "Work Sans",
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    borderWidth: 1,
+    borderRadius: 999,
+    width: 300,
   },
 });

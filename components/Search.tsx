@@ -4,10 +4,10 @@ import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
 import {Button} from "react-native-paper";
 import {RoomSelection} from "./RoomSelection";
-import {useCallback, useEffect, useMemo, useRef,} from "react";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import ButtonIcon from "./ButtonIcon";
 import {ScrollView, Text, View} from "react-native";
-import Scrollview from "react-native-gesture-handler"
+import { SearchResults } from "./SearchResults";
 
 interface Props {
     status: number,
@@ -64,16 +64,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                 <BottomSheetScrollView style={{flex: 1}}>
                         {category == -1 ?
                             <>
-                                <Text style={styles.defaultHeader}>Kategorien</Text>
-                                <Button
-                                    onPress={ () => {
-                                            selectBuilding(0)
-                                        }
-                                    }
-                                >Seminarräume</Button>
-
-                                <Text style={styles.defaultHeader}>All Rooms</Text>
-                                {/*<RoomGrid/>*/}
+                                <SearchResults />
                             </>
                         :
                             <>
