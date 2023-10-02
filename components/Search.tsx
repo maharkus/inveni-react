@@ -102,13 +102,9 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                     </>
                     :
                     <BottomSheetView style={[styles.contentContainer, {flex: 1}]}>
-                        <Text style={styles.defaultHeader}>You got it!</Text>
                         <RoomBar destination={{category, etage, room}}></RoomBar>
-                        <Image source={require('../assets/settingsHeader.png')}
-                                        resizeMethod={"resize"}
-                                        progressiveRenderingEnabled={true}
-                                        style={{width: 260, height: 290, marginTop: 100}}/>
-                        <Text style={styles.defaultText}>You have reached your destination.</Text>
+                        <Image source={require('../assets/gifs/awesome.gif')} style={{marginTop: 150, width: 200, height: 200 }} />
+                        <Text style={[styles.defaultText, {width: 160, textAlign: "center"}]}>You have reached your destination.</Text>
                         <Text style={styles.defaultHeader}>Enjoy!</Text>
                         <ButtonText color={customColors.green} action={onFinish}>
                             {finishedTexts[Math.floor(Math.random()*finishedTexts.length)]}
