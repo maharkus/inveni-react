@@ -77,7 +77,7 @@ export const Home = ({route, navigation}) => {
                                     imageSource={require("../assets/icons/magnifier.png")} action={() => initSearch()}
                                     customStyles={0}></ButtonIcon>
                         :
-                        <ButtonTextOnly action={() => clearResults()}>Back to Search</ButtonTextOnly>
+                        <ButtonTextOnly action={() => clearResults()}>Cancel</ButtonTextOnly>
                     }
                 </View>
                 <Search status={sheetStatus}

@@ -32,7 +32,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
     const [etage, setEtage] = useState(0);
     const dispatch = useDispatch();
 
-    const finishedTexts = ["Wonderful!", "Okay", "Great Success!", "Awesome!", "Neat!", "Yeehaw!", "Cool.", "yeeey!"]
+    const finishedTexts = ["Wonderful!", "Okay", "Great Success!", "Awesome!", "Neat!", "Yeehaw!", "Cool.", "yeeey!", "Woooho!"]
     const gifs = [
         require('../assets/gifs/awesome.gif'),
         require('../assets/gifs/propeller.gif'),
@@ -42,6 +42,7 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
         require('../assets/gifs/yehaw.gif'),
         require('../assets/gifs/k_cool.gif'),
         require('../assets/gifs/yeeey.gif'),
+        require('../assets/gifs/skeletal.gif'),
     ]
     const gifIndex = Math.floor(Math.random()*gifs.length);
 
