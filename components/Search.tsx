@@ -32,7 +32,18 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
     const [etage, setEtage] = useState(0);
     const dispatch = useDispatch();
 
-    const finishedTexts = ["Done.", "K, cool.", "Esketit!", "Let's go!", "Awesome!", "Neat!", "Got it.", "I came."]
+    const finishedTexts = ["Wonderful!", "Okay", "Great Success!", "Awesome!", "Neat!", "Yeehaw!", "Cool.", "yeeey!"]
+    const gifs = [
+        require('../assets/gifs/awesome.gif'),
+        require('../assets/gifs/propeller.gif'),
+        require('../assets/gifs/borat.gif'),
+        require('../assets/gifs/dance.gif'),
+        require('../assets/gifs/top.gif'),
+        require('../assets/gifs/yehaw.gif'),
+        require('../assets/gifs/k_cool.gif'),
+        require('../assets/gifs/yeeey.gif'),
+    ]
+    const gifIndex = Math.floor(Math.random()*gifs.length);
 
     // Modal Interactivity
     useEffect(() => {
@@ -103,12 +114,12 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                     <BottomSheetView style={[styles.contentContainer, {flex: 1}]}>
                         <RoomBar destination={{category, etage, room}}></RoomBar>
                         <View style={styles.gifWrap}>
-                        <Image source={require('../assets/gifs/awesome.gif')} style={{width: 200, height: 200 }} />
+                        <Image source={gifs[gifIndex]} style={{width: 200, height: 200 }} />
                         </View>
-                        <Text style={[styles.defaultText, {width: 160, textAlign: "center", marginTop: 30}]}>You have reached your destination.</Text>
-                        <Text style={[styles.defaultHeader, {marginTop: 30, marginBottom: 30}]}>Enjoy!</Text>
+                        <Text style={[styles.defaultHeader, {marginTop: 30}]}>You made it!</Text>
+                        <Text style={[styles.defaultText, {width: 160, textAlign: "center", marginBottom: 30}]}>You have reached your destination.</Text>
                         <ButtonText color={customColors.green} action={onFinish}>
-                            {finishedTexts[Math.floor(Math.random()*finishedTexts.length)]}
+                            {finishedTexts[gifIndex]}
                         </ButtonText>
                     </BottomSheetView>
                     }
