@@ -25,7 +25,7 @@ export default function Campus ({onBuilding, destination} : Props) {
                 minZoom={1.7}
                 zoomStep={0}
                 initialZoom={1.7}
-                panBoundaryPadding={0}
+                panBoundaryPadding={100}
                 visualTouchFeedbackEnabled={false}
                 contentHeight={400}
             >
