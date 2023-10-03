@@ -122,7 +122,7 @@ export const styles = StyleSheet.create({
   buttonTextOnly: {
     color: customColors.dark,
     fontSize: 18,
-    fontWeight: "700",
+    fontFamily: "Work Sans Bold",
     opacity: .3
   },
   buttonIcon: {
