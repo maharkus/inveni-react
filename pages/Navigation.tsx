@@ -136,12 +136,12 @@ export const Navigation = ({ route, navigation }) => {
                         {currentFloor == 0 &&
                             <>
                                 <View style={{flex: 1, flexDirection: "row"}}>
-                                    <ButtonTextAndIcon isLeft={true} color={customColors.grey} state={true}
+                                    <ButtonTextAndIcon isLeft={true} color={customColors.grey} isActive={true}
                                                     imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
                                                     action={() => handlePrevStep()}>
                                         Back
                                     </ButtonTextAndIcon>
-                                    <ButtonTextAndIcon color={customColors.orange} state={false}
+                                    <ButtonTextAndIcon color={customColors.orange} isActive={false}
                                                     imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
                                                     action={() => handleNextStep()}>
                                         Next
@@ -152,12 +152,12 @@ export const Navigation = ({ route, navigation }) => {
                         {currentFloor > 0 &&
                             <>
                                 <View style={{flex: 1, flexDirection: "row"}}>
-                                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} state={false}
+                                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} isActive={false}
                                                     imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
                                                     action={() => handlePrevStep()}>
                                         Back
                                     </ButtonTextAndIcon>
-                                    <ButtonTextAndIcon color={customColors.orange} state={false}
+                                    <ButtonTextAndIcon color={customColors.orange} isActive={false}
                                                     imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
                                                     action={() => handleNextStep()}>
                                         Next

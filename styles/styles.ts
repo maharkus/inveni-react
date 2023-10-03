@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 50,
     borderStyle: "solid",
-    borderWidth: 1,
+    borderWidth: 1.4,
     overflow: "hidden",
     zIndex: 5,
     width: "100%",
@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
   },
   buttonBasics: {
     borderColor: customColors.dark,
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderRadius: 9999,
     paddingTop: 20,
     paddingRight: 35,
@@ -95,7 +95,7 @@ export const styles = StyleSheet.create({
   },
   iconButtonBasics: {
     borderColor: customColors.dark,
-    borderWidth: 1.5,
+    borderWidth: 1.4,
     borderRadius: 9999,
     margin: 10,
   },
@@ -127,7 +127,7 @@ export const styles = StyleSheet.create({
   },
   buttonIcon: {
     borderRadius: 9999,
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderColor: customColors.dark,
     color: customColors.dark,
     padding: 0,
@@ -151,7 +151,7 @@ export const styles = StyleSheet.create({
     backgroundColor: customColors.orange,
     color: customColors.yellow,
     borderColor: customColors.dark,
-    borderWidth: 1,
+    borderWidth: 1.0,
     borderRadius: 9999,
     margin: 0,
     width: 30,
@@ -178,12 +178,13 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "flex-start",
+    paddingBottom: 180,
   },
   room: {
     width: "46%",
     backgroundColor: customColors.light,
     borderStyle: "solid",
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderColor: customColors.dark,
     borderRadius: 25,
     height: 90,
@@ -222,7 +223,7 @@ export const styles = StyleSheet.create({
   //Julz RoomGrid
   roomBox: {
     borderStyle: "solid",
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderRadius: 20,
     display: "flex",
     justifyContent: "space-between",
@@ -279,7 +280,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 15,
     borderRadius: 999,
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderColor: customColors.dark,
     flex: 1,
     flexDirection: "row",
@@ -300,7 +301,7 @@ export const styles = StyleSheet.create({
     width: 25,
     borderRadius: 999,
     marginRight: 5,
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderColor: customColors.dark
   },
   navTBCirclePurple: {
@@ -317,12 +318,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: 50,
   },
-  
+
   //Settings
   settingsBox: {
     width: "90%",
     borderRadius: 40,
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderColor: customColors.dark,
     paddingVertical: 25,
     paddingHorizontal: 25,
@@ -339,7 +340,7 @@ export const styles = StyleSheet.create({
     fontFamily: "Work Sans",
     paddingVertical: 10,
     paddingHorizontal: 25,
-    borderWidth: 1,
+    borderWidth: 1.4,
     borderRadius: 999,
     width: 300,
   },
