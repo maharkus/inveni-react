@@ -12,6 +12,7 @@ import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 import {LinearGradient} from "expo-linear-gradient";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../states/store";
+import RoomBar from "../components/RoomBar";
 
 
 export const Home = ({route, navigation}) => {
@@ -52,11 +53,23 @@ export const Home = ({route, navigation}) => {
     return (
         <>
             <GestureHandlerRootView style={styles.homeContainer}>
-                <TopBar navigation={navigation}/>
+                {room == -1 ?
+                    <TopBar navigation={navigation}/>
+                    :
+                    <View></View>
+                }
+                
                 <LinearGradient style={styles.topBarGrad}
                                 colors={['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 0)']}
                                 locations={[0.3, .7]}
                 />
+                <View style={styles.roomBarView}>
+                    {destination.room != -1 &&
+                        <RoomBar destination={ destination } />
+                    }
+                </View>
+                
+
                 <Campus destination={destination} onBuilding={(building) => handleBuilding(building)}
                         navigation={navigation}></Campus>
 

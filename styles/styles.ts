@@ -163,7 +163,8 @@ export const styles = StyleSheet.create({
   },
   buttonBuildingText: {
     fontSize: 8,
-    fontWeight: "700"
+    fontWeight: "700",
+    fontFamily:"Work Sans Bold"
   },
   canvas: {
     width: 1500,
@@ -352,5 +353,14 @@ export const styles = StyleSheet.create({
     borderWidth: 1.4,
     overflow: "hidden",
     marginTop: 150
-  }
+  },
+
+  //roomBarView
+  roomBarView: {
+    position: "absolute",
+    top: 30,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
