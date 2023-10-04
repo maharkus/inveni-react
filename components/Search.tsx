@@ -1,20 +1,18 @@
 import BottomSheet, {BottomSheetScrollView, BottomSheetView} from "@gorhom/bottom-sheet";
 import {customColors, styles} from "../styles/styles";
-import {Button} from "react-native-paper";
 import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import ButtonIcon from "./ButtonIcon";
-import {Image, ScrollView, Text, View} from "react-native";
-import Scrollview from "react-native-gesture-handler"
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../states/store";
+import {Image, Text, View} from "react-native";
+import {useDispatch} from "react-redux";
 import {toggleValue} from "../states/slice";
 import {ButtonText} from "./ButtonText";
 import RoomBar from "./RoomBar";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
+import data from "../roomfinding/data.json";
 
 interface Props {
     status: number,
@@ -96,13 +94,16 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
             >
                 {!isNavigationFinished ?
                     <>
-                        <BottomSheetScrollView style={{flex: 1}}>
+                        <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
                             {category == -1 ?
                                 <>
                                     <SearchResults />
                                 </>
                                 :
-                                <>
+                                <> 
+                                    <View style={{flex: 1, alignItems: 'center'}}>
+                                        <Text style={styles.defaultHeader}>All rooms in {data.buildings[category].name}</Text>
+                                    </View>
                                     <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
                                 </>
                             }
@@ -115,10 +116,10 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                     <BottomSheetView style={[styles.contentContainer, {flex: 1}]}>
                         <RoomBar destination={{category, etage, room}}></RoomBar>
                         <View style={styles.gifWrap}>
-                        <Image source={gifs[gifIndex]} style={{width: 200, height: 200 }} />
+                            <Image source={gifs[gifIndex]} style={{width: 200, height: 200 }} />
                         </View>
                         <Text style={[styles.defaultHeader, {marginTop: 30}]}>You made it!</Text>
-                        <Text style={[styles.defaultText, {width: 160, textAlign: "center", marginBottom: 30}]}>You have reached your destination.</Text>
+                        <Text style={[styles.defaultText, {width: 300, textAlign: "center", marginBottom: 30}]}>Congratulations, you have reached your destination.</Text>
                         <ButtonText color={customColors.green} action={onFinish}>
                             {finishedTexts[gifIndex]}
                         </ButtonText>

@@ -10,8 +10,8 @@ export const SettingsPage = ({ navigation}) => {
     return (
 
         <View style={{backgroundColor: "#ffffff"}}>
-            <TopBar navigation={navigation} fullLogo={true}/>
-            <ScrollView contentContainerStyle={[styles.contentContainer, {paddingTop: 50, paddingBottom: 200}]}>
+            <TopBar navigation={navigation} fullLogo={true} settingsBtn={false}/>
+            <ScrollView contentContainerStyle={[styles.contentContainer, {paddingTop: 50,paddingBottom: 325}]}>
 
                 <Image source={require('../assets/settingsHeader.png')}
                        resizeMethod={"resize"}
@@ -19,23 +19,22 @@ export const SettingsPage = ({ navigation}) => {
                        style={{width: 260, height: 290}}/>
 
                 <View style={[styles.settingsBox, {backgroundColor: customColors.purple, marginBottom: 40, marginTop: -80, paddingTop: 20}]}>
-                    <View style={{display: "flex", flexDirection: "row", gap: 15, justifyContent: "center"}}>
+                    <View style={{display: "flex", flexDirection: "row", gap: 10, justifyContent: "center"}}>
                         <Text style={[styles.defaultHeader, {marginTop: 25}]}>
                             About
                         </Text>
-                        <Logo width={110}></Logo>
+                        <Logo width={100}></Logo>
                     </View>
-                    <Text style={[styles.defaultText, {marginTop: 10}]}>inveni hilft Dir bei der Navigation auf dem Campus. Wähle einen Raum und die App übernimmt den Rest.</Text>
-                    <Text style={[styles.defaultText, {marginTop: 10}]}>Die App wurde als Projektarbeit von Julz und Markus entwickelt, zwei Studenten in Computervisualistik und Design an der Hochschule Hamm-Lippstadt.</Text>
-                    <Text style={[styles.defaultText, {marginTop: 10, marginBottom: 25}]}>Du hast Fragen oder Anregungen zur App? Schreib uns!</Text>
+                    <Text style={[styles.defaultText, {marginTop: 10, textAlign: "center"}]}>inveni helps you with navigation on campus. Choose a room, and the app takes care of the rest.</Text>
+                    <Text style={[styles.defaultText, {marginTop: 10, textAlign: "center"}]}>The app was developed as a project by Julz and Markus, two students in Computer Visualization and Design at Hamm-Lippstadt University.</Text>
+                    <Text style={[styles.defaultText, {marginTop: 10, textAlign: "center", marginBottom: 30}]}>Do you have any questions or suggestions about the app? Write to us!</Text>
                     <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Kontaktiere uns</ButtonText>
                 </View>
 
                 <View style={[styles.settingsBox, {backgroundColor: customColors.yellow}]}>
                     <Text style={[styles.defaultHeader, {textAlign: "center"}]}>Einstellungen</Text>
-                    <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Anwenden</ButtonText>
+                    <ButtonText color={customColors.uwu} action={() => navigation.navigate("Home")}>Anwenden</ButtonText>
                 </View>
-
 
             </ScrollView>
             <View style={{flex: 1, alignItems: "center", position: "absolute", zIndex: 3, bottom: 150, left: 0, right: 0}}>
