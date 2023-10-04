@@ -157,13 +157,14 @@ export const styles = StyleSheet.create({
     width: 30,
     height: 30,
     padding: 0,
+    paddingTop: 2,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
   buttonBuildingText: {
-    fontSize: 8,
-    fontWeight: "700"
+    fontFamily: "Accelerator",
+    fontSize: 6,
   },
   canvas: {
     width: 1500,
@@ -258,7 +259,7 @@ export const styles = StyleSheet.create({
     zIndex : 2
   },
   topBarGrad: {
-    height: 200,
+    height: 250,
     width: "100%",
     position: "absolute",
     top: 0,

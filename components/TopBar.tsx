@@ -1,4 +1,4 @@
-import {View} from "react-native";
+import {View, Text} from "react-native";
 import ButtonIcon from "./ButtonIcon";
 import {customColors, styles} from "../styles/styles";
 import Icon from "../assets/Icon.svg";
@@ -10,7 +10,10 @@ export function TopBar({navigation, fullLogo = false}) {
         <View style={styles.topBarContainer}>
             <View>
                 {!fullLogo ?
-                    <Icon></Icon>
+                    <>
+                        <Logo></Logo>
+                    <Text style={{fontSize: 12, marginTop: 5}}>HSHL Campus Lippstadt</Text>
+                    </>
                     :
                     <Logo></Logo>
                 }
