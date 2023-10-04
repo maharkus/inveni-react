@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { customColors, styles } from "../styles/styles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Campus from "../components/Campus";
-import { View } from "react-native";
+import { Pressable, View, Text, Image } from "react-native";
 import { Search } from "../components/Search";
 import { TopBar } from "../components/TopBar";
 import ButtonIcon from "../components/ButtonIcon";
@@ -96,7 +96,31 @@ export const Home = ({ route, navigation }) => {
                 action={() => initSearch()}
                 customStyles={0}
               ></ButtonIcon>
-              {/*<View></View>*/}
+              <View style={styles.homeBottomNav}>
+                <Pressable style={styles.bhnSearchBar}>
+                  <Image
+                    style={{ height: 30, width: 30 }}
+                    source={require("../assets/icons/settings.png")}
+                  ></Image>
+                  <Text style={styles.bhnSearchBarText}>Search</Text>
+                </Pressable>
+                <ButtonIcon
+                  size={30}
+                  color={customColors.uwu}
+                  imageSource={require("../assets/icons/settings.png")}
+                  buttonPadding={15}
+                  action={() => navigation.navigate("SettingsPage")}
+                  customStyles={0}
+                />
+                <ButtonIcon
+                  size={30}
+                  color={customColors.uwu}
+                  imageSource={require("../assets/icons/settings.png")}
+                  buttonPadding={15}
+                  action={() => navigation.navigate("SettingsPage")}
+                  customStyles={0}
+                />
+              </View>
             </>
           ) : (
             <ButtonTextOnly action={() => clearResults()}>

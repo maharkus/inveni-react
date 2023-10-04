@@ -17,7 +17,7 @@ export const customColors = {
   greenPressed: "#79bb37",
   softPurplePressed: "#8f94bf",
   greyPressed: "#C3C3C3",
-}
+};
 
 export const styles = StyleSheet.create({
   homeContainer: {
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
 
   //Modal
   contentContainer: {
-    flexGrow:1,
+    flexGrow: 1,
     alignItems: "center",
     paddingHorizontal: 25,
     paddingBottom: 50,
@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
 
   //Reusable Components
   accelerator: {
-    fontFamily: "Accelerator"
+    fontFamily: "Accelerator",
   },
   defaultText: {
     fontFamily: "Work Sans",
@@ -91,13 +91,12 @@ export const styles = StyleSheet.create({
     paddingLeft: 35,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   iconButtonBasics: {
     borderColor: customColors.dark,
     borderWidth: 1.4,
     borderRadius: 9999,
-    margin: 10,
   },
   textIconButtonBasics: {
     flexDirection: "row",
@@ -117,13 +116,13 @@ export const styles = StyleSheet.create({
     color: customColors.dark,
     fontFamily: "Work Sans",
     fontSize: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
   buttonTextOnly: {
     color: customColors.dark,
     fontSize: 18,
     fontFamily: "Work Sans Bold",
-    opacity: .3
+    opacity: 0.3,
   },
   buttonIcon: {
     borderRadius: 9999,
@@ -144,8 +143,8 @@ export const styles = StyleSheet.create({
     position: "absolute",
     height: "100%",
     width: "100%",
-    backgroundColor: '#ffffff',
-    zIndex: -1
+    backgroundColor: "#ffffff",
+    zIndex: -1,
   },
   buttonBuilding: {
     backgroundColor: customColors.orange,
@@ -164,7 +163,7 @@ export const styles = StyleSheet.create({
   buttonBuildingText: {
     fontSize: 8,
     fontWeight: "700",
-    fontFamily:"Work Sans Bold"
+    fontFamily: "Work Sans Bold",
   },
   canvas: {
     width: 1500,
@@ -249,7 +248,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     paddingTop: 65,
     paddingLeft: 25,
-    paddingRight: 15,
+    paddingRight: 25,
     paddingBottom: 25,
     margin: 0,
     display: "flex",
@@ -258,7 +257,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "rgba(0, 0, 0, 0)",
     top: 0,
-    zIndex : 2
+    zIndex: 2,
   },
   topBarGrad: {
     height: 200,
@@ -266,7 +265,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
-    right: 0
+    right: 0,
   },
   //Top Bar Navigation
   navigationTopBar: {
@@ -304,20 +303,20 @@ export const styles = StyleSheet.create({
     borderRadius: 999,
     marginRight: 5,
     borderWidth: 1.4,
-    borderColor: customColors.dark
+    borderColor: customColors.dark,
   },
   navTBCirclePurple: {
-    backgroundColor: customColors.purple
+    backgroundColor: customColors.purple,
   },
   navTBCircleOrange: {
-    backgroundColor: customColors.orange
+    backgroundColor: customColors.orange,
   },
   //Bottom Nav
   bottomNav: {
     position: "absolute",
     left: 0,
     right: 0,
-    alignItems: 'center',
+    alignItems: "center",
     bottom: 50,
   },
 
@@ -352,7 +351,7 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1.4,
     overflow: "hidden",
-    marginTop: 150
+    marginTop: 150,
   },
 
   //roomBarView
@@ -362,5 +361,38 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  //Home Navigation Bar
+  homeBottomNav: {
+    backgroundColor: customColors.orange,
+    width: "90%",
+    position: "relative",
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "nowrap",
+    gap: 10,
+    padding: 15,
+    borderRadius: 999,
+    borderWidth: 1.4,
+    borderColor: customColors.dark,
+  },
+  bhnSearchBar: {
+    maxWidth: "100%",
+    padding: 15,
+    borderRadius: 999,
+    borderWidth: 1.4,
+    backgroundColor: customColors.light,
+    height: "100%",
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    justifyContent: "flex-start",
+  },
+  bhnSearchBarText: {
+    opacity: 0.3,
+    fontFamily: "Work Sans",
+    fontSize: 16,
   },
 });
