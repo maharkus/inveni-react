@@ -3,7 +3,7 @@ import { customColors, styles } from "../styles/styles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Campus from "../components/Campus";
 import { Pressable, View, Text, Image } from "react-native";
-import { Search } from "../components/Search";
+import { BottomSheetBar } from "../components/BottomSheetBar";
 import { TopBar } from "../components/TopBar";
 import ButtonIcon from "../components/ButtonIcon";
 import ButtonIconSVG from "../components/ButtonIconSVG";
@@ -25,7 +25,7 @@ export const Home = ({ route, navigation }) => {
   const [sheetStatus, setSheetStatus] = useState(-1);
   const value = useSelector((state: RootState) => state.counter.value);
 
-  //Init Search
+  //Init BottomSheetBar
   const initSearch = () => {
     clearResults();
     setSheetStatus(1);
@@ -111,7 +111,7 @@ export const Home = ({ route, navigation }) => {
             </ButtonTextOnly>
           )}
         </View>
-        <Search
+        <BottomSheetBar
           status={sheetStatus}
           statusChange={(index) => setSheetStatus(index)}
           selectRoom={(etage, room) => handleRoomSelection(etage, room)}

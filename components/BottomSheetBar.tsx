@@ -25,7 +25,7 @@ interface Props {
     isNavigationFinished: boolean
 }
 
-export const Search = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished} : Props) => {
+export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished} : Props) => {
     const sheetRef = useRef<BottomSheet>(null);
     const [etage, setEtage] = useState(0);
     const dispatch = useDispatch();
@@ -97,10 +97,10 @@ export const Search = ({status, category, room, selectRoom, selectBuilding, onCl
                         <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
                             {category == -1 ?
                                 <>
-                                    <SearchResults />
+                                    <SearchResults onRoomSelection={(etage, room) => onRoom(etage, room)}/>
                                 </>
                                 :
-                                <> 
+                                <>
                                     <View style={{flex: 1, alignItems: 'center'}}>
                                         <Text style={styles.defaultHeader}>All rooms in {data.buildings[category].name}</Text>
                                     </View>
