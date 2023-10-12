@@ -25,7 +25,7 @@ export const SearchResults = ({onRoomSelection} : Props) => {
   };
 
   return (
-    <View style={bonusStyles.container}>
+    <View style={{flex: 1, padding: 16}}>
       <SearchBar onSearch={handleSearch} />
       <SafeAreaView style={styles.roomGrid}>
           {filteredData.map((item: any, index: number) => (
@@ -42,13 +42,3 @@ export const SearchResults = ({onRoomSelection} : Props) => {
   );
 };
 
-const bonusStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  item: {
-    fontSize: 16,
-    paddingVertical: 8,
-  },
-});
