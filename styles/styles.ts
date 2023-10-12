@@ -366,7 +366,7 @@ export const styles = StyleSheet.create({
 
   //Home Navigation Bar
   homeBottomNav: {
-    backgroundColor: customColors.orange,
+    backgroundColor: customColors.yellow,
     width: "90%",
     position: "relative",
     flex: 1,

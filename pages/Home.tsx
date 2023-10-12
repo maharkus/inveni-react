@@ -55,7 +55,7 @@ export const Home = ({ route, navigation }) => {
   return (
     <>
       <GestureHandlerRootView style={styles.homeContainer}>
-        {room == -1 ? <TopBar navigation={navigation} /> : <View></View>}
+        {room == -1 ? <TopBar /> : <View></View>}
 
         <LinearGradient
           style={styles.topBarGrad}
@@ -94,7 +94,7 @@ export const Home = ({ route, navigation }) => {
             <>
               <View style={styles.homeBottomNav}>
                 <Pressable style={styles.bhnSearchBar} onPress={() => initSearch()}>
-                    <ICMagnifier width={30} height={30}></ICMagnifier>
+                    <ICMagnifier width={25} height={25}></ICMagnifier>
                     <Text style={styles.bhnSearchBarText}>Search Room</Text>
                 </Pressable>
                 <ButtonIconSVG color={customColors.uwu} action={() => initSearch()} customStyles={0} buttonPadding={15}>
