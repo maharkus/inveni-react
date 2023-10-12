@@ -33,7 +33,7 @@ export const SearchResults = () => {
                     <Text style={styles.roomTextPrim}>{item[0]}</Text>
                     <Text style={styles.roomTextSec}>{item[1]}</Text>
                 </View>
-                <View style={[styles.roomBottomBar, {backgroundColor: "red"}]} />
+                <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
               </Pressable>
             )}
             />
