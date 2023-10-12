@@ -22,35 +22,36 @@ export default function Campus ({onBuilding, destination} : Props) {
         <View style={styles.campusWrap}>
             <ReactNativeZoomableView
                 maxZoom={1.7}
-                minZoom={1.7}
-                zoomStep={0}
-                initialZoom={1.7}
+                minZoom={1}
+                zoomStep={0.1}
+                initialZoom={1}
                 panBoundaryPadding={100}
                 visualTouchFeedbackEnabled={false}
-                contentHeight={400}
+                contentHeight={900}
+                contentWidth={800}
             >
                 <View style={{zIndex: -1, position: "relative", justifyContent: "center", display:'flex', alignItems: "center", padding: 30, flex: 1}}>
                     {destination.room == -1 ?
                         <>
 
-                            <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 600, height: 450, flex: 1}}>
-                                <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[410, 95]}>L1</ButtonBuilding>
-                                <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[290, 185]}>L2</ButtonBuilding>
-                                <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[335, 335]}>L3</ButtonBuilding>
-                                <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[480, 200]}>L4</ButtonBuilding>
-                                <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[140, 250]}>IQL</ButtonBuilding>
+                            <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 1200, height: 900, flex: 1}}>
+                                <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[820, 190]}>L1</ButtonBuilding>
+                                <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[580, 370]}>L2</ButtonBuilding>
+                                <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[670, 670]}>L3</ButtonBuilding>
+                                <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[960, 400]}>L4</ButtonBuilding>
+                                <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[280, 500]}>IQL</ButtonBuilding>
                             </View>
                             <Image source={require('../assets/maps/map.png')}
                                    resizeMethod={"resize"}
                                    progressiveRenderingEnabled={true}
-                                   style={{width: 600, height: 450}}/>
+                                   style={{width: 1200, height: 900}}/>
                         </>
                         :
                         <>
                             <Image source={images[destination.category]}
                                    resizeMethod={"resize"}
                                    progressiveRenderingEnabled={true}
-                                   style={{width: 600, height: 450}}/>
+                                   style={{width: 1200, height: 900}}/>
                         </>
                     }
                 </View>

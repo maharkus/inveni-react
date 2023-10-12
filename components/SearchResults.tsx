@@ -24,7 +24,7 @@ export const SearchResults = () => {
     <View style={bonusStyles.container}>
       <SearchBar onSearch={handleSearch} />
       <SafeAreaView style={styles.roomGrid}>
-        {/*<FlatList
+        <FlatList
             data={filteredData}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
@@ -36,7 +36,7 @@ export const SearchResults = () => {
                 <View style={[styles.roomBottomBar, {backgroundColor: "red"}]} />
               </Pressable>
             )}
-            />*/}
+            />
       </SafeAreaView>
     </View>
   );
