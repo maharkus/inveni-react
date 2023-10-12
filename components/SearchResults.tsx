@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import data from "../roomfinding/testData.json";
+import data from "../roomfinding/data.json";
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { SearchBar } from "./SearchBar";
 import { styles } from "../styles/styles";
@@ -10,8 +10,8 @@ export const SearchResults = () => {
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    const filtered = data.filter((item) =>
-      item.name.toLowerCase().includes(searchText.toLowerCase())
+    const filtered = data.buildings[0].etage[0].rooms.filter((item:any) =>
+      item[0].toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredData(filtered);
   }, [searchText]);
@@ -26,12 +26,12 @@ export const SearchResults = () => {
       <SafeAreaView style={styles.roomGrid}>
         <FlatList
             data={filteredData}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.toString()}
             renderItem={({ item }) => (
               <Pressable style={styles.room} key={0} onPress={null}>
                 <View style={styles.roomTextView}>
-                    <Text style={styles.roomTextPrim}>{item.id}</Text>
-                    <Text style={styles.roomTextSec}>{item.name}</Text>
+                    <Text style={styles.roomTextPrim}>{item[0]}</Text>
+                    <Text style={styles.roomTextSec}>{item[1]}</Text>
                 </View>
                 <View style={[styles.roomBottomBar, {backgroundColor: "red"}]} />
               </Pressable>
