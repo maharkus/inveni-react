@@ -14,6 +14,7 @@ export const SearchResults = () => {
       item[0].toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredData(filtered);
+      return () => setFilteredData([]);
   }, [searchText]);
 
   const handleSearch = (text) => {
@@ -24,19 +25,15 @@ export const SearchResults = () => {
     <View style={bonusStyles.container}>
       <SearchBar onSearch={handleSearch} />
       <SafeAreaView style={styles.roomGrid}>
-        <FlatList
-            data={filteredData}
-            keyExtractor={(item) => item.toString()}
-            renderItem={({ item }) => (
-              <Pressable style={styles.room} key={0} onPress={null}>
-                <View style={styles.roomTextView}>
-                    <Text style={styles.roomTextPrim}>{item[0]}</Text>
-                    <Text style={styles.roomTextSec}>{item[1]}</Text>
-                </View>
-                <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
+          {filteredData.map((item: any, index: number) => (
+              <Pressable style={styles.room} key={index} onPress={null}>
+                  <View style={styles.roomTextView}>
+                      <Text style={styles.roomTextPrim}>{item[0]} {filteredData.length}</Text>
+                      <Text style={styles.roomTextSec}>{item[1]}</Text>
+                  </View>
+                  <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
               </Pressable>
-            )}
-            />
+          ))}
       </SafeAreaView>
     </View>
   );
