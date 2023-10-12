@@ -6,6 +6,7 @@ import { Pressable, View, Text, Image } from "react-native";
 import { Search } from "../components/Search";
 import { TopBar } from "../components/TopBar";
 import ButtonIcon from "../components/ButtonIcon";
+import ButtonIconSVG from "../components/ButtonIconSVG";
 import * as React from "react";
 import { ButtonTextOnly } from "../components/ButtonTextOnly";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
@@ -13,6 +14,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../states/store";
 import RoomBar from "../components/RoomBar";
+import ICSettings from "../assets/icons/ic_settings.svg";
+import ICList from "../assets/icons/ic_list.svg";
+import ICMagnifier from "../assets/icons/ic_magnifier.svg";
 
 export const Home = ({ route, navigation }) => {
   const [category, setCategory] = useState(-1);
@@ -88,38 +92,17 @@ export const Home = ({ route, navigation }) => {
           )}
           {room == -1 ? (
             <>
-              <ButtonIcon
-                size={30}
-                buttonPadding={25}
-                color={customColors.orange}
-                imageSource={require("../assets/icons/magnifier.png")}
-                action={() => initSearch()}
-                customStyles={0}
-              ></ButtonIcon>
               <View style={styles.homeBottomNav}>
-                <Pressable style={styles.bhnSearchBar}>
-                  <Image
-                    style={{ height: 30, width: 30 }}
-                    source={require("../assets/icons/settings.png")}
-                  ></Image>
-                  <Text style={styles.bhnSearchBarText}>Search</Text>
+                <Pressable style={styles.bhnSearchBar} onPress={() => initSearch()}>
+                    <ICMagnifier width={30} height={30}></ICMagnifier>
+                    <Text style={styles.bhnSearchBarText}>Search Room</Text>
                 </Pressable>
-                <ButtonIcon
-                  size={30}
-                  color={customColors.uwu}
-                  imageSource={require("../assets/icons/settings.png")}
-                  buttonPadding={15}
-                  action={() => navigation.navigate("SettingsPage")}
-                  customStyles={0}
-                />
-                <ButtonIcon
-                  size={30}
-                  color={customColors.uwu}
-                  imageSource={require("../assets/icons/settings.png")}
-                  buttonPadding={15}
-                  action={() => navigation.navigate("SettingsPage")}
-                  customStyles={0}
-                />
+                <ButtonIconSVG color={customColors.uwu} action={() => initSearch()} customStyles={0} buttonPadding={15}>
+                    <ICList width={30} height={30}></ICList>
+                </ButtonIconSVG>
+                <ButtonIconSVG color={customColors.uwu} action={() => navigation.navigate('SettingsPage')} customStyles={0} buttonPadding={15}>
+                    <ICSettings width={30} height={30}></ICSettings>
+                </ButtonIconSVG>
               </View>
             </>
           ) : (

@@ -318,7 +318,7 @@ export const styles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: "center",
-    bottom: 50,
+    bottom: 30,
   },
 
   //Settings
@@ -392,7 +392,7 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   bhnSearchBarText: {
-    opacity: 0.3,
+    opacity: 0.4,
     fontFamily: "Work Sans",
     fontSize: 16,
   },
