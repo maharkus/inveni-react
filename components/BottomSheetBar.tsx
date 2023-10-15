@@ -13,6 +13,8 @@ import RoomBar from "./RoomBar";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
+import ButtonIconSVG from "../components/ButtonIconSVG";
+import ICClose from "../assets/icons/ic_close.svg";
 
 interface Props {
     status: number,
@@ -109,7 +111,10 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                             }
                         </BottomSheetScrollView>
                         <View style={{flex: 1, alignItems: "center", position: "absolute", left: 0, right: 0, bottom: 15}}>
-                            <ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={handleClosePress} customStyles={styles.closeButton} />
+                            {/*<ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={handleClosePress} customStyles={styles.closeButton} />*/}
+                            <ButtonIconSVG color={customColors.grey} action={handleClosePress} customStyles={styles.closeButton} buttonPadding={25}>
+                                <ICClose width={25} height={25}></ICClose>
+                            </ButtonIconSVG>
                         </View>
                     </>
                     :
