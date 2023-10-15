@@ -9,16 +9,17 @@ interface PropsSearch {
 export const SearchBar = ({onSearch} : PropsSearch) => {
     const [input, setInput] = useState('')
 
-    const handleSearch = () => {
+    const handleSearch = (text) => {
+        setInput(text)
         onSearch(input)
     }
 
     return (
         <View style={styles.searchBarWrapper}>
             <TextInput
-                style={styles.searchBarInput} 
+                style={styles.searchBarInput}
                 placeholder="Raum XYZ"
-                onChangeText={(text) => setInput(text)}
+                onChangeText={(text) => handleSearch(text)}
                 value={input}
                 onSubmitEditing={handleSearch}
             />

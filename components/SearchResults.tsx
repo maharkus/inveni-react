@@ -12,25 +12,31 @@ interface Props {
 export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let filter = [];
     let filtered = [];
 
+    setIsLoading(true)
+    console.log("true")
     for(let i = 0; i < data.buildings.length; i++) {
       for(let j = 0; j < data.buildings[i].etage.length; j++) {
         filtered = data.buildings[i].etage[j].rooms.filter((item:any) =>
             item[0].toLowerCase().concat(' ', item[1].toLowerCase()).includes(searchText.toLowerCase())
         );
         filter.push(...filtered);
-        console.log(filter);
       }
     }
 
     setFilteredData(filter);
+    setIsLoading(false)
+    console.log(isLoading)
 
-    return () => setFilteredData([]);
-  }, [searchText]);
+    return () => {
+      setFilteredData([])
+    };
+  }, [searchText, isLoading]);
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -38,7 +44,6 @@ export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
 
   const handleSelection = (item: any, index:number) => {
     selectBuilding(item[7])
-    console.log(item[0])
     onRoomSelection (item[6], index)
   }
 
@@ -46,15 +51,17 @@ export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
       <View style={{flex: 1, padding: 16}}>
         <SearchBar onSearch={handleSearch} />
         <SafeAreaView style={styles.roomGrid}>
-          {filteredData.map((item: any, index: number) => (
-              <Pressable style={styles.room} key={index} onPress={() => handleSelection (item, index)}>
-                <View style={styles.roomTextView}>
-                  <Text style={styles.roomTextPrim}>{item[0]}</Text>
-                  <Text style={styles.roomTextSec}>{item[1]}</Text>
-                </View>
-                <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
-              </Pressable>
-          ))}
+          {isLoading ? <Text>Loading</Text> :
+              filteredData.map((item: any, index: number) => (
+                  <Pressable style={styles.room} key={index} onPress={() => handleSelection (item, index)}>
+                    <View style={styles.roomTextView}>
+                      <Text style={styles.roomTextPrim}>{item[0]}</Text>
+                      <Text style={styles.roomTextSec}>{item[1]}</Text>
+                    </View>
+                    <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
+                  </Pressable>
+              ))
+          }
         </SafeAreaView>
       </View>
   );
