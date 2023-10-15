@@ -49,7 +49,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
           {filteredData.map((item: any, index: number) => (
               <Pressable style={styles.room} key={index} onPress={() => handleSelection (item, index)}>
                 <View style={styles.roomTextView}>
-                  <Text style={styles.roomTextPrim}>{item[0]} {filteredData.length}</Text>
+                  <Text style={styles.roomTextPrim}>{item[0]}</Text>
                   <Text style={styles.roomTextSec}>{item[1]}</Text>
                 </View>
                 <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
