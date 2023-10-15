@@ -99,12 +99,12 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                         <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
                             {category == -1 ?
                                 <>
-                                    <SearchResults onRoomSelection={(etage, room) => onRoom(etage, room)}/>
+                                    <SearchResults selectBuilding={(building) => selectBuilding(building)} onRoomSelection={(etage, room) => onRoom(etage, room)}/>
                                 </>
                                 :
                                 <>
                                     <View style={{flex: 1, alignItems: 'center'}}>
-                                        <Text style={styles.defaultHeader}>All rooms in {data.buildings[category].name}</Text>
+                                        <Text style={styles.defaultHeader}>All Rooms in {data.buildings[category].name}</Text>
                                     </View>
                                     <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
                                 </>
