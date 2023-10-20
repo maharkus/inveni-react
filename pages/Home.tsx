@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { customColors, styles } from "../styles/styles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Campus from "../components/Campus";
-import { Pressable, View, Text, Image } from "react-native";
+import {Pressable, View, Text, ScrollView} from "react-native";
 import { BottomSheetBar } from "../components/BottomSheetBar";
 import { TopBar } from "../components/TopBar";
-import ButtonIcon from "../components/ButtonIcon";
 import ButtonIconSVG from "../components/ButtonIconSVG";
 import * as React from "react";
 import { ButtonTextOnly } from "../components/ButtonTextOnly";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 import { LinearGradient } from "expo-linear-gradient";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../states/store";
 import RoomBar from "../components/RoomBar";
 import ICSettings from "../assets/icons/ic_settings.svg";
 import ICList from "../assets/icons/ic_list.svg";
 import ICMagnifier from "../assets/icons/ic_magnifier.svg";
+import { Keyboard } from 'react-native';
 
 export const Home = ({ route, navigation }) => {
   const [category, setCategory] = useState(-1);
@@ -53,15 +53,16 @@ export const Home = ({ route, navigation }) => {
   const destination = { category: category, etage: etage, room: room };
 
   return (
-    <>
+
       <GestureHandlerRootView style={styles.homeContainer}>
         {room == -1 ? <TopBar /> : <View></View>}
 
-        <LinearGradient
-          style={styles.topBarGrad}
-          colors={["rgba(255, 255, 255, 1)", "rgba(255, 255, 255, 0)"]}
-          locations={[0.3, 0.7]}
-        />
+          <LinearGradient
+              style={styles.topBarGrad}
+              colors={["rgba(255, 255, 255, 1)", "rgba(255, 255, 255, 0)"]}
+              locations={[0.3, 0.7]}
+          />
+        <ScrollView style={{"display": "flex", "height": "100%", "width": "100%", "overflow" : "hidden", "position": "absolute", "zIndex" : -1}} >
         <View style={styles.roomBarView}>
           {destination.room != -1 && <RoomBar destination={destination} />}
         </View>
@@ -72,6 +73,7 @@ export const Home = ({ route, navigation }) => {
           navigation={navigation}
         ></Campus>
 
+        </ScrollView>
         <View style={styles.bottomNav}>
           {destination.room != -1 && (
             <ButtonTextAndIcon
@@ -122,6 +124,5 @@ export const Home = ({ route, navigation }) => {
           isNavigationFinished={value}
         />
       </GestureHandlerRootView>
-    </>
   );
 };

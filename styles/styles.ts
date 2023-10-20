@@ -21,6 +21,7 @@ export const customColors = {
 
 export const styles = StyleSheet.create({
   homeContainer: {
+    display: "flex",
     flex: 1,
     height: "100%",
     width: "100%",
@@ -140,7 +141,6 @@ export const styles = StyleSheet.create({
 
   //Map
   campusWrap: {
-    position: "absolute",
     height: "100%",
     width: "100%",
     backgroundColor: "#ffffff",
@@ -261,10 +261,9 @@ export const styles = StyleSheet.create({
     zIndex: 2,
   },
   topBarGrad: {
+    position: "absolute",
     height: 250,
     width: "100%",
-    position: "absolute",
-    top: 0,
     left: 0,
     right: 0,
   },

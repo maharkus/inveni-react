@@ -5,7 +5,7 @@ import CustomHandle from "./CustomHandle";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import ButtonIcon from "./ButtonIcon";
-import {Image, Text, View} from "react-native";
+import {Image, Keyboard, Text, View} from "react-native";
 import {useDispatch} from "react-redux";
 import {toggleValue} from "../states/slice";
 import {ButtonText} from "./ButtonText";
@@ -54,6 +54,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
     const handleClosePress = useCallback(() => {
         sheetRef.current?.close();
         statusChange(-1);
+        Keyboard.dismiss
     }, [statusChange]);
 
     // To keep swipe down working
