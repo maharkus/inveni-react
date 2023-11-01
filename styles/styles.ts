@@ -356,11 +356,11 @@ export const styles = StyleSheet.create({
 
   //roomBarView
   roomBarView: {
-    position: "absolute",
     top: 30,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 5
   },
 
   //Home Navigation Bar

@@ -11,7 +11,7 @@ export const SearchBar = ({onSearch} : PropsSearch) => {
 
     const handleSearch = (text) => {
         setInput(text)
-        onSearch(input)
+        onSearch(text)
     }
 
     return (

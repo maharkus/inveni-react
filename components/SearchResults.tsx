@@ -19,7 +19,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
     let filtered = [];
 
     setIsLoading(true)
-    console.log("true")
+    console.log(searchText.toLowerCase())
     for(let i = 0; i < data.buildings.length; i++) {
       for(let j = 0; j < data.buildings[i].etage.length; j++) {
         filtered = data.buildings[i].etage[j].rooms.filter((item:any) =>

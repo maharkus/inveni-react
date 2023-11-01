@@ -55,17 +55,17 @@ export const Home = ({ route, navigation }) => {
   return (
 
       <GestureHandlerRootView style={styles.homeContainer}>
-        {room == -1 ? <TopBar /> : <View></View>}
+        {room == -1 || value ? <TopBar /> : <View></View>}
 
           <LinearGradient
               style={styles.topBarGrad}
               colors={["rgba(255, 255, 255, 1)", "rgba(255, 255, 255, 0)"]}
               locations={[0.3, 0.7]}
           />
+          <View style={styles.roomBarView}>
+              {destination.room != -1 && !value && <RoomBar destination={destination} />}
+          </View>
         <ScrollView style={{"display": "flex", "height": "100%", "width": "100%", "overflow" : "hidden", "position": "absolute", "zIndex" : -1}} >
-        <View style={styles.roomBarView}>
-          {destination.room != -1 && <RoomBar destination={destination} />}
-        </View>
 
         <Campus
           destination={destination}
