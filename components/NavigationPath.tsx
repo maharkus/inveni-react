@@ -12,8 +12,12 @@ export const NavPath = ({destination, currentFloor}: Props) => {
     const canvas = useRef(null);
 
     useEffect(() => {
+
         const coordinates= data.buildings[destination.category].etage[currentFloor].points;
         let endNode:any = 0;
+        let room = data.buildings[destination.category].etage[destination.etage].rooms[destination.room];
+        let roomCoords = [room[3], room[4]];
+
         if(currentFloor == destination.etage) {
             endNode = data.buildings[destination.category].etage[destination.etage].rooms[destination.room][2]
         }
@@ -30,49 +34,55 @@ export const NavPath = ({destination, currentFloor}: Props) => {
         ctx.fillStyle = '#A4EB5D';
 
 
+        const drawLine = (coordinates, color, width) => {
+            ctx.lineTo(coordinates[0], coordinates[1]);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = width;
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+
+        }
         // Funktion zum Zeichnen von Linien
         const drawLines = (coordinates) => {
 
-
             ctx.beginPath();
             ctx.moveTo(coordinates[0][0], coordinates[0][1]);
 
             for (let i = 0; i < points.length; i++) {
-                ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
+                if(i != points.length - 1 ) {
+                    drawLine([coordinates[points[i]][0], coordinates[points[i]][1]], 'black', 15)
+                    drawLine([coordinates[points[i]][0], coordinates[points[i]][1]], '#A4EB5D', 11)
+                }
+                else {
+                    let xVec = coordinates[points[i]][0] - coordinates[points[i - 1]][0];
+
+                    const XCoord = currentFloor == destination.etage ? roomCoords[0] : coordinates[endNode][0];
+                    const YCoord = currentFloor == destination.etage ? roomCoords[1] : coordinates[endNode][1];
+
+                    if(xVec == 0) {
+                        console.log("here")
+                        drawLine([coordinates[points[i]][0], YCoord], 'black', 15);
+                        drawLine([XCoord, YCoord], 'black', 15);
+                        drawLine([XCoord, YCoord], 'black', 15);
+                        drawLine([coordinates[points[i]][0], YCoord], '#A4EB5D', 11);
+                        drawLine([XCoord, YCoord], '#A4EB5D', 11);
+                        canvas_arrow(ctx, coordinates[points[i]][0], YCoord, XCoord, YCoord, 17)
+                    }
+                    else {
+                        drawLine([XCoord, coordinates[points[i]][1]], 'black', 15);
+                        drawLine([XCoord, YCoord], 'black', 15);
+                        drawLine([XCoord, coordinates[points[i]][1]], '#A4EB5D', 11);
+                        drawLine([XCoord, YCoord], '#A4EB5D', 11);
+                        canvas_arrow(ctx, coordinates[points[i]][0], YCoord, XCoord, YCoord, 17)
+                    }
+                }
+
             }
-
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 15;
-            ctx.lineJoin = 'round';
-            ctx.stroke();
-            ctx.closePath();
-
-            ctx.beginPath();
-            ctx.moveTo(coordinates[0][0], coordinates[0][1]);
-            for (let i = 0; i < points.length; i++) {
-                ctx.lineTo(coordinates[points[i]][0], coordinates[points[i]][1]);
-            }
-
-            ctx.strokeStyle = '#A4EB5D';
-            ctx.lineWidth = 11;
-            ctx.lineJoin = 'round';
-            ctx.stroke();
-            ctx.closePath();
-
-            canvas_arrow(ctx, coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1], coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1], 20)
-
-            ctx.beginPath();
-            ctx.moveTo(coordinates[points[points.length-2]][0], coordinates[points[points.length-2]][1]);
-            ctx.lineTo(coordinates[points[points.length-1]][0],coordinates[points[points.length-1]][1]);
-            ctx.strokeStyle = '#A4EB5D';
-            ctx.lineWidth = 11;
-            ctx.stroke();
-            ctx.closePath();
         };
 
         drawLines(coordinates);
         drawStart(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
-        drawEnd(ctx, coordinates[points[0]][0], coordinates[points[0]][1])
+        currentFloor == destination.etage && drawEnd(ctx, roomCoords[0], roomCoords[1])
 
     }, [currentFloor]);
 
@@ -140,7 +150,7 @@ const drawStart = (context, x, y) => {
 const drawEnd = (context, x, y) => {
     context.beginPath();
     context.arc(x, y, 16, 0, 2 * Math.PI);
-    context.fillStyle = '#C28CFC';
+    context.fillStyle = '#F98452';
     context.strokeStyle = 'black'; // Farbe der Linie
     context.lineWidth = 4; // Breite der Linie
     context.lineJoin = 'round';
