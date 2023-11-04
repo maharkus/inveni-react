@@ -8,7 +8,7 @@
           "name": "E00",
           "rooms": [
             ["L1 E00 Office", "Campus Office", 5, 1136, 812, "#A4EB5D", 0, 0],
-            ["Mensa", "Mensa", 2, 590, 955, "#A4EB5D", 0, 0],
+            ["L1 E00 Essen", "Mensa", 1, 590, 955, "#A4EB5D", 0, 0],
             ["L1 E00 Sanitär", "WC Damen", 3, 982, 692, "#E0E3FF", 0, 0],
             ["L1 E00 Sanitär", "WC Herren", 3, 1026, 733, "#E0E3FF", 0, 0],
             ["L1 E00 Sanitär", "WC Barrierefrei", 3, 1026, 802, "#E0E3FF", 0, 0]
@@ -287,6 +287,7 @@
           "rooms": [
             ["L4 E00 Sanitär", "WC Herren", 3, 543, 1186, "#E0E3FF", 0, 3],
             ["L4 E00 Sanitär", "WC Frauen", 3, 412, 1186, "#E0E3FF", 0, 3],
+            ["L4 E00 Sanitär", "WC Barrierefrei", 5, 210, 1190, "#E0E3FF", 0, 3],
             ["L4.1 E00-020", "Seminarraum", 5, 183, 1265, "#F9CB48", 0, 3],
             ["L4.1 E00-040", "Seminarraum", 5, 218, 1324, "#F9CB48", 0, 3],
             ["L4.1 E00-060", "Seminarraum", 3, 398, 1324, "#F9CB48", 0, 3],
@@ -329,6 +330,12 @@
           "rooms": [
             ["L4 E01 Sanitär", "WC Herren", 6, 544, 1186, "#E0E3FF", 1, 3],
             ["L4 E01 Sanitär", "WC Frauen", 6, 409, 1186, "#E0E3FF", 1, 3],
+            ["L4 E01 Sanitär", "WC Barrierefrei", 9, 212, 1186, "#E0E3FF", 1, 3],
+            ["L4.1 E01-190", "Zentrale Studienberatung", 6, 626, 1186, "#A4EB5D", 1, 3],
+            ["L4.1 E01-210", "Zentrale Studienberatung", 6, 661, 1186, "#A4EB5D", 1, 3],
+            ["L4.1 E01-230", "Zentrale Studienberatung", 6, 795, 1186, "#A4EB5D", 1, 3],
+            ["L4.1 E01-250", "International Office", 6, 824, 1186, "#A4EB5D", 1, 3],
+            ["L4.1 E01-290", "International Office", 3, 1004, 1186, "#A4EB5D", 1, 3],
             ["L4.1 E01-020", "Animations- und CAD Studio Render", 8, 176, 1257, "#8FC9FF", 1, 3],
             ["L4.1 E01-040", "Animations- und CAD Studio Projektraum", 9, 218, 1257, "#8FC9FF", 1, 3],
             ["L4.1 E01-060", "Animations CAD Studio Cybersecurity", 9, 344, 1257, "#8FC9FF", 1, 3],
