@@ -6,11 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -31,6 +26,7 @@
       "favicon": "./assets/favicon.png"
     },
     "assets": [
+      "assets/splash",
       "assets/fonts"
     ]
   }
