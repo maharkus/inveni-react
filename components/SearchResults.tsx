@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
-import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { SearchBar } from "./SearchBar";
 import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,10 +9,13 @@ interface Props {
   onRoomSelection: (etage, id) => void,
   selectBuilding: (building) => void
 }
+
 export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const searchBarRef = useRef<{ focus: () => void }>(null);
 
   useEffect(() => {
     let filter = [];
@@ -47,9 +50,13 @@ export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
 
   return (
       <View style={{flex: 1, padding: 16}}>
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar ref={searchBarRef} onSearch={handleSearch} />
         <SafeAreaView style={styles.roomGrid}>
-          {isLoading ? <Text>Loading</Text> :
+          {isLoading ? 
+            <Text>Loading</Text> : 
+          searchText.length === 0 ?
+            <Text>nothing</Text> 
+          :
               filteredData.map((item: any, index: number) => (
                   <Pressable style={styles.room} key={index} onPress={() => handleSelection (item, index)}>
                     <View style={styles.roomTextView}>

@@ -6,7 +6,11 @@ export default function SplashScreen(){
     const animationRef = useRef<LottieView>(null);
   
     useEffect(() => {
-        animationRef.current?.play();
+        animationRef.current?.reset();
+        setTimeout(() => {
+            animationRef.current?.play();
+        }, 100)
+        console.log('playing');
     }, []);
   
     return (
@@ -21,24 +25,21 @@ export default function SplashScreen(){
             <View style={{
                 width: "50%",
                 height: "100%",
+                flex: 1,
             }}>
                 <LottieView
                     ref={animationRef}
                     source={require('../assets/splash/inveniLoader.json')}
-                    autoPlay
+                    style={{flex:1}}
                     loop
-                    style={{
-                        width: "100%",
-                        height: "100%",
+                    onAnimationFinish={() => {
+                        console.log('Animation finished loading');
                     }}
                 />
             </View>
-            
         </View>
-        
-        
     );
-  };
+};
   
 
 

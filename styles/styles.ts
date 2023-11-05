@@ -17,6 +17,7 @@ export const customColors = {
   greenPressed: "#79bb37",
   softPurplePressed: "#8f94bf",
   greyPressed: "#C3C3C3",
+  transparent: "rgba(0,0,0,0)"
 };
 
 export const styles = StyleSheet.create({
@@ -179,7 +180,9 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "flex-start",
+    padding: 0,
     paddingBottom: 180,
+    margin: 0,
   },
   room: {
     width: "46%",
@@ -270,27 +273,17 @@ export const styles = StyleSheet.create({
   //Top Bar Navigation
   navigationTopBar: {
     position: "absolute",
-    width: "100%",
-    top: 70,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  navigationTopBarContentBackground: {
+    top: 50,
     backgroundColor: customColors.grey,
     paddingHorizontal: 25,
     paddingVertical: 15,
     borderRadius: 999,
     borderWidth: 1.4,
     borderColor: customColors.dark,
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
   },
   navigationTopBarContent: {
-    paddingHorizontal: 25,
-    paddingVertical: 15,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
     borderRadius: 999,
     flex: 1,
     flexDirection: "row",
@@ -311,13 +304,30 @@ export const styles = StyleSheet.create({
   navTBCircleOrange: {
     backgroundColor: customColors.orange,
   },
+  roomBarText: {
+    fontSize: 13,
+    fontFamily: "Work Sans Bold"
+  },
   //Bottom Nav
   bottomNav: {
+    backgroundColor: customColors.transparent,
+    width: "100%",
     position: "absolute",
     left: 0,
     right: 0,
+    flex: 1,
     alignItems: "center",
-    bottom: 30,
+    bottom: 32,
+  },
+  bottomNavBackNext: {
+    backgroundColor: customColors.grey,
+    borderRadius: 50,
+    marginRight: 5,
+    borderWidth: 1.4,
+    borderColor: customColors.dark,
+    width: "85%",
+    left: "7.5%",
+    paddingBottom: 16,
   },
 
   //Settings
@@ -334,6 +344,9 @@ export const styles = StyleSheet.create({
   //SearchBar
   searchBarWrapper: {
     width: "100%",
+    margin: 0,
+    marginBottom: -32,
+    padding: 0
   },
   searchBarInput: {
     height: 70,

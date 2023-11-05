@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { customColors, styles } from "../styles/styles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Campus from "../components/Campus";
@@ -16,14 +16,15 @@ import RoomBar from "../components/RoomBar";
 import ICSettings from "../assets/icons/ic_settings.svg";
 import ICList from "../assets/icons/ic_list.svg";
 import ICMagnifier from "../assets/icons/ic_magnifier.svg";
-import { Keyboard } from 'react-native';
 
-export const Home = ({ route, navigation }) => {
+export const Home = ({ navigation }) => {
   const [category, setCategory] = useState(-1);
   const [room, setRoom] = useState(-1);
   const [etage, setEtage] = useState(-1);
   const [sheetStatus, setSheetStatus] = useState(-1);
   const value = useSelector((state: RootState) => state.counter.value);
+
+  const searchBarRef = useRef<{ focus: () => void }>(null);
 
   //Init BottomSheetBar
   const initSearch = () => {
@@ -122,6 +123,7 @@ export const Home = ({ route, navigation }) => {
           room={room}
           onClear={clearResults}
           isNavigationFinished={value}
+          searchBarRef={searchBarRef}
         />
       </GestureHandlerRootView>
   );

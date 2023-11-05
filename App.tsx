@@ -28,25 +28,23 @@ export default function App() {
             setIsFontLoaded(true);
         };
 
-        loadFont().then(r => "");
-
         const SplashScreenPeriod = async () => {
             return new Promise(resolve =>
               setTimeout(() => {
                 resolve('result');
-              }, 3000) // The time you want the splash screen to be visible
+              }, 1500)
             );
           };
       
           const loadApp = async () => {
-            // Pre-load data, images, etc...
             const data = await SplashScreenPeriod();
       
             if (data !== null) {
               setIsAppReady(true);
             }
           };
-      
+
+          loadFont().then(r => "");
           loadApp();
     }, []);
 

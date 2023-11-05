@@ -40,9 +40,9 @@ export const Navigation = ({ route, navigation }) => {
 
     return (
         <>
-            <RoomBar destination={
-                destination
-            } />
+            <View style={{flex: 1, alignItems: "center", top: 30}}>
+                <RoomBar destination={ destination } />
+            </View>
             <View style={styles.campusWrap}>
                 <ReactNativeZoomableView
                     maxZoom={3}
@@ -131,44 +131,44 @@ export const Navigation = ({ route, navigation }) => {
                     <NavPath destination={destination} currentFloor={currentFloor}/>
 
                 </ReactNativeZoomableView>
-                <View style={styles.bottomNav}>
-                    <>
-                        {currentFloor == 0 &&
-                            <>
-                                <View style={{flex: 1, flexDirection: "row"}}>
-                                    <ButtonTextAndIcon isLeft={true} color={customColors.grey} isActive={true}
-                                                    imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
-                                                    action={() => handlePrevStep()}>
-                                        Back
-                                    </ButtonTextAndIcon>
-                                    <ButtonTextAndIcon color={customColors.orange} isActive={false}
-                                                    imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
-                                                    action={() => handleNextStep()}>
-                                        Next
-                                    </ButtonTextAndIcon>
-                                </View>
-                            </>
-                        }
-                        {currentFloor > 0 &&
-                            <>
-                                <View style={{flex: 1, flexDirection: "row"}}>
-                                    <ButtonTextAndIcon isLeft={true} color={customColors.orange} isActive={false}
-                                                    imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
-                                                    action={() => handlePrevStep()}>
-                                        Back
-                                    </ButtonTextAndIcon>
-                                    <ButtonTextAndIcon color={customColors.orange} isActive={false}
-                                                    imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
-                                                    action={() => handleNextStep()}>
-                                        Next
-                                    </ButtonTextAndIcon>
-                                </View>
-                            </>
-                        }
-                    </>
-                    <ButtonTextOnly action={() => navigation.navigate("Home")}>Back to Search</ButtonTextOnly>
+                    <View style={[styles.bottomNav, styles.bottomNavBackNext]}>
+                        <>
+                            {currentFloor == 0 &&
+                                <>
+                                    <View style={{flex: 1, flexDirection: "row"}}>
+                                        <ButtonTextAndIcon isLeft={true} color={customColors.grey} isActive={true}
+                                                        imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
+                                                        action={() => handlePrevStep()}>
+                                            Back
+                                        </ButtonTextAndIcon>
+                                        <ButtonTextAndIcon color={customColors.orange} isActive={false}
+                                                        imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
+                                                        action={() => handleNextStep()}>
+                                            Next
+                                        </ButtonTextAndIcon>
+                                    </View>
+                                </>
+                            }
+                            {currentFloor > 0 &&
+                                <>
+                                    <View style={{flex: 1, flexDirection: "row"}}>
+                                        <ButtonTextAndIcon isLeft={true} color={customColors.orange} isActive={false}
+                                                        imageSource={require("../assets/icons/chevronLeft.png")} w={12} h={24}
+                                                        action={() => handlePrevStep()}>
+                                            Back
+                                        </ButtonTextAndIcon>
+                                        <ButtonTextAndIcon color={customColors.orange} isActive={false}
+                                                        imageSource={require("../assets/icons/chevronRight.png")} w={12} h={24}
+                                                        action={() => handleNextStep()}>
+                                            Next
+                                        </ButtonTextAndIcon>
+                                    </View>
+                                </>
+                            }
+                        </>
+                        <ButtonTextOnly action={() => navigation.navigate("Home")}>Back to Search</ButtonTextOnly>
+                    </View>
                 </View>
-            </View>
         </>
     );
 };

@@ -4,7 +4,6 @@ import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import ButtonIcon from "./ButtonIcon";
 import {Image, Keyboard, Text, View} from "react-native";
 import {useDispatch} from "react-redux";
 import {toggleValue} from "../states/slice";
@@ -24,10 +23,11 @@ interface Props {
     selectBuilding: (building) => void,
     onClear: () => void,
     statusChange: (index) => void,
-    isNavigationFinished: boolean
+    isNavigationFinished: boolean,
+    searchBarRef: React.RefObject<{ focus: () => void }>;
 }
 
-export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished} : Props) => {
+export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished, searchBarRef} : Props) => {
     const sheetRef = useRef<BottomSheet>(null);
     const [etage, setEtage] = useState(0);
     const dispatch = useDispatch();
@@ -46,10 +46,15 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
     ]
     const gifIndex = Math.floor(Math.random()*gifs.length);
 
-    // Modal Interactivity
     useEffect(() => {
         sheetRef.current?.snapToIndex(status);
-    }, [status]);
+
+        if (status === 1) {
+            searchBarRef.current?.focus();
+        }
+        
+        isNavigationFinished && sheetRef.current?.snapToIndex(1);
+    }, [status, searchBarRef, isNavigationFinished]);
 
     const handleClosePress = useCallback(() => {
         sheetRef.current?.close();
@@ -59,7 +64,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
 
     // To keep swipe down working
     const handleSheetChange = useCallback((index) => {
-        index == -1 && room == -1 && onClear();
+        index === -1 && room === -1 && onClear();
         statusChange(index);
     }, [statusChange, room, onClear]);
 
@@ -69,11 +74,6 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
         handleClosePress();
     }
 
-    // Auto Expand upon Complete Navigation
-    useEffect(() => {
-        isNavigationFinished && sheetRef.current?.snapToIndex(1);
-    }, [isNavigationFinished]);
-
     const onRoom = (etage, room) => {
         selectRoom(etage, room);
         setEtage(etage);
@@ -81,7 +81,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
     }
 
     // variables
-    const snapPoints = useMemo(() => ["80%", "81%"], []);
+    const snapPoints = useMemo(() => ["80%", "80.9999%"], []);
 
     return (
         <>
@@ -98,7 +98,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                 {!isNavigationFinished ?
                     <>
                         <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
-                            {category == -1 ?
+                            {category === -1 ?
                                 <>
                                     <SearchResults selectBuilding={(building) => selectBuilding(building)} onRoomSelection={(etage, room) => onRoom(etage, room)}/>
                                 </>
@@ -112,7 +112,6 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                             }
                         </BottomSheetScrollView>
                         <View style={{flex: 1, alignItems: "center", position: "absolute", left: 0, right: 0, bottom: 15}}>
-                            {/*<ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={handleClosePress} customStyles={styles.closeButton} />*/}
                             <ButtonIconSVG color={customColors.grey} action={handleClosePress} customStyles={styles.closeButton} buttonPadding={25}>
                                 <ICClose width={25} height={25}></ICClose>
                             </ButtonIconSVG>
