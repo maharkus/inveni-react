@@ -18,6 +18,7 @@ export const SearchBar = ({ onSearch, shouldFocus }: PropsSearch) => {
         if (!shouldFocus) {
             Keyboard.dismiss();
         }
+        console.log(shouldFocus)
     }, [shouldFocus]);
 
     const handleSearch = (text) => {

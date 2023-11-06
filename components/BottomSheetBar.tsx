@@ -54,7 +54,6 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
     const handleClosePress = useCallback(() => {
         sheetRef.current?.close();
         statusChange(-1);
-        Keyboard.dismiss();
     }, [statusChange]);
 
     // To keep swipe down working

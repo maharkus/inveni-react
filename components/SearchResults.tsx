@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
 import { View, Text, Pressable, ActivityIndicator } from "react-native";
 import { SearchBar } from "./SearchBar";
-import { styles } from "../styles/styles";
+import { customColors, styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 
@@ -17,6 +17,8 @@ export const SearchResults = ({onRoomSelection, selectBuilding, isSheetOpen} : P
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isSearching, setIsSearching] = useState(false);
+
   const lottieRef = useRef<LottieView>(null);
 
   useEffect(() => {
@@ -24,39 +26,44 @@ export const SearchResults = ({onRoomSelection, selectBuilding, isSheetOpen} : P
     setTimeout(() => {
       lottieRef.current?.play();
     }, 100)
-    console.log('playing');
+    console.log('searchplay');
   }, []);
 
-  useEffect(() => {
-    if (searchText) {
-      setIsLoading(true);
-      const timeout = setTimeout(() => {
-        setIsLoading(false);
-      }, 100); 
+  const handleSearch = (text) => {
+    setSearchText(text);
+    setIsSearching(true);
+  };
 
-      return () => clearTimeout(timeout);
+  useEffect(() => {
+    if (searchText.trim() === "") {
+      setIsSearching(false);
+      setFilteredData([]);
+      return;
     }
-  }, [searchText]);
 
-  useEffect(() => {
-    let filter = [];
-    let filtered = [];
+    // Simulate a small delay to mimic an async operation like an API call
+    const timeoutId = setTimeout(() => {
+      // Perform the filtering here...
+      let filter = [];
+      let filtered = [];
 
-    for(let i = 0; i < data.buildings.length; i++) {
-      for(let j = 0; j < data.buildings[i].etage.length; j++) {
-        filtered = data.buildings[i].etage[j].rooms.filter((item:any) =>
-            item[0].toLowerCase().concat(' ', item[1].toLowerCase()).includes(searchText.toLowerCase())
-        );
-        filter.push(...filtered);
+      for(let i = 0; i < data.buildings.length; i++) {
+        for(let j = 0; j < data.buildings[i].etage.length; j++) {
+          filtered = data.buildings[i].etage[j].rooms.filter((item:any) =>
+              item[0].toLowerCase().concat('', item[1].toLowerCase()).includes(searchText.toLowerCase())
+          );
+          filter.push(...filtered);
       }
     }
 
     setFilteredData(filter);
+      // After filtering is done, set searching state to false
+      setIsSearching(false);
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
   }, [searchText]);
 
-  const handleSearch = (text) => {
-    setSearchText(text);
-  };
 
   const handleSelection = (item: any, index:number) => {
     selectBuilding(item[7])
@@ -67,8 +74,11 @@ export const SearchResults = ({onRoomSelection, selectBuilding, isSheetOpen} : P
       <View style={{flex: 1, padding: 16}}>
         <SearchBar onSearch={handleSearch} shouldFocus={isSheetOpen} />
         <SafeAreaView style={styles.roomGrid}>
-          {isLoading ? 
-            <ActivityIndicator size="large" color="#0000ff" /> : 
+          {isSearching ? 
+          <View style={{flex: 1, justifyContent: "center", marginTop: 32}}>
+            <ActivityIndicator size="large" color={customColors.dark} /> 
+          </View>
+          : 
           searchText.length === 0 ?
             <View style={{
               width: "100%",
