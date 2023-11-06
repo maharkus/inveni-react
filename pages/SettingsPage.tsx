@@ -10,7 +10,7 @@ export const SettingsPage = ({ navigation}) => {
     return (
 
         <View style={{backgroundColor: "#ffffff"}}>
-            <TopBar navigation={navigation} fullLogo={true} settingsBtn={false}/>
+            <TopBar/>
             <ScrollView contentContainerStyle={[styles.contentContainer, {paddingTop: 50,paddingBottom: 325}]}>
 
                 <Image source={require('../assets/settingsHeader.png')}
@@ -20,7 +20,7 @@ export const SettingsPage = ({ navigation}) => {
 
                 <View style={[styles.settingsBox, {backgroundColor: customColors.purple, marginBottom: 40, marginTop: -80, paddingTop: 20}]}>
                     <View style={{display: "flex", flexDirection: "row", gap: 10, justifyContent: "center"}}>
-                        <Text style={[styles.defaultHeader, {marginTop: 25}]}>
+                        <Text style={[styles.defaultHeader, {marginTop: 21}]}>
                             About
                         </Text>
                         <Logo width={100}></Logo>

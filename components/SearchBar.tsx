@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { TextInput, View } from 'react-native'
+import { Keyboard, TextInput, View } from 'react-native'
 import { styles } from "../styles/styles";
 
 interface PropsSearch {
@@ -14,6 +14,9 @@ export const SearchBar = ({ onSearch, shouldFocus }: PropsSearch) => {
     useEffect(() => {
         if (shouldFocus) {
             inputRef.current.focus();
+        }
+        if (!shouldFocus) {
+            Keyboard.dismiss();
         }
     }, [shouldFocus]);
 
