@@ -52,6 +52,7 @@ export const Navigation = ({ route, navigation }) => {
                     visualTouchFeedbackEnabled={false}
                     contentWidth={1500}
                     contentHeight={1650}
+                    panBoundaryPadding={100}
                 >
                     {destination.category == 0 &&
                         <Image source={require('../assets/buildings/L1.jpg')}

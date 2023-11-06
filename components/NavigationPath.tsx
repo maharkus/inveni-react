@@ -60,21 +60,18 @@ export const NavPath = ({destination, currentFloor}: Props) => {
                     const YCoord = currentFloor == destination.etage ? roomCoords[1] : coordinates[endNode][1];
 
                     if(xVec == 0) {
-                        console.log("here")
                         drawLine([coordinates[points[i]][0], YCoord], 'black', 15);
-                        drawLine([XCoord, YCoord], 'black', 15);
                         drawLine([XCoord, YCoord], 'black', 15);
                         drawLine([coordinates[points[i]][0], YCoord], '#A4EB5D', 11);
                         drawLine([XCoord, YCoord], '#A4EB5D', 11);
-                        canvas_arrow(ctx, coordinates[points[i]][0], YCoord, XCoord, YCoord, 17)
                     }
                     else {
                         drawLine([XCoord, coordinates[points[i]][1]], 'black', 15);
                         drawLine([XCoord, YCoord], 'black', 15);
                         drawLine([XCoord, coordinates[points[i]][1]], '#A4EB5D', 11);
                         drawLine([XCoord, YCoord], '#A4EB5D', 11);
-                        canvas_arrow(ctx, coordinates[points[i]][0], YCoord, XCoord, YCoord, 17)
                     }
+                    currentFloor != destination.etage && canvas_arrow(ctx, coordinates[points[i-1]][0], YCoord, XCoord, YCoord, 17);
                 }
 
             }
