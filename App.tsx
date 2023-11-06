@@ -19,10 +19,10 @@ export default function App() {
     useEffect(() => {
         async function loadFonts() {
             await Font.loadAsync({
-                Accelerator: require('../inveni-react/assets/fonts/accelerator.ttf'),
-                TTTravels: require('../inveni-react/assets/fonts/tt-travels-next-trial-black.ttf'),
-                'Work Sans': require('../inveni-react/assets/fonts/WorkSans.ttf'),
-                'Work Sans Bold': require('../inveni-react/assets/fonts/WorkSansBold.ttf'),
+                Accelerator: require('./assets/fonts/accelerator.ttf'),
+                TTTravels: require('./assets/fonts/tt-travels-next-trial-black.ttf'),
+                'Work Sans': require('./assets/fonts/WorkSans.ttf'),
+                'Work Sans Bold': require('./assets/fonts/WorkSansBold.ttf'),
             });
             setIsFontLoaded(true);
         }
@@ -34,10 +34,10 @@ export default function App() {
               }, 1500)
             );
           };
-      
+
           const loadApp = async () => {
             const data = await SplashScreenPeriod();
-      
+
             if (data !== null) {
               setIsAppReady(true);
             }
