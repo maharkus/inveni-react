@@ -68,16 +68,13 @@ export const styles = StyleSheet.create({
   },
 
   //Reusable Components
-  accelerator: {
-    fontFamily: "Accelerator",
-  },
   defaultText: {
     fontFamily: "Work Sans",
     fontSize: 16,
     color: customColors.dark,
   },
   defaultHeader: {
-    fontFamily: "Accelerator",
+    fontFamily: "TTTravels",
     fontSize: 20,
     marginTop: 30,
     marginBottom: 15,

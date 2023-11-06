@@ -24,10 +24,9 @@ interface Props {
     onClear: () => void,
     statusChange: (index) => void,
     isNavigationFinished: boolean,
-    searchBarRef: React.RefObject<{ focus: () => void }>;
 }
 
-export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished, searchBarRef} : Props) => {
+export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished } : Props) => {
     const sheetRef = useRef<BottomSheet>(null);
     const [etage, setEtage] = useState(0);
     const dispatch = useDispatch();
@@ -48,13 +47,9 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
 
     useEffect(() => {
         sheetRef.current?.snapToIndex(status);
-
-        if (status === 1) {
-            searchBarRef.current?.focus();
-        }
         
         isNavigationFinished && sheetRef.current?.snapToIndex(1);
-    }, [status, searchBarRef, isNavigationFinished]);
+    }, [status, isNavigationFinished]);
 
     const handleClosePress = useCallback(() => {
         sheetRef.current?.close();
@@ -100,7 +95,11 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                         <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
                             {category === -1 ?
                                 <>
-                                    <SearchResults selectBuilding={(building) => selectBuilding(building)} onRoomSelection={(etage, room) => onRoom(etage, room)}/>
+                                    <SearchResults 
+                                        selectBuilding={(building) => selectBuilding(building)} 
+                                        onRoomSelection={(etage, room) => onRoom(etage, room)}
+                                        isSheetOpen={status === 1} 
+                                    />
                                 </>
                                 :
                                 <>

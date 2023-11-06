@@ -24,7 +24,6 @@ export const Home = ({ navigation }) => {
   const [sheetStatus, setSheetStatus] = useState(-1);
   const value = useSelector((state: RootState) => state.counter.value);
 
-  const searchBarRef = useRef<{ focus: () => void }>(null);
 
   //Init BottomSheetBar
   const initSearch = () => {
@@ -123,7 +122,6 @@ export const Home = ({ navigation }) => {
           room={room}
           onClear={clearResults}
           isNavigationFinished={value}
-          searchBarRef={searchBarRef}
         />
       </GestureHandlerRootView>
   );

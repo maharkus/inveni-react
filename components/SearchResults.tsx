@@ -4,18 +4,28 @@ import { View, Text, Pressable } from "react-native";
 import { SearchBar } from "./SearchBar";
 import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
+import LottieView from "lottie-react-native";
 
 interface Props {
   onRoomSelection: (etage, id) => void,
-  selectBuilding: (building) => void
+  selectBuilding: (building) => void,
+  isSheetOpen: boolean
 }
 
-export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
+export const SearchResults = ({onRoomSelection, selectBuilding, isSheetOpen} : Props) => {
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const searchBarRef = useRef<{ focus: () => void }>(null);
+  const lottieRef = useRef<LottieView>(null);
+
+  useEffect(() => {
+    lottieRef.current?.reset();
+    setTimeout(() => {
+      lottieRef.current?.play();
+    }, 100)
+    console.log('playing');
+}, []);
 
   useEffect(() => {
     let filter = [];
@@ -50,12 +60,28 @@ export const SearchResults = ({onRoomSelection, selectBuilding} : Props) => {
 
   return (
       <View style={{flex: 1, padding: 16}}>
-        <SearchBar ref={searchBarRef} onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} shouldFocus={isSheetOpen} />
         <SafeAreaView style={styles.roomGrid}>
           {isLoading ? 
             <Text>Loading</Text> : 
           searchText.length === 0 ?
-            <Text>nothing</Text> 
+            <View style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#fff",
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 16,
+            }}>
+              <LottieView
+                source={require('../assets/lotties/searchAnimation.json')}
+                ref={lottieRef}
+                loop
+                style={{height: 125, width: "100%"}}
+              />
+              <Text style={{textAlign: "center", fontFamily: "Work Sans", marginTop: 32}}>Where do you wanna go?</Text>
+            </View> 
           :
               filteredData.map((item: any, index: number) => (
                   <Pressable style={styles.room} key={index} onPress={() => handleSelection (item, index)}>

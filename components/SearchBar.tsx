@@ -1,21 +1,21 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { TextInput, View } from 'react-native'
 import { styles } from "../styles/styles";
 
 interface PropsSearch {
-    onSearch: (text: string) => void
+    onSearch: (text: string) => void,
+    shouldFocus: boolean
 }
 
-export const SearchBar = forwardRef(({ onSearch }: PropsSearch, ref) => {
-    const inputRef = useRef<TextInput>(null)
-
-    useImperativeHandle(ref, () => ({
-        focus: () => {
-          inputRef.current?.focus();
-        },
-    }));
-    
+export const SearchBar = ({ onSearch, shouldFocus }: PropsSearch) => {
     const [input, setInput] = useState('')
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (shouldFocus) {
+            inputRef.current.focus();
+        }
+    }, [shouldFocus]);
 
     const handleSearch = (text) => {
         setInput(text)
@@ -34,4 +34,4 @@ export const SearchBar = forwardRef(({ onSearch }: PropsSearch, ref) => {
             />
         </View>
     );
-});
+};
