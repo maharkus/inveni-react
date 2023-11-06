@@ -24,7 +24,6 @@ export const Home = ({ navigation }) => {
   const [sheetStatus, setSheetStatus] = useState(-1);
   const value = useSelector((state: RootState) => state.counter.value);
 
-
   //Init BottomSheetBar
   const initSearch = () => {
     clearResults();
