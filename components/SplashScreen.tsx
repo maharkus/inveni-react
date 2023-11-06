@@ -10,7 +10,6 @@ export default function SplashScreen(){
         setTimeout(() => {
             animationRef.current?.play();
         }, 100)
-        console.log('playing');
     }, []);
   
     return (
@@ -29,12 +28,9 @@ export default function SplashScreen(){
             }}>
                 <LottieView
                     ref={animationRef}
-                    source={require('../assets/splash/inveniLoader.json')}
+                    source={require('../assets/splash/inveniLoaderV3.json')}
                     style={{flex:1}}
                     loop
-                    onAnimationFinish={() => {
-                        console.log('Animation finished loading');
-                    }}
                 />
             </View>
         </View>

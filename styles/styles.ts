@@ -160,9 +160,9 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonBuildingText: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "700",
-    fontFamily: "Work Sans Bold",
+    fontFamily: "TTTravels",
   },
   canvas: {
     width: 1500,

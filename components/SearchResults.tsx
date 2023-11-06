@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, ActivityIndicator } from "react-native";
 import { SearchBar } from "./SearchBar";
 import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -25,13 +25,23 @@ export const SearchResults = ({onRoomSelection, selectBuilding, isSheetOpen} : P
       lottieRef.current?.play();
     }, 100)
     console.log('playing');
-}, []);
+  }, []);
+
+  useEffect(() => {
+    if (searchText) {
+      setIsLoading(true);
+      const timeout = setTimeout(() => {
+        setIsLoading(false);
+      }, 100); 
+
+      return () => clearTimeout(timeout);
+    }
+  }, [searchText]);
 
   useEffect(() => {
     let filter = [];
     let filtered = [];
 
-    setIsLoading(true)
     for(let i = 0; i < data.buildings.length; i++) {
       for(let j = 0; j < data.buildings[i].etage.length; j++) {
         filtered = data.buildings[i].etage[j].rooms.filter((item:any) =>
@@ -42,12 +52,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding, isSheetOpen} : P
     }
 
     setFilteredData(filter);
-    setIsLoading(false)
-
-    return () => {
-      setFilteredData([])
-    };
-  }, [searchText, isLoading]);
+  }, [searchText]);
 
   const handleSearch = (text) => {
     setSearchText(text);
@@ -63,7 +68,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding, isSheetOpen} : P
         <SearchBar onSearch={handleSearch} shouldFocus={isSheetOpen} />
         <SafeAreaView style={styles.roomGrid}>
           {isLoading ? 
-            <Text>Loading</Text> : 
+            <ActivityIndicator size="large" color="#0000ff" /> : 
           searchText.length === 0 ?
             <View style={{
               width: "100%",
