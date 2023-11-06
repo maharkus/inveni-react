@@ -49,7 +49,6 @@ export const styles = StyleSheet.create({
     width: "100%",
   },
   modalContainer: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 50,

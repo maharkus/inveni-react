@@ -47,7 +47,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
 
     useEffect(() => {
         sheetRef.current?.snapToIndex(status);
-        
+
         isNavigationFinished && sheetRef.current?.snapToIndex(1);
     }, [status, isNavigationFinished]);
 
@@ -92,25 +92,30 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
             >
                 {!isNavigationFinished ?
                     <>
+                        {category != -1 &&
+                            <>
+                                <View style={{alignItems: 'center'}}>
+                                    <Text style={styles.defaultHeader}>All Rooms in {data.buildings[category].name}</Text>
+                                </View>
+                            </>
+                        }
+
                         <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
                             {category === -1 ?
                                 <>
-                                    <SearchResults 
-                                        selectBuilding={(building) => selectBuilding(building)} 
+                                    <SearchResults
+                                        selectBuilding={(building) => selectBuilding(building)}
                                         onRoomSelection={(etage, room) => onRoom(etage, room)}
-                                        isSheetOpen={status === 1} 
+                                        isSheetOpen={status === 1}
                                     />
                                 </>
                                 :
                                 <>
-                                    <View style={{flex: 1, alignItems: 'center'}}>
-                                        <Text style={styles.defaultHeader}>All Rooms in {data.buildings[category].name}</Text>
-                                    </View>
                                     <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
                                 </>
                             }
                         </BottomSheetScrollView>
-                        <View style={{flex: 1, alignItems: "center", position: "absolute", left: 0, right: 0, bottom: 15}}>
+                        <View style={{alignItems: "center", position: "absolute", left: 0, right: 0, bottom: 15}}>
                             <ButtonIconSVG color={customColors.grey} action={handleClosePress} customStyles={styles.closeButton} buttonPadding={25}>
                                 <ICClose width={25} height={25}></ICClose>
                             </ButtonIconSVG>
@@ -128,7 +133,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                             {finishedTexts[gifIndex]}
                         </ButtonText>
                     </BottomSheetView>
-                    }
+                }
             </BottomSheet>
         </>
     );
