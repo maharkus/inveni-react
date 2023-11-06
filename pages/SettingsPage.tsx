@@ -33,7 +33,7 @@ export const SettingsPage = ({ navigation}) => {
 
                 <View style={[styles.settingsBox, {backgroundColor: customColors.yellow}]}>
                     <Text style={[styles.defaultHeader, {textAlign: "center"}]}>Einstellungen</Text>
-                    <ButtonText color={customColors.uwu} action={() => navigation.navigate("Home")}>Anwenden</ButtonText>
+                    <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Anwenden</ButtonText>
                 </View>
 
             </ScrollView>
