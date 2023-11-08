@@ -40,11 +40,11 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
     const search = String(text)
     setSearchText(search)
     setIsClear(false)
-    setIsSearching(true)
+    search != "" && setIsSearching(true)
   }
 
   useEffect(() => {
-    if (searchText.trim() === "") {
+    if (searchText == "") {
       setIsSearching(false)
       setFilteredData([])
       return
@@ -76,11 +76,11 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
     onRoomSelection (item[6], index)
   }
 
-  //clear search when bottomsheet closes // inputClear doesnt work tho :/
   useEffect(() => {
     if (!isSheetOpen) {
       setIsClear(true)
       clearSearch()
+      setIsSearching(false)
     }
     else {
       setIsClear(false)
@@ -91,8 +91,11 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
     setSearchText("")
     setFilteredData([])
     setIsSearching(false)
-    console.log("isClear: " + isClear)
   }
+  useEffect(() => {
+    console.log(isSearching)
+  }, [isSearching])
+  
 
   //popular rooms
   const mensa = data.buildings[0].etage[0].rooms[1]
@@ -119,11 +122,11 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
               </View>
           ) : searchText.length === 0 ? (
               <>
-                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center"}]}>Popular Rooms</Text>
+                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Popular Rooms</Text>
               </>
           ) : filteredData.length > 0 ? (
               <>
-                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center"}]}>Search Results</Text>
+                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Search Results</Text>
                 {filteredData.map((item: any, index: number) => (
                     <Pressable style={styles.room} key={index} onPress={() => handleSelection (item[0], item[1])}>
                       <View style={styles.roomTextView}>
@@ -144,7 +147,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
                       autoPlay
                       style={{flex: 1, height: 100, width: "100%"}}
                   />
-                  <Text style={[styles.defaultText, { textAlign: "center", width: "100%", marginTop: 16 }]}>No rooms found.</Text>
+                  <Text style={[styles.defaultText, { textAlign: "center", width: "100%", marginTop: 16 }]}>No rooms found. Try again!</Text>
                 </View>
               </>
           )

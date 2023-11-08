@@ -28,12 +28,12 @@ export const SettingsPage = ({ navigation}) => {
                     <Text style={[styles.defaultText, {marginTop: 10, textAlign: "center"}]}>inveni helps you with navigation on campus. Choose a room, and the app takes care of the rest.</Text>
                     <Text style={[styles.defaultText, {marginTop: 10, textAlign: "center"}]}>The app was developed as a project by Julz and Markus, two students in Computer Visualization and Design at Hamm-Lippstadt University.</Text>
                     <Text style={[styles.defaultText, {marginTop: 10, textAlign: "center", marginBottom: 30}]}>Do you have any questions or suggestions about the app? Write to us!</Text>
-                    <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Kontaktiere uns</ButtonText>
+                    <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Contact Us</ButtonText>
                 </View>
 
                 <View style={[styles.settingsBox, {backgroundColor: customColors.yellow}]}>
-                    <Text style={[styles.defaultHeader, {textAlign: "center"}]}>Einstellungen</Text>
-                    <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Anwenden</ButtonText>
+                    <Text style={[styles.defaultHeader, {textAlign: "center"}]}>Settings</Text>
+                    <ButtonText color={customColors.orange} action={() => navigation.navigate("Home")}>Apply</ButtonText>
                 </View>
 
             </ScrollView>

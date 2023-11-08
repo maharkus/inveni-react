@@ -178,7 +178,7 @@ export const styles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "flex-start",
     padding: 0,
-    marginBottom: 150,
+    marginBottom: 50,
     margin: 0,
   },
   room: {

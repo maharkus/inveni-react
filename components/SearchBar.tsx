@@ -24,8 +24,7 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
     }, [shouldFocus]);
 
     useEffect(() => {
-            console.log("here")
-            setInput("")
+        setInput("")
     }, [inputClear]);
 
     //search debouce
