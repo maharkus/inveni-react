@@ -4,11 +4,12 @@ import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
 import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {Image, Keyboard, Text, View} from "react-native";
+import {Image, Text, View} from "react-native";
 import {useDispatch} from "react-redux";
 import {toggleValue} from "../states/slice";
 import {ButtonText} from "./ButtonText";
 import RoomBar from "./RoomBar";
+import {AllRooms} from "./AllRooms";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
@@ -58,14 +59,14 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
 
     // To keep swipe down working
     const handleSheetChange = useCallback((index) => {
-        index === -1 && room === -1 && onClear();
-        statusChange(index);
-    }, [statusChange, room, onClear]);
+        index === -1 && room === -1 && onClear()
+        statusChange(index)
+    }, [statusChange, room, onClear])
 
     const onFinish = () => {
         onClear()
-        dispatch(toggleValue());
-        handleClosePress();
+        dispatch(toggleValue())
+        handleClosePress()
     }
 
     const onRoom = (etage, room) => {
@@ -91,24 +92,34 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
             >
                 {!isNavigationFinished ?
                     <>
-                        {category != -1 &&
-                            <>
-                                <View style={{alignItems: 'center'}}>
-                                    <Text style={styles.defaultHeader}>All Rooms in {data.buildings[category].name}</Text>
-                                </View>
-                            </>
-                        }
-
                         <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
+                            {category >= 0 && category <= 4 &&
+                                <>
+                                    <View style={{alignItems: 'center'}}>
+                                        <Text style={styles.defaultHeader}>All Rooms in {data.buildings[category].name}</Text>
+                                    </View>
+                                </>
+                            }
                             {category === -1 ?
                                 <>
                                     <SearchResults
                                         selectBuilding={(building) => selectBuilding(building)}
                                         onRoomSelection={(etage, room) => onRoom(etage, room)}
                                         isSheetOpen={status === 1}
+                                        onClear={onClear} 
                                     />
                                 </>
-                                :
+                            : category === 5 ?
+                                <>
+                                    <View style={{alignItems: 'center', padding: 0, margin: 0}}>
+                                        <Text style={styles.defaultHeader}>All Rooms</Text>
+                                    </View>
+                                    <AllRooms 
+                                        selectBuilding={(building) => selectBuilding(building)}
+                                        onRoomSelection={(etage, room) => onRoom(etage, room)}
+                                    />
+                                </>
+                            :
                                 <>
                                     <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
                                 </>

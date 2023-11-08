@@ -18,6 +18,7 @@ export const RoomSelection = ({category, onRoomSelection} : Props) => {
             items[i].push(data.buildings[category].etage[i].rooms[j]);
         }
     }
+    
     return (
         <View style={styles.roomGrid}>
             {items[0].map((item: any, index: number) => (

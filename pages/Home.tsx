@@ -30,6 +30,11 @@ export const Home = ({ navigation }) => {
     setSheetStatus(1);
   };
 
+  const initAllRooms = () => {
+    setCategory(5);
+    setSheetStatus(1);
+  }
+
   const clearResults = () => {
     setCategory(-1);
     setRoom(-1);
@@ -56,23 +61,24 @@ export const Home = ({ navigation }) => {
       <GestureHandlerRootView style={styles.homeContainer}>
         {room == -1 || value ? <TopBar /> : <View></View>}
 
-          <LinearGradient
-              style={styles.topBarGrad}
-              colors={["rgba(255, 255, 255, 1)", "rgba(255, 255, 255, 0)"]}
-              locations={[0.3, 0.7]}
-          />
-          <View style={styles.roomBarView}>
-              {destination.room != -1 && !value && <RoomBar destination={destination} />}
-          </View>
+        <LinearGradient
+            style={styles.topBarGrad}
+            colors={["rgba(255, 255, 255, 1)", "rgba(255, 255, 255, 0)"]}
+            locations={[0.3, 0.7]}
+        />
+
+        <View style={styles.roomBarView}>
+            {destination.room != -1 && !value && <RoomBar destination={destination} />}
+        </View>
+
         <ScrollView style={{"display": "flex", "height": "100%", "width": "100%", "overflow" : "hidden", "position": "absolute", "zIndex" : -1}} >
-
-        <Campus
-          destination={destination}
-          onBuilding={(building) => handleBuilding(building)}
-          navigation={navigation}
-        ></Campus>
-
+          <Campus
+            destination={destination}
+            onBuilding={(building) => handleBuilding(building)}
+            navigation={navigation}
+          ></Campus>
         </ScrollView>
+
         <View style={styles.bottomNav}>
           {destination.room != -1 && (
             <ButtonTextAndIcon
@@ -96,11 +102,11 @@ export const Home = ({ navigation }) => {
               <View style={styles.homeBottomNav}>
                 <Pressable style={styles.bhnSearchBar} onPress={() => initSearch()}>
                     <ICMagnifier width={25} height={25}></ICMagnifier>
-                    <Text style={styles.bhnSearchBarText}>Search Room</Text>
+                    <Text style={styles.bhnSearchBarText}>Find Room</Text>
                 </Pressable>
-                <ButtonIconSVG color={customColors.uwu} action={() => initSearch()} customStyles={0} buttonPadding={15}>
+                <Pressable style={styles.bhnIcon} onPress={() => initAllRooms()}>
                     <ICList width={30} height={30}></ICList>
-                </ButtonIconSVG>
+                </Pressable>
                 <ButtonIconSVG color={customColors.uwu} action={() => navigation.navigate('SettingsPage')} customStyles={0} buttonPadding={15}>
                     <ICSettings width={30} height={30}></ICSettings>
                 </ButtonIconSVG>

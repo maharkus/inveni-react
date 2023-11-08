@@ -173,11 +173,12 @@ export const styles = StyleSheet.create({
   roomGrid: {
     flex: 1,
     width: 300,
+    height: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "flex-start",
     padding: 0,
-    paddingBottom: 180,
+    marginBottom: 150,
     margin: 0,
   },
   room: {
@@ -404,4 +405,10 @@ export const styles = StyleSheet.create({
     fontFamily: "Work Sans",
     fontSize: 16,
   },
+  bhnIcon: {
+    borderRadius: 999,
+    borderWidth: 1.4,
+    backgroundColor: customColors.uwu,
+    padding: 15,
+  }
 });
