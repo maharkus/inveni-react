@@ -5,27 +5,35 @@ import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 interface Props {
-  onRoomSelection: (etage: any, id: any) => void,
-  selectBuilding: (building: any) => void
+    onRoomSelection: (etage: any, id: any) => void,
+    selectBuilding: (building: any) => void
 }
 
 export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
     const [allRooms, setallRooms] = useState([]);
-    
+
     useEffect(() => {
+        let buildings = [];
+        let floors = [];
         let rooms = [];
-        let filtered = [];
 
         for(let i = 0; i < data.buildings.length; i++) {
             for(let j = 0; j < data.buildings[i].etage.length; j++) {
-            filtered = data.buildings[i].etage[j].rooms.filter((item:any) =>
-                item[0].toLowerCase().concat('', item[1].toLowerCase())
-            );
-            rooms.push(...filtered);
+                for(let k = 0; k < data.buildings[i].etage[j].rooms.length; k++) {
+                    let room = data.buildings[i].etage[j].rooms[k];
+                    if(room[0].toString().toLowerCase().concat('', room[1].toString().toLowerCase())) {
+                        rooms.push(...[[room, k]])
+                    }
+                }
+                floors.push(...[rooms])
+                rooms = []
             }
+            buildings.push(...[floors])
+            floors = []
         }
 
-        setallRooms(rooms);
+        console.log(buildings)
+        setallRooms(buildings);
     }, [])
 
     const handleSelection = (item: any, index:number) => {
@@ -34,15 +42,25 @@ export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
     }
 
     return (
-        <SafeAreaView style={[styles.roomGrid, {padding: 0, marginTop: -50}]}>
-            {allRooms.map((item: any, index: number) => (
-                <Pressable style={styles.room} key={index} onPress={() => handleSelection (item, index)}>
-                    <View style={styles.roomTextView}>
-                        <Text style={styles.roomTextPrim}>{item[0]}</Text>
-                        <Text style={styles.roomTextSec}>{item[1]}</Text>
-                    </View>
-                    <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
-                </Pressable>
+        <SafeAreaView style={[styles.roomGrid, {padding: 0, marginTop: -70}]}>
+            {allRooms.map((item: any, indexBuilding: number) => (
+                <>
+                    <Text style={[styles.defaultHeader, {fontSize:  15, width: "100%", marginLeft: "4%", marginBottom: 0}]}>Rooms in {data.buildings[indexBuilding].name} </Text>
+                    {item.map((item:any, indexFloor: number) =>(
+                        <>
+                            <Text style={[styles.defaultText, {fontSize:  15, fontFamily: "Work Sans Bold",  width: "100%", marginLeft: "4%", marginTop: 10, marginBottom: 10}]}>Floor: {data.buildings[indexBuilding].etage[indexFloor].name} </Text>
+                            {item.map((item:any, indexRoom: number) =>(
+                                <Pressable style={styles.room} key={indexRoom} onPress={() => handleSelection (item[0], item[1])}>
+                                    <View style={styles.roomTextView}>
+                                        <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
+                                        <Text style={styles.roomTextSec}>{item[0][1]}</Text>
+                                    </View>
+                                    <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
+                                </Pressable>
+                            ))}
+                        </>
+                    ))}
+                </>
             ))}
         </SafeAreaView>
     );

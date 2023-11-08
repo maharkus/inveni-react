@@ -39,6 +39,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
   const handleSearch = (text) => {
     const search = String(text)
     setSearchText(search)
+    setIsClear(false)
     setIsSearching(true)
   }
 
@@ -50,19 +51,20 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
     }
 
     const timeout = setTimeout(() => {
-      let filter = [];
-      let filtered = [];
+      let rooms = [];
 
       for(let i = 0; i < data.buildings.length; i++) {
         for(let j = 0; j < data.buildings[i].etage.length; j++) {
-          filtered = data.buildings[i].etage[j].rooms.filter((item:any) =>
-              item[0].toLowerCase().concat('', item[1].toLowerCase()).includes(searchText.toLowerCase())
-          );
-          filter.push(...filtered)
+          for(let k = 0; k < data.buildings[i].etage[j].rooms.length; k++) {
+            let room = data.buildings[i].etage[j].rooms[k];
+            if(room[0].toString().toLowerCase().concat('', room[1].toString().toLowerCase()).includes(searchText.toLowerCase())) {
+              rooms.push(...[[room, k]])
+            }
+          }
         }
       }
 
-      setFilteredData(filter)
+      setFilteredData(rooms)
       setIsSearching(false)
     }, 500);
 
@@ -77,7 +79,11 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
   //clear search when bottomsheet closes // inputClear doesnt work tho :/
   useEffect(() => {
     if (!isSheetOpen) {
-        clearSearch()
+      setIsClear(true)
+      clearSearch()
+    }
+    else {
+      setIsClear(false)
     }
   }, [isSheetOpen])
 
@@ -85,8 +91,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
     setSearchText("")
     setFilteredData([])
     setIsSearching(false)
-    setIsClear(true)
-    console.log(isClear)
+    console.log("isClear: " + isClear)
   }
 
   //popular rooms
@@ -102,49 +107,49 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
         <SearchBar onSearch={handleSearch} shouldFocus={isSheetOpen} inputClear={isClear}/>
         <SafeAreaView style={styles.roomGrid}>
           {isSearching ? (
-          <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
-            <LottieView
-              source={require('../assets/lotties/loadingAnimV2.json')}
-              ref={loadingRef}
-              loop
-              autoPlay
-              style={{flex: 1, height: 5}}
-            />
-            <Text style={[styles.defaultText, {marginTop: 16}]}>looking for your room...</Text>
-          </View>
-          ) : searchText.length === 0 ? (
-            <>
-              <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center"}]}>Popular Rooms</Text>
-            </>
-          ) : filteredData.length > 0 ? (
-            <>
-              <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center"}]}>Search Results</Text>
-              {filteredData.map((item: any, index: number) => (
-                <Pressable style={styles.room} key={index} onPress={() => handleSelection (item, index)}>
-                  <View style={styles.roomTextView}>
-                    <Text style={styles.roomTextPrim}>{item[0]}</Text>
-                    <Text style={styles.roomTextSec}>{item[1]}</Text>
-                  </View>
-                  <View style={[styles.roomBottomBar, {backgroundColor: item[5]}]} />
-                </Pressable>
-              ))}
-            </>
-          ) : (
-            <>
               <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
                 <LottieView
-                  source={require('../assets/lotties/searchAnimation.json')}
-                  ref={lottieRef}
-                  loop
-                  autoPlay
-                  style={{flex: 1, height: 100, width: "100%"}}
+                    source={require('../assets/lotties/loadingAnimV2.json')}
+                    ref={loadingRef}
+                    loop
+                    autoPlay
+                    style={{flex: 1, height: 5}}
                 />
-                <Text style={[styles.defaultText, { textAlign: "center", width: "100%", marginTop: 16 }]}>No rooms found.</Text>
+                <Text style={[styles.defaultText, {marginTop: 16}]}>Looking for your room...</Text>
               </View>
-            </>
+          ) : searchText.length === 0 ? (
+              <>
+                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center"}]}>Popular Rooms</Text>
+              </>
+          ) : filteredData.length > 0 ? (
+              <>
+                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center"}]}>Search Results</Text>
+                {filteredData.map((item: any, index: number) => (
+                    <Pressable style={styles.room} key={index} onPress={() => handleSelection (item[0], item[1])}>
+                      <View style={styles.roomTextView}>
+                        <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
+                        <Text style={styles.roomTextSec}>{item[0][1]}</Text>
+                      </View>
+                      <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
+                    </Pressable>
+                ))}
+              </>
+          ) : (
+              <>
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
+                  <LottieView
+                      source={require('../assets/lotties/searchAnimation.json')}
+                      ref={lottieRef}
+                      loop
+                      autoPlay
+                      style={{flex: 1, height: 100, width: "100%"}}
+                  />
+                  <Text style={[styles.defaultText, { textAlign: "center", width: "100%", marginTop: 16 }]}>No rooms found.</Text>
+                </View>
+              </>
           )
-        
-        }
+
+          }
         </SafeAreaView>
       </View>
   );

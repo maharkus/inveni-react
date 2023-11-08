@@ -92,44 +92,42 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
             >
                 {!isNavigationFinished ?
                     <>
+                        {category >= 0 && category <= 4 ?
+                            <View style={{height: 80}}>
+                                <View style={{alignItems: 'center', position: 'absolute', width: "100%"}}>
+                                    <Text style={[styles.defaultHeader, {textAlign: "center", width: "100%"}]}>All Rooms in {data.buildings[category].name}</Text>
+                                </View>
+                            </View>
+                            : category == 5 &&
+                            <View style={{height: 80}}>
+                                <View style={{alignItems: 'center', position: 'absolute', width: "100%"}}>
+                                    <Text style={[styles.defaultHeader, {textAlign: "center", width: "100%"}]}>All Rooms</Text>
+                                </View>
+                            </View>
+                        }
                         <BottomSheetScrollView style={{flex: 1}} horizontal={false}>
-                            {category >= 0 && category <= 4 &&
-                                <>
-                                    <View style={{alignItems: 'center'}}>
-                                        <Text style={styles.defaultHeader}>All Rooms in {data.buildings[category].name}</Text>
-                                    </View>
-                                </>
-                            }
                             {category === -1 ?
                                 <>
                                     <SearchResults
                                         selectBuilding={(building) => selectBuilding(building)}
                                         onRoomSelection={(etage, room) => onRoom(etage, room)}
                                         isSheetOpen={status === 1}
-                                        onClear={onClear} 
+                                        onClear={onClear}
                                     />
                                 </>
-                            : category === 5 ?
-                                <>
-                                    <View style={{alignItems: 'center', padding: 0, margin: 0}}>
-                                        <Text style={styles.defaultHeader}>All Rooms</Text>
-                                    </View>
-                                    <AllRooms 
-                                        selectBuilding={(building) => selectBuilding(building)}
-                                        onRoomSelection={(etage, room) => onRoom(etage, room)}
-                                    />
-                                </>
-                            :
-                                <>
-                                    <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
-                                </>
+                                : category === 5 ?
+                                    <>
+                                        <AllRooms
+                                            selectBuilding={(building) => selectBuilding(building)}
+                                            onRoomSelection={(etage, room) => onRoom(etage, room)}
+                                        />
+                                    </>
+                                    :
+                                    <>
+                                        <RoomSelection category={category} onRoomSelection={(etage, room) => onRoom(etage, room)}></RoomSelection>
+                                    </>
                             }
                         </BottomSheetScrollView>
-                        <View style={{alignItems: "center", position: "absolute", left: 0, right: 0, bottom: 15}}>
-                            <ButtonIconSVG color={customColors.grey} action={handleClosePress} customStyles={styles.closeButton} buttonPadding={25}>
-                                <ICClose width={25} height={25}></ICClose>
-                            </ButtonIconSVG>
-                        </View>
                     </>
                     :
                     <BottomSheetView style={[styles.contentContainer, {flex: 1}]}>

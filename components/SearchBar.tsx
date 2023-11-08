@@ -5,7 +5,7 @@ import { customColors, styles } from "../styles/styles";
 interface PropsSearch {
     onSearch: (text: string) => void,
     shouldFocus: boolean,
-    inputClear: boolean 
+    inputClear: boolean
 }
 
 export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) => {
@@ -24,9 +24,8 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
     }, [shouldFocus]);
 
     useEffect(() => {
-        if (inputClear) {
+            console.log("here")
             setInput("")
-        }
     }, [inputClear]);
 
     //search debouce
@@ -49,7 +48,7 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
             debouncedSearch(text)
         }
     }
-    
+
     const debouncedSearch = useCallback(debounce((text) => {
         onSearch(text)
         setLastSearch(text);
