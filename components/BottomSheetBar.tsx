@@ -89,6 +89,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                 backdropComponent={CustomBackdrop}
                 handleComponent={CustomHandle}
                 onChange={handleSheetChange}
+                keyboardBehavior={"extend"}
             >
                 {!isNavigationFinished ?
                     <>
