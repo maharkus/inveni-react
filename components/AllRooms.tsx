@@ -31,8 +31,6 @@ export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
             buildings.push(...[floors])
             floors = []
         }
-
-        console.log(buildings)
         setallRooms(buildings);
     }, [])
 
