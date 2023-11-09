@@ -5,19 +5,32 @@ import {ButtonText} from "../components/ButtonText";
 import {TopBar} from "../components/TopBar";
 import * as React from "react";
 import Logo from "../assets/Logo.svg";
+import LottieView from "lottie-react-native";
+import { useEffect, useRef } from "react";
 
 export const SettingsPage = ({ navigation}) => {
-    return (
+    const lottieRef = useRef<LottieView>(null);
 
+    useEffect(() => {
+        lottieRef.current?.reset()
+        setTimeout(() => {
+          lottieRef.current?.play()
+        }, 100)
+      }, [])
+      
+    return (
         <View style={{backgroundColor: "#ffffff"}}>
             <TopBar/>
-            <ScrollView contentContainerStyle={[styles.contentContainer, {paddingTop: 50,paddingBottom: 325}]}>
-
-                <Image source={require('../assets/settingsHeader.png')}
-                       resizeMethod={"resize"}
-                       progressiveRenderingEnabled={true}
-                       style={{width: 260, height: 290}}/>
-
+            <ScrollView contentContainerStyle={[styles.contentContainer, {paddingTop: 20,paddingBottom: 325}]}>
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%"}}>
+                    <LottieView
+                        source={require('../assets/lotties/settingsHeader.json')}
+                        ref={lottieRef}
+                        loop
+                        autoPlay
+                        style={{flex: 1, height: 360}}
+                    />
+                </View>
                 <View style={[styles.settingsBox, {backgroundColor: customColors.purple, marginBottom: 40, marginTop: -80, paddingTop: 20}]}>
                     <View style={{display: "flex", flexDirection: "row", gap: 10, justifyContent: "center"}}>
                         <Text style={[styles.defaultHeader, {marginTop: 21}]}>
