@@ -13,8 +13,6 @@ import {AllRooms} from "./AllRooms";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
-import ButtonIconSVG from "../components/ButtonIconSVG";
-import ICClose from "../assets/icons/ic_close.svg";
 
 interface Props {
     status: number,
@@ -30,7 +28,19 @@ interface Props {
 export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished } : Props) => {
     const sheetRef = useRef<BottomSheet>(null);
     const [etage, setEtage] = useState(0);
+    const [isSearchActive, setIsSearchActive] = useState(false);
     const dispatch = useDispatch();
+    
+    const shouldFocus = category == -1 && status == 1;
+
+    useEffect(() => {
+        if(!shouldFocus) {
+            setIsSearchActive(false)
+        } else {
+            setIsSearchActive(true)
+        }
+    }, [shouldFocus])
+    
 
     const finishedTexts = ["Wonderful!", "Okay", "Great Success!", "Awesome!", "Neat!", "Yeehaw!", "Cool.", "yeeey!", "Woooho!"]
     const gifs = [
@@ -48,8 +58,9 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
 
     useEffect(() => {
         sheetRef.current?.snapToIndex(status);
-
         isNavigationFinished && sheetRef.current?.snapToIndex(1);
+
+        console.log(status);
     }, [status, isNavigationFinished]);
 
     const handleClosePress = useCallback(() => {
@@ -74,6 +85,13 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
         setEtage(etage);
         handleClosePress();
     }
+
+    useEffect(() => {
+        console.log("-----------")
+        console.log("Search Activity: ", isSearchActive)
+        console.log("Category: ", category)
+        console.log("Status: ", status)
+    })
 
     // variables
     const snapPoints = useMemo(() => ["80%", "80.9999%"], []);
@@ -114,6 +132,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                                         onRoomSelection={(etage, room) => onRoom(etage, room)}
                                         isSheetOpen={status === 1}
                                         onClear={onClear}
+                                        shouldFocus={isSearchActive}
                                     />
                                 </>
                                 : category === 5 ?

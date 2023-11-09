@@ -1,6 +1,6 @@
 import { Key, useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Keyboard } from "react-native";
 import { SearchBar } from "./SearchBar";
 import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,10 +10,11 @@ interface Props {
   onRoomSelection: (etage, id) => void,
   selectBuilding: (building) => void,
   onClear: () => void,
-  isSheetOpen: boolean
+  isSheetOpen: boolean,
+  shouldFocus: boolean
 }
 
-export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheetOpen} : Props) => {
+export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isSheetOpen} : Props) => {
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -92,11 +93,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
     setFilteredData([])
     setIsSearching(false)
   }
-  useEffect(() => {
-    console.log(isSearching)
-  }, [isSearching])
   
-
   //popular rooms
   const mensa = data.buildings[0].etage[0].rooms[1]
   const library = data.buildings[1].etage[1].rooms[6]
@@ -117,7 +114,7 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
 
   return (
       <View style={{flex: 1, padding: 16}}>
-        <SearchBar onSearch={handleSearch} shouldFocus={isSheetOpen} inputClear={isClear}/>
+        <SearchBar onSearch={handleSearch} shouldFocus={shouldFocus} inputClear={isClear}/>
         <SafeAreaView style={styles.roomGrid}>
           {isSearching ? (
               <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>

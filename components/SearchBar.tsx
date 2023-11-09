@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Keyboard, TextInput, View } from 'react-native'
+import { TextInput, View } from 'react-native'
 import { customColors, styles } from "../styles/styles";
 
 interface PropsSearch {
@@ -12,14 +12,16 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
     const [input, setInput] = useState('')
     const [isFocused, setIsFocused] = useState(false)
     const [lastSearch, setLastSearch] = useState('');
+
     const inputRef = useRef<TextInput>(null);
 
     useEffect(() => {
-        if (shouldFocus && inputRef.current) {
-            inputRef.current.focus();
-        }
-        if (!shouldFocus) {
-            Keyboard.dismiss();
+        if (shouldFocus) {
+            inputRef.current?.focus();
+            console.log("triggered focus")
+        } else {
+            inputRef.current?.blur();
+            console.log("triggered blur")
         }
     }, [shouldFocus]);
 
