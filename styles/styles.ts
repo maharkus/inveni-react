@@ -141,7 +141,7 @@ export const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     backgroundColor: "#ffffff",
-    zIndex: -1,
+    zIndex: -3,
   },
   buttonBuilding: {
     backgroundColor: customColors.orange,
@@ -258,7 +258,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "rgba(0, 0, 0, 0)",
     top: 0,
-    zIndex: 2,
+    zIndex: 0,
   },
   topBarGrad: {
     position: "absolute",
@@ -266,6 +266,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     left: 0,
     right: 0,
+    zIndex: -1,
   },
   //Top Bar Navigation
   navigationTopBar: {

@@ -51,7 +51,7 @@ export const SettingsPage = ({ navigation}) => {
 
             </ScrollView>
             <View style={{flex: 1, alignItems: "center", position: "absolute", zIndex: 3, bottom: 150, left: 0, right: 0}}>
-                <ButtonIcon size={25} buttonPadding={25} color={customColors.grey} imageSource={require("../assets/icons/close.png")} action={() => navigation.goBack()} customStyles={styles.closeButton} />
+                <ButtonIcon size={25} buttonPadding={25} color={customColors.uwu} imageSource={require("../assets/icons/close.png")} action={() => navigation.goBack()} customStyles={styles.closeButton} />
             </View>
 
         </View>

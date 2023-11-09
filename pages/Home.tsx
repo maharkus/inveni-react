@@ -71,7 +71,7 @@ export const Home = ({ navigation }) => {
             {destination.room != -1 && !value && <RoomBar destination={destination} />}
         </View>
 
-        <ScrollView style={{"display": "flex", "height": "100%", "width": "100%", "overflow" : "hidden", "position": "absolute", "zIndex" : -1}} >
+        <ScrollView style={{"display": "flex", "height": "100%", "width": "100%", "overflow" : "hidden", "position": "absolute", "zIndex" : -2}} >
           <Campus
             destination={destination}
             onBuilding={(building) => handleBuilding(building)}
