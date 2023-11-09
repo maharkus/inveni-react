@@ -20,9 +20,9 @@ export default function Campus ({onBuilding, destination} : Props) {
         require('../assets/maps/map4.png')
     ]
 
-    const position = useRef(new Animated.ValueXY()).current;
+    const pos = useRef(new Animated.ValueXY()).current;
 
-    const startCoordinates = {
+    const buildingCoords = {
         0: { x: 250, y: -250 },
         1: { x: 30, y: -100 },
         2: { x: 100, y: 120 },
@@ -31,19 +31,16 @@ export default function Campus ({onBuilding, destination} : Props) {
     };
 
     useEffect(() => {
-        if (destination.room !== -1 && destination.category in startCoordinates) {
-            const { x, y } = startCoordinates[destination.category];
-            // Directly set the offset for the new position
-            position.setOffset({ x: -x, y: -y });
+        if (destination.room !== -1 && destination.category in buildingCoords) {
+            const { x, y } = buildingCoords[destination.category];
+            pos.setOffset({ x: -x, y: -y });
         } else {
-            // Reset position for the default map
-            position.setOffset({ x: 0, y: 0 });
+            pos.setOffset({ x: 0, y: 0 });
         }
-        // Reset the value to 0
-        position.setValue({ x: 0, y: 0 });
+        pos.setValue({ x: 0, y: 0 });
     }, [destination]);
 
-    const renderMap = () => {
+    const selectMap = () => {
         if (destination.room === -1) {
             return (
                 <>
@@ -64,7 +61,7 @@ export default function Campus ({onBuilding, destination} : Props) {
             );
         } else {
             return (
-                <Animated.View style={position.getLayout()}>
+                <Animated.View style={pos.getLayout()}>
                     <Image
                         source={images[destination.category]}
                         resizeMethod={"resize"}
@@ -89,7 +86,7 @@ export default function Campus ({onBuilding, destination} : Props) {
                 contentHeight={900}
                 contentWidth={800}
             >
-                {renderMap()}
+                {selectMap()}
             </ReactNativeZoomableView>
         </View>
     );

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Key, useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
 import { View, Text, Pressable } from "react-native";
 import { SearchBar } from "./SearchBar";
@@ -105,6 +105,16 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
   const lp2 = data.buildings[1].etage[0].rooms[1]
   const lp3 = data.buildings[1].etage[0].rooms[2]
 
+  const popularRoom = (room, index, id) => (
+    <Pressable style={styles.room} key={id} onPress={() => handleSelection(room, index)}>
+      <View style={styles.roomTextView}>
+        <Text style={styles.roomTextPrim}>{room[0]}</Text>
+        <Text style={styles.roomTextSec}>{room[1]}</Text>
+      </View>
+      <View style={[styles.roomBottomBar, { backgroundColor: room[5] }]} />
+    </Pressable>
+  );
+
   return (
       <View style={{flex: 1, padding: 16}}>
         <SearchBar onSearch={handleSearch} shouldFocus={isSheetOpen} inputClear={isClear}/>
@@ -123,6 +133,12 @@ export const SearchResults = ({onRoomSelection, selectBuilding, onClear, isSheet
           ) : searchText.length === 0 ? (
               <>
                 <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Popular Rooms</Text>
+                {popularRoom(mensa, 1, 1)}
+                {popularRoom(library, 6, 2)}
+                {popularRoom(campusOffice, 0, 3)}
+                {popularRoom(lp1, 0, 4)}
+                {popularRoom(lp2, 1, 5)}
+                {popularRoom(lp3, 2, 6)}
               </>
           ) : filteredData.length > 0 ? (
               <>
