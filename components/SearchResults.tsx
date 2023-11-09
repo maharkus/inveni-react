@@ -93,7 +93,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     setFilteredData([])
     setIsSearching(false)
   }
-  
+
   //popular rooms
   const mensa = data.buildings[0].etage[0].rooms[1]
   const library = data.buildings[1].etage[1].rooms[6]
@@ -113,7 +113,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   );
 
   return (
-      <View style={{flex: 1, padding: 16}}>
+      <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", padding: 16}}>
         <SearchBar onSearch={handleSearch} shouldFocus={shouldFocus} inputClear={isClear}/>
         <SafeAreaView style={styles.roomGrid}>
           {isSearching ? (

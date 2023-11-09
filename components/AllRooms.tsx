@@ -40,13 +40,13 @@ export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
     }
 
     return (
-        <SafeAreaView style={[styles.roomGrid, {padding: 0, marginTop: -70}]}>
+        <SafeAreaView style={[{padding: 0, marginTop: -30}]}>
             {allRooms.map((item: any, indexBuilding: number) => (
-                <>
-                    <Text key={indexBuilding} style={[styles.defaultHeader, {fontSize:  15, width: "100%", marginLeft: "4%", marginBottom: 0}]}>Rooms in {data.buildings[indexBuilding].name} </Text>
+                <View key={indexBuilding} style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", marginTop: -40}}>
+                    <Text style={[styles.defaultHeader, {fontSize:  15, width: "100%", marginLeft: "17%", marginBottom: 0, }]}>Rooms in {data.buildings[indexBuilding].name} </Text>
                     {item.map((item:any, indexFloor: number) =>(
-                        <>
-                            <Text key={indexFloor} style={[styles.defaultText, {fontSize:  15, fontFamily: "Work Sans Bold",  width: "100%", marginLeft: "4%", marginTop: 10, marginBottom: 10}]}>Floor: {data.buildings[indexBuilding].etage[indexFloor].name} </Text>
+                        <View key={indexFloor} style={styles.roomGrid}>
+                            <Text style={[styles.defaultText, {fontSize:  15, fontFamily: "Work Sans Bold",  width: "90%", marginLeft: "4%", marginTop: 10, marginBottom: 10}]}>Floor: {data.buildings[indexBuilding].etage[indexFloor].name} </Text>
                             {item.map((item:any, indexRoom: number) =>(
                                 <Pressable style={styles.room} key={indexRoom} onPress={() => handleSelection (item[0], item[1])}>
                                     <View style={styles.roomTextView}>
@@ -56,10 +56,9 @@ export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
                                     <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
                                 </Pressable>
                             ))}
-                            <View style={{height: 120}}></View>
-                        </>
+                        </View>
                     ))}
-                </>
+                </View>
             ))}
         </SafeAreaView>
     );
