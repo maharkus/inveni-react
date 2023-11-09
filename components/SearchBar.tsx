@@ -60,7 +60,7 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
         <View style={styles.searchBarWrapper}>
             <TextInput
                 style={[
-                    styles.searchBarInput, isFocused ? { backgroundColor: customColors.grey } : {}
+                    styles.searchBarInput, isFocused ? { backgroundColor: customColors.softPurple } : {}
                 ]}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}

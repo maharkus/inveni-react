@@ -30,17 +30,15 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
     const [etage, setEtage] = useState(0);
     const [isSearchActive, setIsSearchActive] = useState(false);
     const dispatch = useDispatch();
-    
-    const shouldFocus = category == -1 && status == 1;
 
     useEffect(() => {
-        if(!shouldFocus) {
-            setIsSearchActive(false)
-        } else {
+        if( category == -1 && status == 1) {
             setIsSearchActive(true)
+        } else {
+            setIsSearchActive(false)
         }
-    }, [shouldFocus])
-    
+    }, [status])
+
 
     const finishedTexts = ["Wonderful!", "Okay", "Great Success!", "Awesome!", "Neat!", "Yeehaw!", "Cool.", "yeeey!", "Woooho!"]
     const gifs = [
@@ -91,7 +89,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
         console.log("Search Activity: ", isSearchActive)
         console.log("Category: ", category)
         console.log("Status: ", status)
-    })
+    },[status, isSearchActive])
 
     // variables
     const snapPoints = useMemo(() => ["80%", "80.9999%"], []);
