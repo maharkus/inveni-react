@@ -2,22 +2,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface State {
-    value: boolean;
+    isScreenFinish: boolean;
 }
 
 const initialState: State = {
-    value: false, // Initial value is false
+    isScreenFinish: false
 };
 
 const slice = createSlice({
     name: 'slice',
     initialState,
     reducers: {
-        toggleValue: (state) => {
-            state.value = !state.value;
-        },
+        setIsScreenFinish: (state,  action: PayloadAction<boolean>) => {
+            console.log(!state.isScreenFinish)
+            state.isScreenFinish = action.payload
+        }
     },
 });
 
-export const { toggleValue } = slice.actions;
+export const { setIsScreenFinish } = slice.actions;
 export default slice.reducer;

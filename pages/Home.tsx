@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { customColors, styles } from "../styles/styles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Campus from "../components/Campus";
@@ -10,19 +10,22 @@ import * as React from "react";
 import { ButtonTextOnly } from "../components/ButtonTextOnly";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 import { LinearGradient } from "expo-linear-gradient";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { RootState } from "../states/store";
 import RoomBar from "../components/RoomBar";
 import ICSettings from "../assets/icons/ic_settings.svg";
 import ICList from "../assets/icons/ic_list.svg";
 import ICMagnifier from "../assets/icons/ic_magnifier.svg";
+import {setIsScreenFinish} from "../states/slice";
 
 export const Home = ({ navigation }) => {
   const [category, setCategory] = useState(-1);
   const [room, setRoom] = useState(-1);
   const [etage, setEtage] = useState(-1);
   const [sheetStatus, setSheetStatus] = useState(-1);
-  const value = useSelector((state: RootState) => state.counter.value);
+
+  const dispatch = useDispatch();
+  const isScreenFinish = useSelector((state: RootState) => state.counter.isScreenFinish);
 
   //Init BottomSheetBar
   const initSearch = () => {
@@ -59,7 +62,7 @@ export const Home = ({ navigation }) => {
   return (
 
       <GestureHandlerRootView style={styles.homeContainer}>
-        {room == -1 || value ? <TopBar /> : <View></View>}
+        {room == -1 || isScreenFinish ? <TopBar /> : <View></View>}
 
         <LinearGradient
             style={styles.topBarGrad}
@@ -68,7 +71,7 @@ export const Home = ({ navigation }) => {
         />
 
         <View style={styles.roomBarView}>
-            {destination.room != -1 && !value && <RoomBar destination={destination} />}
+            {destination.room != -1 && !isScreenFinish && <RoomBar destination={destination} />}
         </View>
 
         <ScrollView style={{"display": "flex", "height": "100%", "width": "100%", "overflow" : "hidden", "position": "absolute", "zIndex" : -2}} >
@@ -120,13 +123,13 @@ export const Home = ({ navigation }) => {
         </View>
         <BottomSheetBar
           status={sheetStatus}
-          statusChange={(index) => setSheetStatus(index)}
+          setStatus={(index) => setSheetStatus(index)}
           selectRoom={(etage, room) => handleRoomSelection(etage, room)}
           selectBuilding={(building) => handleBuilding(building)}
           category={category}
           room={room}
-          onClear={clearResults}
-          isNavigationFinished={value}
+          onClearResults={clearResults}
+          isScreenFinish={isScreenFinish}
         />
       </GestureHandlerRootView>
   );

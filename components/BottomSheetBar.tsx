@@ -6,26 +6,26 @@ import {RoomSelection} from "./RoomSelection";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {Image, Text, View} from "react-native";
 import {useDispatch} from "react-redux";
-import {toggleValue} from "../states/slice";
 import {ButtonText} from "./ButtonText";
 import RoomBar from "./RoomBar";
 import {AllRooms} from "./AllRooms";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
+import {setIsScreenFinish} from "../states/slice";
 
 interface Props {
     status: number,
+    setStatus: (index) => void,
     category: number,
     room: number,
     selectRoom: (etage, room) => void,
     selectBuilding: (building) => void,
-    onClear: () => void,
-    statusChange: (index) => void,
-    isNavigationFinished: boolean,
+    onClearResults: () => void,
+    isScreenFinish: boolean,
 }
 
-export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClear, statusChange, isNavigationFinished } : Props) => {
+export const BottomSheetBar = ({status, category, room, selectRoom, selectBuilding, onClearResults, setStatus, isScreenFinish } : Props) => {
     const sheetRef = useRef<BottomSheet>(null);
     const [etage, setEtage] = useState(0);
     const [isSearchActive, setIsSearchActive] = useState(false);
@@ -56,26 +56,31 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
 
     useEffect(() => {
         sheetRef.current?.snapToIndex(status);
-        isNavigationFinished && sheetRef.current?.snapToIndex(1);
+    }, [status]);
 
-        console.log(status);
-    }, [status, isNavigationFinished]);
+    useEffect(() => {
+        isScreenFinish && setStatus(1);
+    }, [isScreenFinish]);
 
     const handleClosePress = useCallback(() => {
         sheetRef.current?.close();
-        statusChange(-1);
-    }, [statusChange]);
+        setStatus(-1);
+    }, [setStatus]);
 
     // To keep swipe down working
     const handleSheetChange = useCallback((index) => {
-        index === -1 && room === -1 && onClear()
-        statusChange(index)
-    }, [statusChange, room, onClear])
+        if(index == -1) {
+            room === -1 && onClearResults()
+            isScreenFinish && finishNavigation();
+        }
+        setStatus(index)
+    }, [setStatus, room, onClearResults, isScreenFinish])
 
-    const onFinish = () => {
-        onClear()
-        dispatch(toggleValue())
-        handleClosePress()
+    const finishNavigation = () => {
+        onClearResults()
+        dispatch(setIsScreenFinish(false));
+        sheetRef.current?.close();
+        setStatus(-1);
     }
 
     const onRoom = (etage, room) => {
@@ -83,13 +88,6 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
         setEtage(etage);
         handleClosePress();
     }
-
-    useEffect(() => {
-        console.log("-----------")
-        console.log("Search Activity: ", isSearchActive)
-        console.log("Category: ", category)
-        console.log("Status: ", status)
-    },[status, isSearchActive])
 
     // variables
     const snapPoints = useMemo(() => ["80%", "80.9999%"], []);
@@ -107,7 +105,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                 onChange={handleSheetChange}
                 keyboardBehavior={"extend"}
             >
-                {!isNavigationFinished ?
+                {!isScreenFinish ?
                     <>
                         {category >= 0 && category <= 4 ?
                             <View style={{height: 80}}>
@@ -129,7 +127,7 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                                         selectBuilding={(building) => selectBuilding(building)}
                                         onRoomSelection={(etage, room) => onRoom(etage, room)}
                                         isSheetOpen={status === 1}
-                                        onClear={onClear}
+                                        onClear={onClearResults}
                                         shouldFocus={isSearchActive}
                                     />
                                 </>
@@ -149,13 +147,13 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                     </>
                     :
                     <BottomSheetView style={[styles.contentContainer, {flex: 1}]}>
-                        <RoomBar destination={{category, etage, room}}></RoomBar>
+                        {category != -1 && <RoomBar destination={{category, etage, room}}></RoomBar>}
                         <View style={styles.gifWrap}>
                             <Image source={gifs[gifIndex]} style={{width: 200, height: 200 }} />
                         </View>
                         <Text style={[styles.defaultHeader, {marginTop: 30}]}>You made it!</Text>
                         <Text style={[styles.defaultText, {width: 300, textAlign: "center", marginBottom: 30}]}>Congratulations, you have reached your destination.</Text>
-                        <ButtonText color={customColors.green} action={onFinish}>
+                        <ButtonText color={customColors.green} action={finishNavigation}>
                             {finishedTexts[gifIndex]}
                         </ButtonText>
                     </BottomSheetView>
