@@ -16,7 +16,6 @@ import RoomBar from "../components/RoomBar";
 import ICSettings from "../assets/bildmarke.svg";
 import ICList from "../assets/icons/ic_list.svg";
 import ICMagnifier from "../assets/icons/ic_magnifier.svg";
-import {setIsScreenFinish} from "../states/slice";
 
 export const Home = ({ navigation }) => {
   const [category, setCategory] = useState(-1);
@@ -24,7 +23,6 @@ export const Home = ({ navigation }) => {
   const [etage, setEtage] = useState(-1);
   const [sheetStatus, setSheetStatus] = useState(-1);
 
-  const dispatch = useDispatch();
   const isScreenFinish = useSelector((state: RootState) => state.counter.isScreenFinish);
 
   //Init BottomSheetBar

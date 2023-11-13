@@ -1,4 +1,4 @@
-import {Image, Text, View} from "react-native";
+import {Image, View} from "react-native";
 import {customColors, styles} from "../styles/styles";
 import * as React from "react";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
@@ -11,9 +11,6 @@ import {useDispatch} from "react-redux";
 import {setIsScreenFinish} from "../states/slice";
 
 export const Navigation = ({ route, navigation }) => {
-    const images = [
-        require('../assets/buildings/L1.jpg')
-    ]
     const [currentFloor, setCurrentFloor] = useState(0);
     const destination: {category: number, etage:number, room: number} = route.params.destination;
 
