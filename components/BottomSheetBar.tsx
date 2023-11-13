@@ -40,17 +40,18 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
     }, [status])
 
 
-    const finishedTexts = ["Wonderful!", "Okay", "Great Success!", "Awesome!", "Neat!", "Yeehaw!", "Cool.", "yeeey!", "Woooho!"]
+    const finishedTexts = ["Wonderful!", "Okay", /*"Great Success!"*/, "Awesome!", "Neat!", "Yeehaw!", "Cool.", "yeeey!", "Woooho!", "Let's go!"]
     const gifs = [
         require('../assets/gifs/awesome.gif'),
         require('../assets/gifs/propeller.gif'),
-        require('../assets/gifs/borat.gif'),
+        //require('../assets/gifs/borat.gif'),
         require('../assets/gifs/dance.gif'),
         require('../assets/gifs/top.gif'),
         require('../assets/gifs/yehaw.gif'),
         require('../assets/gifs/k_cool.gif'),
         require('../assets/gifs/yeeey.gif'),
         require('../assets/gifs/skeletal.gif'),
+        require('../assets/gifs/bart.gif'),
     ]
     const gifIndex = Math.floor(Math.random()*gifs.length);
 

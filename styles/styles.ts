@@ -131,9 +131,6 @@ export const styles = StyleSheet.create({
   },
 
   closeButton: {
-    position: "absolute",
-    zIndex: 999,
-    bottom: 50,
   },
 
   //Map
@@ -172,7 +169,7 @@ export const styles = StyleSheet.create({
   //Room Grids
   roomGrid: {
     flex: 1,
-    width: "90%",
+    width: 300,
     height: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -354,7 +351,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderWidth: 1.4,
     borderRadius: 999,
-    minWidth: "90%"
+    width: 300,
   },
 
   //Success Screen
