@@ -13,7 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
 import { RootState } from "../states/store";
 import RoomBar from "../components/RoomBar";
-import ICSettings from "../assets/icons/ic_settings.svg";
+import ICSettings from "../assets/bildmarke.svg";
 import ICList from "../assets/icons/ic_list.svg";
 import ICMagnifier from "../assets/icons/ic_magnifier.svg";
 
