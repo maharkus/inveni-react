@@ -18,10 +18,8 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
     useEffect(() => {
         if (shouldFocus) {
             inputRef.current?.focus();
-            console.log("triggered focus")
         } else {
             inputRef.current?.blur();
-            console.log("triggered blur")
         }
     }, [shouldFocus]);
 

@@ -1,7 +1,5 @@
-import {Image, Text, View} from "react-native";
+import {Image, View} from "react-native";
 import {customColors, styles} from "../styles/styles";
-import {getPathstoRooms} from "../roomfinding/Roomfinder";
-import data from "../roomfinding/data.json";
 import * as React from "react";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
@@ -9,14 +7,10 @@ import {NavPath} from "../components/NavigationPath";
 import {useState} from "react";
 import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../states/store";
-import {toggleValue} from "../states/slice";
+import {useDispatch} from "react-redux";
+import {setIsScreenFinish} from "../states/slice";
 
 export const Navigation = ({ route, navigation }) => {
-    const images = [
-        require('../assets/buildings/L1.jpg')
-    ]
     const [currentFloor, setCurrentFloor] = useState(0);
     const destination: {category: number, etage:number, room: number} = route.params.destination;
 
@@ -28,7 +22,7 @@ export const Navigation = ({ route, navigation }) => {
             setCurrentFloor(currentFloor + 1);
         }
         else {
-            dispatch(toggleValue());
+            dispatch(setIsScreenFinish(true));
             navigation.navigate("Home")
         }
     }
