@@ -176,6 +176,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
     padding: 0,
     marginBottom: 50,
+    margin: 0,
     marginLeft: "-2.5%",
     marginRight: "-2.5%",
   },
@@ -190,7 +191,11 @@ export const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "space-between",
     overflow: "hidden",
-    margin: "2.5%",
+    margin: 0,
+    marginTop: "2.5%",
+    marginBottom: "2.5%",
+    marginLeft: "2.5%",
+    marginRight: "2.5%",
   },
   roomTextView: {
     display: "flex",
@@ -345,6 +350,7 @@ export const styles = StyleSheet.create({
     padding: 0
   },
   searchBarInput: {
+    width: "100%",
     height: 70,
     fontSize: 16,
     fontFamily: "Work Sans",
@@ -352,7 +358,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderWidth: 1.4,
     borderRadius: 999,
-    width: 300,
   },
 
   //Success Screen

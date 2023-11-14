@@ -113,9 +113,11 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   );
 
   return (
-      <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", padding: 16}}>
-        <SearchBar onSearch={handleSearch} shouldFocus={shouldFocus} inputClear={isClear}/>
-        <SafeAreaView style={styles.roomGrid}>
+      <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%"}}>
+        <View style={{padding: "2.5%", width: "100%"}}>
+          <SearchBar onSearch={handleSearch} shouldFocus={shouldFocus} inputClear={isClear}/>
+        </View>
+        <SafeAreaView style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%"}}>
           {isSearching ? (
               <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
                 <LottieView
@@ -123,23 +125,27 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
                     ref={loadingRef}
                     loop
                     autoPlay
-                    style={{flex: 1, height: 5}}
+                    style={{flex: 1, height: 20}}
                 />
                 <Text style={[styles.defaultText, {marginTop: 16}]}>Looking for your room...</Text>
               </View>
           ) : searchText.length === 0 ? (
               <>
                 <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Popular Rooms</Text>
-                {popularRoom(mensa, 1, 1)}
-                {popularRoom(library, 6, 2)}
-                {popularRoom(campusOffice, 0, 3)}
-                {popularRoom(lp1, 0, 4)}
-                {popularRoom(lp2, 1, 5)}
-                {popularRoom(lp3, 2, 6)}
+                <View style={styles.roomGrid}>
+                  {popularRoom(mensa, 1, 1)}
+                  {popularRoom(library, 6, 2)}
+                  {popularRoom(campusOffice, 0, 3)}
+                  {popularRoom(lp1, 0, 4)}
+                  {popularRoom(lp2, 1, 5)}
+                  {popularRoom(lp3, 2, 6)}
+                </View>
               </>
           ) : filteredData.length > 0 ? (
               <>
+                
                 <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Search Results</Text>
+                <View style={styles.roomGrid}>
                 {filteredData.map((item: any, index: number) => (
                     <Pressable style={styles.room} key={index} onPress={() => handleSelection (item[0], item[1])}>
                       <View style={styles.roomTextView}>
@@ -149,6 +155,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
                       <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
                     </Pressable>
                 ))}
+                </View>
               </>
           ) : (
               <>
