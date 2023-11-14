@@ -215,7 +215,7 @@ export const styles = StyleSheet.create({
     minHeight: 15,
     maxHeight: 15,
     width: "100%",
-    backgroundColor: "#000",
+    backgroundColor: customColors.dark,
     borderTopWidth: 1,
     borderTopColor: customColors.dark,
   },

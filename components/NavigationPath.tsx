@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import Canvas from 'react-native-canvas';
-import {styles} from "../styles/styles";
+import {customColors, styles} from "../styles/styles";
 import data from "../roomfinding/data.json";
 import {getPathstoRooms} from "../roomfinding/Roomfinder";
 
@@ -31,7 +31,7 @@ export const NavPath = ({destination, currentFloor}: Props) => {
         const ctx = canvas.current.getContext('2d');
         canvas.current.height = 1500;
         canvas.current.width = 1500;
-        ctx.fillStyle = '#A4EB5D';
+        ctx.fillStyle = customColors.green;
 
 
         const drawLine = (coordinates, color, width) => {
@@ -50,8 +50,8 @@ export const NavPath = ({destination, currentFloor}: Props) => {
 
             for (let i = 0; i < points.length; i++) {
                 if(i != points.length - 1 ) {
-                    drawLine([coordinates[points[i]][0], coordinates[points[i]][1]], 'black', 15)
-                    drawLine([coordinates[points[i]][0], coordinates[points[i]][1]], '#A4EB5D', 11)
+                    drawLine([coordinates[points[i]][0], coordinates[points[i]][1]], customColors.dark, 15)
+                    drawLine([coordinates[points[i]][0], coordinates[points[i]][1]], customColors.green, 11)
                 }
                 else {
                     let xVec = coordinates[points[i]][0] - coordinates[points[i - 1]][0];
@@ -60,16 +60,16 @@ export const NavPath = ({destination, currentFloor}: Props) => {
                     const YCoord = currentFloor == destination.etage ? roomCoords[1] : coordinates[endNode][1];
 
                     if(xVec == 0) {
-                        drawLine([coordinates[points[i]][0], YCoord], 'black', 15);
-                        drawLine([XCoord, YCoord], 'black', 15);
-                        drawLine([coordinates[points[i]][0], YCoord], '#A4EB5D', 11);
-                        drawLine([XCoord, YCoord], '#A4EB5D', 11);
+                        drawLine([coordinates[points[i]][0], YCoord], customColors.dark, 15);
+                        drawLine([XCoord, YCoord], customColors.dark, 15);
+                        drawLine([coordinates[points[i]][0], YCoord], customColors.green, 11);
+                        drawLine([XCoord, YCoord], customColors.green, 11);
                     }
                     else {
-                        drawLine([XCoord, coordinates[points[i]][1]], 'black', 15);
-                        drawLine([XCoord, YCoord], 'black', 15);
-                        drawLine([XCoord, coordinates[points[i]][1]], '#A4EB5D', 11);
-                        drawLine([XCoord, YCoord], '#A4EB5D', 11);
+                        drawLine([XCoord, coordinates[points[i]][1]], customColors.dark, 15);
+                        drawLine([XCoord, YCoord], customColors.dark, 15);
+                        drawLine([XCoord, coordinates[points[i]][1]], customColors.green, 11);
+                        drawLine([XCoord, YCoord], customColors.green, 11);
                     }
                     currentFloor != destination.etage && canvas_arrow(ctx, coordinates[points[i-1]][0], YCoord, XCoord, YCoord, 17);
                 }
@@ -123,7 +123,7 @@ function canvas_arrow(context, fromx, fromy, tox, toy, r){
     y = r*Math.sin(angle) + y_center;
     context.lineTo(x, y);
 
-    context.strokeStyle = '#000000';
+    context.strokeStyle = customColors.dark;
     context.lineWidth = 4; // Breite der Linie
     context.lineJoin = 'round';
     context.closePath();
@@ -135,8 +135,8 @@ function canvas_arrow(context, fromx, fromy, tox, toy, r){
 const drawStart = (context, x, y) => {
     context.beginPath();
     context.arc(x, y, 16, 0, 2 * Math.PI);
-    context.fillStyle = '#C28CFC';
-    context.strokeStyle = 'black'; // Farbe der Linie
+    context.fillStyle = customColors.purple;
+    context.strokeStyle = customColors.dark; // Farbe der Linie
     context.lineWidth = 4; // Breite der Linie
     context.lineJoin = 'round';
     context.stroke();
@@ -147,8 +147,8 @@ const drawStart = (context, x, y) => {
 const drawEnd = (context, x, y) => {
     context.beginPath();
     context.arc(x, y, 16, 0, 2 * Math.PI);
-    context.fillStyle = '#F98452';
-    context.strokeStyle = 'black'; // Farbe der Linie
+    context.fillStyle = customColors.orange;
+    context.strokeStyle = customColors.dark; // Farbe der Linie
     context.lineWidth = 4; // Breite der Linie
     context.lineJoin = 'round';
     context.stroke();
