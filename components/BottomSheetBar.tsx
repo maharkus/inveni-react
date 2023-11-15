@@ -109,13 +109,13 @@ export const BottomSheetBar = ({status, category, room, selectRoom, selectBuildi
                 {!isScreenFinish ?
                     <>
                         {category >= 0 && category <= 4 ?
-                            <View style={{height: 80}}>
+                            <View style={{height: 80, width: "100%"}}>
                                 <View style={{alignItems: 'center', position: 'absolute', width: "100%"}}>
                                     <Text style={[styles.defaultHeader, {textAlign: "center", width: "100%"}]}>All Rooms in {data.buildings[category].name}</Text>
                                 </View>
                             </View>
                             : category == 5 &&
-                            <View style={{height: 80}}>
+                            <View style={{height: 80, width: "100%"}}>
                                 <View style={{alignItems: 'center', position: 'absolute', width: "100%"}}>
                                     <Text style={[styles.defaultHeader, {textAlign: "center", width: "100%"}]}>All Rooms</Text>
                                 </View>

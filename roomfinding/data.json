@@ -52,7 +52,7 @@
             ["L2 E00-340", "Hörsaal LP7", 10, 580, 1406, "#F98452", 0, 1],
             ["L2 E00-230", "Schieffer Seminarraum", 8, 978, 1421, "#F9CB48", 0, 1],
             ["L2 E00-210", "Ideal Seminarraum", 8, 978, 1198, "#F9CB48", 0, 1],
-            ["L2 E00-190", "Ferber Software SR", 8, 978, 994, "#F9CB48", 0, 1],
+            ["L2 E00-190", "Ferber Software Seminarraum", 8, 978, 994, "#F9CB48", 0, 1],
             ["L2 E00 Sanitär", "WC Frauen", 8, 978, 884, "#E0E3FF", 0, 1],
             ["L2 E00 Sanitär", "WC Herren", 8, 978, 840, "#E0E3FF", 0, 1],
             ["L2 E00 Sanitär", "WC Barrierefrei", 11, 810, 1468, "#E0E3FF", 0, 1]
@@ -392,7 +392,7 @@
             ["L4.3 E02-060", "Syntheselabor", 4, 415, 920, "#C28CFC", 2, 3],
             ["L4.3 E02-080", "Mobile Praktika", 4, 410, 726, "#C28CFC", 2, 3],
             ["L4.3 E02-190", "Interaction Labor", 6, 215, 779, "#C28CFC", 2, 3],
-            ["L4.3 E02-130", "Materialpräp. und Charakterisierung", 6, 215, 1038, "#C28CFC", 2, 3]
+            ["L4.3 E02-130", "Materialpräperation und Charakterisierung", 6, 215, 1038, "#C28CFC", 2, 3]
           ],
           "paths": [
             [0, 1, 3],

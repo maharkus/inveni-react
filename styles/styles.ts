@@ -20,6 +20,7 @@ export const customColors = {
   transparent: "rgba(0,0,0,0)"
 };
 
+
 export const styles = StyleSheet.create({
   homeContainer: {
     display: "flex",

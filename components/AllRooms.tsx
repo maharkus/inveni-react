@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import data from "../roomfinding/data.json";
-import { View, Text, Pressable } from "react-native";
-import { styles } from "../styles/styles";
+import { View, Text, Pressable, ActivityIndicator } from "react-native";
+import { customColors, styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
+import LottieView from "lottie-react-native";
 
 interface Props {
     onRoomSelection: (etage: any, id: any) => void,
@@ -11,6 +12,16 @@ interface Props {
 
 export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
     const [allRooms, setallRooms] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const loadingRef = useRef<LottieView>(null);
+
+    useEffect(() => {
+        loadingRef.current?.reset()
+        setTimeout(() => {
+          loadingRef.current?.play()
+        }, 100)
+      }, [])
 
     useEffect(() => {
         let buildings = [];
@@ -32,6 +43,13 @@ export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
             floors = []
         }
         setallRooms(buildings);
+        
+        const timer = setTimeout(() => {
+            setallRooms(buildings);
+            setIsLoading(false);
+        }, 150);
+
+        return () => clearTimeout(timer);
     }, [])
 
     const handleSelection = (item: any, index:number) => {
@@ -39,29 +57,65 @@ export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
         onRoomSelection (item[6], index)
     }
 
+    const getLengthOfLongestWord = (name: string) => {
+        const roomNameWords = name.split(' ');
+        const longestWord = roomNameWords.reduce((longest, currentWord) => {
+          return currentWord.length > longest.length ? currentWord : longest;
+        }, "");
+        return longestWord.length;
+      };
+
+    const getFontSize = (name) => {
+        const lengthOfLongestWord = getLengthOfLongestWord(name); 
+        if (lengthOfLongestWord > 18){
+            return 8;
+        } 
+        if (lengthOfLongestWord >= 18 && lengthOfLongestWord >= 10 || name.length > 20) {
+            return 10;
+        } else {
+            return 12;
+        }
+    };
+
     return (
-        <SafeAreaView style={[{padding: 0, marginTop: -30}]}>
-            {allRooms.map((item: any, indexBuilding: number) => (
-                <View key={indexBuilding} style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", marginTop: -40}}>
-                    <Text style={[styles.defaultHeader, {fontSize:  15, width: "82.5%", marginBottom: 0, }]}>Rooms in {data.buildings[indexBuilding].name} </Text>
-                    {item.map((item:any, indexFloor: number) =>(
-                        <>
-                        <Text style={[styles.defaultText, {fontSize:  15, fontFamily: "Work Sans Bold",  width: "82.5%", marginTop: 10, marginBottom: 10}]}>Floor: {data.buildings[indexBuilding].etage[indexFloor].name} </Text>
-                        <View key={indexFloor} style={styles.roomGrid}>
-                            {item.map((item:any, indexRoom: number) =>(
-                                <Pressable style={styles.room} key={indexRoom} onPress={() => handleSelection (item[0], item[1])}>
-                                    <View style={styles.roomTextView}>
-                                        <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
-                                        <Text style={styles.roomTextSec}>{item[0][1]}</Text>
-                                    </View>
-                                    <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
-                                </Pressable>
-                            ))}
-                        </View>
-                        </>
-                    ))}
-                </View>
-            ))}
+        <SafeAreaView style={[{padding: 0, marginTop: -30, width: "100%"}]}>
+            {isLoading ? (
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
+                <LottieView
+                    source={require('../assets/lotties/loadingAnimV2.json')}
+                    ref={loadingRef}
+                    loop
+                    autoPlay
+                    style={{flex: 1, height: 20}}
+                />
+                <Text style={[styles.defaultText, {marginTop: 16}]}>Loading all rooms...</Text>
+              </View>
+            ) : (
+                <>
+                {allRooms.map((item: any, indexBuilding: number) => (
+                    <View key={indexBuilding} style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", marginTop: -40}}>
+                        <Text style={[styles.defaultHeader, {fontSize:  15, width: "82.5%", marginBottom: 0, }]}>Rooms in {data.buildings[indexBuilding].name} </Text>
+                        {item.map((item:any, indexFloor: number) =>(
+                            <>
+                            <Text style={[styles.defaultText, {fontSize:  15, fontFamily: "Work Sans Bold",  width: "82.5%", marginTop: 10, marginBottom: 10}]}>Floor: {data.buildings[indexBuilding].etage[indexFloor].name} </Text>
+                            <View key={indexFloor} style={styles.roomGrid}>
+                                {item.map((item:any, indexRoom: number) =>(
+                                    <Pressable style={styles.room} key={indexRoom} onPress={() => handleSelection (item[0], item[1])}>
+                                        <View style={styles.roomTextView}>
+                                            <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
+                                            <Text style={[styles.roomTextSec, {fontSize: getFontSize(item[0][1])}]}>{item[0][1]}</Text>
+                                        </View>
+                                        <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
+                                    </Pressable>
+                                ))}
+                            </View>
+                            </>
+                        ))}
+                    </View>
+                ))}
+                </>
+            )}
         </SafeAreaView>
     );
 }
+

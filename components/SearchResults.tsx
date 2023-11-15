@@ -1,4 +1,4 @@
-import { Key, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
 import { View, Text, Pressable, Keyboard } from "react-native";
 import { SearchBar } from "./SearchBar";
@@ -27,14 +27,14 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     lottieRef.current?.reset()
     setTimeout(() => {
       lottieRef.current?.play()
-    }, 100)
+    }, 150)
   }, [])
 
   useEffect(() => {
     loadingRef.current?.reset()
     setTimeout(() => {
       loadingRef.current?.play()
-    }, 100)
+    }, 150)
   }, [])
 
   const handleSearch = (text) => {
@@ -112,6 +112,26 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     </Pressable>
   );
 
+  const getLengthOfLongestWord = (name: string) => {
+    const roomNameWords = name.split(' ');
+    const longestWord = roomNameWords.reduce((longest, currentWord) => {
+      return currentWord.length > longest.length ? currentWord : longest;
+    }, "");
+    return longestWord.length;
+  };
+
+  const getFontSize = (name) => {
+    const lengthOfLongestWord = getLengthOfLongestWord(name); 
+    if (lengthOfLongestWord > 20){
+        return 8;
+    } 
+    if (lengthOfLongestWord >= 20 && lengthOfLongestWord >= 10 || name.length > 20) {
+        return 10;
+    } else {
+        return 12;
+    }
+  };
+
   return (
       <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%"}}>
         <View style={{padding: "2.5%", width: "100%"}}>
@@ -150,7 +170,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
                     <Pressable style={styles.room} key={index} onPress={() => handleSelection (item[0], item[1])}>
                       <View style={styles.roomTextView}>
                         <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
-                        <Text style={styles.roomTextSec}>{item[0][1]}</Text>
+                        <Text style={[styles.roomTextSec, {fontSize: getFontSize(item[0][1])}]}>{item[0][1]}</Text>
                       </View>
                       <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
                     </Pressable>
