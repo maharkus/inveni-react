@@ -9,28 +9,38 @@ import {ButtonTextOnly} from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
 import {useDispatch} from "react-redux";
 import {setIsScreenFinish} from "../states/slice";
+import { useFloor } from '../states/FloorContext';
 
 export const Navigation = ({ route, navigation }) => {
-    const [currentFloor, setCurrentFloor] = useState(0);
     const destination: {category: number, etage:number, room: number} = route.params.destination;
+    const { currentFloor, setCurrentFloor } = useFloor();
 
     const dispatch = useDispatch();
 
 
+    console.log(currentFloor)
+    
     const handleNextStep = () => {
-        if (currentFloor < destination.etage) {
-            setCurrentFloor(currentFloor + 1);
-        }
-        else {
+        setCurrentFloor(prevFloor => {
+          if (prevFloor < destination.etage) {
+            return prevFloor + 1;
+        } else {
             dispatch(setIsScreenFinish(true));
-            navigation.navigate("Home")
-        }
-    }
-    const handlePrevStep = () => {
-        if (currentFloor > 0) {
-            setCurrentFloor(currentFloor - 1);
-        }
-    }
+            navigation.navigate("Home");
+            return 0; // Ensure to return the current state if not updating
+          }
+        });
+      };
+      
+      const handlePrevStep = () => {
+        setCurrentFloor(prevFloor => {
+          if (prevFloor > 0) {
+            return prevFloor - 1;
+          } else {
+            return prevFloor; // Ensure to return the current state if not updating
+          }
+        });
+      };
 
     return (
         <>
@@ -161,7 +171,12 @@ export const Navigation = ({ route, navigation }) => {
                                 </>
                             }
                         </>
-                        <ButtonTextOnly action={() => navigation.navigate("Home")}>Back to Search</ButtonTextOnly>
+                        <ButtonTextOnly action={() => {
+                            setCurrentFloor(0);
+                            navigation.navigate("Home")
+                        }}
+                            >Back to Search
+                        </ButtonTextOnly>
                     </View>
                 </View>
         </>

@@ -9,6 +9,7 @@ import {useEffect, useState  } from "react";
 import store from "./states/store";
 import {Provider} from "react-redux";
 import SplashScreen from './components/SplashScreen';
+import { FloorProvider } from "./states/FloorContext";
 
 
 export default function App() {
@@ -55,27 +56,29 @@ export default function App() {
         return <SplashScreen />;
     } else {
         return (
-            <Provider store={store}>
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen
-                        name="Home"
-                        component={Home}
-                        options={{ headerShown: false}}
-                    />
-                    <Stack.Screen
-                        name="Navigation"
-                        component={Navigation}
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="SettingsPage"
-                        component={SettingsPage}
-                        options={{ headerShown: false }}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
-            </Provider>
+            <FloorProvider>
+                <Provider store={store}>
+                <NavigationContainer>
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name="Home"
+                            component={Home}
+                            options={{ headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="Navigation"
+                            component={Navigation}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name="SettingsPage"
+                            component={SettingsPage}
+                            options={{ headerShown: false }}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+                </Provider>
+            </FloorProvider>
         );
     }
 }

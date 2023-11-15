@@ -170,7 +170,8 @@ export const styles = StyleSheet.create({
   //Room Grids
   roomGrid: {
     flex: 1,
-    width: "90%",
+    maxWidth: "86%",
+    width: "86%",
     height: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -179,7 +180,7 @@ export const styles = StyleSheet.create({
     marginBottom: 50,
     margin: 0,
     marginLeft: "-2.5%",
-    marginRight: "-2.5%",
+    marginRight: "-2.5%"
   },
   room: {
     width: "45%",
@@ -273,15 +274,21 @@ export const styles = StyleSheet.create({
     zIndex: -1,
   },
   //Top Bar Navigation
-  navigationTopBar: {
+  navigationTopBarWrapper: {
     position: "absolute",
     top: 50,
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  navigationTopBar: {
     backgroundColor: customColors.grey,
     paddingHorizontal: 25,
     paddingVertical: 15,
     borderRadius: 999,
     borderWidth: 1.4,
     borderColor: customColors.dark,
+    marginRight: 15,
   },
   navigationTopBarContent: {
     paddingHorizontal: 0,
@@ -309,6 +316,21 @@ export const styles = StyleSheet.create({
   roomBarText: {
     fontSize: 13,
     fontFamily: "Work Sans Bold"
+  },
+  floorWrapper: {
+    backgroundColor: customColors.softPurple,
+    height: "100%",
+    maxWidth: 80,
+    minWidth: 80,
+    borderWidth: 1.4,
+    borderColor: customColors.dark,
+    borderRadius: 999,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  floorText: {
+    fontFamily: "TTTravels"
   },
   //Bottom Nav
   bottomNav: {
@@ -346,12 +368,14 @@ export const styles = StyleSheet.create({
   //SearchBar
   searchBarWrapper: {
     width: "100%",
+    minWidth: "100%",
     margin: 0,
     marginBottom: -32,
-    padding: 0
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   searchBarInput: {
-    width: "100%",
+    minWidth: "100%",
     height: 70,
     fontSize: 16,
     fontFamily: "Work Sans",

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
-import { View, Text, Pressable, Keyboard } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { SearchBar } from "./SearchBar";
 import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
+import { getFontSize } from '../utils/utils';
 
 interface Props {
   onRoomSelection: (etage, id) => void,
@@ -19,7 +20,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   const [filteredData, setFilteredData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isClear, setIsClear] = useState(false);
-
+  
   const lottieRef = useRef<LottieView>(null);
   const loadingRef = useRef<LottieView>(null);
 
@@ -111,26 +112,6 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
       <View style={[styles.roomBottomBar, { backgroundColor: room[5] }]} />
     </Pressable>
   );
-
-  const getLengthOfLongestWord = (name: string) => {
-    const roomNameWords = name.split(' ');
-    const longestWord = roomNameWords.reduce((longest, currentWord) => {
-      return currentWord.length > longest.length ? currentWord : longest;
-    }, "");
-    return longestWord.length;
-  };
-
-  const getFontSize = (name) => {
-    const lengthOfLongestWord = getLengthOfLongestWord(name); 
-    if (lengthOfLongestWord > 20){
-        return 8;
-    } 
-    if (lengthOfLongestWord >= 20 && lengthOfLongestWord >= 10 || name.length > 20) {
-        return 10;
-    } else {
-        return 12;
-    }
-  };
 
   return (
       <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%"}}>

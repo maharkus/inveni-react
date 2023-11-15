@@ -1,6 +1,7 @@
 import { styles } from "../styles/styles";
 import { Pressable, View, Text } from "react-native";
 import data from "../roomfinding/data.json";
+import { getFontSize } from '../utils/utils';
 
 interface Props {
   category: number;
@@ -19,7 +20,7 @@ export const RoomSelection = ({ category, onRoomSelection }: Props) => {
   }
 
   return (
-    <View style={{ width: "100%", flex: 1, alignItems: "center" }}>
+    <View style={{ minWidth: "100%", width: "100%", flex: 1, alignItems: "center" }}>
       <View style={styles.roomGrid}>
         {items[0].map((item: any, index: number) => (
           <Pressable
@@ -29,7 +30,7 @@ export const RoomSelection = ({ category, onRoomSelection }: Props) => {
           >
             <View style={styles.roomTextView}>
               <Text style={styles.roomTextPrim}>{item[0]}</Text>
-              <Text style={styles.roomTextSec}>{item[1]}</Text>
+              <Text style={[styles.roomTextSec, {fontSize: getFontSize(item[1])}]}>{item[1]}</Text>
             </View>
             <View
               style={[styles.roomBottomBar, { backgroundColor: item[5] }]}
@@ -44,7 +45,7 @@ export const RoomSelection = ({ category, onRoomSelection }: Props) => {
           >
             <View style={styles.roomTextView}>
               <Text style={styles.roomTextPrim}>{item[0]}</Text>
-              <Text style={styles.roomTextSec}>{item[1]}</Text>
+              <Text style={[styles.roomTextSec, {fontSize: getFontSize(item[1])}]}>{item[1]}</Text>
             </View>
             <View
               style={[styles.roomBottomBar, { backgroundColor: item[5] }]}
@@ -59,7 +60,7 @@ export const RoomSelection = ({ category, onRoomSelection }: Props) => {
           >
             <View style={styles.roomTextView}>
               <Text style={styles.roomTextPrim}>{item[0]}</Text>
-              <Text style={styles.roomTextSec}>{item[1]}</Text>
+              <Text style={[styles.roomTextSec, {fontSize: getFontSize(item[1])}]}>{item[1]}</Text>
             </View>
             <View
               style={[styles.roomBottomBar, { backgroundColor: item[5] }]}

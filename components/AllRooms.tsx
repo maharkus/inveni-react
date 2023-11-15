@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import data from "../roomfinding/data.json";
 import { View, Text, Pressable, ActivityIndicator } from "react-native";
-import { customColors, styles } from "../styles/styles";
+import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
+import { getFontSize } from '../utils/utils';
 
 interface Props {
     onRoomSelection: (etage: any, id: any) => void,
@@ -57,28 +58,8 @@ export const AllRooms = ({onRoomSelection, selectBuilding} : Props) => {
         onRoomSelection (item[6], index)
     }
 
-    const getLengthOfLongestWord = (name: string) => {
-        const roomNameWords = name.split(' ');
-        const longestWord = roomNameWords.reduce((longest, currentWord) => {
-          return currentWord.length > longest.length ? currentWord : longest;
-        }, "");
-        return longestWord.length;
-      };
-
-    const getFontSize = (name) => {
-        const lengthOfLongestWord = getLengthOfLongestWord(name); 
-        if (lengthOfLongestWord > 18){
-            return 8;
-        } 
-        if (lengthOfLongestWord >= 18 && lengthOfLongestWord >= 10 || name.length > 20) {
-            return 10;
-        } else {
-            return 12;
-        }
-    };
-
     return (
-        <SafeAreaView style={[{padding: 0, marginTop: -30, width: "100%"}]}>
+        <SafeAreaView style={[{padding: 0, marginTop: -30, minWidth: "100%", width: "100%"}]}>
             {isLoading ? (
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
                 <LottieView
