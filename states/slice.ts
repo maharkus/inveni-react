@@ -1,23 +1,22 @@
 // slice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface State {
-    isScreenFinish: boolean;
+  isScreenFinish: boolean;
 }
 
 const initialState: State = {
-    isScreenFinish: false
+  isScreenFinish: false,
 };
 
 const slice = createSlice({
-    name: 'slice',
-    initialState,
-    reducers: {
-        setIsScreenFinish: (state,  action: PayloadAction<boolean>) => {
-            console.log(!state.isScreenFinish)
-            state.isScreenFinish = action.payload
-        }
+  name: "slice",
+  initialState,
+  reducers: {
+    setIsScreenFinish: (state, action: PayloadAction<boolean>) => {
+      state.isScreenFinish = action.payload;
     },
+  },
 });
 
 export const { setIsScreenFinish } = slice.actions;

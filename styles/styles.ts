@@ -17,9 +17,8 @@ export const customColors = {
   greenPressed: "#79bb37",
   softPurplePressed: "#8f94bf",
   greyPressed: "#C3C3C3",
-  transparent: "rgba(0,0,0,0)"
+  transparent: "rgba(0,0,0,0)",
 };
-
 
 export const styles = StyleSheet.create({
   homeContainer: {
@@ -131,8 +130,7 @@ export const styles = StyleSheet.create({
     padding: 0,
   },
 
-  closeButton: {
-  },
+  closeButton: {},
 
   //Map
   campusWrap: {
@@ -180,7 +178,7 @@ export const styles = StyleSheet.create({
     marginBottom: 50,
     margin: 0,
     marginLeft: "-2.5%",
-    marginRight: "-2.5%"
+    marginRight: "-2.5%",
   },
   room: {
     width: "45%",
@@ -288,7 +286,6 @@ export const styles = StyleSheet.create({
     borderRadius: 999,
     borderWidth: 1.4,
     borderColor: customColors.dark,
-    marginRight: 15,
   },
   navigationTopBarContent: {
     paddingHorizontal: 0,
@@ -315,7 +312,7 @@ export const styles = StyleSheet.create({
   },
   roomBarText: {
     fontSize: 13,
-    fontFamily: "Work Sans Bold"
+    fontFamily: "Work Sans Bold",
   },
   floorWrapper: {
     backgroundColor: customColors.softPurple,
@@ -327,10 +324,11 @@ export const styles = StyleSheet.create({
     borderRadius: 999,
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginLeft: 10,
   },
   floorText: {
-    fontFamily: "TTTravels"
+    fontFamily: "TTTravels",
   },
   //Bottom Nav
   bottomNav: {
@@ -399,7 +397,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 5
+    zIndex: 5,
   },
 
   //Home Navigation Bar
@@ -439,5 +437,5 @@ export const styles = StyleSheet.create({
     borderWidth: 1.4,
     backgroundColor: customColors.uwu,
     padding: 15,
-  }
+  },
 });
