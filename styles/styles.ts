@@ -168,8 +168,8 @@ export const styles = StyleSheet.create({
   //Room Grids
   roomGrid: {
     flex: 1,
-    maxWidth: "86%",
-    width: "86%",
+    maxWidth: "90%",
+    width: "90%",
     height: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -344,7 +344,6 @@ export const styles = StyleSheet.create({
   bottomNavBackNext: {
     backgroundColor: customColors.grey,
     borderRadius: 50,
-    marginRight: 5,
     borderWidth: 1.4,
     borderColor: customColors.dark,
     width: "85%",

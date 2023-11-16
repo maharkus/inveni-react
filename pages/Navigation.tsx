@@ -153,7 +153,8 @@ export const Navigation = ({ route, navigation }) => {
             )}
             <NavPath destination={destination} currentFloor={currentFloor} />
           </ReactNativeZoomableView>
-          <View style={[styles.bottomNav, styles.bottomNavBackNext]}>
+          
+        <View style={[styles.bottomNav, styles.bottomNavBackNext]}>
             <>
               {currentFloor == 0 && (
                   <>
@@ -170,14 +171,14 @@ export const Navigation = ({ route, navigation }) => {
                         Back
                       </ButtonTextAndIcon>
                       <ButtonTextAndIcon
-                          color={customColors.orange}
+                          color={currentFloor < destination.etage ? customColors.orange : customColors.green}
                           isActive={false}
                           imageSource={require("../assets/icons/chevronRight.png")}
                           w={12}
                           h={24}
                           action={() => handleNextStep()}
                       >
-                        Next
+                        {currentFloor < destination.etage ? "Next" : "Finish"}
                       </ButtonTextAndIcon>
                     </View>
                   </>
@@ -197,14 +198,14 @@ export const Navigation = ({ route, navigation }) => {
                         Back
                       </ButtonTextAndIcon>
                       <ButtonTextAndIcon
-                          color={customColors.orange}
+                          color={currentFloor < destination.etage ? customColors.orange : customColors.green}
                           isActive={false}
                           imageSource={require("../assets/icons/chevronRight.png")}
                           w={12}
                           h={24}
                           action={() => handleNextStep()}
                       >
-                        Next
+                        {currentFloor < destination.etage ? "Next" : "Finish"}
                       </ButtonTextAndIcon>
                     </View>
                   </>
