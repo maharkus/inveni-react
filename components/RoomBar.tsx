@@ -2,7 +2,8 @@ import { View, Text } from "react-native";
 import { styles } from "../styles/styles";
 import * as React from "react";
 import data from "../roomfinding/data.json";
-import { useFloor } from "../states/FloorContext";
+import {useSelector} from "react-redux";
+import {RootState} from "../states/store";
 
 interface Props {
   destination: { category: number; etage: number; room: number };
@@ -10,7 +11,9 @@ interface Props {
 }
 
 export default function RoomBar({ destination, showFloor = true }: Props) {
-  const { currentFloor } = useFloor();
+  const currentFloor= useSelector(
+      (state: RootState) => state.counter.currentFloor
+  );
 
   const buildingname = data.buildings[destination.category].name;
   const room =

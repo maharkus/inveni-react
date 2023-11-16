@@ -71,7 +71,7 @@ export const Home = ({ navigation }) => {
 
       <View style={styles.roomBarView}>
         {destination.room != -1 && !isScreenFinish && (
-          <RoomBar destination={destination} />
+          <RoomBar destination={destination} showFloor={false} />
         )}
       </View>
 
