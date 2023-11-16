@@ -93,7 +93,7 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
         <>
           {allRooms.map((item: any, indexBuilding: number) => (
             <View
-              key={`key-${indexBuilding}`}
+              key={indexBuilding}
               style={{
                 flex: 1,
                 justifyContent: "center",
@@ -111,7 +111,10 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
                 Rooms in {data.buildings[indexBuilding].name}{" "}
               </Text>
               {item.map((item: any, indexFloor: number) => (
-                <>
+                  <View key={indexFloor} style={{flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",}}>
                   <Text
                     style={[
                       styles.defaultText,
@@ -127,7 +130,7 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
                     Floor:{" "}
                     {data.buildings[indexBuilding].etage[indexFloor].name}{" "}
                   </Text>
-                  <View key={indexFloor} style={styles.roomGrid}>
+                  <View style={styles.roomGrid}>
                     {item.map((item: any, indexRoom: number) => (
                       <Pressable
                         style={styles.room}
@@ -154,7 +157,7 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
                       </Pressable>
                     ))}
                   </View>
-                </>
+                  </View>
               ))}
             </View>
           ))}

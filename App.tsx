@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import store from "./states/store";
 import { Provider } from "react-redux";
 import SplashScreen from "./components/SplashScreen";
-import { FloorProvider } from "./states/FloorContext";
 import { StatusBar } from "expo-status-bar";
 
 export default function App() {
@@ -60,7 +59,6 @@ export default function App() {
     return <SplashScreen />;
   } else {
     return (
-      <FloorProvider>
         <Provider store={store}>
           <StatusBar style="dark" />
           <NavigationContainer>
@@ -83,7 +81,6 @@ export default function App() {
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
-      </FloorProvider>
     );
   }
 }
