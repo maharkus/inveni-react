@@ -206,10 +206,7 @@ export const BottomSheetBar = ({
         ) : (
           <BottomSheetView style={[styles.contentContainer, { flex: 1 }]}>
             {category != -1 && (
-              <RoomBar
-                showFloor={false}
-                destination={{ category, etage, room }}
-              ></RoomBar>
+              <RoomBar showFloor={false} destination={destination}></RoomBar>
             )}
             <View style={styles.gifWrap}>
               <Image
@@ -234,7 +231,7 @@ export const BottomSheetBar = ({
             <View style={{ marginTop: 30 }}>
               <ButtonTextOnly
                 action={() => {
-                  handleClosePress();
+                  handleClosePress;
                   navigation.navigate("Navigation", {
                     name: "Navigation",
                     destination: destination,

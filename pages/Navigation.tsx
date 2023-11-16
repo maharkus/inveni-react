@@ -217,6 +217,7 @@ export const Navigation = ({ route, navigation }) => {
               dispatch(setIsScreenFinish(false));
               navigation.navigate("Home", {
                 name: "Navigation",
+                destination: destination,
               });
             }}
           >

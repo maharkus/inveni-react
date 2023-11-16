@@ -10,7 +10,7 @@ import * as React from "react";
 import { ButtonTextOnly } from "../components/ButtonTextOnly";
 import ButtonTextAndIcon from "../components/ButtonTextAndIcon";
 import { LinearGradient } from "expo-linear-gradient";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../states/store";
 import RoomBar from "../components/RoomBar";
 import ICSettings from "../assets/bildmarke.svg";
