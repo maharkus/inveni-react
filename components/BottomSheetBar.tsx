@@ -231,7 +231,7 @@ export const BottomSheetBar = ({
             <View style={{ marginTop: 30 }}>
               <ButtonTextOnly
                 action={() => {
-                  handleClosePress();
+                  handleClosePress;
                   navigation.navigate("Navigation", {
                     name: "Navigation",
                     destination: destination,

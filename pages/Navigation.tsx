@@ -37,7 +37,7 @@ export const Navigation = ({ route, navigation }) => {
       if (prevFloor > 0) {
         return prevFloor - 1;
       } else {
-        return prevFloor; // Ensure to return the current state if not updating
+        return prevFloor;
       }
     });
   };
@@ -154,6 +154,7 @@ export const Navigation = ({ route, navigation }) => {
           )}
           <NavPath destination={destination} currentFloor={currentFloor} />
         </ReactNativeZoomableView>
+        
         <View style={[styles.bottomNav, styles.bottomNavBackNext]}>
           <>
             {currentFloor == 0 && (
@@ -171,14 +172,14 @@ export const Navigation = ({ route, navigation }) => {
                     Back
                   </ButtonTextAndIcon>
                   <ButtonTextAndIcon
-                    color={customColors.orange}
+                    color={currentFloor < destination.etage ? customColors.orange : customColors.green}
                     isActive={false}
                     imageSource={require("../assets/icons/chevronRight.png")}
                     w={12}
                     h={24}
                     action={() => handleNextStep()}
                   >
-                    Next
+                    {currentFloor < destination.etage ? "Next" : "Finish"}
                   </ButtonTextAndIcon>
                 </View>
               </>
@@ -198,14 +199,14 @@ export const Navigation = ({ route, navigation }) => {
                     Back
                   </ButtonTextAndIcon>
                   <ButtonTextAndIcon
-                    color={customColors.orange}
+                    color={currentFloor < destination.etage ? customColors.orange : customColors.green}
                     isActive={false}
                     imageSource={require("../assets/icons/chevronRight.png")}
                     w={12}
                     h={24}
                     action={() => handleNextStep()}
                   >
-                    Next
+                    {currentFloor < destination.etage ? "Next" : "Finish"}
                   </ButtonTextAndIcon>
                 </View>
               </>
