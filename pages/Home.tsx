@@ -89,11 +89,12 @@ export const Home = ({ navigation }) => {
           destination={destination}
           onBuilding={(building) => handleBuilding(building)}
           navigation={navigation}
+          isScreenFinish={isScreenFinish}
         ></Campus>
       </ScrollView>
 
       <View style={styles.bottomNav}>
-        {destination.room != -1 && (
+        {destination.room != -1 && !isScreenFinish && (
           <ButtonTextAndIcon
             color={customColors.orange}
             isActive={false}
@@ -110,7 +111,7 @@ export const Home = ({ navigation }) => {
             Start Navigation
           </ButtonTextAndIcon>
         )}
-        {room == -1 ? (
+        {(room == -1 || isScreenFinish)? (
           <>
             <View style={styles.homeBottomNav}>
               <Pressable

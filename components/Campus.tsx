@@ -1,17 +1,18 @@
 import * as React from 'react';
-import {View, Image, Animated, PanResponder} from "react-native";
+import {View, Image, Animated} from "react-native";
 import {customColors, styles} from "../styles/styles";
 import {ButtonBuilding} from "./ButtonBuilding";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Props {
     onBuilding: (number) => void;
     destination: {category: number, etage:number, room: number},
-    navigation: any
+    navigation: any,
+    isScreenFinish: boolean
 }
 
-export default function Campus ({onBuilding, destination} : Props) {
+export default function Campus ({onBuilding, destination, isScreenFinish} : Props) {
     const images = [
         require('../assets/maps/map0.png'),
         require('../assets/maps/map1.png'),
@@ -41,7 +42,8 @@ export default function Campus ({onBuilding, destination} : Props) {
     }, [destination]);
 
     const selectMap = () => {
-        if (destination.room === -1) {
+
+        if (destination.room === -1 || isScreenFinish) {
             return (
                 <>
                     <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 1200, height: 900, flex: 1}}>
