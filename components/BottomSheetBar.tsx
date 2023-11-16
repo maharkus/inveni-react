@@ -68,7 +68,6 @@ export const BottomSheetBar = ({
     require("../assets/gifs/awesome.gif"),
     require("../assets/gifs/propeller.gif"),
     require("../assets/gifs/borat.gif"),
-    require("../assets/gifs/dance.gif"),
     require("../assets/gifs/top.gif"),
     require("../assets/gifs/yehaw.gif"),
     require("../assets/gifs/yeeey.gif"),
