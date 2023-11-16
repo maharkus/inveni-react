@@ -212,11 +212,10 @@ export const Navigation = ({ route, navigation }) => {
             </>
             <ButtonTextOnly
                 action={() => {
-                  setCurrentFloor(0);
+                  dispatch(setCurrentFloor(0));
                   dispatch(setIsScreenFinish(false));
                   navigation.navigate("Home", {
-                    name: "Navigation",
-                    destination: destination,
+                    name: "Home",
                   });
                 }}
             >
