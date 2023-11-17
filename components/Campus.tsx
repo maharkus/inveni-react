@@ -13,6 +13,8 @@ interface Props {
 }
 
 export default function Campus ({onBuilding, destination, isScreenFinish} : Props) {
+    
+    //active building maps
     const images = [
         require('../assets/maps/map0.png'),
         require('../assets/maps/map1.png'),
@@ -21,8 +23,10 @@ export default function Campus ({onBuilding, destination, isScreenFinish} : Prop
         require('../assets/maps/map4.png')
     ]
 
+    //active position
     const pos = useRef(new Animated.ValueXY()).current;
 
+    //focus view to active building
     const buildingCoords = {
         0: { x: 250, y: -250 },
         1: { x: 30, y: -100 },
@@ -31,6 +35,7 @@ export default function Campus ({onBuilding, destination, isScreenFinish} : Prop
         4: { x: -300, y: 80 },
     };
 
+    //change position functionality
     useEffect(() => {
         if (destination.room !== -1 && destination.category in buildingCoords) {
             const { x, y } = buildingCoords[destination.category];
@@ -41,8 +46,9 @@ export default function Campus ({onBuilding, destination, isScreenFinish} : Prop
         pos.setValue({ x: 0, y: 0 });
     }, [destination]);
 
+    //map selection
     const selectMap = () => {
-
+        //default map
         if (destination.room === -1 || isScreenFinish) {
             return (
                 <>
@@ -61,7 +67,9 @@ export default function Campus ({onBuilding, destination, isScreenFinish} : Prop
                     />
                 </>
             );
-        } else {
+        }
+        //active building map 
+        else {
             return (
                 <Animated.View style={pos.getLayout()}>
                     <Image

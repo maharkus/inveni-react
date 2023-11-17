@@ -21,6 +21,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   const [isSearching, setIsSearching] = useState(false);
   const [isClear, setIsClear] = useState(false);
   
+  //Lottie files initilizing
   const lottieRef = useRef<LottieView>(null);
   const loadingRef = useRef<LottieView>(null);
 
@@ -38,6 +39,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     }, 150)
   }, [])
 
+  //search functionality
   const handleSearch = (text) => {
     const search = String(text)
     setSearchText(search)
@@ -45,13 +47,16 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     search != "" && setIsSearching(true)
   }
 
+  
   useEffect(() => {
+    //deactivate search when input is empty
     if (searchText == "") {
       setIsSearching(false)
       setFilteredData([])
       return
     }
-
+    
+    //search for room in database
     const timeout = setTimeout(() => {
       let rooms = [];
 
@@ -73,11 +78,13 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     return () => clearTimeout(timeout)
   }, [searchText])
 
+  //select searched room for navigation
   const handleSelection = (item: any, index:number) => {
     selectBuilding(item[7])
     onRoomSelection (item[6], index)
   }
 
+  //clear search on sheet closing
   useEffect(() => {
     if (!isSheetOpen) {
       setIsClear(true)
@@ -89,6 +96,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     }
   }, [isSheetOpen])
 
+  //reset search
   const clearSearch = () => {
     setSearchText("")
     setFilteredData([])
@@ -114,13 +122,13 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   );
 
   return (
-      <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%"}}>
+      <View style={styles.center}>
         <View style={{padding: "2.5%", width: "100%"}}>
           <SearchBar onSearch={handleSearch} shouldFocus={shouldFocus} inputClear={isClear}/>
         </View>
-        <SafeAreaView style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%"}}>
+        <SafeAreaView style={styles.center}>
           {isSearching ? (
-              <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
+              <View style={[styles.center, {height: "100%", marginTop: 32}]}>
                 <LottieView
                     source={require('../assets/lotties/loadingAnimV2.json')}
                     ref={loadingRef}
@@ -144,7 +152,6 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
               </>
           ) : filteredData.length > 0 ? (
               <>
-                
                 <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Search Results</Text>
                 <View style={styles.roomGrid}>
                 {filteredData.map((item: any, index: number) => (
@@ -160,7 +167,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
               </>
           ) : (
               <>
-                <View style={{flex: 1, justifyContent: "center", alignItems: "center", width: "100%", height: "100%", marginTop: 32}}>
+                <View style={[styles.center, {height: 150, marginTop: 32}]}>
                   <LottieView
                       source={require('../assets/lotties/searchAnimation.json')}
                       ref={lottieRef}
@@ -171,9 +178,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
                   <Text style={[styles.defaultText, { textAlign: "center", width: "100%", marginTop: 16 }]}>No rooms found. Try again!</Text>
                 </View>
               </>
-          )
-
-          }
+          )}
         </SafeAreaView>
       </View>
   );

@@ -1,9 +1,6 @@
 import {View, Text} from "react-native";
-import ButtonIcon from "./ButtonIcon";
-import {customColors, styles} from "../styles/styles";
-import Icon from "../assets/Icon.svg";
+import {styles} from "../styles/styles";
 import Logo from "../assets/Logo.svg";
-
 
 export function TopBar({fullLogo = false}) {
     return (
@@ -12,7 +9,7 @@ export function TopBar({fullLogo = false}) {
                 {!fullLogo ?
                     <>
                         <Logo></Logo>
-                        <Text style={{fontSize: 12, marginTop: 5}}>HSHL Campus Lippstadt</Text>
+                        <Text style={{fontSize: 11, marginTop: 5, fontFamily: "Work Sans"}}>HSHL Campus Lippstadt</Text>
                     </>
                     :
                     <Logo></Logo>

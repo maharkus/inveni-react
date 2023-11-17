@@ -8,11 +8,13 @@ interface Props {
   onRoomSelection: (etage, id) => void;
 }
 export const RoomSelection = ({ category, onRoomSelection }: Props) => {
+  
   const items0 = [];
   const items1 = [];
   const items2 = [];
   const items: any[] = [items0, items1, items2];
 
+  //select room from database
   for (let i = 0; i < data.buildings[category].etage.length; i++) {
     for (let j = 0; j < data.buildings[category].etage[i].rooms.length; j++) {
       items[i].push(data.buildings[category].etage[i].rooms[j]);

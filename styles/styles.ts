@@ -21,6 +21,14 @@ export const customColors = {
 };
 
 export const styles = StyleSheet.create({
+  //Basics
+  center: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
   homeContainer: {
     display: "flex",
     flex: 1,
@@ -430,11 +438,5 @@ export const styles = StyleSheet.create({
     opacity: 0.4,
     fontFamily: "Work Sans",
     fontSize: 16,
-  },
-  bhnIcon: {
-    borderRadius: 999,
-    borderWidth: 1.4,
-    backgroundColor: customColors.uwu,
-    padding: 15,
-  },
+  }
 });

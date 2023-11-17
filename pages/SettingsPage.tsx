@@ -1,12 +1,10 @@
 import {ScrollView, View, Text, Image, Linking, Alert, Button, Pressable, TouchableOpacity} from "react-native";
 import {styles, customColors} from "../styles/styles";
 import ButtonIcon from "../components/ButtonIcon";
-import {TopBar} from "../components/TopBar";
 import * as React from "react";
 import Logo from "../assets/Logo.svg";
 import LottieView from "lottie-react-native";
 import { useCallback, useEffect, useRef } from "react";
-import { LinearGradient } from "expo-linear-gradient";
 
 const supportedURL = 'mailto:contact@julz.life';
 
@@ -16,6 +14,8 @@ type OpenURLButtonProps = {
 };
 
 const OpenURLButton = ({url, children}: OpenURLButtonProps) => {
+
+    //open URL button
     const handlePress = useCallback(async () => {
       const supported = await Linking.canOpenURL(url);
   
