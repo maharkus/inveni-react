@@ -26,6 +26,7 @@ export const Navigation = ({ route, navigation }) => {
       dispatch(setCurrentFloor(currentFloor+1))
     } else if (currentFloor === destination.etage) {
       dispatch(setIsScreenFinish(true));
+      dispatch(setCurrentFloor(0))
       navigation.navigate("Home", {
         name: "Home",
         destination: setIsScreenFinish(false),
