@@ -9,7 +9,7 @@ export default function ButtonIcon({ color, imageSource, action, size, buttonPad
 
     return (
         <Pressable
-            style={ ({ pressed }) => [styles.iconButtonBasics, {backgroundColor: !pressed ? color : colorPressed, padding: buttonPadding}, customStyles] } onPress={action}>
+            style={ ({ pressed }) => [styles.iconButtonBasics, {transform: [{ scale: pressed ? 0.95 : 1 }], backgroundColor: !pressed ? color : colorPressed, padding: buttonPadding}, customStyles] } onPress={action}>
             <Image style={{width: size, height: size}} source={imageSource}/>
         </Pressable>
     );

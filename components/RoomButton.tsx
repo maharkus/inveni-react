@@ -10,8 +10,6 @@ const RoomButton = ({ room, index, onPress }) => {
         styles.room,
         {
           transform: [{ scale: pressed ? 0.95 : 1 }],
-          ...(pressed ? styles.roomPressed : {}),
-          backgroundColor: pressed ? customColors.grey : 'white',
         }
       ]}
       onPress={() => onPress(room, index)}

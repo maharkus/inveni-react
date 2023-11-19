@@ -120,7 +120,7 @@ export const Home = ({ navigation }) => {
           <>
             <View style={styles.homeBottomNav}>
               <Pressable
-                style={styles.bhnSearchBar}
+                style={({ pressed }) => [styles.bhnSearchBar, {transform: [{ scale: pressed ? 0.95 : 1 }]}]}
                 onPress={() => initSearch()}
               >
                 <ICMagnifier width={25} height={25}></ICMagnifier>

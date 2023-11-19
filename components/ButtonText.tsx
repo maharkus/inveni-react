@@ -15,7 +15,7 @@ export const ButtonText = ({color, action, children} : Props) => {
     
     return (
         <Pressable 
-            style={ ({ pressed }) => [styles.buttonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
+            style={ ({ pressed }) => [styles.buttonBasics, {transform: [{ scale: pressed ? 0.95 : 1 }], backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
             {({ pressed }) => (
                 <Text style={styles.buttonText}>
                     {children}

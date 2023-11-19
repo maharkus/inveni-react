@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
-import { View, Text, Pressable } from "react-native";
+import { View, Text } from "react-native";
 import { SearchBar } from "./SearchBar";
 import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
-import { getFontSize } from '../utils/utils';
 import RoomButton from "./RoomButton";
 
 interface Props {

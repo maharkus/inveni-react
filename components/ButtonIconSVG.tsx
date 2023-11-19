@@ -10,7 +10,7 @@ export default function ButtonIcon({ color, action, children, buttonPadding, cus
 
     return (
         <Pressable
-            style={ ({ pressed }) => [styles.iconButtonBasics, {backgroundColor: !pressed ? color : colorPressed, padding: buttonPadding}, customStyles] } onPress={action}>
+            style={ ({ pressed }) => [styles.iconButtonBasics, {transform: [{ scale: pressed ? 0.95 : 1 }], backgroundColor: !pressed ? color : colorPressed, padding: buttonPadding}, customStyles] } onPress={action}>
             <View>{children}</View>
         </Pressable>
     );

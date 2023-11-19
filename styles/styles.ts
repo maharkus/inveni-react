@@ -10,13 +10,13 @@ export const customColors = {
   green: "#A4EB5D",
   softPurple: "#E0E3FF",
   grey: "#EDEDED",
-  orangePressed: "#f57040",
-  yellowPressed: "#ccab37",
-  purplePressed: "#8f5dc6",
-  uwuPressed: "#558bbe",
-  greenPressed: "#79bb37",
-  softPurplePressed: "#8f94bf",
-  greyPressed: "#C3C3C3",
+  orangePressed: "F98452",
+  yellowPressed: "#F9CB48",
+  purplePressed: "#C28CFC",
+  uwuPressed: "#8FC9FF",
+  greenPressed: "#A4EB5D",
+  softPurplePressed: "#E0E3FF",
+  greyPressed: "#EDEDED",
   transparent: "rgba(0,0,0,0)",
 };
 
@@ -206,16 +206,6 @@ export const styles = StyleSheet.create({
     marginBottom: "2.5%",
     marginLeft: "2.5%",
     marginRight: "2.5%",
-    //no press
-    elevation: 3,
-    shadowColor: "#000", 
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-  },
-  roomPressed: {
-    elevation: 1,
-    shadowOpacity: 0.1,
   },
   roomTextView: {
     display: "flex",
