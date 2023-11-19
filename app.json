@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.julz0711.inveni"
     },
     "web": {
       "bundler": "metro",
@@ -28,6 +29,11 @@
     "assets": [
       "assets/splash",
       "assets/fonts"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f145714c-e295-494b-8023-57c55ff26cd1"
+      }
+    }
   }
 }

@@ -4,6 +4,7 @@ import {customColors, styles} from "../styles/styles";
 import {ButtonBuilding} from "./ButtonBuilding";
 import {ReactNativeZoomableView} from "@openspacelabs/react-native-zoomable-view";
 import { useEffect, useRef } from 'react';
+import LottieView from "lottie-react-native";
 
 interface Props {
     onBuilding: (number) => void;
@@ -13,6 +14,15 @@ interface Props {
 }
 
 export default function Campus ({onBuilding, destination, isScreenFinish} : Props) {
+    
+    const lottieRef = useRef<LottieView>(null);
+    
+    useEffect(() => {
+        lottieRef.current?.reset()
+        setTimeout(() => {
+        lottieRef.current?.play()
+        }, 150)
+    }, [])
     
     //active building maps
     const images = [
@@ -54,10 +64,10 @@ export default function Campus ({onBuilding, destination, isScreenFinish} : Prop
                 <>
                     <View style={{zIndex:4, position: 'absolute', alignSelf: 'center', width: 1200, height: 900, flex: 1}}>
                         <ButtonBuilding id={0} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[820, 190]}>L1</ButtonBuilding>
-                        <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[580, 370]}>L2</ButtonBuilding>
+                        <ButtonBuilding id={1} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[580, 380]}>L2</ButtonBuilding>
                         <ButtonBuilding id={2} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[670, 670]}>L3</ButtonBuilding>
                         <ButtonBuilding id={3} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[960, 400]}>L4</ButtonBuilding>
-                        <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[280, 500]}>IQL</ButtonBuilding>
+                        <ButtonBuilding id={4} onBuilding={(id) => onBuilding(id)} color={customColors.uwu} selected={destination.room == -1} coords={[260, 520]}>IQL</ButtonBuilding>
                     </View>
                     <Image
                         source={require('../assets/maps/map.png')}

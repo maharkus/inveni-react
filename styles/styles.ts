@@ -110,6 +110,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     alignItems: "center",
+    fontSize: 5,
   },
   buttonPrimary: {
     backgroundColor: customColors.orange,
@@ -150,8 +151,6 @@ export const styles = StyleSheet.create({
     zIndex: -3,
   },
   buttonBuilding: {
-    backgroundColor: customColors.orange,
-    color: customColors.yellow,
     borderColor: customColors.dark,
     borderWidth: 1.4,
     borderRadius: 9999,
@@ -166,7 +165,6 @@ export const styles = StyleSheet.create({
   },
   buttonBuildingText: {
     fontSize: 15,
-    fontWeight: "700",
     fontFamily: "TTTravels",
   },
   canvas: {
@@ -358,6 +356,8 @@ export const styles = StyleSheet.create({
     borderColor: customColors.dark,
     width: "85%",
     left: "7.5%",
+    padding: 16,
+    paddingTop: 8,
     paddingBottom: 16,
   },
 

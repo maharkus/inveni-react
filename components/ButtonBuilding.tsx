@@ -19,7 +19,7 @@ export const ButtonBuilding = ({id, color, children, coords, onBuilding} : Props
     return (
         <Pressable onPress={() => onBuilding(id)}
             style={({ pressed }) => [styles.buttonBuilding, {transform: [{ scale: pressed ? 0.95 : 1 }], backgroundColor: !pressed ? color : colorPressed, left: coords[0], top: coords[1], position: "absolute" }]}>
-                <Text style={styles.buttonBuildingText}>
+                <Text style={[styles.buttonBuildingText, {fontFamily: "TTTravels"}]}>
                     {children}
                 </Text>
         </Pressable>

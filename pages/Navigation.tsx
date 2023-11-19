@@ -41,6 +41,8 @@ export const Navigation = ({ route, navigation }) => {
     }
   };
 
+  const buttonWidth = "45%";
+
   return (
       <>
         <View style={{ flex: 1, alignItems: "center", top: 30 }}>
@@ -168,6 +170,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handlePrevStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         Back
                       </ButtonTextAndIcon>
@@ -178,6 +181,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handleNextStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         {currentFloor < destination.etage ? "Next" : "Finish"}
                       </ButtonTextAndIcon>
@@ -195,6 +199,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handlePrevStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         Back
                       </ButtonTextAndIcon>
@@ -205,6 +210,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handleNextStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         {currentFloor < destination.etage ? "Next" : "Finish"}
                       </ButtonTextAndIcon>

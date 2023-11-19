@@ -112,6 +112,7 @@ export const Home = ({ navigation }) => {
                 destination: destination,
               })
             }
+            customStyle={null}
           >
             Start Navigation
           </ButtonTextAndIcon>
