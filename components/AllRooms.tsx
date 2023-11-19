@@ -5,6 +5,7 @@ import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 import { getFontSize } from "../utils/utils";
+import RoomButton from "./RoomButton";
 
 interface Props {
   onRoomSelection: (etage: any, id: any) => void;
@@ -124,29 +125,12 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
                   </Text>
                   <View style={styles.roomGrid}>
                     {item.map((item: any, indexRoom: number) => (
-                      <Pressable
-                        style={styles.room}
+                      <RoomButton
                         key={indexRoom}
-                        onPress={() => handleSelection(item[0], item[1])}
-                      >
-                        <View style={styles.roomTextView}>
-                          <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
-                          <Text
-                            style={[
-                              styles.roomTextSec,
-                              { fontSize: getFontSize(item[0][1]) },
-                            ]}
-                          >
-                            {item[0][1]}
-                          </Text>
-                        </View>
-                        <View
-                          style={[
-                            styles.roomBottomBar,
-                            { backgroundColor: item[0][5] },
-                          ]}
-                        />
-                      </Pressable>
+                        room={item[0]}
+                        index={item[1]}
+                        onPress={handleSelection}
+                      />
                     ))}
                   </View>
                   </View>

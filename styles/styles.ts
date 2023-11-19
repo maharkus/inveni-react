@@ -20,6 +20,8 @@ export const customColors = {
   transparent: "rgba(0,0,0,0)",
 };
 
+export const pressedBackgroundColor = "red"
+
 export const styles = StyleSheet.create({
   //Basics
   center: {
@@ -204,6 +206,16 @@ export const styles = StyleSheet.create({
     marginBottom: "2.5%",
     marginLeft: "2.5%",
     marginRight: "2.5%",
+    //no press
+    elevation: 3,
+    shadowColor: "#000", 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+  },
+  roomPressed: {
+    elevation: 1,
+    shadowOpacity: 0.1,
   },
   roomTextView: {
     display: "flex",

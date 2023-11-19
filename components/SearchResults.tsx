@@ -6,6 +6,7 @@ import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 import { getFontSize } from '../utils/utils';
+import RoomButton from "./RoomButton";
 
 interface Props {
   onRoomSelection: (etage, id) => void,
@@ -112,13 +113,12 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   const lp3 = data.buildings[1].etage[0].rooms[2]
 
   const popularRoom = (room, index, id) => (
-    <Pressable style={styles.room} key={id} onPress={() => handleSelection(room, index)}>
-      <View style={styles.roomTextView}>
-        <Text style={styles.roomTextPrim}>{room[0]}</Text>
-        <Text style={styles.roomTextSec}>{room[1]}</Text>
-      </View>
-      <View style={[styles.roomBottomBar, { backgroundColor: room[5] }]} />
-    </Pressable>
+    <RoomButton
+      key={id}
+      room={room}
+      index={index}
+      onPress={handleSelection}
+    />
   );
 
   return (
@@ -155,13 +155,12 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
                 <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Search Results</Text>
                 <View style={styles.roomGrid}>
                 {filteredData.map((item: any, index: number) => (
-                    <Pressable style={styles.room} key={index} onPress={() => handleSelection (item[0], item[1])}>
-                      <View style={styles.roomTextView}>
-                        <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
-                        <Text style={[styles.roomTextSec, {fontSize: getFontSize(item[0][1])}]}>{item[0][1]}</Text>
-                      </View>
-                      <View style={[styles.roomBottomBar, {backgroundColor: item[0][5]}]} />
-                    </Pressable>
+                    <RoomButton
+                      key={index}
+                      room={item[0]}
+                      index={item[1]}
+                      onPress={handleSelection}
+                    />
                 ))}
                 </View>
               </>
