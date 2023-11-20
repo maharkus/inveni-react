@@ -1,6 +1,7 @@
 import {Pressable, Text} from "react-native";
-import {customColors, styles} from "../styles/styles";
+import {styles} from "../styles/styles";
 import * as React from "react";
+import { getPressedColor } from "../utils/utils";
 
 interface Props {
     id: number,
@@ -10,43 +11,15 @@ interface Props {
     onBuilding: (id) => void,
     selected: boolean
 }
-export const ButtonBuilding = ({id, color, children, coords, onBuilding, selected} : Props) => {
-    let colorPressed: string;
-    switch(color) {
-        case customColors.orange: {
-            colorPressed = customColors.orangePressed;
-            break;
-        }
-        case customColors.yellow: {
-            colorPressed = customColors.yellowPressed;
-            break;
-        }
-        case customColors.purple: {
-            colorPressed = customColors.purplePressed;
-            break;
-        }
-        case customColors.uwu: {
-            colorPressed = customColors.uwuPressed;
-            break;
-        }
-        case customColors.green: {
-            colorPressed = customColors.greenPressed;
-            break;
-        }
-        case customColors.softPurple: {
-            colorPressed = customColors.softPurplePressed;
-            break;
-        }
-        default: {
-            colorPressed = customColors.orangePressed;
-            break;
-        }
-    }
+export const ButtonBuilding = ({id, color, children, coords, onBuilding} : Props) => {
+
+    //change background color if pressed
+    const colorPressed = getPressedColor(color);
 
     return (
         <Pressable onPress={() => onBuilding(id)}
-            style={({ pressed }) => [styles.buttonBuilding, {backgroundColor: !pressed ? color : colorPressed, left: coords[0], top: coords[1], position: "absolute" }]}>
-                <Text style={styles.buttonBuildingText}>
+            style={({ pressed }) => [styles.buttonBuilding, {transform: [{ scale: pressed ? 0.95 : 1 }], backgroundColor: !pressed ? color : colorPressed, left: coords[0], top: coords[1], position: "absolute" }]}>
+                <Text style={[styles.buttonBuildingText, {fontFamily: "TTTravels"}]}>
                     {children}
                 </Text>
         </Pressable>

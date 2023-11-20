@@ -5,6 +5,7 @@ import { styles } from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 import { getFontSize } from "../utils/utils";
+import RoomButton from "./RoomButton";
 
 interface Props {
   onRoomSelection: (etage: any, id: any) => void;
@@ -15,8 +16,8 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
   const [allRooms, setallRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  //Lottie loading
   const loadingRef = useRef<LottieView>(null);
-
   useEffect(() => {
     loadingRef.current?.reset();
     setTimeout(() => {
@@ -24,6 +25,7 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
     }, 100);
   }, []);
 
+  //load all rooms from database
   useEffect(() => {
     let buildings = [];
     let floors = [];
@@ -50,6 +52,7 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
     }
     setallRooms(buildings);
 
+    //simulate short loading time
     const timer = setTimeout(() => {
       setallRooms(buildings);
       setIsLoading(false);
@@ -58,15 +61,14 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
     return () => clearTimeout(timer);
   }, []);
 
+  //select room from database
   const handleSelection = (item: any, index: number) => {
     selectBuilding(item[7]);
     onRoomSelection(item[6], index);
   };
 
   return (
-    <SafeAreaView
-      style={[{ padding: 0, marginTop: -30, minWidth: "100%", width: "100%" }]}
-    >
+    <SafeAreaView style={[{ padding: 0, marginTop: -30, minWidth: "100%", width: "100%" }]}>
       {isLoading ? (
         <View
           style={{
@@ -94,13 +96,7 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
           {allRooms.map((item: any, indexBuilding: number) => (
             <View
               key={indexBuilding}
-              style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                marginTop: -40,
-              }}
+              style={[styles.center, {marginTop: -40,}]}
             >
               <Text
                 style={[
@@ -111,10 +107,7 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
                 Rooms in {data.buildings[indexBuilding].name}{" "}
               </Text>
               {item.map((item: any, indexFloor: number) => (
-                  <View key={indexFloor} style={{flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",}}>
+                  <View key={indexFloor} style={styles.center}>
                   <Text
                     style={[
                       styles.defaultText,
@@ -132,29 +125,12 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
                   </Text>
                   <View style={styles.roomGrid}>
                     {item.map((item: any, indexRoom: number) => (
-                      <Pressable
-                        style={styles.room}
+                      <RoomButton
                         key={indexRoom}
-                        onPress={() => handleSelection(item[0], item[1])}
-                      >
-                        <View style={styles.roomTextView}>
-                          <Text style={styles.roomTextPrim}>{item[0][0]}</Text>
-                          <Text
-                            style={[
-                              styles.roomTextSec,
-                              { fontSize: getFontSize(item[0][1]) },
-                            ]}
-                          >
-                            {item[0][1]}
-                          </Text>
-                        </View>
-                        <View
-                          style={[
-                            styles.roomBottomBar,
-                            { backgroundColor: item[0][5] },
-                          ]}
-                        />
-                      </Pressable>
+                        room={item[0]}
+                        index={item[1]}
+                        onPress={handleSelection}
+                      />
                     ))}
                   </View>
                   </View>

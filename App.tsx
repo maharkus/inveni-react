@@ -17,6 +17,8 @@ export default function App() {
   const [isAppReady, setIsAppReady] = useState(false);
 
   useEffect(() => {
+
+    //load fonts asynchronously
     async function loadFonts() {
       await Font.loadAsync({
         Accelerator: require("./assets/fonts/accelerator.ttf"),
@@ -26,6 +28,12 @@ export default function App() {
       });
       setIsFontLoaded(true);
     }
+    
+    loadFonts()
+      .then((r) => "")
+      .catch(function (error) {
+        console.log(error);
+      });
 
     const SplashScreenPeriod = async () => {
       return new Promise((resolve) =>
@@ -43,18 +51,15 @@ export default function App() {
       }
     };
 
-    loadFonts()
-      .then((r) => "")
-      .catch(function (error) {
-        console.log(error);
-      });
     loadApp();
   }, []);
 
+  //wait for fonts to load
   if (!isFontLoaded) {
     return null;
   }
 
+  //if app not ready keep splash screen
   if (!isAppReady) {
     return <SplashScreen />;
   } else {

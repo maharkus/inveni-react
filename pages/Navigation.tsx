@@ -11,50 +11,53 @@ import {setCurrentFloor, setIsScreenFinish} from "../states/slice";
 import {RootState} from "../states/store";
 
 export const Navigation = ({ route, navigation }) => {
-  const destination: { category: number; etage: number; room: number } =
-      route.params.destination;
-  const currentFloor = useSelector(
-      (state: RootState) => state.counter.currentFloor
-  );
+  const destination: { category: number; etage: number; room: number } = route.params.destination;
+  const currentFloor = useSelector((state: RootState) => state.counter.currentFloor);
 
+  //map dimensions
+  const contentWidth = 1500;
+  const contentHeight = 1650;
 
   const dispatch = useDispatch();
 
+  //next button functionality
   const handleNextStep = () => {
     if (currentFloor < destination.etage) {
       dispatch(setCurrentFloor(currentFloor+1))
-    } else {
+    } else if (currentFloor === destination.etage) {
       dispatch(setIsScreenFinish(true));
+      dispatch(setCurrentFloor(0))
       navigation.navigate("Home", {
         name: "Home",
         destination: setIsScreenFinish(false),
       });
-      return 0;
     }
   };
 
+  //back button functionality
   const handlePrevStep = () => {
     if (currentFloor > 0) {
       dispatch(setCurrentFloor(currentFloor - 1));
-    } else {
-      dispatch(setCurrentFloor(currentFloor));
     }
   };
+
+  const buttonWidth = "45%";
 
   return (
       <>
         <View style={{ flex: 1, alignItems: "center", top: 30 }}>
           <RoomBar destination={destination} />
         </View>
+
         <View style={styles.campusWrap}>
           <ReactNativeZoomableView
               maxZoom={3}
               minZoom={0.3}
               zoomStep={0.1}
-              initialZoom={0.402}
+              initialZoom={0.4}
               visualTouchFeedbackEnabled={false}
-              contentWidth={1500}
-              contentHeight={1650}
+              contentWidth={contentWidth}
+              contentHeight={contentHeight}
               panBoundaryPadding={100}
           >
             {destination.category == 0 && (
@@ -62,7 +65,7 @@ export const Navigation = ({ route, navigation }) => {
                     source={require("../assets/buildings/L1.jpg")}
                     resizeMethod={"resize"}
                     progressiveRenderingEnabled={true}
-                    style={{ width: 1500, height: 1650, flex: 1 }}
+                    style={{ width: contentWidth, height: contentHeight, flex: 1 }}
                 />
             )}
             {destination.category == 1 && (
@@ -72,7 +75,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L2E00.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                   {currentFloor == 1 && (
@@ -80,7 +83,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L2E10.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                 </>
@@ -92,7 +95,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L3E00.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                   {currentFloor == 1 && (
@@ -100,7 +103,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L3E01.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                   {currentFloor == 2 && (
@@ -108,7 +111,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L3E02.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                 </>
@@ -120,7 +123,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L4E00.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                   {currentFloor == 1 && (
@@ -128,7 +131,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L4E01.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                   {currentFloor == 2 && (
@@ -136,7 +139,7 @@ export const Navigation = ({ route, navigation }) => {
                           source={require("../assets/buildings/L4E02.jpg")}
                           resizeMethod={"resize"}
                           progressiveRenderingEnabled={true}
-                          style={{ width: 1500, height: 1650 }}
+                          style={{ width: contentWidth, height: contentHeight }}
                       />
                   )}
                 </>
@@ -147,7 +150,7 @@ export const Navigation = ({ route, navigation }) => {
                       source={require("../assets/buildings/IQL.jpg")}
                       resizeMethod={"resize"}
                       progressiveRenderingEnabled={true}
-                      style={{ width: 1500, height: 1650 }}
+                      style={{ width: contentWidth, height: contentHeight }}
                   />
                 </>
             )}
@@ -167,6 +170,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handlePrevStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         Back
                       </ButtonTextAndIcon>
@@ -177,6 +181,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handleNextStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         {currentFloor < destination.etage ? "Next" : "Finish"}
                       </ButtonTextAndIcon>
@@ -194,6 +199,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handlePrevStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         Back
                       </ButtonTextAndIcon>
@@ -204,6 +210,7 @@ export const Navigation = ({ route, navigation }) => {
                           w={12}
                           h={24}
                           action={() => handleNextStep()}
+                          customStyle={{width: buttonWidth, maxWidth: buttonWidth}}
                       >
                         {currentFloor < destination.etage ? "Next" : "Finish"}
                       </ButtonTextAndIcon>
@@ -211,15 +218,13 @@ export const Navigation = ({ route, navigation }) => {
                   </>
               )}
             </>
-            <ButtonTextOnly
-                action={() => {
-                  dispatch(setCurrentFloor(0));
-                  dispatch(setIsScreenFinish(false));
-                  navigation.navigate("Home", {
-                    name: "Home",
-                  });
-                }}
-            >
+            <ButtonTextOnly action={() => {
+                dispatch(setCurrentFloor(0));
+                dispatch(setIsScreenFinish(false));
+                navigation.navigate("Home", {
+                  name: "Home",
+                });
+              }}>
               End Navigation
             </ButtonTextOnly>
           </View>

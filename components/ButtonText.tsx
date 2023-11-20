@@ -1,6 +1,7 @@
 import { Pressable, Text } from "react-native";
-import { customColors, styles } from "../styles/styles";
+import { styles } from "../styles/styles";
 import * as React from "react";
+import { getPressedColor } from "../utils/utils";
 
 interface Props {
     color: string,
@@ -8,40 +9,13 @@ interface Props {
     action: () => void,
 }
 export const ButtonText = ({color, action, children} : Props) => {
-    let colorPressed: string;
-    switch(color) {
-        case customColors.orange: {
-            colorPressed = customColors.orangePressed;
-            break;
-        }
-        case customColors.yellow: {
-            colorPressed = customColors.yellowPressed;
-            break;
-        }
-        case customColors.purple: {
-            colorPressed = customColors.purplePressed;
-            break;
-        }
-        case customColors.uwu: {
-            colorPressed = customColors.uwuPressed;
-            break;
-        }
-        case customColors.green: {
-            colorPressed = customColors.greenPressed;
-            break;
-        }
-        case customColors.softPurple: {
-            colorPressed = customColors.softPurplePressed;
-            break;
-        }
-        default: {
-            colorPressed = customColors.orangePressed;
-            break;
-        }
-    }
+   
+    //change background color if pressed
+    const colorPressed = getPressedColor(color);
+    
     return (
         <Pressable 
-            style={ ({ pressed }) => [styles.buttonBasics, {backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
+            style={ ({ pressed }) => [styles.buttonBasics, {transform: [{ scale: pressed ? 0.95 : 1 }], backgroundColor: !pressed ? color : colorPressed}] } onPress={action}>
             {({ pressed }) => (
                 <Text style={styles.buttonText}>
                     {children}

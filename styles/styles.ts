@@ -10,17 +10,27 @@ export const customColors = {
   green: "#A4EB5D",
   softPurple: "#E0E3FF",
   grey: "#EDEDED",
-  orangePressed: "#f57040",
-  yellowPressed: "#ccab37",
-  purplePressed: "#8f5dc6",
-  uwuPressed: "#558bbe",
-  greenPressed: "#79bb37",
-  softPurplePressed: "#8f94bf",
-  greyPressed: "#C3C3C3",
+  orangePressed: "F98452",
+  yellowPressed: "#F9CB48",
+  purplePressed: "#C28CFC",
+  uwuPressed: "#8FC9FF",
+  greenPressed: "#A4EB5D",
+  softPurplePressed: "#E0E3FF",
+  greyPressed: "#EDEDED",
   transparent: "rgba(0,0,0,0)",
 };
 
+export const pressedBackgroundColor = "red"
+
 export const styles = StyleSheet.create({
+  //Basics
+  center: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
   homeContainer: {
     display: "flex",
     flex: 1,
@@ -100,6 +110,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     alignItems: "center",
+    fontSize: 5,
   },
   buttonPrimary: {
     backgroundColor: customColors.orange,
@@ -140,8 +151,6 @@ export const styles = StyleSheet.create({
     zIndex: -3,
   },
   buttonBuilding: {
-    backgroundColor: customColors.orange,
-    color: customColors.yellow,
     borderColor: customColors.dark,
     borderWidth: 1.4,
     borderRadius: 9999,
@@ -156,7 +165,6 @@ export const styles = StyleSheet.create({
   },
   buttonBuildingText: {
     fontSize: 15,
-    fontWeight: "700",
     fontFamily: "TTTravels",
   },
   canvas: {
@@ -348,6 +356,8 @@ export const styles = StyleSheet.create({
     borderColor: customColors.dark,
     width: "85%",
     left: "7.5%",
+    padding: 16,
+    paddingTop: 8,
     paddingBottom: 16,
   },
 
@@ -430,11 +440,5 @@ export const styles = StyleSheet.create({
     opacity: 0.4,
     fontFamily: "Work Sans",
     fontSize: 16,
-  },
-  bhnIcon: {
-    borderRadius: 999,
-    borderWidth: 1.4,
-    backgroundColor: customColors.uwu,
-    padding: 15,
-  },
+  }
 });

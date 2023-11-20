@@ -11,16 +11,20 @@ interface Props {
 }
 
 export default function RoomBar({ destination, showFloor = true }: Props) {
+
+  //set current floor
   const currentFloor= useSelector(
       (state: RootState) => state.counter.currentFloor
   );
 
+  //get building and room name
   const buildingname = data.buildings[destination.category].name;
   const room =
     data.buildings[destination.category].etage[destination.etage].rooms[
       destination.room
     ][1];
 
+  //dynamic font size
   const getFontSize = (name) => {
     if (name.length > 25) return 11;
     if (name.length >= 25 && name.length > 15) return 12;

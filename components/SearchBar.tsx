@@ -15,6 +15,7 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
 
     const inputRef = useRef<TextInput>(null);
 
+    //toggle searchbar focus
     useEffect(() => {
         if (shouldFocus) {
             inputRef.current?.focus();
@@ -27,7 +28,7 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
         setInput("")
     }, [inputClear]);
 
-    //search debouce
+    //search debouce for better usability
     const debounce = (func, wait) => {
         let timer
         return function executedFunction(...args) {
@@ -40,6 +41,12 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
         }
     }
 
+    const debouncedSearch = useCallback(debounce((text) => {
+        onSearch(text)
+        setLastSearch(text);
+    }, 100), [onSearch])
+
+    //searchbar functionality
     const handleSearch = (text: string) => {
         setInput(text)
         if (text !== lastSearch) {
@@ -47,12 +54,6 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
             debouncedSearch(text)
         }
     }
-
-    const debouncedSearch = useCallback(debounce((text) => {
-        onSearch(text)
-        setLastSearch(text);
-    }, 100), [onSearch])
-
 
     return (
         <View style={styles.searchBarWrapper}>

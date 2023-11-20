@@ -27,6 +27,8 @@ interface Props {
   selectBuilding: (building) => void;
   onClearResults: () => void;
   isScreenFinish: boolean;
+  navigation: any;
+  destination: any;
 }
 
 export const BottomSheetBar = ({
@@ -39,13 +41,15 @@ export const BottomSheetBar = ({
   setStatus,
   isScreenFinish,
   navigation,
-  destination,
-}) => {
+  destination
+}: Props) => {
+
   const sheetRef = useRef<BottomSheet>(null);
   const [etage, setEtage] = useState(0);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const dispatch = useDispatch();
 
+  //check if search screen is active
   useEffect(() => {
     if (category == -1 && status == 1) {
       setIsSearchActive(true);
@@ -54,6 +58,7 @@ export const BottomSheetBar = ({
     }
   }, [status]);
 
+  //gifs for finish screen
   const finishedTexts = [
     "Wonderful!",
     "Okay!",
@@ -85,12 +90,13 @@ export const BottomSheetBar = ({
     isScreenFinish && setStatus(1);
   }, [isScreenFinish]);
 
+  //handle close
   const handleClosePress = useCallback(() => {
     sheetRef.current?.close();
     setStatus(-1);
   }, [setStatus]);
 
-  // To keep swipe down working
+  //swipe down
   const handleSheetChange = useCallback(
     (index) => {
       if (index == -1) {
@@ -102,6 +108,7 @@ export const BottomSheetBar = ({
     [setStatus, room, onClearResults, isScreenFinish]
   );
 
+  //navigation finish
   const finishNavigation = () => {
     onClearResults();
     dispatch(setIsScreenFinish(false));

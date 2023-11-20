@@ -23,6 +23,11 @@ export const Home = ({ navigation }) => {
   const [etage, setEtage] = useState(-1);
   const [sheetStatus, setSheetStatus] = useState(-1);
 
+  const categorySearch = -1;
+  const categoryAllRooms = 5;
+  const sheetClose = -1;
+  const sheetOpen = 1;
+
   const isScreenFinish = useSelector(
     (state: RootState) => state.counter.isScreenFinish
   );
@@ -30,23 +35,23 @@ export const Home = ({ navigation }) => {
   //Init BottomSheetBar
   const initSearch = () => {
     clearResults();
-    setSheetStatus(1);
+    setSheetStatus(sheetOpen);
   };
 
   const initAllRooms = () => {
-    setCategory(5);
-    setSheetStatus(1);
+    setCategory(categoryAllRooms);
+    setSheetStatus(sheetOpen);
   };
-
+  
   const clearResults = () => {
-    setCategory(-1);
+    setCategory(categorySearch);
     setRoom(-1);
-    setSheetStatus(-1);
+    setSheetStatus(sheetClose);
   };
 
   //Building Selection
   const handleBuilding = (building) => {
-    setSheetStatus(1);
+    setSheetStatus(sheetOpen);
     setCategory(building);
   };
 
@@ -54,7 +59,7 @@ export const Home = ({ navigation }) => {
   const handleRoomSelection = (etage: number, room: number) => {
     setEtage(etage);
     setRoom(room);
-    setSheetStatus(-1);
+    setSheetStatus(sheetClose);
   };
 
   const destination = { category: category, etage: etage, room: room };
@@ -107,6 +112,7 @@ export const Home = ({ navigation }) => {
                 destination: destination,
               })
             }
+            customStyle={null}
           >
             Start Navigation
           </ButtonTextAndIcon>
@@ -115,15 +121,15 @@ export const Home = ({ navigation }) => {
           <>
             <View style={styles.homeBottomNav}>
               <Pressable
-                style={styles.bhnSearchBar}
+                style={({ pressed }) => [styles.bhnSearchBar, {transform: [{ scale: pressed ? 0.95 : 1 }]}]}
                 onPress={() => initSearch()}
               >
                 <ICMagnifier width={25} height={25}></ICMagnifier>
                 <Text style={styles.bhnSearchBarText}>Find Room</Text>
               </Pressable>
-              <Pressable style={styles.bhnIcon} onPress={() => initAllRooms()}>
+              <ButtonIconSVG color={customColors.uwu} action={() => initAllRooms()} customStyles={0} buttonPadding={15}>
                 <ICList width={30} height={30}></ICList>
-              </Pressable>
+              </ButtonIconSVG>
               <ButtonIconSVG
                 color={customColors.uwu}
                 action={() => navigation.navigate("SettingsPage")}
@@ -138,6 +144,7 @@ export const Home = ({ navigation }) => {
           <ButtonTextOnly action={() => clearResults()}>Cancel</ButtonTextOnly>
         )}
       </View>
+      
       <BottomSheetBar
         status={sheetStatus}
         setStatus={(index) => setSheetStatus(index)}

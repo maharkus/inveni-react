@@ -1,10 +1,12 @@
 import LottieView from 'lottie-react-native';
 import { useEffect, useRef } from 'react';
 import { View } from 'react-native';
+import { customColors, styles } from '../styles/styles';
 
 export default function SplashScreen(){
+    
+    //Lottie init
     const animationRef = useRef<LottieView>(null);
-  
     useEffect(() => {
         animationRef.current?.reset();
         setTimeout(() => {
@@ -13,19 +15,8 @@ export default function SplashScreen(){
     }, []);
   
     return (
-        <View style={{
-            width: "100%",
-            height: "100%",
-            backgroundColor: 'fff',
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-        }}> 
-            <View style={{
-                width: "50%",
-                height: "100%",
-                flex: 1,
-            }}>
+        <View style={[styles.center, { height: "100%", backgroundColor: customColors.light }]}> 
+            <View style={{width: "50%", height: "100%", flex: 1}}>
                 <LottieView
                     ref={animationRef}
                     source={require('../assets/splash/inveniLoaderV3.json')}
