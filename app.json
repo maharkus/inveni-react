@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.maharkus.inveni"
     },
     "web": {
       "bundler": "metro",
@@ -28,6 +29,11 @@
     "assets": [
       "assets/splash",
       "assets/fonts"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5852890e-a996-48a5-bc9a-f180bb92f378"
+      }
+    }
   }
 }
