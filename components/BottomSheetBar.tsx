@@ -41,9 +41,8 @@ export const BottomSheetBar = ({
   setStatus,
   isScreenFinish,
   navigation,
-  destination
+  destination,
 }: Props) => {
-
   const sheetRef = useRef<BottomSheet>(null);
   const [etage, setEtage] = useState(0);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -237,7 +236,7 @@ export const BottomSheetBar = ({
             <View style={{ marginTop: 30 }}>
               <ButtonTextOnly
                 action={() => {
-                  handleClosePress
+                  handleClosePress();
                   navigation.navigate("Navigation", {
                     name: "Navigation",
                     destination: destination,
