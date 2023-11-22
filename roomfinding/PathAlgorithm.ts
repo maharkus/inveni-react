@@ -24,6 +24,9 @@ export class PathAlgorithm {
 
     // Add Nodes to Algorithm
     addPath(source: number, destination: number, weight: number): void {
+        if (!this.graph.has(source)) {
+            this.graph.set(source, new Map());
+        }
         this.graph.get(source)?.set(destination, weight);
     }
 
