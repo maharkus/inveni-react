@@ -1,5 +1,5 @@
 {
-  "colors": ["#F98452","#F9CB48", "#C28CFC", "#8FC9FF", "#A4EB5D", "#E0E3FF"],
+  "colors": ["#F98452", "#F9CB48", "#C28CFC", "#8FC9FF", "#A4EB5D", "#E0E3FF"],
   "buildings": [
     {
       "name": "L1",
@@ -45,17 +45,53 @@
           "rooms": [
             ["L2 E00-120", "Hörsaal LP1", 4, 686, 439, "#F98452", 0, 1],
             ["L2 E00-220", "Hörsaal LP2", 4, 457, 439, "#F98452", 0, 1],
-            ["L2 E00-260", "LP3 ASO Safety Solution", 10, 580, 722, "#F98452", 0, 1],
+            [
+              "L2 E00-260",
+              "LP3 ASO Safety Solution",
+              10,
+              580,
+              722,
+              "#F98452",
+              0,
+              1
+            ],
             ["L2 E00-280", "Hörsaal LP4", 10, 580, 758, "#F98452", 0, 1],
             ["L2 E00-300", "Hörsaal LP5", 10, 580, 975, "#F98452", 0, 1],
             ["L2 E00-320", "Hörsaal LP6", 10, 580, 1189, "#F98452", 0, 1],
             ["L2 E00-340", "Hörsaal LP7", 10, 580, 1406, "#F98452", 0, 1],
-            ["L2 E00-230", "Schieffer Seminarraum", 8, 978, 1421, "#F9CB48", 0, 1],
+            [
+              "L2 E00-230",
+              "Schieffer Seminarraum",
+              8,
+              978,
+              1421,
+              "#F9CB48",
+              0,
+              1
+            ],
             ["L2 E00-210", "Ideal Seminarraum", 8, 978, 1198, "#F9CB48", 0, 1],
-            ["L2 E00-190", "Ferber Software Seminarraum", 8, 978, 994, "#F9CB48", 0, 1],
+            [
+              "L2 E00-190",
+              "Ferber Software Seminarraum",
+              8,
+              978,
+              994,
+              "#F9CB48",
+              0,
+              1
+            ],
             ["L2 E00 Sanitär", "WC Frauen", 8, 978, 884, "#E0E3FF", 0, 1],
             ["L2 E00 Sanitär", "WC Herren", 8, 978, 840, "#E0E3FF", 0, 1],
-            ["L2 E00 Sanitär", "WC Barrierefrei", 11, 810, 1468, "#E0E3FF", 0, 1]
+            [
+              "L2 E00 Sanitär",
+              "WC Barrierefrei",
+              11,
+              810,
+              1468,
+              "#E0E3FF",
+              0,
+              1
+            ]
           ],
           "paths": [
             [0, 1, 3],
@@ -85,11 +121,21 @@
             [671, 1410],
             [807, 1410]
           ]
-        }, {
+        },
+        {
           "name": "E01",
           "rooms": [
             ["L2 E01-050", "Seminarraum", 6, 596, 238, "#F9CB48", 1, 1],
-            ["L2 E01-030", "Datenverarbeitung Seminarraum", 6, 596, 288, "#F9CB48", 1, 1],
+            [
+              "L2 E01-030",
+              "Datenverarbeitung Seminarraum",
+              6,
+              596,
+              288,
+              "#F9CB48",
+              1,
+              1
+            ],
             ["L2 E01-040", "Seminarraum", 5, 590, 935, "#F9CB48", 1, 1],
             ["L2 E01-060", "Seminarraum", 5, 590, 982, "#F9CB48", 1, 1],
             ["L2 E01-080", "Seminarraum", 5, 590, 1310, "#F9CB48", 1, 1],
@@ -135,22 +181,85 @@
             ["L3.1 E00-190", "MAC Pool", 6, 801, 1225, "#8FC9FF", 0, 2],
             ["L3 E00 Sanitär", "WC Herren", 6, 948, 1225, "#E0E3FF", 0, 2],
             ["L3 E00 Sanitär", "WC Frauen", 6, 978, 1225, "#E0E3FF", 0, 2],
-            ["L3 E00 Sanitär", "WC Barrierefrei", 6, 1039, 1225, "#E0E3FF", 0, 2],
+            [
+              "L3 E00 Sanitär",
+              "WC Barrierefrei",
+              6,
+              1039,
+              1225,
+              "#E0E3FF",
+              0,
+              2
+            ],
             ["L3.2 E00-110", "Bildverarbeitung", 8, 1080, 841, "#C28CFC", 0, 2],
             ["L3.2 E00-130", "Fügetechnik", 9, 1112, 779, "#C28CFC", 0, 2],
-            ["L3.2 E00-190", "3D Koordinaten Messraum", 9, 1112, 555, "#C28CFC", 0, 2],
+            [
+              "L3.2 E00-190",
+              "3D Koordinaten Messraum",
+              9,
+              1112,
+              555,
+              "#C28CFC",
+              0,
+              2
+            ],
             ["L3.2 E00-210", "Technikum", 9, 1112, 390, "#C28CFC", 0, 2],
             ["L3.3 E00-040", "Smart Living", 3, 390, 1096, "#C28CFC", 0, 2],
             ["L3.3 E00-060", "Smart Living", 3, 390, 1096, "#C28CFC", 0, 2],
-            ["L3.3 E00-080", "Immersive Reality Lab", 3, 390, 897, "#C28CFC", 0, 2],
-            ["L3.3 E00-100", "Immersive Reality Lab", 3, 390, 897, "#C28CFC", 0, 2],
+            [
+              "L3.3 E00-080",
+              "Immersive Reality Lab",
+              3,
+              390,
+              897,
+              "#C28CFC",
+              0,
+              2
+            ],
+            [
+              "L3.3 E00-100",
+              "Immersive Reality Lab",
+              3,
+              390,
+              897,
+              "#C28CFC",
+              0,
+              2
+            ],
             ["L3.3 E00-120", "CAVE", 3, 390, 839, "#C28CFC", 0, 2],
             ["L3.3 E00-140", "CAVE", 3, 390, 839, "#C28CFC", 0, 2],
             ["L3.3 E00-160", "Chip on Board", 3, 382, 582, "#C28CFC", 0, 2],
             ["L3.3 E00-180", "Chip on Board", 3, 382, 582, "#C28CFC", 0, 2],
-            ["L3.3 E00-200", "Optik und Laser Labor", 3, 386, 389, "#C28CFC", 0, 2],
-            ["L3.3 E00-230", "Produktionstechnik", 3, 276, 476, "#C28CFC", 0, 2],
-            ["L3.3 E00-210", "Werkstoff- und Bauteilprüfung", 3, 276, 513, "#C28CFC", 0, 2]
+            [
+              "L3.3 E00-200",
+              "Optik und Laser Labor",
+              3,
+              386,
+              389,
+              "#C28CFC",
+              0,
+              2
+            ],
+            [
+              "L3.3 E00-230",
+              "Produktionstechnik",
+              3,
+              276,
+              476,
+              "#C28CFC",
+              0,
+              2
+            ],
+            [
+              "L3.3 E00-210",
+              "Werkstoff- und Bauteilprüfung",
+              3,
+              276,
+              513,
+              "#C28CFC",
+              0,
+              2
+            ]
           ],
           "paths": [
             [0, 1, 3],
@@ -177,31 +286,77 @@
             [1163, 344],
             [458, 1342]
           ]
-        }, {
+        },
+        {
           "name": "E01",
           "stairs": 10,
           "rooms": [
             ["L3 E01 Sanitär", "WC Herren", 2, 472, 1229, "#E0E3FF", 1, 2],
             ["L3 E01 Sanitär", "WC Frauen", 2, 440, 1229, "#E0E3FF", 1, 2],
             ["L3.1 E01-170", "Eltern Kind", 2, 582, 1229, "#A4EB5D", 1, 2],
-            ["L3.1 E01-020", "Design Thinking Atelier", 2, 260, 1338, "#C28CFC", 1, 2],
+            [
+              "L3.1 E01-020",
+              "Design Thinking Atelier",
+              2,
+              260,
+              1338,
+              "#C28CFC",
+              1,
+              2
+            ],
             ["L3.1 E01-040", "Zeichen Atelier", 2, 430, 1338, "#C28CFC", 1, 2],
             ["L3.1 E01-060", "Usability Labor", 3, 386, 1096, "#C28CFC", 1, 2],
             ["L3. E01-070", "PC-Pool", 3, 283, 1016, "#8FC9FF", 1, 2],
             ["L3.3 E01-080", "Usability Labor", 3, 386, 1096, "#C28CFC", 1, 2],
             ["L3.3 E01-090", "PC-Pool", 3, 283, 971, "#8FC9FF", 1, 2],
             ["L3.3 E01-100", "Audio Studio", 3, 386, 880, "#C28CFC", 1, 2],
-            ["L3.3 E01-110", "Robotik- und Automatision", 3, 290, 826, "#C28CFC", 1, 2],
+            [
+              "L3.3 E01-110",
+              "Robotik- und Automatision",
+              3,
+              290,
+              826,
+              "#C28CFC",
+              1,
+              2
+            ],
             ["L3.3 E01-120", "Audio Studio", 3, 386, 880, "#C28CFC", 1, 2],
             ["L3.3 E01-140", "Rapid Prototyping", 3, 386, 825, "#C28CFC", 1, 2],
-            ["L3.3 E01-160", "Mechatronikmagazin", 3, 379, 737, "#C28CFC", 1, 2],
-            ["L3.3 E01-180", "Projektwerkstatt Maschinenraum", 3, 386, 650, "#C28CFC", 1, 2],
+            [
+              "L3.3 E01-160",
+              "Mechatronikmagazin",
+              3,
+              379,
+              737,
+              "#C28CFC",
+              1,
+              2
+            ],
+            [
+              "L3.3 E01-180",
+              "Projektwerkstatt Maschinenraum",
+              3,
+              386,
+              650,
+              "#C28CFC",
+              1,
+              2
+            ],
             ["L3.3 E01-190", "Projektwerkstatt", 3, 283, 518, "#C28CFC", 1, 2],
             ["L3.3 E01-200", "Lean Management", 3, 386, 388, "#C28CFC", 1, 2],
             ["L3.3 E01-210", "Autonome Systeme", 3, 283, 477, "#C28CFC", 1, 2],
             ["L3 E01 Sanitär", "WC Herren", 4, 954, 1229, "#E0E3FF", 1, 2],
             ["L3 E01 Sanitär", "WC Frauen", 4, 978, 1229, "#E0E3FF", 1, 2],
-            ["L3 E01 Sanitär", "WC Barrierefrei", 4, 1039, 1229, "#E0E3FF", 1, 2]
+            [
+              "L3 E01 Sanitär",
+              "WC Barrierefrei",
+              4,
+              1039,
+              1229,
+              "#E0E3FF",
+              1,
+              2
+            ]
           ],
           "paths": [
             [0, 1, 5],
@@ -228,34 +383,125 @@
             [720, 1345],
             [690, 1345]
           ]
-        }, {
+        },
+        {
           "name": "E02",
           "rooms": [
             ["L3 E02 Sanitär", "WC Herren", 2, 475, 1248, "#E0E3FF", 2, 2],
             ["L3 E02 Sanitär", "WC Frauen", 2, 447, 1248, "#E0E3FF", 2, 2],
             ["L3 E02 Sanitär", "WC Herren", 4, 951, 1248, "#E0E3FF", 2, 2],
             ["L3 E02 Sanitär", "WC Frauen", 4, 979, 1248, "#E0E3FF", 2, 2],
-            ["L3 E02 Sanitär", "WC Barrierefrei", 4, 1041, 1248, "#E0E3FF", 2, 2],
+            [
+              "L3 E02 Sanitär",
+              "WC Barrierefrei",
+              4,
+              1041,
+              1248,
+              "#E0E3FF",
+              2,
+              2
+            ],
             ["L3.1 E02-020", "Showroom", 2, 266, 1330, "#A4EB5D", 2, 2],
-            ["L3.1 E02-040", "Materialiensammlung", 2, 420, 1330, "#A4EB5D", 2, 2],
-            ["L3.1 E02-160", "PC Pool mit Laptopplätzen", 4, 1007, 1330, "#8FC9FF", 2, 2],
+            [
+              "L3.1 E02-040",
+              "Materialiensammlung",
+              2,
+              420,
+              1330,
+              "#A4EB5D",
+              2,
+              2
+            ],
+            [
+              "L3.1 E02-160",
+              "PC Pool mit Laptopplätzen",
+              4,
+              1007,
+              1330,
+              "#8FC9FF",
+              2,
+              2
+            ],
             ["L3.1 E02-180", "Robotiklabor", 5, 1143, 1330, "#C28CFC", 2, 2],
-            ["L3.2 E02-050", "Regelungstechnik", 8, 1035, 1124, "#C28CFC", 2, 2],
-            ["L3.2 E02-070", "Microcontroller Labor", 8, 1035, 906, "#C28CFC", 2, 2],
+            [
+              "L3.2 E02-050",
+              "Regelungstechnik",
+              8,
+              1035,
+              1124,
+              "#C28CFC",
+              2,
+              2
+            ],
+            [
+              "L3.2 E02-070",
+              "Microcontroller Labor",
+              8,
+              1035,
+              906,
+              "#C28CFC",
+              2,
+              2
+            ],
             ["L3.2 E02-090", "Elektrolabor", 8, 1035, 792, "#C28CFC", 2, 2],
             ["L3.2 E02-120", "Lötlabor", 6, 1205, 1124, "#C28CFC", 2, 2],
             ["L3.2 E02-180", "Lötlabor", 6, 1205, 1008, "#C28CFC", 2, 2],
-            ["L3.3 E02-040", "Hardware Engineering Lab", 3, 392, 1126, "#C28CFC", 2, 2],
+            [
+              "L3.3 E02-040",
+              "Hardware Engineering Lab",
+              3,
+              392,
+              1126,
+              "#C28CFC",
+              2,
+              2
+            ],
             ["L3.3 E02-060", "Mashinery Lab", 3, 392, 900, "#C28CFC", 2, 2],
-            ["L3.3 E02-070", "Werkstoff- und Bauteilprüfung II", 3, 295, 1027, "#C28CFC", 2, 2],
+            [
+              "L3.3 E02-070",
+              "Werkstoff- und Bauteilprüfung II",
+              3,
+              295,
+              1027,
+              "#C28CFC",
+              2,
+              2
+            ],
             ["L3.3 E02-080", "Electro Technik", 3, 392, 853, "#C28CFC", 2, 2],
             ["L3.3 E02-090", "CAE Center", 3, 295, 977, "#C28CFC", 2, 2],
             ["L3.3 E02-100", "3D Printing Lab", 3, 385, 707, "#C28CFC", 2, 2],
             ["L3.3 E02-110", "Student Center", 3, 295, 784, "#A4EB5D", 2, 2],
             ["L3.3 E02-120", "PCB Engineering", 3, 392, 606, "#C28CFC", 2, 2],
-            ["L3.3 E02-140", "Laser und Milling Lab", 3, 392, 359, "#C28CFC", 2, 2],
-            ["L3.3 E02-190", "Smart Engineering Lab", 3, 295, 526, "#C28CFC", 2, 2],
-            ["L3.3 E02-310", "Game Development Lab", 3, 295, 277, "#C28CFC", 2, 2]
+            [
+              "L3.3 E02-140",
+              "Laser und Milling Lab",
+              3,
+              392,
+              359,
+              "#C28CFC",
+              2,
+              2
+            ],
+            [
+              "L3.3 E02-190",
+              "Smart Engineering Lab",
+              3,
+              295,
+              526,
+              "#C28CFC",
+              2,
+              2
+            ],
+            [
+              "L3.3 E02-310",
+              "Game Development Lab",
+              3,
+              295,
+              277,
+              "#C28CFC",
+              2,
+              2
+            ]
           ],
           "paths": [
             [0, 1, 2],
@@ -293,22 +539,67 @@
           "rooms": [
             ["L4 E00 Sanitär", "WC Herren", 4, 551, 1186, "#E0E3FF", 0, 3],
             ["L4 E00 Sanitär", "WC Frauen", 4, 420, 1186, "#E0E3FF", 0, 3],
-            ["L4 E00 Sanitär", "WC Barrierefrei", 6, 220, 1190, "#E0E3FF", 0, 3],
+            [
+              "L4 E00 Sanitär",
+              "WC Barrierefrei",
+              6,
+              220,
+              1190,
+              "#E0E3FF",
+              0,
+              3
+            ],
             ["L4.1 E00-020", "Seminarraum", 5, 183, 1273, "#F9CB48", 0, 3],
             ["L4.1 E00-040", "Seminarraum", 6, 226, 1344, "#F9CB48", 0, 3],
             ["L4.1 E00-060", "Seminarraum", 4, 406, 1344, "#F9CB48", 0, 3],
             ["L4.3 E00-060", "REM Labor", 5, 410, 1060, "#C28CFC", 0, 3],
             ["L4.3 E00-080", "REM Labor", 5, 410, 1060, "#C28CFC", 0, 3],
             ["L4.3 E00-100", "Analytic Labor", 5, 410, 858, "#C28CFC", 0, 3],
-            ["L4.3 E00-120", "Schliffpräperation", 5, 410, 799, "#C28CFC", 0, 3],
-            ["L4.3 E00-140", "Oberflächenanalyse", 5, 410, 717, "#C28CFC", 0, 3],
+            [
+              "L4.3 E00-120",
+              "Schliffpräperation",
+              5,
+              410,
+              799,
+              "#C28CFC",
+              0,
+              3
+            ],
+            [
+              "L4.3 E00-140",
+              "Oberflächenanalyse",
+              5,
+              410,
+              717,
+              "#C28CFC",
+              0,
+              3
+            ],
             ["L4.3 E00-160", "Ofenraum", 5, 410, 631, "#C28CFC", 0, 3],
             ["L4.3 E00-180", "Kleberaum", 5, 410, 573, "#C28CFC", 0, 3],
             ["L4.3 E00-110", "CT Raum", 7, 215, 1030, "#C28CFC", 0, 3],
             ["L4.3 E00-130", "CT Raum", 7, 215, 1030, "#C28CFC", 0, 3],
             ["L4.3 E00-150", "Reinraum Photonik", 7, 215, 986, "#C28CFC", 0, 3],
-            ["L4.3 E00-230", "Elektronenstrahllithografie", 7, 215, 770, "#C28CFC", 0, 3],
-            ["L4.3 E00-270", "Reinraum Fotolithografie", 7, 215, 770, "#C28CFC", 0, 3],
+            [
+              "L4.3 E00-230",
+              "Elektronenstrahllithografie",
+              7,
+              215,
+              770,
+              "#C28CFC",
+              0,
+              3
+            ],
+            [
+              "L4.3 E00-270",
+              "Reinraum Fotolithografie",
+              7,
+              215,
+              770,
+              "#C28CFC",
+              0,
+              3
+            ],
             ["L4.3 E00-310", "Reinraum Vorraum", 7, 225, 584, "#C28CFC", 0, 3]
           ],
           "paths": [
@@ -330,28 +621,164 @@
             [270, 1253],
             [270, 490]
           ]
-        }, {
+        },
+        {
           "name": "E01",
           "stairs": 2,
           "rooms": [
             ["L4 E01 Sanitär", "WC Herren", 6, 552, 1186, "#E0E3FF", 1, 3],
             ["L4 E01 Sanitär", "WC Frauen", 6, 417, 1186, "#E0E3FF", 1, 3],
-            ["L4 E01 Sanitär", "WC Barrierefrei", 9, 220, 1186, "#E0E3FF", 1, 3],
-            ["L4.1 E01-190", "Zentrale Studienberatung", 6, 632, 1186, "#A4EB5D", 1, 3],
-            ["L4.1 E01-210", "Zentrale Studienberatung", 6, 669, 1186, "#A4EB5D", 1, 3],
-            ["L4.1 E01-230", "Zentrale Studienberatung", 6, 803, 1186, "#A4EB5D", 1, 3],
-            ["L4.1 E01-250", "International Office", 6, 832, 1186, "#A4EB5D", 1, 3],
-            ["L4.1 E01-290", "International Office", 3, 1012, 1186, "#A4EB5D", 1, 3],
-            ["L4.1 E01-020", "Animations- und CAD Studio Render", 8, 184, 1280, "#8FC9FF", 1, 3],
-            ["L4.1 E01-040", "Animations- und CAD Studio Projektraum", 9, 226, 1280, "#8FC9FF", 1, 3],
-            ["L4.1 E01-060", "Animations CAD Studio Cybersecurity", 9, 352, 1280, "#8FC9FF", 1, 3],
-            ["L4.3 E01-040", "LED Elektroniklabor", 7, 410, 1022, "#C28CFC", 1, 3],
-            ["L4.3 E01-060", "Kunststoffverarbeitung", 7, 410, 910, "#C28CFC", 1, 3],
-            ["L4.3 E01-080", "Alterung- und Chromatographie", 7, 410, 853, "#C28CFC", 1, 3],
-            ["L4.3 E01-090", "Praktikum Chemie", 10, 215, 1030, "#C28CFC", 1, 3],
-            ["L4.3 E01-100", "Tritologieentwicklung", 10, 418, 709, "#C28CFC", 1, 3],
+            [
+              "L4 E01 Sanitär",
+              "WC Barrierefrei",
+              9,
+              220,
+              1186,
+              "#E0E3FF",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-190",
+              "Zentrale Studienberatung",
+              6,
+              632,
+              1186,
+              "#A4EB5D",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-210",
+              "Zentrale Studienberatung",
+              6,
+              669,
+              1186,
+              "#A4EB5D",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-230",
+              "Zentrale Studienberatung",
+              6,
+              803,
+              1186,
+              "#A4EB5D",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-250",
+              "International Office",
+              6,
+              832,
+              1186,
+              "#A4EB5D",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-290",
+              "International Office",
+              3,
+              1012,
+              1186,
+              "#A4EB5D",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-020",
+              "Animations- und CAD Studio Render",
+              8,
+              184,
+              1280,
+              "#8FC9FF",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-040",
+              "Animations- und CAD Studio Projektraum",
+              9,
+              226,
+              1280,
+              "#8FC9FF",
+              1,
+              3
+            ],
+            [
+              "L4.1 E01-060",
+              "Animations CAD Studio Cybersecurity",
+              9,
+              352,
+              1280,
+              "#8FC9FF",
+              1,
+              3
+            ],
+            [
+              "L4.3 E01-040",
+              "LED Elektroniklabor",
+              7,
+              410,
+              1022,
+              "#C28CFC",
+              1,
+              3
+            ],
+            [
+              "L4.3 E01-060",
+              "Kunststoffverarbeitung",
+              7,
+              410,
+              910,
+              "#C28CFC",
+              1,
+              3
+            ],
+            [
+              "L4.3 E01-080",
+              "Alterung- und Chromatographie",
+              7,
+              410,
+              853,
+              "#C28CFC",
+              1,
+              3
+            ],
+            [
+              "L4.3 E01-090",
+              "Praktikum Chemie",
+              10,
+              215,
+              1030,
+              "#C28CFC",
+              1,
+              3
+            ],
+            [
+              "L4.3 E01-100",
+              "Tritologieentwicklung",
+              10,
+              418,
+              709,
+              "#C28CFC",
+              1,
+              3
+            ],
             ["L4.3 E01-120", "Projektraum TCM", 7, 410, 573, "#C28CFC", 1, 3],
-            ["L4.3 E01-150", "Multimodales Labor", 10, 215, 764, "#C28CFC", 1, 3],
+            [
+              "L4.3 E01-150",
+              "Multimodales Labor",
+              10,
+              215,
+              764,
+              "#C28CFC",
+              1,
+              3
+            ],
             ["L4.3 E01-210", "Tritologieprüfung", 10, 215, 711, "#C28CFC", 1, 3]
           ],
           "paths": [
@@ -379,12 +806,22 @@
             [86, 1230],
             [270, 490]
           ]
-        }, {
+        },
+        {
           "name": "E02",
           "rooms": [
             ["L4 E02 Sanitär", "WC Herren", 3, 552, 1190, "#E0E3FF", 2, 3],
             ["L4 E02 Sanitär", "WC Damen", 3, 422, 1190, "#E0E3FF", 2, 3],
-            ["L4 E02 Sanitär", "WC Barrierefrei", 7, 219, 1190, "#E0E3FF", 2, 3],
+            [
+              "L4 E02 Sanitär",
+              "WC Barrierefrei",
+              7,
+              219,
+              1190,
+              "#E0E3FF",
+              2,
+              3
+            ],
             ["L4 E02-060", "MAC Pool", 2, 455, 1290, "#8FC9FF", 2, 3],
             ["L4 E02-040", "PC Pool 84", 7, 227, 1290, "#8FC9FF", 2, 3],
             ["L4 E02-020", "PC Pool 85", 7, 185, 1290, "#8FC9FF", 2, 3],
@@ -392,7 +829,16 @@
             ["L4.3 E02-060", "Syntheselabor", 4, 415, 920, "#C28CFC", 2, 3],
             ["L4.3 E02-080", "Mobile Praktika", 4, 410, 726, "#C28CFC", 2, 3],
             ["L4.3 E02-190", "Interaction Labor", 6, 215, 779, "#C28CFC", 2, 3],
-            ["L4.3 E02-130", "Materialpräperation und Charakterisierung", 6, 215, 1038, "#C28CFC", 2, 3]
+            [
+              "L4.3 E02-130",
+              "Materialpräperation und Charakterisierung",
+              6,
+              215,
+              1038,
+              "#C28CFC",
+              2,
+              3
+            ]
           ],
           "paths": [
             [0, 1, 3],
@@ -423,9 +869,9 @@
         {
           "name": "E0",
           "rooms": [
-            ["IQL Sanitär", "WC Frauen", 4, 982, 665, "#E0E3FF", 0, 4],
-            ["IQL Sanitär", "WC Herren", 4, 982, 638, "#E0E3FF", 0, 4],
-            ["IQL Sanitär", "WC Barrierefrei", 2, 915, 710, "#E0E3FF", 0, 4],
+            ["IQL E0 Sanitär", "WC Frauen", 4, 982, 665, "#E0E3FF", 0, 4],
+            ["IQL E0 Sanitär", "WC Herren", 4, 982, 638, "#E0E3FF", 0, 4],
+            ["IQL E0 Sanitär", "WC Barrierefrei", 2, 915, 710, "#E0E3FF", 0, 4],
             ["IQL E0 4.010", "Hörsaal LP8", 2, 520, 710, "#F98452", 0, 4],
             ["IQL E0 4.040", "Seminarraum", 2, 409, 710, "#F9CB48", 0, 4],
             ["IQL E0 4.060", "Open Space 2", 6, 984, 391, "#A4EB5D", 0, 4],
@@ -435,7 +881,16 @@
             ["IQL E0 4.150", "Werkstatt", 8, 310, 434, "#C28CFC", 0, 4],
             ["IQL E0 4.160", "Werkstatt", 8, 963, 434, "#C28CFC", 0, 4],
             ["IQL E0 4.170", "Werkstatt", 8, 875, 434, "#C28CFC", 0, 4],
-            ["IQL E0 5.020", "Veranstaltungsfläche", 7, 1280, 385, "#A4EB5D", 0, 4],
+            [
+              "IQL E0 5.020",
+              "Veranstaltungsfläche",
+              7,
+              1280,
+              385,
+              "#A4EB5D",
+              0,
+              4
+            ],
             ["IQL E0 5.080", "Büro Fachschaft", 7, 1320, 437, "#A4EB5D", 0, 4],
             ["IQL E0 5.090", "Büro Fachschaft", 7, 1320, 556, "#A4EB5D", 0, 4],
             ["IQL E0 5.100", "Büro StuPa", 7, 1320, 592, "#A4EB5D", 0, 4],
