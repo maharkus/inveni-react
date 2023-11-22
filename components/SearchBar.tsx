@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { TextInput, View } from 'react-native'
 import { customColors, styles } from "../styles/styles";
+import ICMagnifier from "../assets/icons/ic_magnifier.svg";
 
 interface PropsSearch {
     onSearch: (text: string) => void,
@@ -57,8 +58,9 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
 
     return (
         <View style={styles.searchBarWrapper}>
+            <ICMagnifier style={{position: "absolute", top: "50%", marginTop: -10, marginLeft: 35, zIndex: 10}}/>
             <TextInput
-                style={[styles.searchBarInput, isFocused ? { backgroundColor: customColors.softPurple } : {}]}
+                style={[styles.searchBarInput, isFocused ? { backgroundColor: customColors.softPurple } : {}, {paddingLeft: 45}]}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 ref={inputRef}

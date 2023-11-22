@@ -17,6 +17,7 @@ import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
 import { setIsScreenFinish } from "../states/slice";
 import { ButtonTextOnly } from "./ButtonTextOnly";
+import {FinishScreen} from "./FinishScreen";
 
 interface Props {
   status: number;
@@ -56,30 +57,6 @@ export const BottomSheetBar = ({
       setIsSearchActive(false);
     }
   }, [status]);
-
-  //gifs for finish screen
-  const finishedTexts = [
-    "Wonderful!",
-    "Okay!",
-    "Great Success!",
-    "Awesome!",
-    "Neat!",
-    "Yeehaw!",
-    "Yeah!",
-    "Wooho!",
-  ];
-  const gifs = [
-    require("../assets/gifs/awesome.gif"),
-    require("../assets/gifs/propeller.gif"),
-    require("../assets/gifs/borat.gif"),
-    require("../assets/gifs/top.gif"),
-    require("../assets/gifs/yehaw.gif"),
-    require("../assets/gifs/yeeey.gif"),
-    require("../assets/gifs/skeletal.gif"),
-  ];
-
-  const arrayLength = Math.min(finishedTexts.length, gifs.length);
-  const gifIndex = Math.floor(Math.random() * arrayLength);
 
   useEffect(() => {
     sheetRef.current?.snapToIndex(status);
@@ -209,44 +186,7 @@ export const BottomSheetBar = ({
             </BottomSheetScrollView>
           </>
         ) : (
-          <BottomSheetView style={[styles.contentContainer, { flex: 1 }]}>
-            {category != -1 && (
-              <RoomBar showFloor={false} destination={destination}></RoomBar>
-            )}
-            <View style={styles.gifWrap}>
-              <Image
-                source={gifs[gifIndex]}
-                style={{ width: 200, height: 200 }}
-              />
-            </View>
-            <Text style={[styles.defaultHeader, { marginTop: 30 }]}>
-              You made it!
-            </Text>
-            <Text
-              style={[
-                styles.defaultText,
-                { width: 300, textAlign: "center", marginBottom: 30 },
-              ]}
-            >
-              Congratulations, you have reached your destination.
-            </Text>
-            <ButtonText color={customColors.green} action={finishNavigation}>
-              {finishedTexts[gifIndex]}
-            </ButtonText>
-            <View style={{ marginTop: 30 }}>
-              <ButtonTextOnly
-                action={() => {
-                  handleClosePress();
-                  navigation.navigate("Navigation", {
-                    name: "Navigation",
-                    destination: destination,
-                  });
-                }}
-              >
-                Back to Navigation
-              </ButtonTextOnly>
-            </View>
-          </BottomSheetView>
+            <FinishScreen category={category} destination={destination} navigation={navigation} onFinish={finishNavigation} onClose={handleClosePress}/>
         )}
       </BottomSheet>
     </>

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import data from "../roomfinding/data.json";
 import { View, Text } from "react-native";
 import { SearchBar } from "./SearchBar";
-import { styles } from "../styles/styles";
+import {customColors, styles} from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 import RoomButton from "./RoomButton";
@@ -20,7 +20,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   const [filteredData, setFilteredData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isClear, setIsClear] = useState(false);
-  
+
   //Lottie files initilizing
   const lottieRef = useRef<LottieView>(null);
   const loadingRef = useRef<LottieView>(null);
@@ -47,7 +47,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
     search != "" && setIsSearching(true)
   }
 
-  
+
   useEffect(() => {
     //deactivate search when input is empty
     if (searchText == "") {
@@ -55,7 +55,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
       setFilteredData([])
       return
     }
-    
+
     //search for room in database
     const timeout = setTimeout(() => {
       let rooms = [];
@@ -151,7 +151,8 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
               </>
           ) : filteredData.length > 0 ? (
               <>
-                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10}]}>Search Results</Text>
+                <Text style={[styles.defaultHeader, {width: "100%", textAlign: "center", marginTop: 10, marginBottom: 0}]}>Search Results</Text>
+                <Text style={[styles.defaultText, {color: customColors.dark, opacity: .3, width: "100%", textAlign: "center", fontFamily: "Work Sans Bold", marginBottom: 15}]}>{filteredData.length} Results</Text>
                 <View style={styles.roomGrid}>
                 {filteredData.map((item: any, index: number) => (
                     <RoomButton
