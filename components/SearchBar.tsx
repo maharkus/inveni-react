@@ -58,9 +58,9 @@ export const SearchBar = ({ onSearch, shouldFocus, inputClear }: PropsSearch) =>
 
     return (
         <View style={styles.searchBarWrapper}>
-            <ICMagnifier style={{position: "absolute", top: "50%", marginTop: -10, marginLeft: 35, zIndex: 10}}/>
+            <ICMagnifier width={25} height={25} style={{position: "absolute", top: "50%", marginTop: -13, marginLeft: 40, zIndex: 10}}/>
             <TextInput
-                style={[styles.searchBarInput, isFocused ? { backgroundColor: customColors.softPurple } : {}, {paddingLeft: 45}]}
+                style={[styles.searchBarInput, isFocused ? { backgroundColor: customColors.softPurple } : {}, {paddingLeft: 65}]}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 ref={inputRef}
