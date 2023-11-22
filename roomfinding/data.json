@@ -8,7 +8,7 @@
           "name": "E00",
           "rooms": [
             ["L1 E00 Office", "Campus Office", 4, 1142, 812, "#A4EB5D", 0, 0],
-            ["L1 E00 Essen", "Mensa", 1, 590, 955, "#A4EB5D", 0, 0],
+            ["L1 E00", "Mensa", 1, 590, 955, "#A4EB5D", 0, 0],
             ["L1 E00 Sanitär", "WC Damen", 7, 990, 692, "#E0E3FF", 0, 0],
             ["L1 E00 Sanitär", "WC Herren", 6, 1036, 740, "#E0E3FF", 0, 0],
             ["L1 E00 Sanitär", "WC Barrierefrei", 6, 1036, 810, "#E0E3FF", 0, 0]
