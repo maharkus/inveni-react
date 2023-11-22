@@ -241,7 +241,6 @@ export const BottomSheetBar = ({
                     name: "Navigation",
                     destination: destination,
                   });
-                  setStatus(-1);
                 }}
               >
                 Back to Navigation
