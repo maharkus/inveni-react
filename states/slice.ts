@@ -29,7 +29,6 @@ const slice = createSlice({
     },
     setDestination: (state, action: PayloadAction<any>) => {
       state.destination = action.payload;
-      console.log(action.payload);
     },
   },
 });

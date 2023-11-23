@@ -81,7 +81,6 @@ export const BottomSheetBar = ({
     }
     else if (index == -1) {
         room === -1 && onClearResults();
-        console.log("close sheet")
         isScreenFinish && finishNavigation();
       }
       else {
