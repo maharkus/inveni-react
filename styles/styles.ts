@@ -20,7 +20,7 @@ export const customColors = {
   transparent: "rgba(0,0,0,0)",
 };
 
-export const pressedBackgroundColor = "red"
+export const pressedBackgroundColor = "red";
 
 export const styles = StyleSheet.create({
   //Basics
@@ -440,5 +440,5 @@ export const styles = StyleSheet.create({
     opacity: 0.4,
     fontFamily: "Work Sans",
     fontSize: 16,
-  }
+  },
 });

@@ -2,22 +2,19 @@ import BottomSheet, {
   BottomSheetScrollView,
   BottomSheetView,
 } from "@gorhom/bottom-sheet";
-import { customColors, styles } from "../styles/styles";
+import { styles } from "../styles/styles";
 import CustomBackdrop from "./CustomBackdrop";
 import CustomHandle from "./CustomHandle";
 import { RoomSelection } from "./RoomSelection";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Image, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { useDispatch } from "react-redux";
-import { ButtonText } from "./ButtonText";
-import RoomBar from "./RoomBar";
 import { AllRooms } from "./AllRooms";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
-import { setIsScreenFinish } from "../states/slice";
-import { ButtonTextOnly } from "./ButtonTextOnly";
-import {FinishScreen} from "./FinishScreen";
+import { setDestination, setIsScreenFinish } from "../states/slice";
+import { FinishScreen } from "./FinishScreen";
 
 interface Props {
   status: number;
@@ -88,6 +85,7 @@ export const BottomSheetBar = ({
   const finishNavigation = () => {
     onClearResults();
     dispatch(setIsScreenFinish(false));
+    dispatch(setDestination({ category: -1, etage: -1, room: -1 }));
     sheetRef.current?.close();
     setStatus(-1);
   };
@@ -186,7 +184,13 @@ export const BottomSheetBar = ({
             </BottomSheetScrollView>
           </>
         ) : (
-            <FinishScreen category={category} destination={destination} navigation={navigation} onFinish={finishNavigation} onClose={handleClosePress}/>
+          <FinishScreen
+            category={category}
+            destination={destination}
+            navigation={navigation}
+            onFinish={finishNavigation}
+            onClose={handleClosePress}
+          />
         )}
       </BottomSheet>
     </>

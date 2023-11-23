@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { customColors, styles } from "../styles/styles";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Campus from "../components/Campus";
@@ -17,11 +17,17 @@ import ICSettings from "../assets/bildmarke.svg";
 import ICList from "../assets/icons/ic_list.svg";
 import ICMagnifier from "../assets/icons/ic_magnifier.svg";
 
+import { useDispatch } from "react-redux";
+import { setDestination } from "../states/slice";
+
 export const Home = ({ navigation }) => {
   const [category, setCategory] = useState(-1);
   const [room, setRoom] = useState(-1);
   const [etage, setEtage] = useState(-1);
   const [sheetStatus, setSheetStatus] = useState(-1);
+  const destination = useSelector(
+    (state: RootState) => state.counter.destination
+  );
 
   const categorySearch = -1;
   const categoryAllRooms = 5;
@@ -42,7 +48,7 @@ export const Home = ({ navigation }) => {
     setCategory(categoryAllRooms);
     setSheetStatus(sheetOpen);
   };
-  
+
   const clearResults = () => {
     setCategory(categorySearch);
     setRoom(-1);
@@ -55,14 +61,19 @@ export const Home = ({ navigation }) => {
     setCategory(building);
   };
 
+  const dispatch = useDispatch();
+
   //Room Selection
   const handleRoomSelection = (etage: number, room: number) => {
     setEtage(etage);
     setRoom(room);
     setSheetStatus(sheetClose);
+    dispatch(setDestination({ category, etage, room }));
   };
 
-  const destination = { category: category, etage: etage, room: room };
+  const navigateToNavigation = () => {
+    navigation.navigate("Navigation");
+  };
 
   return (
     <GestureHandlerRootView style={styles.homeContainer}>
@@ -76,7 +87,7 @@ export const Home = ({ navigation }) => {
 
       <View style={styles.roomBarView}>
         {destination.room != -1 && !isScreenFinish && (
-          <RoomBar destination={destination} showFloor={false} />
+          <RoomBar showFloor={false} />
         )}
       </View>
 
@@ -106,28 +117,31 @@ export const Home = ({ navigation }) => {
             imageSource={require("../assets/icons/chevronRight.png")}
             w={12}
             h={24}
-            action={() =>
-              navigation.navigate("Navigation", {
-                name: "Navigation",
-                destination: destination,
-              })
-            }
+            action={navigateToNavigation}
             customStyle={null}
           >
             Start Navigation
           </ButtonTextAndIcon>
         )}
-        {(room == -1 || isScreenFinish)? (
+        {room == -1 || isScreenFinish ? (
           <>
             <View style={styles.homeBottomNav}>
               <Pressable
-                style={({ pressed }) => [styles.bhnSearchBar, {transform: [{ scale: pressed ? 0.95 : 1 }]}]}
+                style={({ pressed }) => [
+                  styles.bhnSearchBar,
+                  { transform: [{ scale: pressed ? 0.95 : 1 }] },
+                ]}
                 onPress={() => initSearch()}
               >
                 <ICMagnifier width={25} height={25}></ICMagnifier>
                 <Text style={styles.bhnSearchBarText}>Find Room</Text>
               </Pressable>
-              <ButtonIconSVG color={customColors.uwu} action={() => initAllRooms()} customStyles={0} buttonPadding={15}>
+              <ButtonIconSVG
+                color={customColors.uwu}
+                action={() => initAllRooms()}
+                customStyles={0}
+                buttonPadding={15}
+              >
                 <ICList width={30} height={30}></ICList>
               </ButtonIconSVG>
               <ButtonIconSVG
@@ -144,7 +158,7 @@ export const Home = ({ navigation }) => {
           <ButtonTextOnly action={() => clearResults()}>Cancel</ButtonTextOnly>
         )}
       </View>
-      
+
       <BottomSheetBar
         status={sheetStatus}
         setStatus={(index) => setSheetStatus(index)}

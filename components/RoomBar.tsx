@@ -2,27 +2,31 @@ import { View, Text } from "react-native";
 import { styles } from "../styles/styles";
 import * as React from "react";
 import data from "../roomfinding/data.json";
-import {useSelector} from "react-redux";
-import {RootState} from "../states/store";
+import { useSelector } from "react-redux";
+import { RootState } from "../states/store";
 
 interface Props {
-  destination: { category: number; etage: number; room: number };
   showFloor?: boolean;
 }
 
-export default function RoomBar({ destination, showFloor = true }: Props) {
-
+export default function RoomBar({ showFloor = true }: Props) {
   //set current floor
-  const currentFloor= useSelector(
-      (state: RootState) => state.counter.currentFloor
+  const currentFloor = useSelector(
+    (state: RootState) => state.counter.currentFloor
   );
 
-  //get building and room name
-  const buildingname = data.buildings[destination.category].name;
-  const room =
-    data.buildings[destination.category].etage[destination.etage].rooms[
-      destination.room
-    ][1];
+  const destination = useSelector(
+    (state: RootState) => state.counter.destination
+  );
+
+  // Check if destination and its properties are defined
+  const building = destination && data.buildings[destination.category];
+  const etage = building && building.etage[destination.etage];
+  const room = etage && etage.rooms[destination.room];
+
+  // Safely access building name, etage, and room
+  const buildingname = building ? building.name : "Default Building Name";
+  const roomname = room ? room[1] : "Default Room Name";
 
   //dynamic font size
   const getFontSize = (name) => {
@@ -41,7 +45,7 @@ export default function RoomBar({ destination, showFloor = true }: Props) {
             style={[
               styles.defaultText,
               styles.roomBarText,
-              { marginRight: 15, fontSize: getFontSize(room) },
+              { marginRight: 15, fontSize: getFontSize(roomname) },
             ]}
           >
             {buildingname}
@@ -52,10 +56,10 @@ export default function RoomBar({ destination, showFloor = true }: Props) {
             style={[
               styles.defaultText,
               styles.roomBarText,
-              { fontSize: getFontSize(room), maxWidth: 150 },
+              { fontSize: getFontSize(roomname), maxWidth: 150 },
             ]}
           >
-            {room}
+            {roomname}
           </Text>
         </View>
       </View>
