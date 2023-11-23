@@ -5,6 +5,8 @@ import { Image, Text, View, Dimensions } from "react-native";
 import { ButtonText } from "./ButtonText";
 import { ButtonTextOnly } from "./ButtonTextOnly";
 import * as React from "react";
+import {setDestination, setGoBack} from "../states/slice";
+import {useDispatch} from "react-redux";
 
 interface Props {
   category: number;
@@ -13,12 +15,7 @@ interface Props {
   onClose: () => void;
   navigation: any;
 }
-export const FinishScreen = ({
-  destination,
-  onFinish,
-  onClose,
-  navigation,
-}: Props) => {
+export const FinishScreen = ({ onFinish, onClose, navigation, destination }: Props) => {
   //gifs for finish screen
   const finishedTexts = [
     "Wonderful!",
@@ -40,6 +37,7 @@ export const FinishScreen = ({
     require("../assets/gifs/skeletal.gif"),
   ];
 
+  const dispatch = useDispatch();
   const arrayLength = Math.min(finishedTexts.length, gifs.length);
   const gifIndex = Math.floor(Math.random() * arrayLength);
 
@@ -48,49 +46,49 @@ export const FinishScreen = ({
   let deviceHeight = Dimensions.get("window").height;
 
   return (
-    <BottomSheetView style={[styles.contentContainer, { flex: 1 }]}>
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "space-around",
-          gap: 15,
-        }}
-      >
-        <RoomBar showFloor={false}></RoomBar>
-        <View style={[styles.gifWrap]}>
-          <Image
-            source={gifs[gifIndex]}
-            style={{ width: deviceWidth / 2, height: deviceHeight / 5 }}
-            resizeMode={"cover"}
-          />
-        </View>
-        <View style={{ flex: 1, gap: 0, alignItems: "center" }}>
-          <Text style={styles.defaultHeader}>You made it!</Text>
-          <Text
-            style={[styles.defaultText, { width: 300, textAlign: "center" }]}
-          >
-            Congratulations, you have reached your destination.
-          </Text>
-        </View>
-        <View style={{ flex: 1, gap: 20, alignItems: "center" }}>
-          <ButtonText color={customColors.green} action={onFinish}>
-            {finishedTexts[gifIndex]}
-          </ButtonText>
-          <ButtonTextOnly
-            action={() => {
-              onClose();
-              navigation.navigate("Navigation", {
-                name: "Navigation",
-                destination: destination,
-              });
-              console.log("Destination on Finish screen:", destination);
+      <BottomSheetView style={[styles.contentContainer, { flex: 1 }]}>
+        <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "space-around",
+              gap: 15,
             }}
-          >
-            Back to Navigation
-          </ButtonTextOnly>
+        >
+          <RoomBar showFloor={false}></RoomBar>
+          <View style={[styles.gifWrap]}>
+            <Image
+                source={gifs[gifIndex]}
+                style={{ width: deviceWidth / 2, height: deviceHeight / 5 }}
+                resizeMode={"cover"}
+            />
+          </View>
+          <View style={{ flex: 1, gap: 0, alignItems: "center" }}>
+            <Text style={styles.defaultHeader}>You made it!</Text>
+            <Text
+                style={[styles.defaultText, { width: 300, textAlign: "center" }]}
+            >
+              Congratulations, you have reached your destination.
+            </Text>
+          </View>
+          <View style={{ flex: 1, gap: 20, alignItems: "center" }}>
+            <ButtonText color={customColors.green} action={onFinish}>
+              {finishedTexts[gifIndex]}
+            </ButtonText>
+            <ButtonTextOnly
+                action={() => {
+                  onClose();
+                  dispatch(setGoBack(true));
+                  dispatch(setDestination( destination ));
+                  navigation.navigate("Navigation", {
+                    name: "Navigation",
+                  });
+                }}
+            >
+              Back to Navigation
+            </ButtonTextOnly>
+          </View>
         </View>
-      </View>
-    </BottomSheetView>
+      </BottomSheetView>
   );
 };

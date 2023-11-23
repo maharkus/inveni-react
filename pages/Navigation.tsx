@@ -7,7 +7,7 @@ import { NavPath } from "../components/NavigationPath";
 import { ButtonTextOnly } from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentFloor, setIsScreenFinish } from "../states/slice";
+import {setCurrentFloor, setGoBack, setIsScreenFinish} from "../states/slice";
 import { RootState } from "../states/store";
 
 export const Navigation = ({ navigation }) => {

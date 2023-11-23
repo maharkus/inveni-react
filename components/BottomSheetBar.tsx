@@ -8,13 +8,14 @@ import CustomHandle from "./CustomHandle";
 import { RoomSelection } from "./RoomSelection";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Text, View } from "react-native";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { AllRooms } from "./AllRooms";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
-import { setDestination, setIsScreenFinish } from "../states/slice";
+import {setDestination, setGoBack, setIsScreenFinish} from "../states/slice";
 import { FinishScreen } from "./FinishScreen";
+import {RootState} from "../states/store";
 
 interface Props {
   status: number;
@@ -45,6 +46,9 @@ export const BottomSheetBar = ({
   const [etage, setEtage] = useState(0);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const dispatch = useDispatch();
+  const goBack = useSelector(
+      (state: RootState) => state.counter.goBack
+  );
 
   //check if search screen is active
   useEffect(() => {
@@ -70,15 +74,21 @@ export const BottomSheetBar = ({
   }, [setStatus]);
 
   //swipe down
-  const handleSheetChange = useCallback(
-    (index) => {
-      if (index == -1) {
+  const handleSheetChange = useCallback((index) => {
+    if( goBack) {
+      setStatus(1);
+      dispatch(setGoBack(false))
+    }
+    else if (index == -1) {
         room === -1 && onClearResults();
+        console.log("close sheet")
         isScreenFinish && finishNavigation();
       }
-      setStatus(index);
+      else {
+        setStatus(index);
+      }
     },
-    [setStatus, room, onClearResults, isScreenFinish]
+    [setStatus, room, onClearResults, goBack, isScreenFinish]
   );
 
   //navigation finish
