@@ -5,6 +5,7 @@ interface State {
   goBack: boolean;
   currentFloor: number;
   destination: any;
+  sheetState: number;
 }
 
 const initialState: State = {
@@ -12,6 +13,7 @@ const initialState: State = {
   goBack: false,
   currentFloor: 0,
   destination: { category: -1, etage: -1, room: -1 },
+  sheetState: -1
 };
 
 const slice = createSlice({
@@ -30,6 +32,9 @@ const slice = createSlice({
     setDestination: (state, action: PayloadAction<any>) => {
       state.destination = action.payload;
     },
+    setSheetState: (state, action: PayloadAction<number>) => {
+      state.sheetState = action.payload;
+    },
   },
 });
 
@@ -37,4 +42,5 @@ export const { setIsScreenFinish } = slice.actions;
 export const { setGoBack } = slice.actions;
 export const { setCurrentFloor } = slice.actions;
 export const { setDestination } = slice.actions;
+export const { setSheetState } = slice.actions;
 export default slice.reducer;

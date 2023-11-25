@@ -18,13 +18,12 @@ import ICList from "../assets/icons/ic_list.svg";
 import ICMagnifier from "../assets/icons/ic_magnifier.svg";
 
 import { useDispatch } from "react-redux";
-import { setDestination } from "../states/slice";
+import {setDestination, setSheetState} from "../states/slice";
 
 export const Home = ({ navigation }) => {
   const [category, setCategory] = useState(-1);
   const [room, setRoom] = useState(-1);
   const [etage, setEtage] = useState(-1);
-  const [sheetStatus, setSheetStatus] = useState(-1);
   const destination = useSelector(
     (state: RootState) => state.counter.destination
   );
@@ -41,23 +40,24 @@ export const Home = ({ navigation }) => {
   //Init BottomSheetBar
   const initSearch = () => {
     clearResults();
-    setSheetStatus(sheetOpen);
+      dispatch(setSheetState(sheetOpen))
   };
 
   const initAllRooms = () => {
     setCategory(categoryAllRooms);
-    setSheetStatus(sheetOpen);
+      dispatch(setSheetState(sheetOpen))
   };
 
   const clearResults = () => {
     setCategory(categorySearch);
     setRoom(-1);
-    setSheetStatus(sheetClose);
+    dispatch(setDestination({ category: -1, etage: -1, room: -1 }));
+      dispatch(setSheetState(sheetClose))
   };
 
   //Building Selection
   const handleBuilding = (building) => {
-    setSheetStatus(sheetOpen);
+      dispatch(setSheetState(sheetOpen))
     setCategory(building);
   };
 
@@ -67,7 +67,7 @@ export const Home = ({ navigation }) => {
   const handleRoomSelection = (etage: number, room: number) => {
     setEtage(etage);
     setRoom(room);
-    setSheetStatus(sheetClose);
+      dispatch(setSheetState(sheetClose))
     dispatch(setDestination({ category, etage, room }));
   };
 
@@ -160,8 +160,6 @@ export const Home = ({ navigation }) => {
       </View>
 
       <BottomSheetBar
-        status={sheetStatus}
-        setStatus={(index) => setSheetStatus(index)}
         selectRoom={(etage, room) => handleRoomSelection(etage, room)}
         selectBuilding={(building) => handleBuilding(building)}
         category={category}

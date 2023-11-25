@@ -7,7 +7,7 @@ import { NavPath } from "../components/NavigationPath";
 import { ButtonTextOnly } from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentFloor, setGoBack, setIsScreenFinish } from "../states/slice";
+import {setCurrentFloor, setGoBack, setIsScreenFinish, setSheetState} from "../states/slice";
 import { RootState } from "../states/store";
 
 export const Navigation = ({ navigation }) => {
@@ -29,6 +29,7 @@ export const Navigation = ({ navigation }) => {
       dispatch(setCurrentFloor(currentFloor + 1));
     } else if (currentFloor === destination.etage) {
       dispatch(setCurrentFloor(0));
+      dispatch(setSheetState(1));
       dispatch(setIsScreenFinish(true));
       navigation.navigate("Home", {
         name: "Home",
@@ -232,6 +233,7 @@ export const Navigation = ({ navigation }) => {
             action={() => {
               dispatch(setCurrentFloor(0));
               dispatch(setIsScreenFinish(false));
+              dispatch(setSheetState(-1));
               navigation.navigate("Home", {
                 name: "Home",
               });

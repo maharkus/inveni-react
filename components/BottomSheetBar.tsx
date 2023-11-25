@@ -13,13 +13,11 @@ import { AllRooms } from "./AllRooms";
 import * as React from "react";
 import { SearchResults } from "./SearchResults";
 import data from "../roomfinding/data.json";
-import {setDestination, setGoBack, setIsScreenFinish} from "../states/slice";
+import {setDestination, setGoBack, setIsScreenFinish, setSheetState} from "../states/slice";
 import { FinishScreen } from "./FinishScreen";
 import {RootState} from "../states/store";
 
 interface Props {
-  status: number;
-  setStatus: (index) => void;
   category: number;
   room: number;
   selectRoom: (etage, room) => void;
@@ -31,13 +29,11 @@ interface Props {
 }
 
 export const BottomSheetBar = ({
-  status,
   category,
   room,
   selectRoom,
   selectBuilding,
   onClearResults,
-  setStatus,
   isScreenFinish,
   navigation,
   destination,
@@ -49,34 +45,33 @@ export const BottomSheetBar = ({
   const goBack = useSelector(
       (state: RootState) => state.counter.goBack
   );
+  const sheetStatus = useSelector(
+      (state: RootState) => state.counter.sheetState
+  )
 
   //check if search screen is active
   useEffect(() => {
-    if (category == -1 && status == 1) {
+    if (category == -1 && sheetStatus == 1) {
       setIsSearchActive(true);
     } else {
       setIsSearchActive(false);
     }
-  }, [status]);
+  }, [sheetStatus]);
 
   useEffect(() => {
-    sheetRef.current?.snapToIndex(status);
-  }, [status]);
+    sheetStatus!= -1 ? sheetRef.current?.snapToIndex(sheetStatus) :
+        sheetRef.current?.close();
+    console.log(sheetStatus)
+  }, [sheetStatus]);
 
   useEffect(() => {
-    isScreenFinish && setStatus(1);
+    isScreenFinish &&
+    dispatch(setSheetState(1));
   }, [isScreenFinish]);
-
-  //handle close
-  const handleClosePress = useCallback(() => {
-    sheetRef.current?.close();
-    setStatus(-1);
-  }, [setStatus]);
 
   //swipe down
   const handleSheetChange = useCallback((index) => {
-    if( goBack) {
-      setStatus(1);
+    if(goBack) {
       dispatch(setGoBack(false))
     }
     else if (index == -1) {
@@ -84,10 +79,10 @@ export const BottomSheetBar = ({
         isScreenFinish && finishNavigation();
       }
       else {
-        setStatus(index);
+      dispatch(setSheetState(index));
       }
     },
-    [setStatus, room, onClearResults, goBack, isScreenFinish]
+    [goBack, dispatch, room, onClearResults, isScreenFinish]
   );
 
   //navigation finish
@@ -96,13 +91,14 @@ export const BottomSheetBar = ({
     dispatch(setIsScreenFinish(false));
     dispatch(setDestination({ category: -1, etage: -1, room: -1 }));
     sheetRef.current?.close();
-    setStatus(-1);
+    dispatch(setSheetState(-1));
   };
 
   const onRoom = (etage, room) => {
     selectRoom(etage, room);
     setEtage(etage);
-    handleClosePress();
+    sheetRef.current?.close();
+    dispatch(setSheetState(-1));
   };
 
   // variables
@@ -170,7 +166,7 @@ export const BottomSheetBar = ({
                   <SearchResults
                     selectBuilding={(building) => selectBuilding(building)}
                     onRoomSelection={(etage, room) => onRoom(etage, room)}
-                    isSheetOpen={status === 1}
+                    isSheetOpen={sheetStatus === 1}
                     onClear={onClearResults}
                     shouldFocus={isSearchActive}
                   />
@@ -198,7 +194,6 @@ export const BottomSheetBar = ({
             destination={destination}
             navigation={navigation}
             onFinish={finishNavigation}
-            onClose={handleClosePress}
           />
         )}
       </BottomSheet>

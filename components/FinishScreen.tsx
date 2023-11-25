@@ -5,17 +5,16 @@ import { Image, Text, View, Dimensions } from "react-native";
 import { ButtonText } from "./ButtonText";
 import { ButtonTextOnly } from "./ButtonTextOnly";
 import * as React from "react";
-import {setDestination, setGoBack} from "../states/slice";
+import {setDestination, setGoBack, setSheetState} from "../states/slice";
 import {useDispatch} from "react-redux";
 
 interface Props {
   category: number;
   destination: any;
   onFinish: () => void;
-  onClose: () => void;
   navigation: any;
 }
-export const FinishScreen = ({ onFinish, onClose, navigation, destination }: Props) => {
+export const FinishScreen = ({ onFinish, navigation, destination }: Props) => {
   //gifs for finish screen
   const finishedTexts = [
     "Wonderful!",
@@ -77,7 +76,7 @@ export const FinishScreen = ({ onFinish, onClose, navigation, destination }: Pro
             </ButtonText>
             <ButtonTextOnly
                 action={() => {
-                  onClose();
+                  dispatch(setSheetState(-1));
                   dispatch(setGoBack(true));
                   dispatch(setDestination( destination ));
                   navigation.navigate("Navigation", {
