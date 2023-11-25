@@ -7,7 +7,7 @@ import { NavPath } from "../components/NavigationPath";
 import { ButtonTextOnly } from "../components/ButtonTextOnly";
 import RoomBar from "../components/RoomBar";
 import { useDispatch, useSelector } from "react-redux";
-import {setCurrentFloor, setGoBack, setIsScreenFinish} from "../states/slice";
+import { setCurrentFloor, setGoBack, setIsScreenFinish } from "../states/slice";
 import { RootState } from "../states/store";
 
 export const Navigation = ({ navigation }) => {
@@ -82,7 +82,7 @@ export const Navigation = ({ navigation }) => {
               )}
               {currentFloor == 1 && (
                 <Image
-                  source={require("../assets/buildings/L2E10.jpg")}
+                  source={require("../assets/buildings/L2E01.jpg")}
                   resizeMethod={"resize"}
                   progressiveRenderingEnabled={true}
                   style={{ width: contentWidth, height: contentHeight }}
