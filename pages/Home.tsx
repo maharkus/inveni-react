@@ -21,9 +21,6 @@ import { useDispatch } from "react-redux";
 import {setDestination, setSheetState} from "../states/slice";
 
 export const Home = ({ navigation }) => {
-  const [category, setCategory] = useState(-1);
-  const [room, setRoom] = useState(-1);
-  const [etage, setEtage] = useState(-1);
   const destination = useSelector(
     (state: RootState) => state.counter.destination
   );
@@ -39,37 +36,27 @@ export const Home = ({ navigation }) => {
 
   //Init BottomSheetBar
   const initSearch = () => {
-    clearResults();
+      dispatch(setDestination({category: categorySearch, etage: -1, room: -1}));
       dispatch(setSheetState(sheetOpen))
   };
 
   const initAllRooms = () => {
-    setCategory(categoryAllRooms);
+      dispatch(setDestination({...destination, category: categoryAllRooms}));
       dispatch(setSheetState(sheetOpen))
   };
 
   const clearResults = () => {
-    setCategory(categorySearch);
-    setRoom(-1);
     dispatch(setDestination({ category: -1, etage: -1, room: -1 }));
       dispatch(setSheetState(sheetClose))
   };
 
   //Building Selection
   const handleBuilding = (building) => {
+      dispatch(setDestination({...destination, category: building}));
       dispatch(setSheetState(sheetOpen))
-    setCategory(building);
   };
 
   const dispatch = useDispatch();
-
-  //Room Selection
-  const handleRoomSelection = (etage: number, room: number) => {
-    setEtage(etage);
-    setRoom(room);
-      dispatch(setSheetState(sheetClose))
-    dispatch(setDestination({ category, etage, room }));
-  };
 
   const navigateToNavigation = () => {
     navigation.navigate("Navigation");
@@ -77,7 +64,7 @@ export const Home = ({ navigation }) => {
 
   return (
     <GestureHandlerRootView style={styles.homeContainer}>
-      {room == -1 || isScreenFinish ? <TopBar /> : <View></View>}
+      {destination.room == -1 || isScreenFinish ? <TopBar /> : <View></View>}
 
       <LinearGradient
         style={styles.topBarGrad}
@@ -123,7 +110,7 @@ export const Home = ({ navigation }) => {
             Start Navigation
           </ButtonTextAndIcon>
         )}
-        {room == -1 || isScreenFinish ? (
+        {destination.room == -1 || isScreenFinish ? (
           <>
             <View style={styles.homeBottomNav}>
               <Pressable
@@ -160,14 +147,9 @@ export const Home = ({ navigation }) => {
       </View>
 
       <BottomSheetBar
-        selectRoom={(etage, room) => handleRoomSelection(etage, room)}
-        selectBuilding={(building) => handleBuilding(building)}
-        category={category}
-        room={room}
         onClearResults={clearResults}
         isScreenFinish={isScreenFinish}
         navigation={navigation}
-        destination={destination}
       />
     </GestureHandlerRootView>
   );

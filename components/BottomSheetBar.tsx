@@ -18,30 +18,22 @@ import { FinishScreen } from "./FinishScreen";
 import {RootState} from "../states/store";
 
 interface Props {
-  category: number;
-  room: number;
-  selectRoom: (etage, room) => void;
-  selectBuilding: (building) => void;
   onClearResults: () => void;
   isScreenFinish: boolean;
   navigation: any;
-  destination: any;
 }
 
 export const BottomSheetBar = ({
-  category,
-  room,
-  selectRoom,
-  selectBuilding,
   onClearResults,
   isScreenFinish,
   navigation,
-  destination,
 }: Props) => {
   const sheetRef = useRef<BottomSheet>(null);
-  const [etage, setEtage] = useState(0);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const dispatch = useDispatch();
+  const destination = useSelector(
+      (state: RootState) => state.counter.destination
+  );
   const goBack = useSelector(
       (state: RootState) => state.counter.goBack
   );
@@ -51,7 +43,7 @@ export const BottomSheetBar = ({
 
   //check if search screen is active
   useEffect(() => {
-    if (category == -1 && sheetStatus == 1) {
+    if (destination.category == -1 && sheetStatus == 1) {
       setIsSearchActive(true);
     } else {
       setIsSearchActive(false);
@@ -74,14 +66,14 @@ export const BottomSheetBar = ({
       dispatch(setGoBack(false))
     }
     else if (index == -1) {
-        room === -1 && onClearResults();
+        destination.room === -1 && onClearResults();
         isScreenFinish && finishNavigation();
       }
       else {
       dispatch(setSheetState(index));
       }
     },
-    [goBack, dispatch, room, onClearResults, isScreenFinish]
+    [goBack, dispatch, destination.room, onClearResults, isScreenFinish]
   );
 
   //navigation finish
@@ -93,9 +85,12 @@ export const BottomSheetBar = ({
     dispatch(setSheetState(-1));
   };
 
+  const onBuilding = (building) => {
+    dispatch(setDestination({...destination, category: building}))
+  }
+
   const onRoom = (etage, room) => {
-    selectRoom(etage, room);
-    setEtage(etage);
+    dispatch(setDestination({...destination, etage: etage, room: room}))
     sheetRef.current?.close();
     dispatch(setSheetState(-1));
   };
@@ -118,7 +113,7 @@ export const BottomSheetBar = ({
       >
         {!isScreenFinish ? (
           <>
-            {category >= 0 && category <= 4 ? (
+            {destination.category >= 0 && destination.category <= 4 ? (
               <View style={{ height: 80, width: "100%" }}>
                 <View
                   style={{
@@ -133,12 +128,12 @@ export const BottomSheetBar = ({
                       { textAlign: "center", width: "100%" },
                     ]}
                   >
-                    All Rooms in {data.buildings[category].name}
+                    All Rooms in {data.buildings[destination.category].name}
                   </Text>
                 </View>
               </View>
             ) : (
-              category == 5 && (
+                destination.category == 5 && (
                 <View style={{ height: 80, width: "100%" }}>
                   <View
                     style={{
@@ -160,27 +155,27 @@ export const BottomSheetBar = ({
               )
             )}
             <BottomSheetScrollView style={{ flex: 1 }} horizontal={false}>
-              {category === -1 ? (
+              {destination.category === -1 ? (
                 <>
                   <SearchResults
-                    selectBuilding={(building) => selectBuilding(building)}
+                    selectBuilding={(building) => onBuilding(building)}
                     onRoomSelection={(etage, room) => onRoom(etage, room)}
                     isSheetOpen={sheetStatus === 1}
                     onClear={onClearResults}
                     shouldFocus={isSearchActive}
                   />
                 </>
-              ) : category === 5 ? (
+              ) : destination.category === 5 ? (
                 <>
                   <AllRooms
-                    selectBuilding={(building) => selectBuilding(building)}
+                    selectBuilding={(building) => onBuilding(building)}
                     onRoomSelection={(etage, room) => onRoom(etage, room)}
                   />
                 </>
               ) : (
                 <>
                   <RoomSelection
-                    category={category}
+                    category={destination.category}
                     onRoomSelection={(etage, room) => onRoom(etage, room)}
                   ></RoomSelection>
                 </>
@@ -189,7 +184,7 @@ export const BottomSheetBar = ({
           </>
         ) : (
           <FinishScreen
-            category={category}
+            category={destination.category}
             destination={destination}
             navigation={navigation}
             onFinish={finishNavigation}

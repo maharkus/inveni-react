@@ -6,6 +6,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 import { getFontSize } from "../utils/utils";
 import RoomButton from "./RoomButton";
+import { useDispatch } from "react-redux";
+import {setDestination} from "../states/slice";
 
 interface Props {
   onRoomSelection: (etage: any, id: any) => void;
@@ -15,6 +17,7 @@ interface Props {
 export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
   const [allRooms, setallRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
 
   //Lottie loading
   const loadingRef = useRef<LottieView>(null);
@@ -63,8 +66,8 @@ export const AllRooms = ({ onRoomSelection, selectBuilding }: Props) => {
 
   //select room from database
   const handleSelection = (item: any, index: number) => {
-    selectBuilding(item[7]);
     onRoomSelection(item[6], index);
+    dispatch(setDestination({category: item[7], etage: item[6], room: index}))
   };
 
   return (

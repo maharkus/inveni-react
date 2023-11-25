@@ -6,6 +6,8 @@ import {customColors, styles} from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
 import RoomButton from "./RoomButton";
+import {setDestination} from "../states/slice";
+import {useDispatch} from "react-redux";
 
 interface Props {
   onRoomSelection: (etage, id) => void,
@@ -20,6 +22,7 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
   const [filteredData, setFilteredData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isClear, setIsClear] = useState(false);
+  const dispatch = useDispatch();
 
   //Lottie files initilizing
   const lottieRef = useRef<LottieView>(null);
@@ -80,8 +83,8 @@ export const SearchResults = ({shouldFocus, onRoomSelection, selectBuilding, isS
 
   //select searched room for navigation
   const handleSelection = (item: any, index:number) => {
-    selectBuilding(item[7])
-    onRoomSelection (item[6], index)
+    onRoomSelection(item[6], index);
+    dispatch(setDestination({category: item[7], etage: item[6], room: index}))
   }
 
   //clear search on sheet closing
