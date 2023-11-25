@@ -61,7 +61,6 @@ export const BottomSheetBar = ({
   useEffect(() => {
     sheetStatus!= -1 ? sheetRef.current?.snapToIndex(sheetStatus) :
         sheetRef.current?.close();
-    console.log(sheetStatus)
   }, [sheetStatus]);
 
   useEffect(() => {
